@@ -26,6 +26,10 @@ string5="s@${OLDSET}@${NEWSET}@g"
 string6="s@${OLDPREF}@${NEWPREF}@g"
 string7="s@${OLDEM}@${NEWEM}@g"
 FILES="scripts/setup
+scripts/initialize
+scripts/convert
+scripts/loadtables
+scripts/dumptables
 scripts/backup
 scripts/activate
 scripts/check

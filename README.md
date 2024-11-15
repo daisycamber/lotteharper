@@ -67,7 +67,7 @@ sudo su $USER_NAME -c "/home/$USER_NAME/$PROJECT_NAME/scripts/convert 'Makeup Gi
 sudo su $USER_NAME -c "/home/$USER_NAME/$PROJECT_NAME/scripts/setup"
 ```
 
-__Simply run the script in any Debian-like Bash shell, I recommend Ubuntu. Make sure to edit the names in the end and beginning of this file according to what you would like to call your deployment of this app..__
+__Simply run the script in any Debian-like Bash shell, I recommend Ubuntu. Make sure to edit the names in the end and beginning of this file according to what you would like to call your deployment of this app.__
 
 ### Support
 I develop this software without compensation, so any support is appreciated! Please share this project with your friends, coworkers and community. You may also hire me, buy/read my book (also on Amazon below), buy my photos, audio (I am a violinist :) and videos, subscribe to my blog, an ID scanning plan, or custom services on my website above.
