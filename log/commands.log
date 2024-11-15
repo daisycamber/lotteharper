@@ -1301,3 +1301,9 @@
 2024-11-15T08:15:55.896867+00:00 lotteh team: team [35466]: nano scripts/convert
 2024-11-15T08:17:13.653743+00:00 lotteh team: team [35466]: nano scripts/convert
 2024-11-15T08:17:57.030213+00:00 lotteh team: team [35466]: nano scripts/convert
+2024-11-15T08:18:09.207219+00:00 lotteh team: team [35449]: date
+2024-11-15T08:23:38.130968+00:00 lotteh team: team [35466]: sudo backup
+2024-11-15T09:39:58.033693+00:00 lotteh team: team [61083]: ps -aux | grep backup
+2024-11-15T09:43:12.344045+00:00 lotteh team: team [61377]: ps -aux | grep backup
+2024-11-15T09:43:13.424785+00:00 lotteh team: team [61396]: ps -aux | grep backup
+2024-11-15T09:43:19.633588+00:00 lotteh team: team [61396]: ps -aux | grep backup
