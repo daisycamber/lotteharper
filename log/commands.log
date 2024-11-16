@@ -1307,3 +1307,106 @@
 2024-11-15T09:43:12.344045+00:00 lotteh team: team [61377]: ps -aux | grep backup
 2024-11-15T09:43:13.424785+00:00 lotteh team: team [61396]: ps -aux | grep backup
 2024-11-15T09:43:19.633588+00:00 lotteh team: team [61396]: ps -aux | grep backup
+2024-11-15T22:16:07.413795+00:00 lotteh team: team [61396]: ps -aux | grep backup
+2024-11-15T22:16:12.255183+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:16:13.984435+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:16:15.553700+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:16:17.419268+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:16:19.257718+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:16:20.758020+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:16:23.988071+00:00 lotteh team: team [61396]: sudo daphnereload
+2024-11-15T22:16:27.441327+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:16:28.720256+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:16:30.074094+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:16:31.399672+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:17:04.684908+00:00 lotteh team: team [61396]: watchlogs
+2024-11-15T22:17:06.288422+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:17:08.003081+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:17:09.181637+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:17:10.408314+00:00 lotteh team: team [61396]: logs
+2024-11-15T22:18:12.991709+00:00 lotteh team: team [61396]: watchlogs
+2024-11-15T22:18:25.274741+00:00 lotteh team: team [61396]: cd lotteh
+2024-11-15T22:18:56.048866+00:00 lotteh team: team [61396]: nano web/templates/web/recovery.html
+2024-11-15T22:19:01.592774+00:00 lotteh team: team [61396]: cat security/templates/security/nfc.html 
+2024-11-15T22:19:14.374529+00:00 lotteh team: team [61396]: cat security/templates/security/nfc.html 
+2024-11-15T22:28:53.889969+00:00 lotteh team: team [61396]: nano web/templates/web/recovery.html
+2024-11-15T22:31:33.392201+00:00 lotteh team: team [61396]: nano web/generate.py 
+2024-11-15T22:34:29.658501+00:00 lotteh team: team [61396]: nano verify/models.py 
+2024-11-15T22:35:22.231746+00:00 lotteh team: team [61396]: nano web/generate.py 
+2024-11-15T22:35:36.902600+00:00 lotteh team: team [61396]: nano verify/models.py 
+2024-11-15T22:35:54.540269+00:00 lotteh team: team [61396]: python manage.py shell
+2024-11-15T22:35:55.083162+00:00 lotteh team: team [121844]: ps -aux | grep backup
+2024-11-15T22:35:57.012850+00:00 lotteh team: team [121844]: sudo backup
+2024-11-15T22:35:58.294799+00:00 lotteh team: team [121844]: ps -aux | grep backup
+2024-11-15T22:36:00.144556+00:00 lotteh team: team [121844]: ps -aux | grep backup
+2024-11-15T22:36:42.445603+00:00 lotteh team: team [121844]: python manage.py shell
+2024-11-15T22:36:57.753900+00:00 lotteh team: team [121844]: nano verify/models.py 
+2024-11-15T22:37:59.666663+00:00 lotteh team: team [121844]: python manage.py shell
+2024-11-15T22:39:12.308951+00:00 lotteh team: team [121844]: nano web/generate.py 
+2024-11-15T22:39:20.576505+00:00 lotteh team: team [121844]: sudo pushweb
+2024-11-15T22:39:46.279820+00:00 lotteh team: team [121844]: nano web/generate.py 
+2024-11-15T22:39:54.022782+00:00 lotteh team: team [121844]: sudo pushweb
+2024-11-15T22:40:20.259703+00:00 lotteh team: team [121844]: nano web/templates/web/recovery.html 
+2024-11-15T22:40:27.319135+00:00 lotteh team: team [121844]: nano web/templates/web/base.html 
+2024-11-15T22:41:02.939468+00:00 lotteh team: team [122563]: ps -aux | grep backup
+2024-11-15T22:41:18.140236+00:00 lotteh team: team [122563]: nano web/site/recovery.html
+2024-11-15T22:41:26.615601+00:00 lotteh team: team [122563]: nano web/site/recovery.html
+2024-11-15T22:41:29.168853+00:00 lotteh team: team [121844]: sudo pushweb
+2024-11-15T22:41:29.375457+00:00 lotteh team: team [121844]: sudo pushweb
+2024-11-15T22:41:45.803659+00:00 lotteh team: team [121844]: nano web/generate.py 
+2024-11-15T22:42:17.821635+00:00 lotteh team: team [122563]: nano web/site/recovery.html 
+2024-11-15T22:43:38.963185+00:00 lotteh team: team [35449]: date
+2024-11-15T22:43:59.683630+00:00 lotteh team: team [35449]: nano web/generate.py 
+2024-11-15T22:45:05.649154+00:00 lotteh team: team [121844]: sudo pushweb
+2024-11-15T22:45:25.868966+00:00 lotteh team: team [35466]: l
+2024-11-15T22:45:43.711968+00:00 lotteh team: team [35466]: nano web/generate.py 
+2024-11-15T22:45:45.495993+00:00 lotteh team: team [35449]: sudo pushweb
+2024-11-15T22:45:45.709216+00:00 lotteh team: team [35449]: sudo pushweb
+2024-11-15T22:45:51.679152+00:00 lotteh team: team [35449]: nano web/generate.py 
+2024-11-15T22:45:58.329784+00:00 lotteh team: team [35449]: nano verify/models.py 
+2024-11-15T22:48:21.678865+00:00 lotteh team: team [35449]: nano web/templates/web/recovery.html 
+2024-11-15T22:52:51.524466+00:00 lotteh team: team [35449]: sudo pushweb
+2024-11-15T22:54:44.218213+00:00 lotteh team: team [35449]: sudo pushweb
+2024-11-15T22:54:52.612911+00:00 lotteh team: team [35449]: nano security/models.py
+2024-11-15T22:56:43.607803+00:00 lotteh team: team [35449]: nano security/models.py
+2024-11-15T23:03:12.494164+00:00 lotteh team: team [35466]: nano verify/models.py 
+2024-11-15T23:03:47.517321+00:00 lotteh team: team [35466]: nano shell/consumers.py 
+2024-11-15T23:04:07.163207+00:00 lotteh team: team [35466]: nano verify/models.py 
+2024-11-15T23:04:12.126391+00:00 lotteh team: team [35466]: nano verify/models.py 
+2024-11-15T23:04:28.767164+00:00 lotteh team: team [35466]: nano web/templates/web/recovery.html 
+2024-11-15T23:05:27.660627+00:00 lotteh team: team [35449]: nano web/templates/web/recovery.html 
+2024-11-15T23:05:47.033003+00:00 lotteh team: team [125125]: ps -aux | grep backup
+2024-11-15T23:09:32.922952+00:00 lotteh team: team [125125]: python manage.py shell
+2024-11-15T23:09:49.690533+00:00 lotteh team: team [125125]: sudo ascript pushweb
+2024-11-15T23:09:58.059838+00:00 lotteh team: team [35449]: sudo pushweb
+2024-11-15T23:10:22.927998+00:00 lotteh team: team [35449]: nano security/models.py
+2024-11-15T23:15:44.886235+00:00 lotteh team: team [35449]: nano verify/models.py 
+2024-11-15T23:15:49.873630+00:00 lotteh team: team [35449]: nano verify/models.py 
+2024-11-15T23:16:00.907253+00:00 lotteh team: team [35449]: nano shell/consumers.py 
+2024-11-15T23:16:22.218407+00:00 lotteh team: team [35449]: nano verify/models.py 
+2024-11-15T23:17:34.825200+00:00 lotteh team: team [35449]: nano shell/consumers.py 
+2024-11-15T23:18:00.869190+00:00 lotteh team: team [35449]: sudo pushweb
+2024-11-15T23:26:02.813622+00:00 lotteh team: team [35449]: nano web/generate.py 
+2024-11-15T23:27:36.341127+00:00 lotteh team: team [35449]: nano web/templates/web/recovery.html 
+2024-11-15T23:27:49.136882+00:00 lotteh team: team [35449]: nano verfiy/models.py
+2024-11-15T23:29:51.143143+00:00 lotteh team: team [35449]: nano verify/models.py 
+2024-11-15T23:32:37.495599+00:00 lotteh team: team [35449]: python manage.py shell
+2024-11-15T23:32:43.255955+00:00 lotteh team: team [35449]: ls test.*
+2024-11-15T23:32:51.914820+00:00 lotteh team: team [35449]: cat test.b64
+2024-11-15T23:32:52.104321+00:00 lotteh team: team [35449]: cat test.b64
+2024-11-15T23:34:35.429977+00:00 lotteh team: team [35449]: sudo pushweb
+2024-11-15T23:38:39.120736+00:00 lotteh team: team [35449]: sudo pushweb
+2024-11-15T23:41:15.230639+00:00 lotteh team: team [122563]: nano web/site/recovery.html 
+2024-11-15T23:41:53.465162+00:00 lotteh team: team [122563]: nano web/generate.py 
+2024-11-15T23:45:15.409982+00:00 lotteh team: team [122563]: nano templates/crypto.js
+2024-11-15T23:48:08.656634+00:00 lotteh team: team [35449]: nano templates/crypto.js
+2024-11-15T23:51:06.851508+00:00 lotteh team: team [35449]: nano security/crypto.py 
+2024-11-15T23:51:14.326656+00:00 lotteh team: message repeated 2 times: [ team [35449]: nano security/crypto.py ]
+2024-11-15T23:51:43.861979+00:00 lotteh team: team [35449]: python manage.py shell
+2024-11-15T23:52:19.281718+00:00 lotteh team: team [35449]: nano security/crypto.py 
+2024-11-15T23:53:03.691271+00:00 lotteh team: team [35449]: python manage.py shell
+2024-11-15T23:53:44.473093+00:00 lotteh team: team [35449]: nano security/crypto.py 
+2024-11-15T23:54:07.593145+00:00 lotteh team: team [35449]: python manage.py shell
+2024-11-15T23:58:13.541252+00:00 lotteh team: team [121844]: nano templates/crypto.js
+2024-11-15T23:58:15.124240+00:00 lotteh team: team [121844]: sudo doreload
+2024-11-15T23:58:47.779759+00:00 lotteh team: team [125125]: sudo pushweb

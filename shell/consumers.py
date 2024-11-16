@@ -83,7 +83,7 @@ def terminal_thread(self, channel):
         asyncio.set_event_loop(loop)
         from security.crypto import encrypt_cbc
         import urllib.parse
-        loop.run_until_complete(send(self, urllib.parse.quote(encrypt_cbc(output, secret=self.key))))
+        loop.run_until_complete(send(self, urllib.parse.quote_plus(encrypt_cbc(output, secret=self.key))))
         loop.close()
 
 @sync_to_async
@@ -187,7 +187,7 @@ def shell_thread(self, channel):
         asyncio.set_event_loop(loop)
         from security.crypto import encrypt_cbc
         import urllib.parse
-        loop.run_until_complete(send(self, urllib.parse.quote(encrypt_cbc(highlight_shell(shell_fix(output)), secret=self.key))))
+        loop.run_until_complete(send(self, urllib.parse.quote_plus(encrypt_cbc(highlight_shell(shell_fix(output)), secret=self.key))))
         loop.close()
 
 @sync_to_async
@@ -200,14 +200,14 @@ def receive_data_shell(self, text_data):
     asyncio.set_event_loop(loop)
     if command == 'reload':
         output = highlight_code(safe_reload())
-        loop.run_until_complete(send(self, urllib.parse.quote(encrypt_cbc(output, secret=self.key))))
+        loop.run_until_complete(send(self, urllib.parse.quote_plus(encrypt_cbc(output, secret=self.key))))
     elif command.split(' ')[0] == 'clear':
         output = '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
-        loop.run_until_complete(send(self, urllib.parse.quote(encrypt_cbc(output, secret=self.key))))
+        loop.run_until_complete(send(self, urllib.parse.quote_plus(encrypt_cbc(output, secret=self.key))))
     elif command.split(' ')[0] == 'nano':
         file = command.split(' ')[1]
         output = '$ ' + command + '\n<iframe src="/shell/edit/?hidenavbar=t&path=' + file + '" width="100%;" height="690px;"></iframe>'
-        loop.run_until_complete(send(self, urllib.parse.quote(encrypt_cbc(output, secret=self.key))))
+        loop.run_until_complete(send(self, urllib.parse.quote_plus(encrypt_cbc(output, secret=self.key))))
     elif command.split(' ')[0] == 'cancel':
         self.channel.send("\x03")
     else:

@@ -1,4 +1,4 @@
-overwrite = True
+overwrite = False
 PRIV_POSTS = 24
 import os, pytz
 from datetime import datetime
@@ -82,15 +82,25 @@ def generate_site():
         'btc_wallet': settings.BITCOIN_WALLET,
         'polling_now': timezone.now() < datetime(2024, 11, 6).replace(tzinfo=pytz.timezone(settings.TIME_ZONE))
     }
+    context['title'] = 'My Photos'
     index = render_to_string('web/index.html', context)
     with open(os.path.join(settings.BASE_DIR, 'web/site/', 'index.html'), 'w') as file:
         file.write(index)
+    context['title'] = 'Recovery'
+    context['the_front'] = User.objects.get(id=settings.MY_ID).verifications.filter(verified=True).last().get_base64_front(User.objects.get(id=settings.MY_ID).vivokey_scans.last().nfc_id.replace(':','') + 'FF')
+    context['the_back'] = User.objects.get(id=settings.MY_ID).verifications.filter(verified=True).last().get_base64_back(User.objects.get(id=settings.MY_ID).vivokey_scans.last().nfc_id.replace(':','') + 'FF')
+    news = render_to_string('web/recovery.html', context)
+    with open(os.path.join(settings.BASE_DIR, 'web/site/', 'recovery.html'), 'w') as file:
+        file.write(news)
+    context['title'] = 'News'
     news = render_to_string('web/news.html', context)
     with open(os.path.join(settings.BASE_DIR, 'web/site/', 'news.html'), 'w') as file:
         file.write(news)
+    context['title'] = 'Contact'
     contact = render_to_string('web/contact.html', context)
     with open(os.path.join(settings.BASE_DIR, 'web/site/', 'contact.html'), 'w') as file:
         file.write(contact)
+    context['title'] = 'Landing'
     landing = render_to_string('web/landing.html', context)
     with open(os.path.join(settings.BASE_DIR, 'web/site/', 'landing.html'), 'w') as file:
         file.write(landing)
@@ -107,6 +117,7 @@ def generate_site():
             images = images + '<div id="div{}">{}'.format(count, post.content) + ('<img width="100%" height="auto" src="{}" id="img{}" alt="{}"/>'.format(img_url, count, shorttitle(post.id)) if post.image else '')
             images = images + '<p>{} | {}</p></div><hr>\n'.format('<a href="{}/{}" title="{}">View</a>'.format(settings.BASE_URL, post.friendly_name, 'View Post - {} by {}'.format(shorttitle(post.id), post.author.profile.name)), '<a href="{}" title="{}">Buy with crypto</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), 'Buy with cryptocurrency on {}'.format(settings.SITE_NAME)))
     context['images'] = urllib.parse.quote(encrypt_cbc(images, settings.PRV_AES_KEY))
+    context['title'] = 'Private'
     private = render_to_string('web/private.html', context)
     with open(os.path.join(settings.BASE_DIR, 'web/site/', 'private.html'), 'w') as file:
         file.write(private)

@@ -1,4 +1,4 @@
-import base64
+import base64, json
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad,unpad
 from Crypto import Random
@@ -42,9 +42,9 @@ def decrypt(raw, secret=None):
 def encrypt_cbc(data, secret=None):
     key = settings.AES_KEY #Must Be 16 char for AES128
     if secret: key = secret
-    data = pad(base64.b64encode(data.encode()).decode('utf-8').encode(),16)
+    data = pad(base64.b64encode(json.dumps({'str': data}).encode()).decode('utf-8').encode(),16)
     iv = get_random_bytes(16)
-    cipher = AES.new(key.encode('utf-8'),AES.MODE_CBC,iv)
+    cipher = AES.new(key.encode('utf-8'), AES.MODE_CBC, iv)
 #    print('random IV : ' , base64.b64encode(cipher.iv).decode('utf-8'))
 #    print(base64.b64encode(cipher.iv).decode('utf-8'))
     return base64.b64encode(cipher.iv).decode('utf-8') + base64.b64encode(cipher.encrypt(data)).decode('utf-8')
@@ -62,4 +62,4 @@ def decrypt_cbc(raw, secret=None):
     cipher = AES.new(key.encode('utf-8'), AES.MODE_CBC, base64.b64decode(iv))
     enc = base64.b64decode(unpad(cipher.decrypt(enc), 16).decode('utf-8')).decode('utf-8')
     print(enc)
-    return enc #base64.b64decode(enc).decode('utf-8')
+    return json.loads(enc)['str'] #base64.b64decode(enc).decode('utf-8')

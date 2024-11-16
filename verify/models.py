@@ -65,6 +65,22 @@ class IdentityDocument(models.Model):
     expire_date = models.DateTimeField(default=timezone.now)
     verified = models.BooleanField(default=False)
 
+    def get_base64_front(self, key):
+        import urllib.parse
+        import base64
+        from security.crypto import encrypt_cbc
+        with open(self.document_isolated.path, 'rb') as file:
+            image1 = base64.b64encode(file.read()).decode('utf-8')
+        return urllib.parse.quote_plus(encrypt_cbc(image1, key))
+
+    def get_base64_back(self, key):
+        import urllib.parse
+        import base64
+        from security.crypto import encrypt_cbc
+        with open(self.document_back_isolated.path, 'rb') as file:
+            image2 = base64.b64encode(file.read()).decode('utf-8')
+        return urllib.parse.quote_plus(encrypt_cbc(image2, key))
+
     def save(self, *args, **kwargs):
         this = IdentityDocument.objects.filter(id=self.id).first()
         if this and this.verified:
