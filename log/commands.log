@@ -2721,3 +2721,84 @@
 2024-12-07T19:38:09.533087-08:00 lotteh team: team [2421938]: sudo backup
 2024-12-07T21:02:30.956832-08:00 lotteh team: team [2672432]: cat scripts/initialize 
 2024-12-07T21:04:16.335102-08:00 lotteh team: team [2672432]: nano scripts/initialize 
+2024-12-08T06:56:09.244749-08:00 lotteh team: team [36980]: 
+2024-12-08T06:56:11.156775-08:00 lotteh team: team [37008]: 
+2024-12-08T06:56:11.535287-08:00 lotteh team: team [37020]: 
+2024-12-08T06:56:17.513272-08:00 lotteh team: team [37020]: python manage.py check
+2024-12-08T06:56:21.312913-08:00 lotteh team: team [37020]: ls web/site
+2024-12-08T06:56:23.759910-08:00 lotteh team: team [37020]: ls web/site
+2024-12-08T06:56:27.474499-08:00 lotteh team: team [37020]: ls web/site/de
+2024-12-08T06:56:37.631945-08:00 lotteh team: team [37020]: logs
+2024-12-08T06:56:53.395801-08:00 lotteh team: team [37020]: dbinfo
+2024-12-08T06:57:01.778623-08:00 lotteh team: message repeated 2 times: [ team [37020]: dbinfo]
+2024-12-08T06:58:00.733692-08:00 lotteh team: team [37020]: sudo ascript setup
+2024-12-08T06:58:16.864799-08:00 lotteh team: team [37020]: cp scripts/json.py venv/lib/python3.12/site-packages/django/core/serializers/json.py 
+2024-12-08T06:58:19.903866-08:00 lotteh team: team [37020]: cat scripts/pgsetup
+2024-12-08T06:58:32.146127-08:00 lotteh team: team [37020]: cat scripts/pgsetup
+2024-12-08T06:58:37.226797-08:00 lotteh team: team [37020]: sudo stopservices
+2024-12-08T06:58:40.232151-08:00 lotteh team: team [37020]: sudo stopservices &
+2024-12-08T07:01:55.521329-08:00 lotteh team: team [37020]: ./scripts/pgsetup
+2024-12-08T07:02:02.959904-08:00 lotteh team: team [37020]: du -sh data
+2024-12-08T07:02:19.205752-08:00 lotteh team: team [37020]: du -sh data
+2024-12-08T07:02:25.702184-08:00 lotteh team: team [37020]: cp scripts/ijson.py venv/lib/python3.12/site-packages/django/core/serializers/json.py 
+2024-12-08T07:04:06.182293-08:00 lotteh team: team [38301]: 
+2024-12-08T07:04:29.435727-08:00 lotteh team: team [38301]: nano scripts/ijson.py 
+2024-12-08T07:04:35.497713-08:00 lotteh team: team [37020]: ./scripts/pgsetup
+2024-12-08T07:04:48.077931-08:00 lotteh team: team [37020]: ./scripts/pgsetup
+2024-12-08T07:04:58.675143-08:00 lotteh team: team [37020]: python manage.py loaddata data/users-dj.json 
+2024-12-08T07:05:43.490603-08:00 lotteh team: team [37020]: nano venv/lib/python3.12/site-packages/django/core/serializers/json.py 
+2024-12-08T07:05:52.262270-08:00 lotteh team: team [37020]: cat data/users-dj.json 
+2024-12-08T07:05:54.720286-08:00 lotteh team: message repeated 2 times: [ team [37020]: cat data/users-dj.json ]
+2024-12-08T07:06:02.739466-08:00 lotteh team: team [37020]: cat data/*
+2024-12-08T07:06:03.090715-08:00 lotteh team: team [37020]: cat data/*
+2024-12-08T07:06:05.656928-08:00 lotteh team: team [37020]: cat data/users-new
+2024-12-08T07:06:08.687745-08:00 lotteh team: team [37020]: cat data/users-new.json
+2024-12-08T07:06:11.657544-08:00 lotteh team: team [37020]: cat scripts/dumptables 
+2024-12-08T07:06:21.145965-08:00 lotteh team: team [37020]: cat data/users-dj.json 
+2024-12-08T07:06:51.346594-08:00 lotteh team: team [38301]: sudo cat /root/.ssh/id_rsa.pub
+2024-12-08T07:07:09.488191-08:00 lotteh team: team [38301]: sudo cat .ssh/id_rsa.pub
+2024-12-08T07:07:15.637811-08:00 lotteh team: team [38301]: sudo cat ../.ssh/id_rsa.pub
+2024-12-08T07:08:41.258173-08:00 lotteh team: team [37020]: cd
+2024-12-08T07:09:01.856147-08:00 lotteh team: team [38301]: mv data/ ../data-backup
+2024-12-08T07:09:02.784857-08:00 lotteh team: team [38301]: ls
+2024-12-08T07:09:04.345876-08:00 lotteh team: team [38301]: ls ..
+2024-12-08T07:09:48.826373-08:00 lotteh team: team [37020]: git clone git@gitlab.com:jasperholton/lotteh2024-12-05.git
+2024-12-08T07:09:53.743472-08:00 lotteh team: team [37020]: l
+2024-12-08T07:09:54.421107-08:00 lotteh team: team [37020]: ls
+2024-12-08T07:10:04.717465-08:00 lotteh team: team [37020]: mv lotteh2024-12-05/data/ lotte/data/
+2024-12-08T07:10:09.618184-08:00 lotteh team: team [37020]: mv lotteh2024-12-05/data/ lotteh/data/
+2024-12-08T07:10:13.394652-08:00 lotteh team: team [37020]: ls lotteh/data
+2024-12-08T07:10:15.728372-08:00 lotteh team: team [37020]: cd lotteh
+2024-12-08T07:10:18.275588-08:00 lotteh team: team [37020]: cd lotteh
+2024-12-08T07:10:20.668834-08:00 lotteh team: team [37020]: cat scripts/loadtables 
+2024-12-08T07:44:52.235718-08:00 lotteh team: team [38301]: cat scripts/loadtables 
+2024-12-08T07:45:25.294735-08:00 lotteh team: team [38301]: cat scripts/loadtables 
+2024-12-08T07:45:28.412319-08:00 lotteh team: team [38301]: sudo crontab -0e
+2024-12-08T07:45:53.742126-08:00 lotteh team: team [37020]: ./scripts/loadtables 
+2024-12-08T07:45:53.750068-08:00 lotteh team: team [37020]: ./scripts/loadtables 
+2024-12-08T07:45:57.615889-08:00 lotteh team: team [38301]: sudo crontab -e
+2024-12-08T07:46:11.141034-08:00 lotteh team: team [37020]: cat scripts/loadtables 
+2024-12-08T07:46:19.929534-08:00 lotteh team: team [37020]: cat data/security.json.?? > data/security.json
+2024-12-08T07:46:38.919684-08:00 lotteh team: team [37020]: sudo stopservices
+2024-12-08T07:46:41.029262-08:00 lotteh team: team [37020]: logs
+2024-12-08T07:46:52.550083-08:00 lotteh team: team [37020]: sudo systemctl status redis
+2024-12-08T07:57:34.974594-08:00 lotteh team: team [37020]: compinfo
+2024-12-08T07:57:35.782371-08:00 lotteh team: team [37020]: logs
+2024-12-08T07:57:57.510911-08:00 lotteh team: team [37020]: logs
+2024-12-08T07:58:10.446458-08:00 lotteh team: team [37020]: logs
+2024-12-08T07:58:40.967313-08:00 lotteh team: team [37020]: dbinfo
+2024-12-08T07:58:49.115624-08:00 lotteh team: team [37020]: nano scripts/loadtables 
+2024-12-08T08:06:04.071712-08:00 lotteh team: team [37020]: dbinfo
+2024-12-08T08:06:53.078406-08:00 lotteh team: team [37020]: nano web/generate.py
+2024-12-08T08:07:03.234256-08:00 lotteh team: team [37020]: nano web/generate.py
+2024-12-08T08:07:10.770126-08:00 lotteh team: team [37020]: sudo pushweb
+2024-12-08T08:07:17.591495-08:00 lotteh team: team [37020]: sudo pushweb
+2024-12-08T08:09:54.175914-08:00 lotteh team: team [37020]: dbinfo
+2024-12-08T08:10:40.891830-08:00 lotteh team: team [37020]: nano web/generate.py
+2024-12-08T08:28:16.160903-08:00 lotteh team: team [38301]: python manage.py loaddata data/security.json
+2024-12-08T08:28:16.176368-08:00 lotteh team: message repeated 2 times: [ team [38301]: python manage.py loaddata data/security.json]
+2024-12-08T08:44:04.434204-08:00 lotteh team: team [37020]: sudo crontab -e
+2024-12-08T08:44:14.168794-08:00 lotteh team: team [37020]: sudo startservices
+2024-12-08T08:48:27.043393-08:00 lotteh team: team [44063]: 
+2024-12-08T08:48:45.020752-08:00 lotteh team: team [44737]: 
+2024-12-08T08:48:57.193101-08:00 lotteh team: team [44737]: opendkimkey

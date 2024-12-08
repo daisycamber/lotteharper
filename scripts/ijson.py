@@ -61,10 +61,10 @@ class Serializer(PythonSerializer):
 
 def Deserializer(stream_or_string, **options):
     """Deserialize a stream or string of JSON data."""
-    if not isinstance(stream_or_string, (bytes, str)):
-        stream_or_string = stream_or_string.read()
-    if isinstance(stream_or_string, bytes):
-        stream_or_string = stream_or_string.decode()
+#    if not isinstance(stream_or_string, (bytes, str)):
+#        stream_or_string = stream_or_string.read()
+#    if isinstance(stream_or_string, bytes):
+#        stream_or_string = stream_or_string.decode()
     try:
 #        with open('/home/team/lotteh/data/security.json', 'r') as f:
         yield from PythonDeserializer(ijson.items(stream_or_string, 'item'), **options)

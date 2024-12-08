@@ -39,7 +39,7 @@ def generate_site():
     from translate.translate import translate
     from feed.middleware import set_current_request
     nfc_aes = User.objects.get(id=settings.MY_ID).vivokey_scans.last().nfc_id.replace(':','').upper() + 'FF'
-#    languages = ['fr'] #['en', 'de']
+    languages = ['en'] #['en', 'de']
     langs = languages
     for lang in langs:
         images = ''
@@ -82,7 +82,7 @@ def generate_site():
             img_url = post.get_image_url() if post.image_offsite else post.get_web_url()
             if not img_url: img_url = post.image_bucket.url if post.image_bucket else post.author.profile.get_image_url()
             blog = blog + '<div id="feed{}">{}'.format(count, translate(request, post.content_compiled, lang, 'en')) + ('<img width="100%" height="auto" src="{}" id="img{}" alt="{}"/>'.format(img_url, count, title) if post.image else '')
-            blog = blog + '<p>{} / {} | {} | {}</p></div><hr>\n'.format('by {}'.format(post.author.profile.name), '<a href="/{}'.format(lang) + '/{}" title="{}">{}</a>'.format(post.friendly_name, translate(request, 'View post', lang, 'en'), translate(request, 'View', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-card', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid), translate(request, 'Buy on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), translate(request, 'Buy with cryptocurrency on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy with cryptocurrency', lang, 'en')))
+            blog = blog + '<p>{} / {} | {} | {}</p></div><hr>\n'.format(translate(request, 'by', lang, 'en') + ' {}'.format(post.author.profile.name), '<a href="/{}'.format(lang) + '/{}" title="{}">{}</a>'.format(post.friendly_name, translate(request, 'View post', lang, 'en'), translate(request, 'View', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-card', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid), translate(request, 'Buy on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), translate(request, 'Buy with cryptocurrency on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy with cryptocurrency', lang, 'en')))
             count = count + 1
             if count%5 == 0:
                 blog = blog + render_to_string('banner_ad.html', {'show_ads': True})
@@ -204,6 +204,8 @@ def generate_site():
         index = render_to_string('web/404.html', context)
         with open(path, 'w') as file:
             file.write(index)
+    context['hidenav'] = True
+    context['hidefooter'] = True
     context['show_ads'] = False
     context['title'] = 'Recovery'
     context['path'] = '/recovery'
