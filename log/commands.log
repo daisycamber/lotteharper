@@ -2939,3 +2939,38 @@
 2024-12-08T17:43:57.399172-08:00 lotteh team: team [67118]: sudo ascript setup
 2024-12-08T17:43:59.270369-08:00 lotteh team: team [67118]: sudo ascript setup
 2024-12-08T17:44:14.352313-08:00 lotteh team: team [67118]: sudo ascript backup
+2024-12-08T17:44:24.608079-08:00 lotteh team: team [37020]: nano scripts/initialize 
+2024-12-08T17:44:27.788179-08:00 lotteh team: team [37020]: nano scripts/initialize 
+2024-12-08T17:44:44.947751-08:00 lotteh team: team [67118]: sudo backup nodb
+2024-12-08T17:44:58.229934-08:00 lotteh team: team [67118]: git push -u originlab main
+2024-12-08T17:45:01.645940-08:00 lotteh team: team [67118]: git push -u originlab main
+2024-12-08T17:45:05.232531-08:00 lotteh team: team [67118]: git add --all
+2024-12-08T17:45:15.404128-08:00 lotteh team: team [67118]: git commit -m "manual backup"
+2024-12-08T17:45:19.298637-08:00 lotteh team: team [67118]: git push -u origin main
+2024-12-08T17:45:25.500576-08:00 lotteh team: team [67118]: sudo git push -u originlab main
+2024-12-08T17:45:30.968281-08:00 lotteh team: team [37020]: nano scripts/init
+2024-12-08T17:45:36.425337-08:00 lotteh team: team [67118]: cat scripts/git
+2024-12-08T17:45:48.697564-08:00 lotteh team: team [37020]: nano scripts/init
+2024-12-08T17:46:05.198769-08:00 lotteh team: team [37020]: sudo ascript pushweb
+2024-12-08T17:46:13.440272-08:00 lotteh team: team [67118]: cat scripts/setu
+2024-12-08T17:46:14.960703-08:00 lotteh team: team [67118]: cat scripts/setu
+2024-12-08T17:46:34.088052-08:00 lotteh team: team [67118]: nano scripts/setup
+2024-12-08T17:46:38.104398-08:00 lotteh team: team [67118]: nano scripts/backup
+2024-12-08T17:47:15.379068-08:00 lotteh team: team [37020]: sudo ascript pushweb
+2024-12-08T17:47:19.353193-08:00 lotteh team: team [37020]: cd web/site
+2024-12-08T17:47:21.471124-08:00 lotteh team: team [37020]: git remote -v
+2024-12-08T17:47:25.663628-08:00 lotteh team: team [37020]: git remote -v
+2024-12-08T17:47:31.051779-08:00 lotteh team: team [37020]: ls
+2024-12-08T17:48:02.602788-08:00 lotteh team: team [37020]: git remote -v
+2024-12-08T17:48:19.195379-08:00 lotteh team: team [37020]: git remote -v
+2024-12-08T17:48:20.863895-08:00 lotteh team: team [37020]: cd ..
+2024-12-08T17:48:21.704554-08:00 lotteh team: team [37020]: cd ..
+2024-12-08T17:48:24.742241-08:00 lotteh team: team [37020]: cat scripts/setu
+2024-12-08T17:48:25.919043-08:00 lotteh team: team [37020]: cat scripts/setup
+2024-12-08T17:49:12.417912-08:00 lotteh team: team [67118]: nano scripts/pushweb 
+2024-12-08T17:49:23.556610-08:00 lotteh team: team [67118]: nano scripts/setup
+2024-12-08T17:49:28.381012-08:00 lotteh team: team [67118]: nano scripts/pushweb 
+2024-12-08T17:49:34.059590-08:00 lotteh team: team [67118]: nano scripts/pushweb 
+2024-12-08T17:49:40.059084-08:00 lotteh team: team [67118]: nano config/git 
+2024-12-08T17:49:48.653028-08:00 lotteh team: team [67118]: sudo pushweb
+2024-12-08T17:50:21.044741-08:00 lotteh team: team [37020]: cat scripts/setup

@@ -1,6 +1,7 @@
 #!/bin/bash
 U="team"
 DIR="lotteh"
+GIT_URL=`sed -n '5p' < /home/$U/$DIR/config/git`
 cd $"/home/$U/$DIR/"
 sudo chown -R :users ./
 sudo chmod -R 775 ./
@@ -14,5 +15,5 @@ cd $"/home/$U/$DIR/web/site/"
 git init --initial-branch=main
 git add --all
 git commit -m "website updates"
-git remote add origin git@github.com:daisycamber/glamgirlx.git
+git remote add origin $GIT_URL
 git push -u origin main
