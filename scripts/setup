@@ -8,7 +8,8 @@ echo "lotteh installer initialized."
 # Project directory
 DIR="/home/team/lotteh"
 USER="team"
-GIT_URL="git@gitlab.com:jasperholton/lotteh2024-11-20.git"
+GIT_URL=`sed -n '1p' < /home/$U/$DIR/config/git`
+echo $GIT_URL
 cd $DIR
 # Log commands
 echo "Logging commands"

@@ -2812,3 +2812,130 @@
 2024-12-08T17:03:49.796168-08:00 lotteh team: team [38301]: du -sh data/*
 2024-12-08T17:04:02.241146-08:00 lotteh team: team [38301]: du -sh data/*
 2024-12-08T17:04:03.706209-08:00 lotteh team: team [38301]: git remote -v
+2024-12-08T17:04:22.967317-08:00 lotteh team: team [38301]: sudo backup nodb
+2024-12-08T17:04:56.086183-08:00 lotteh team: team [38301]: git push -u origin main
+2024-12-08T17:05:03.353208-08:00 lotteh team: team [38301]: sudo git push -u originlab main
+2024-12-08T17:05:41.062306-08:00 lotteh team: team [38301]: git remote 0v
+2024-12-08T17:05:43.796069-08:00 lotteh team: team [38301]: git remote -v
+2024-12-08T17:05:56.774535-08:00 lotteh team: team [38301]: nano translate/translate.py 
+2024-12-08T17:06:43.065116-08:00 lotteh team: team [38301]: sudo ascript setup
+2024-12-08T17:06:51.268039-08:00 lotteh team: team [38301]: sudo ascript setup
+2024-12-08T17:06:54.800079-08:00 lotteh team: team [38301]: sudo git remote remove originlab
+2024-12-08T17:07:00.485322-08:00 lotteh team: team [38301]: sudo git remote add git@gitlab.com:jasperholton/lotteh2024-12-08.git
+2024-12-08T17:07:05.644514-08:00 lotteh team: team [38301]: sudo git remote add originlab  git@gitlab.com:jasperholton/lotteh2024-12-08.git
+2024-12-08T17:07:09.271764-08:00 lotteh team: team [38301]: sudo git remote -0v
+2024-12-08T17:07:11.308732-08:00 lotteh team: team [38301]: sudo git remote --
+2024-12-08T17:07:13.069625-08:00 lotteh team: team [38301]: sudo git remote -v
+2024-12-08T17:07:30.288681-08:00 lotteh team: team [37020]: compinfo
+2024-12-08T17:08:05.993944-08:00 lotteh team: team [37020]: nano config/git
+2024-12-08T17:10:13.445679-08:00 lotteh team: team [38301]: git push -u originlab main
+2024-12-08T17:10:15.151846-08:00 lotteh team: team [37020]: nano config/git-https
+2024-12-08T17:10:31.391739-08:00 lotteh team: team [37020]: nano config/git
+2024-12-08T17:11:23.460886-08:00 lotteh team: team [38301]: cat config/git 
+2024-12-08T17:11:29.883584-08:00 lotteh team: team [38301]: cd
+2024-12-08T17:11:33.147511-08:00 lotteh team: team [38301]: cd femmebabe-backup-open/
+2024-12-08T17:11:34.869320-08:00 lotteh team: team [38301]: git remote -v
+2024-12-08T17:11:41.861915-08:00 lotteh team: team [38301]: cd
+2024-12-08T17:11:44.224894-08:00 lotteh team: team [67118]: opendkimkey
+2024-12-08T17:11:49.390227-08:00 lotteh team: team [67118]: nano config/git 
+2024-12-08T17:12:10.319535-08:00 lotteh team: team [37020]: nano scripts/setup
+2024-12-08T17:12:24.951967-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:12:28.199822-08:00 lotteh team: team [37020]: ./test
+2024-12-08T17:12:31.235354-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:12:35.135589-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:12:47.176695-08:00 lotteh team: team [37020]: nano scripts/setup
+2024-12-08T17:13:06.549743-08:00 lotteh team: team [37020]: nano scripts/initialize 
+2024-12-08T17:13:25.921641-08:00 lotteh team: team [67118]: cat config/git 
+2024-12-08T17:14:52.522823-08:00 lotteh team: team [37020]: nano scripts/backup 
+2024-12-08T17:14:59.779210-08:00 lotteh team: team [37020]: nano scripts/initialize 
+2024-12-08T17:15:41.669910-08:00 lotteh team: team [37020]: nano scripts/initialize 
+2024-12-08T17:15:47.102316-08:00 lotteh team: team [37020]: nano scripts/initialize 
+2024-12-08T17:15:51.100801-08:00 lotteh team: team [37020]: cat /usr/bin/initialize
+2024-12-08T17:16:07.373688-08:00 lotteh team: team [37020]: sudo ascript backup
+2024-12-08T17:16:45.178635-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:16:56.135595-08:00 lotteh team: team [37020]: nano scripts/backup 
+2024-12-08T17:18:47.280680-08:00 lotteh team: team [67118]: nano config/git 
+2024-12-08T17:18:56.089492-08:00 lotteh team: team [67118]: nano config/git 
+2024-12-08T17:18:58.536308-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:19:01.215623-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:19:12.943373-08:00 lotteh team: team [67118]: cat scripts/backup 
+2024-12-08T17:19:18.059323-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:19:28.444703-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:19:31.737656-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:19:40.104937-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:19:41.547656-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:20:22.834431-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:20:23.923919-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:21:50.679128-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:21:53.729881-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:23:30.787657-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:23:32.151403-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:24:07.830527-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:24:08.685549-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:24:32.847141-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:24:34.202767-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:24:39.044860-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:24:40.280927-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:25:07.573669-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:25:08.526656-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:26:59.524226-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:27:00.612830-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:27:40.429796-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:27:41.346614-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:27:47.127169-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:27:47.876503-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:27:55.295508-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:27:56.263065-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:28:11.855614-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:28:12.716179-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:28:25.355160-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:28:26.072663-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:28:46.042758-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:28:46.760543-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:28:55.957952-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:28:56.663979-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:29:10.117603-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:29:11.008975-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:29:21.627337-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:29:22.440522-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:29:31.196026-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:29:47.933596-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:29:48.627031-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:29:49.825643-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:30:08.497091-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:30:09.273976-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:30:23.211863-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:30:23.876687-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:30:36.524192-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:30:37.382948-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:31:04.456925-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:31:05.631006-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:32:18.888510-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:32:19.663289-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:32:34.816438-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:32:35.534533-08:00 lotteh team: team [37020]: ./test.sh 
+2024-12-08T17:33:08.760136-08:00 lotteh team: team [37020]: nano test.sh
+2024-12-08T17:34:19.020596-08:00 lotteh team: team [37020]: sudo ascript backup
+2024-12-08T17:34:27.578449-08:00 lotteh team: team [37020]: nano scripts/init
+2024-12-08T17:34:40.182815-08:00 lotteh team: team [37020]: sudo ascript backup
+2024-12-08T17:34:44.754096-08:00 lotteh team: team [37020]: nano scripts/init
+2024-12-08T17:34:47.353367-08:00 lotteh team: team [37020]: nano scripts/init
+2024-12-08T17:36:23.664194-08:00 lotteh team: team [67118]: sudo ascript setup
+2024-12-08T17:36:26.168540-08:00 lotteh team: team [67118]: cat config/git
+2024-12-08T17:36:59.662323-08:00 lotteh team: team [67118]: sudo ascript setup
+2024-12-08T17:37:05.139657-08:00 lotteh team: team [67118]: cat config/git
+2024-12-08T17:38:18.872064-08:00 lotteh team: team [67118]: cat scripts/initialize 
+2024-12-08T17:41:13.755594-08:00 lotteh team: team [37020]: sudo ascript backup
+2024-12-08T17:41:49.322167-08:00 lotteh team: team [37020]: sudo ascript backup
+2024-12-08T17:42:04.864285-08:00 lotteh team: team [67118]: sudo backup
+2024-12-08T17:42:06.955914-08:00 lotteh team: team [37020]: cat scripts/setup
+2024-12-08T17:42:16.371939-08:00 lotteh team: team [37020]: cat scripts/setup
+2024-12-08T17:42:30.539919-08:00 lotteh team: team [37020]: cat scripts/init
+2024-12-08T17:43:05.663598-08:00 lotteh team: team [37020]: cat scripts/init
+2024-12-08T17:43:22.734151-08:00 lotteh team: team [37020]: nano scripts/init
+2024-12-08T17:43:39.177044-08:00 lotteh team: team [37020]: nano scripts/initialize 
+2024-12-08T17:43:45.230614-08:00 lotteh team: team [37020]: nano scripts/initialize 
+2024-12-08T17:43:49.455697-08:00 lotteh team: team [37020]: cat config/git
+2024-12-08T17:43:57.399172-08:00 lotteh team: team [67118]: sudo ascript setup
+2024-12-08T17:43:59.270369-08:00 lotteh team: team [67118]: sudo ascript setup
+2024-12-08T17:44:14.352313-08:00 lotteh team: team [67118]: sudo ascript backup

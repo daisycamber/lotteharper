@@ -1,12 +1,10 @@
 #!/bin/bash
-echo "test"
-GIT_REPO='https://github.com/daisycamber/lotteharper.git'
-# Add your project name and username here
-PROJECT_NAME="yourproject"
-USER_NAME="team"
-GIT_PROJ=`echo $GIT_REPO | rev | cut -d/ -f1 | rev  | cut -d. -f1`
-echo $GIT_PROJ
-
-if [ $# -eq 0 ]; then
-    echo $GIT_PROJ
-fi
+DIR="/home/team/lotteh"
+USER="team"
+GIT_REPO="https://github.com/daisycamber/lotteharper.git"
+GIT_URL=`sed -n '4p' < $DIR/config/git`
+echo $GIT_URL
+escaped_url=$(echo "$GIT_URL" | sed 's/\//\\\//g')
+CMD="4s/GIT_REPO.*/GIT_REPO=\"$escaped_url\"/g"
+echo $CMD
+sed -i -e $CMD $DIR/test.sh

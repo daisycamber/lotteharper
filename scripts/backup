@@ -2,6 +2,19 @@
 GIT_URL="git@gitlab.com:jasperholton/lotteh2024-12-07.git"
 U="team"
 DIR="lotteh"
+#  Configure URLs
+GIT_URL=`sed -n '4p' < /home/$U/$DIR/config/git`
+echo $GIT_URL
+escaped_url=$(echo "$GIT_URL" | sed 's/\//\\\//g')
+CMD="6s/GIT_REPO.*/GIT_REPO=\"$escaped_url\"/g"
+echo $CMD
+sed -i -e $CMD /home/$U/$DIR/scripts/init
+GIT_URL_INIT=`sed -n '2p' < /home/$U/$DIR/config/git`
+echo $GIT_URL_INIT
+escaped_url_init=$(echo "$GIT_URL_INIT" | sed 's/\//\\\//g')
+CMD_INIT="3s/GIT_REPO.*/GIT_REPO=\"$escaped_url_init\"/g"
+echo $CMD_INIT
+sed -i -e $CMD_INIT /home/$U/$DIR/scripts/initialize
 PYTHON_VERSION="3.12"
 git config --global --add safe.directory $"/home/$U/$DIR"
 cd /usr/bin
