@@ -2974,3 +2974,43 @@
 2024-12-08T17:49:40.059084-08:00 lotteh team: team [67118]: nano config/git 
 2024-12-08T17:49:48.653028-08:00 lotteh team: team [67118]: sudo pushweb
 2024-12-08T17:50:21.044741-08:00 lotteh team: team [37020]: cat scripts/setup
+2024-12-08T17:57:19.347499-08:00 lotteh team: team [67118]: sudo backup
+2024-12-08T23:01:36.219313-08:00 lotteh team: team [37020]: compinfo
+2024-12-08T23:02:05.216638-08:00 lotteh team: team [37020]: sudo stopservices
+2024-12-08T23:02:14.134971-08:00 lotteh team: team [37020]: sudo stopservices &
+2024-12-08T23:02:20.055813-08:00 lotteh team: team [37020]: sudo poweroff
+2024-12-08T23:12:23.692772-08:00 lotteh team: team [1824]: venv
+2024-12-08T23:12:55.483519-08:00 lotteh team: team [1824]: sudo passwd team
+2024-12-08T23:12:58.219256-08:00 lotteh root: root [1883]: 
+2024-12-08T23:12:59.717837-08:00 lotteh team: team [1824]: sudo su
+2024-12-08T23:13:02.168526-08:00 lotteh team: team [1824]: venv
+2024-12-08T23:13:04.099237-08:00 lotteh team: team [1824]: cd lotteh
+2024-12-08T23:13:12.790237-08:00 lotteh team: team [1824]: python approve_login.py
+2024-12-08T23:13:15.403029-08:00 lotteh team: team [1824]: python approve_login.py
+2024-12-08T23:13:20.420409-08:00 lotteh team: team [1824]: python last_logins.py 
+2024-12-08T23:13:28.021828-08:00 lotteh team: team [1824]: python approve_login.py 1
+2024-12-08T23:13:31.076225-08:00 lotteh team: team [1979]: venv
+2024-12-08T23:13:31.506848-08:00 lotteh team: team [1824]: python approve_login.py 1
+2024-12-08T23:13:38.315084-08:00 lotteh team: team [2011]: venv
+2024-12-08T23:13:41.572890-08:00 lotteh root: root [2024]: exit
+2024-12-08T23:13:43.647453-08:00 lotteh team: team [1979]: sudo su
+2024-12-08T23:13:46.033050-08:00 lotteh team: team [2042]: venv
+2024-12-08T23:13:54.090549-08:00 lotteh team: team [2042]: python manage.py check
+2024-12-08T23:19:15.742435-08:00 lotteh team: team [2579]: venv
+2024-12-08T23:19:22.536718-08:00 lotteh team: team [2669]: venv
+2024-12-08T23:22:08.271429-08:00 lotteh team: team [2797]: venv
+2024-12-08T23:22:53.468613-08:00 lotteh team: team [2797]: logs
+2024-12-08T23:23:34.209889-08:00 lotteh team: team [2797]: cmds
+2024-12-08T23:26:47.877318-08:00 lotteh team: team [2669]: venv
+2024-12-08T23:39:05.784407-08:00 lotteh team: team [2011]: cmds
+2024-12-08T23:39:51.215840-08:00 lotteh team: team [2011]: cmds
+2024-12-08T23:39:52.156011-08:00 lotteh team: team [5647]: cmds
+2024-12-08T23:39:58.358651-08:00 lotteh team: team [5647]: python approve_login.py  1
+2024-12-08T23:40:00.612805-08:00 lotteh team: team [5647]: python approve_login.py  1
+2024-12-08T23:40:02.802007-08:00 lotteh team: team [5794]: cmds
+2024-12-08T23:40:10.211913-08:00 lotteh team: team [5867]: cmds
+2024-12-08T23:40:15.054600-08:00 lotteh team: team [5794]: ls
+2024-12-08T23:41:36.950648-08:00 lotteh team: team [6908]: cmds
+2024-12-08T23:41:44.190982-08:00 lotteh team: team [7088]: cmds
+2024-12-08T23:41:51.279185-08:00 lotteh team: team [7257]: cmds
+2024-12-08T23:42:06.530254-08:00 lotteh team: team [7549]: cmds

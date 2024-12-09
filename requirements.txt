@@ -54,6 +54,8 @@ fsspec
 ftfy
 future
 gast
+# Editable Git install with no remote (gfpgan
+-e /home/team/lotteh/venv/src/gfpgan
 gitdb
 GitPython
 google-api-core
