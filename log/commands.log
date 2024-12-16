@@ -371,3 +371,9 @@
 2024-12-15T23:39:43.901104-08:00 lotteh team: team [368807]: cat /etc/config.json | grep MONERO
 2024-12-15T23:40:21.857416-08:00 lotteh team: team [370229]: cat /etc/config.json | grep MONERO
 2024-12-16T00:02:58.792732-08:00 lotteh team: team [4023832]: cmds
+2024-12-16T00:04:54.756945-08:00 lotteh team: team [110272]: cmds
+2024-12-16T00:05:03.336298-08:00 lotteh team: team [4023832]: sudo backup nodb
+2024-12-16T00:07:32.204646-08:00 lotteh team: team [110272]: cat /var/log/commands.log
+2024-12-16T00:58:02.309414-08:00 lotteh team: team [3867935]: lockout
+2024-12-16T01:07:48.451863-08:00 lotteh team: team [4023832]: cat /etc/config.json 
+2024-12-16T01:09:03.655190-08:00 lotteh team: team [4023832]: cat /etc/apis.json 
