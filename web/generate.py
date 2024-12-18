@@ -1,4 +1,4 @@
-overwrite = False
+overwrite = True
 PRIV_POSTS = 24
 import os, pytz
 from datetime import datetime
@@ -67,7 +67,7 @@ def generate_site():
                     images = images + '<div id="div{}">{}'.format(count, translate(request, post.content, lang, 'en')) + ('<img width="100%" height="auto" src="{}" id="img{}" alt="{}"/>'.format(img_url, count, shorttitle(post.id)) if post.image else '')
                     images = images + '<p>{} | {} | {}</p></div><hr>\n'.format('<a href="/{}'.format(lang) + '/{}" title="{}">{}</a>'.format(post.friendly_name, 'View Post - {} by {}'.format(shorttitle(post.id), post.author.profile.name), translate(request, 'View', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-card', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid), translate(request, 'Buy on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), 'Buy with cryptocurrency on {}'.format(settings.SITE_NAME), translate(request, 'Buy with cryptocurrency', lang, 'en')))
         blog = ''
-        for post in Post.objects.filter(public=True, posted=True, published=True, feed="blog").order_by('-date_posted'):
+        for post in Post.objects.filter(public=True, posted=True, private=False, published=True, feed="blog").order_by('-date_posted'):
             text = ''
             title = translate(request, translate(request, 'Buy on', lang, 'en'), lang, 'en')
 #            print(post.content)
@@ -180,7 +180,7 @@ def generate_site():
                     except:
                         import traceback
                         print(traceback.format_exc())
-        for post in Post.objects.filter(private=True, posted=True, published=True, feed="blog").union(Post.objects.filter(uploaded=True, private=True, posted=True, published=True, feed="private").exclude(image_bucket=None)).order_by('-date_posted')[:settings.PAID_POSTS]:
+        for post in Post.objects.filter(private=True, posted=True, published=True, feed="private").union(Post.objects.filter(uploaded=True, private=True, posted=True, published=True, feed="private").exclude(image_bucket=None)).order_by('-date_posted')[:settings.PAID_POSTS * 2]:
             if post:
                 url = '/{}/{}'.format(lang, post.friendly_name)
                 context['post'] = post

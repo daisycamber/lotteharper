@@ -603,3 +603,44 @@
 2024-12-17T19:42:29.269021-08:00 lotteh team: team [68484]: sudo pushweb nodb
 2024-12-17T19:42:32.026150-08:00 lotteh team: message repeated 2 times: [ team [68484]: sudo pushweb nodb]
 2024-12-17T19:42:40.664654-08:00 lotteh team: team [68484]: sudo daphnereload
+2024-12-17T19:43:36.159293-08:00 lotteh team: team [68484]: sudo backup nodb
+2024-12-17T19:50:01.978841-08:00 lotteh team: team [68484]: python manage.py shell
+2024-12-17T19:50:07.628189-08:00 lotteh team: team [68484]: compinfo
+2024-12-17T19:50:17.133530-08:00 lotteh team: team [68484]: dbinfo
+2024-12-17T19:50:24.096433-08:00 lotteh team: team [68484]: ps -aux | grep backup
+2024-12-17T19:50:25.973185-08:00 lotteh team: team [68484]: ps -aux | grep backup
+2024-12-17T19:50:29.014645-08:00 lotteh team: team [68484]: clear
+2024-12-17T19:50:30.656258-08:00 lotteh team: team [68484]: ps -aux | grep backup
+2024-12-17T19:50:32.599718-08:00 lotteh team: team [68484]: ps -aux | grep backup
+2024-12-17T19:50:36.371850-08:00 lotteh team: team [68484]: ps -aux | grep pushweb
+2024-12-17T19:50:39.563460-08:00 lotteh team: team [68484]: top
+2024-12-17T19:50:42.431237-08:00 lotteh team: team [68484]: top
+2024-12-17T19:50:45.274118-08:00 lotteh team: team [68484]: clear
+2024-12-17T19:50:52.798280-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T19:51:10.532833-08:00 lotteh team: team [68484]: top
+2024-12-17T19:51:13.409468-08:00 lotteh team: team [68484]: free -h
+2024-12-17T19:52:35.769458-08:00 lotteh team: team [68484]: free -h
+2024-12-17T19:54:25.867945-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T19:55:16.136912-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T19:55:26.253168-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T19:57:30.406896-08:00 lotteh team: team [68484]: nano web/templates/web/post.html 
+2024-12-17T19:58:47.721084-08:00 lotteh team: team [68484]: sudo pushweb
+2024-12-17T20:03:03.790291-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T20:03:08.915847-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T20:05:33.770217-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T20:07:03.480185-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T20:07:19.095933-08:00 lotteh team: team [61283]: nano feed/models.py
+2024-12-17T20:08:17.259259-08:00 lotteh team: team [61283]: nano web/generate.py
+2024-12-17T20:08:29.243459-08:00 lotteh team: team [68484]: sudo pushweb
+2024-12-17T20:08:29.809912-08:00 lotteh team: message repeated 14 times: [ team [68484]: sudo pushweb]
+2024-12-17T20:08:43.599968-08:00 lotteh team: team [61283]: nano web/generate.py
+2024-12-17T20:10:08.749733-08:00 lotteh team: team [61283]: nano web/site/en/post-section-fun-problem.html 
+2024-12-17T20:10:35.180420-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T20:11:15.325829-08:00 lotteh team: team [61283]: nano web/site/en/a-woman-laying-on-a-bed-with-a-together-thick-ago.html 
+2024-12-17T20:14:47.383747-08:00 lotteh team: team [68484]: sudo pushweb
+2024-12-17T20:15:45.341146-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T20:15:50.393740-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T20:15:57.015354-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T20:16:43.453209-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T20:17:23.148277-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T20:17:28.723818-08:00 lotteh team: team [61283]: python manage.py shell
