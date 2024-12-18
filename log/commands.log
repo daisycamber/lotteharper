@@ -566,3 +566,40 @@
 2024-12-17T19:10:47.392950-08:00 lotteh team: team [415981]: sudo systemctl status daphne
 2024-12-17T19:10:55.383037-08:00 lotteh team: team [415981]: ps -aux | grep backup
 2024-12-17T19:11:08.016406-08:00 lotteh team: team [415981]: sudo backup nodb &
+2024-12-17T19:11:41.932437-08:00 lotteh team: team [415981]: sudo backup nodb &
+2024-12-17T19:12:03.319345-08:00 lotteh team: team [415981]: ps -aux | grep pushwev
+2024-12-17T19:12:07.296241-08:00 lotteh team: team [415981]: ps -aux | grep pushweb
+2024-12-17T19:12:12.732166-08:00 lotteh team: team [415981]: ps -aux | grep pushweb
+2024-12-17T19:12:15.988441-08:00 lotteh team: team [415981]: logs
+2024-12-17T19:12:21.462067-08:00 lotteh team: team [415981]: logs
+2024-12-17T19:12:22.804971-08:00 lotteh team: team [415981]: logs
+2024-12-17T19:12:24.665124-08:00 lotteh team: team [415981]: cmds
+2024-12-17T19:15:12.215724-08:00 lotteh team: team [415981]: ps -aux | grep pushweb
+2024-12-17T19:16:33.722345-08:00 lotteh team: team [448324]: ps -aux | grep pushweb
+2024-12-17T19:16:48.974810-08:00 lotteh team: team [449407]: ps -aux | grep pushweb
+2024-12-17T19:17:15.474429-08:00 lotteh team: team [451478]: ps -aux | grep pushweb
+2024-12-17T19:31:28.680835-08:00 lotteh team: team [68484]: nano web/templates/web/post.html 
+2024-12-17T19:31:45.575322-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T19:31:49.963525-08:00 lotteh team: team [68484]: nano web/templates/web/post.html 
+2024-12-17T19:32:09.018810-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T19:33:00.200804-08:00 lotteh team: team [68484]: nano web/templates/web/post.html 
+2024-12-17T19:34:53.508533-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T19:35:01.240905-08:00 lotteh team: team [68484]: cat lotteh/settings.py | grep FREE
+2024-12-17T19:35:05.025257-08:00 lotteh team: team [68484]: cat lotteh/settings.py | grep PRV
+2024-12-17T19:35:07.784908-08:00 lotteh team: team [68484]: cat lotteh/settings.py | grep PRIVATE
+2024-12-17T19:35:17.096429-08:00 lotteh team: team [68484]: cat lotteh/settings.py | grep PRIVATE
+2024-12-17T19:35:20.117563-08:00 lotteh team: team [68484]: cat lotteh/settings.py | grep POST
+2024-12-17T19:38:14.246094-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T19:38:57.459193-08:00 lotteh team: team [61283]: sudo pushweb
+2024-12-17T19:39:12.446644-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T19:39:27.240321-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T19:39:31.757047-08:00 lotteh team: team [68484]: ls web/site/
+2024-12-17T19:40:26.772890-08:00 lotteh team: team [68484]: nano README.md 
+2024-12-17T19:40:28.427741-08:00 lotteh team: team [68484]: nano README.md 
+2024-12-17T19:40:34.139846-08:00 lotteh team: team [68484]: cat README.md | grep users
+2024-12-17T19:40:36.777771-08:00 lotteh team: team [68484]: cat README.md | grep users -nH
+2024-12-17T19:40:45.373954-08:00 lotteh team: team [61283]: sudo pushweb
+2024-12-17T19:41:49.074924-08:00 lotteh team: team [68484]: nano README.md 
+2024-12-17T19:42:29.269021-08:00 lotteh team: team [68484]: sudo pushweb nodb
+2024-12-17T19:42:32.026150-08:00 lotteh team: message repeated 2 times: [ team [68484]: sudo pushweb nodb]
+2024-12-17T19:42:40.664654-08:00 lotteh team: team [68484]: sudo daphnereload

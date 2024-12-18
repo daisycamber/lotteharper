@@ -39,7 +39,7 @@ def generate_site():
     from translate.translate import translate
     from feed.middleware import set_current_request
     nfc_aes = User.objects.get(id=settings.MY_ID).vivokey_scans.last().nfc_id.replace(':','').upper() + 'FF'
-#    languages = ['en'] #['en', 'de']
+    languages = ['en', 'de', 'fr']
     langs = languages
     for lang in langs:
         images = ''
@@ -180,7 +180,24 @@ def generate_site():
                     except:
                         import traceback
                         print(traceback.format_exc())
-        context['title'] = settings.STATIC_SITE_NAME
+        for post in Post.objects.filter(private=True, posted=True, published=True, feed="blog").union(Post.objects.filter(uploaded=True, private=True, posted=True, published=True, feed="private").exclude(image_bucket=None)).order_by('-date_posted')[:settings.PAID_POSTS]:
+            if post:
+                url = '/{}/{}'.format(lang, post.friendly_name)
+                context['post'] = post
+                context['path'] = url
+ #               print(url)
+                context['title'] = translate(request, 'Private Photo' + shorttitle(post.id), lang, 'en')
+                context['post_links'] = '<p>{}</p>\n'.format('<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), 'Buy with cryptocurrency on {}'.format(settings.SITE_NAME), translate(request, 'Buy with crypto', lang, 'en')))
+                path = os.path.join(settings.BASE_DIR, 'web/site/', '{}/{}.html'.format(lang, post.friendly_name))
+                if (not os.path.exists(path)) or overwrite:
+                    try:
+                        index = render_to_string('web/post.html', context)
+                        with open(path, 'w') as file:
+                            file.write(index)
+                    except:
+                        import traceback
+                        print(traceback.format_exc())
+        context['title'] = 'Our Online Experience'
         context['hidenav'] = True
         context['hidefooter'] = True
         context['path'] = '/{}/{}'.format(lang, 'ad')
