@@ -669,3 +669,9 @@
 2024-12-17T21:58:09.893279-08:00 lotteh team: team [894034]: ps -aux | grep pushweb
 2024-12-17T21:58:12.906967-08:00 lotteh team: team [894077]: ps -aux | grep pushweb
 2024-12-17T21:58:28.757469-08:00 lotteh team: team [894077]: sudo backup nodb &
+2024-12-17T21:59:00.007550-08:00 lotteh team: team [894077]: sudo backup nodb &
+2024-12-17T21:59:09.155404-08:00 lotteh team: team [894077]: ls scripts/*up
+2024-12-17T21:59:24.066630-08:00 lotteh team: team [894077]: git remote -v
+2024-12-17T22:02:53.555399-08:00 lotteh team: team [894034]: venv
+2024-12-17T22:04:27.276536-08:00 lotteh team: team [897787]: git remote -v
+2024-12-17T22:08:36.615479-08:00 lotteh team: team [899984]: git remote -v
