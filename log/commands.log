@@ -644,3 +644,24 @@
 2024-12-17T20:16:43.453209-08:00 lotteh team: team [68484]: nano feed/models.py
 2024-12-17T20:17:23.148277-08:00 lotteh team: team [68484]: nano feed/models.py
 2024-12-17T20:17:28.723818-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T20:19:06.886687-08:00 lotteh team: team [61283]: sudo backup nodb
+2024-12-17T20:22:10.532803-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T20:23:53.443508-08:00 lotteh team: team [61283]: nano feed/models.py
+2024-12-17T20:23:58.982963-08:00 lotteh team: team [61283]: python manage.py check
+2024-12-17T20:25:39.323353-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T20:25:47.869150-08:00 lotteh team: team [68484]: sudo pushweb
+2024-12-17T20:25:48.373517-08:00 lotteh team: message repeated 13 times: [ team [68484]: sudo pushweb]
+2024-12-17T20:25:57.020331-08:00 lotteh team: team [61283]: python manage.py check
+2024-12-17T20:26:30.074463-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T20:27:00.512870-08:00 lotteh team: team [61283]: nano web/site/en/post-rather-it-send-simple.html 
+2024-12-17T20:27:04.428011-08:00 lotteh team: team [61283]: cat web/site/en/post-rather-it-send-simple.html 
+2024-12-17T20:27:40.619923-08:00 lotteh team: team [61283]: nano web/templates/web/post.html 
+2024-12-17T20:29:40.202103-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T20:29:46.682229-08:00 lotteh team: team [61283]: cat web/site/en/post-hunt-fig-week.html 
+2024-12-17T20:32:12.329381-08:00 lotteh team: team [68484]: sudo pushweb
+2024-12-17T20:33:25.943079-08:00 lotteh team: team [61283]: nano feed/models.py
+2024-12-17T20:33:27.958040-08:00 lotteh team: team [61283]: nano feed/models.py
+2024-12-17T20:33:52.384780-08:00 lotteh team: team [61283]: nano web/templates/web/post.html 
+2024-12-17T20:34:40.649341-08:00 lotteh team: team [68484]: nano web/site/en/post-rather-it-send-simple.html
+2024-12-17T20:34:44.192082-08:00 lotteh team: team [68484]: cat web/site/en/post-rather-it-send-simple.html
+2024-12-17T20:43:28.615520-08:00 lotteh team: team [61283]: nano web/templates/web/post.html 

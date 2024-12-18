@@ -237,7 +237,6 @@ class Post(models.Model):
                     except:
                         if len(self.content) < 120: self.delete()
                         return '/media/static/default.png'
-            resize_image(new_path)
             from .blur import blur_faces, blur_nude_only, blur_nude
             blur_nude_only(new_path, new_path) if settings.BLUR_ONLY_NUDE else blur_nude(new_path, new_path)
 #            blur_faces(new_path)
@@ -285,6 +284,16 @@ class Post(models.Model):
                 self.image_censored_thumbnail = new_path
                 self.save()
             except: return self.get_face_blur_thumb_url() #'/media/static/default.png'
+        if not self.image_censored_thumbnail_bucket:
+            p = self
+            if p.image_censored_thumbnail and os.path.exists(p.image_censored_thumbnail.path):
+                towrite = p.image_censored_thumbnail_bucket.storage.open(p.image_censored_thumbnail.path, mode='wb')
+                with p.image_censored_thumbnail.open('rb') as file:
+                    towrite.write(file.read())
+                towrite.close()
+                p.image_censored_thubmanil_bucket = p.image_censored_thumbnail.path
+                p.save()
+            return p.image_censored_thumbnail_bucket.url
         path, url = get_secure_path(self.image_censored_thumbnail.name)
         full_path = os.path.join(settings.BASE_DIR, path)
         shutil.copy(self.image_censored_thumbnail.path, full_path)
