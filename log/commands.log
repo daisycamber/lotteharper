@@ -561,3 +561,8 @@
 2024-12-17T18:59:45.901267-08:00 lotteh team: team [68484]: nano misc/sitemap.py 
 2024-12-17T19:09:50.851375-08:00 lotteh team: team [411820]: sudo systemctl status daphne
 2024-12-17T19:09:54.359272-08:00 lotteh team: team [412209]: sudo systemctl status daphne
+2024-12-17T19:10:30.566551-08:00 lotteh team: team [415981]: sudo systemctl status daphne
+2024-12-17T19:10:32.756777-08:00 lotteh team: team [412209]: sudo backup bodb
+2024-12-17T19:10:47.392950-08:00 lotteh team: team [415981]: sudo systemctl status daphne
+2024-12-17T19:10:55.383037-08:00 lotteh team: team [415981]: ps -aux | grep backup
+2024-12-17T19:11:08.016406-08:00 lotteh team: team [415981]: sudo backup nodb &
