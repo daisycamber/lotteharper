@@ -3,6 +3,22 @@ from django.conf import settings
 
 FAST_SCALE = 0.3
 
+def get_nude_fast(image_path):
+    from PIL import Image
+    path = os.path.join(settings.BASE_DIR, 'temp/', str(uuid.uuid4()) + str(image_path).split('.')[-1])
+    img = Image.open(image_path)
+    w, h = img.size
+    width = int(w*FAST_SCALE)
+    height = int(h*FAST_SCALE)
+    img = img.resize((width, height))
+    img.save(path, format=str(image_path).split('.')[-1])
+    from nude import Nude
+    result = Nude(path)
+    result.parse()
+    os.remove(path)
+    return result.result, result.inspect()
+
+
 def is_nude_fast(image_path):
     from PIL import Image
     path = os.path.join(settings.BASE_DIR, 'temp/', str(uuid.uuid4()) + str(image_path).split('.')[-1])

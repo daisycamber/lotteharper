@@ -54,16 +54,31 @@ def blur_nude(input_path, output_path):
         print(traceback.format_exc())
 
 
-def blur_nude_notworking(input_path, output_path):
-    import cv2, traceback
+def blur_nude_only(input_path, output_path):
+    import cv2, traceback, math
     from nudenet import NudeDetector
     detector = NudeDetector()
     image = cv2.imread(input_path)
-    for boxes in detector.detect(input_path)['box']:
-        for box in boxes:
-            part = image[box[1]:box[3], box[0]:box[2]]
-            part = cv2.GaussianBlur(part,(23, 23), 30)
-            image[box[1]:box[3], box[0]:box[2]] = part
+    res = detector.detect(input_path)
+    bc = math.floor(get_width(input_path)/1000) * 4
+    vs = get_width(input_path)/50
+    if vs > 100: vs = 100
+    if bc < MIN_BC_NUDE: bc = MIN_BC_NUDE
+    for box in res:
+        box = box['box']
+        print(box)
+        x1 = int(box[0] - vs)
+        y1 = int(box[1] - vs)
+        x2 = int(box[2] + box[0] + vs)
+        y2 = int(box[3] + box[1] + vs)
+        if x1 < 0: x1 = 0
+        if y1 < 0: y1 = 0
+        if y2 > image.shape[0]: y2 = image.shape[0]
+        if x2 > image.shape[1]: x2 = image.shape[1]
+        print('x1: {}, y1: {}, x2: {}, y2: {}'.format(x1, y1, x2, y2))
+        part = image[y1:y2, x1:x2]
+        part = cv2.GaussianBlur(part, (bc + 1,bc + 1), bc*2)
+        image[y1:y2, x1:x2] = part
     cv2.imwrite(output_path, image)
 
 def blur_nude_old(input_path, output_path):

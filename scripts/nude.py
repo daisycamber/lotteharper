@@ -22,8 +22,6 @@ class Nude(object):
     def __init__(self, path_or_io):
         if isinstance(path_or_io, IOBase):
             self.image = path_or_io
-        elif isinstance(path_or_io, Image.Image):
-            self.image = path_or_io
         else:
             self.image = Image.open(path_or_io)
         bands = self.image.getbands()

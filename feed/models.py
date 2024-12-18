@@ -238,8 +238,8 @@ class Post(models.Model):
                         if len(self.content) < 120: self.delete()
                         return '/media/static/default.png'
             resize_image(new_path)
-            from .blur import blur_faces, blur_nude
-            blur_nude(new_path, new_path)
+            from .blur import blur_faces, blur_nude_only, blur_nude
+            blur_nude_only(new_path, new_path) if settings.BLUR_ONLY_NUDE else blur_nude(new_path, new_path)
 #            blur_faces(new_path)
             self.image_censored = new_path #.split('media/')[1]
             self.save()

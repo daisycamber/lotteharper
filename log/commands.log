@@ -377,3 +377,187 @@
 2024-12-16T00:58:02.309414-08:00 lotteh team: team [3867935]: lockout
 2024-12-16T01:07:48.451863-08:00 lotteh team: team [4023832]: cat /etc/config.json 
 2024-12-16T01:09:03.655190-08:00 lotteh team: team [4023832]: cat /etc/apis.json 
+2024-12-17T14:52:42.591159-08:00 lotteh team: team [61194]: sudo systemctl status daphne
+2024-12-17T14:52:44.130691-08:00 lotteh team: team [61194]: venv
+2024-12-17T14:52:46.276335-08:00 lotteh team: team [61194]: cd lotteh
+2024-12-17T14:52:51.129890-08:00 lotteh team: team [61194]: python approve_login.py 1
+2024-12-17T14:52:54.494967-08:00 lotteh team: team [61254]: sudo systemctl status daphne
+2024-12-17T14:52:55.064255-08:00 lotteh team: team [61194]: python approve_login.py 1
+2024-12-17T14:52:56.312083-08:00 lotteh team: team [61283]: sudo systemctl status daphne
+2024-12-17T14:53:04.472485-08:00 lotteh team: team [61309]: sudo systemctl status daphne
+2024-12-17T14:59:11.103278-08:00 lotteh team: team [61283]: nano templates/base.html
+2024-12-17T14:59:37.727461-08:00 lotteh team: team [61283]: nano web/templates/web/base.html 
+2024-12-17T14:59:47.452535-08:00 lotteh team: team [61283]: nano web/templates/web/base.html 
+2024-12-17T15:00:38.320610-08:00 lotteh team: team [61283]: nano web/templates/web/post.html 
+2024-12-17T15:00:56.087067-08:00 lotteh team: team [61283]: nano web/templates/web/private.html 
+2024-12-17T15:01:06.766645-08:00 lotteh team: team [61283]: nano web/templates/web/news.html 
+2024-12-17T15:01:44.349571-08:00 lotteh team: team [61283]: nano web/templates/web/landing.html 
+2024-12-17T15:02:01.921617-08:00 lotteh team: team [61283]: nano web/templates/web/contact.html 
+2024-12-17T15:06:14.593590-08:00 lotteh team: team [61283]: nano web/templates/web/contact.html 
+2024-12-17T15:06:25.874286-08:00 lotteh team: team [61283]: nano web/templates/web/landing.html 
+2024-12-17T15:08:14.011889-08:00 lotteh team: team [61283]: nano web/templates/web/post.html 
+2024-12-17T15:12:44.838959-08:00 lotteh team: team [61283]: nano web/templates/web/post.html 
+2024-12-17T15:13:03.287831-08:00 lotteh team: team [61283]: cp web/templates/web/contact.html web/templates/web/social.html
+2024-12-17T15:13:06.718930-08:00 lotteh team: team [61283]: cp web/templates/web/contact.html web/templates/web/social.html
+2024-12-17T15:13:16.644422-08:00 lotteh team: team [61283]: cp web/templates/web/post.html web/templates/web/social.html 
+2024-12-17T15:14:34.056720-08:00 lotteh team: team [61283]: nano web/templates/web/social.html 
+2024-12-17T15:15:00.798194-08:00 lotteh team: team [61283]: nano web/templates/web/post.html 
+2024-12-17T15:15:10.159900-08:00 lotteh team: team [61283]: nano web/templates/web/contact.html 
+2024-12-17T15:15:22.242766-08:00 lotteh team: team [61283]: nano web/templates/web/landing.html 
+2024-12-17T15:15:37.946159-08:00 lotteh team: team [61283]: nano web/templates/web/contact.html 
+2024-12-17T15:16:22.026753-08:00 lotteh team: team [61283]: nano web/templates/web/private.html 
+2024-12-17T15:16:37.466643-08:00 lotteh team: team [61283]: nano web/templates/web/index.html 
+2024-12-17T15:16:47.665362-08:00 lotteh team: team [61283]: nano web/templates/web/landing.html 
+2024-12-17T15:16:53.344321-08:00 lotteh team: team [61283]: nano templates/social
+2024-12-17T15:17:50.689648-08:00 lotteh team: team [61283]: nano templates/social.html 
+2024-12-17T15:17:58.350473-08:00 lotteh team: team [61283]: cat templates/social.html | grep img
+2024-12-17T15:18:12.627213-08:00 lotteh team: team [61283]: nano templates/social.html 
+2024-12-17T15:18:15.480029-08:00 lotteh team: team [61283]: sudo daphnereload
+2024-12-17T15:18:22.027583-08:00 lotteh team: team [61283]: sudo purgecache
+2024-12-17T15:19:17.980783-08:00 lotteh team: team [61283]: cat feed/templates/feed/_post.html | grep '{% include 'web/social.html' %}#012'
+2024-12-17T15:19:26.645915-08:00 lotteh team: team [61283]: cat feed/templates/feed/_post.html | grep '</img>'
+2024-12-17T15:19:42.549812-08:00 lotteh team: team [61283]: cat feed/templates/feed/full_profile.html | grep '</img>'
+2024-12-17T15:19:46.643950-08:00 lotteh team: team [61283]: cat feed/templates/feed/_full_profile.html | grep '</img>'
+2024-12-17T15:40:27.999819-08:00 lotteh team: team [61283]: cat feed/templates/feed/_full_profile.html | grep '</img>'
+2024-12-17T15:43:15.561957-08:00 lotteh team: team [61283]: nano misc/sitemap.py 
+2024-12-17T15:43:19.648599-08:00 lotteh team: team [61283]: nano misc/sitemap.py 
+2024-12-17T15:48:20.622882-08:00 lotteh team: team [61283]: nano web/templates/web/language.html 
+2024-12-17T15:49:04.279444-08:00 lotteh team: team [61283]: nano templates/language.html 
+2024-12-17T15:49:16.393608-08:00 lotteh team: team [61283]: nano misc/sitemap.py 
+2024-12-17T15:52:09.797805-08:00 lotteh team: team [61283]: nano templates/language.html 
+2024-12-17T15:52:15.587601-08:00 lotteh team: team [61283]: sudo doreload
+2024-12-17T15:52:17.842820-08:00 lotteh team: team [61283]: sudo daphnereload
+2024-12-17T15:52:27.601195-08:00 lotteh team: team [61283]: logs
+2024-12-17T15:52:30.188212-08:00 lotteh team: team [61283]: cmds
+2024-12-17T15:52:57.847948-08:00 lotteh team: team [61283]: sudo nano /var/log/commands.log
+2024-12-17T15:52:58.675457-08:00 lotteh team: team [61283]: cmds
+2024-12-17T15:53:00.440350-08:00 lotteh team: team [61283]: cmds
+2024-12-17T15:53:03.178902-08:00 lotteh team: team [61283]: cmds
+2024-12-17T15:53:22.095788-08:00 lotteh team: team [61283]: sudo pushweb
+2024-12-17T15:53:22.305520-08:00 lotteh team: team [61283]: sudo pushweb
+2024-12-17T15:53:25.788448-08:00 lotteh team: team [61283]: nano web/generate.py
+2024-12-17T15:54:03.871222-08:00 lotteh team: team [61283]: sudo pushweb
+2024-12-17T17:16:41.505474-08:00 lotteh team: team [68484]: sudo systemctl status daphne
+2024-12-17T17:16:43.466065-08:00 lotteh team: team [68484]: ls scripts
+2024-12-17T17:18:37.400353-08:00 lotteh team: team [68484]: nano scripts/setup
+2024-12-17T17:18:52.396695-08:00 lotteh team: team [68484]: pip3 install nudepy==0.4
+2024-12-17T17:18:54.015646-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T17:20:30.913038-08:00 lotteh team: team [68484]: compinfo
+2024-12-17T17:20:42.397125-08:00 lotteh team: team [68484]: nano feed/nude.py 
+2024-12-17T17:22:28.876066-08:00 lotteh team: team [68484]: nano feed/nude.py 
+2024-12-17T17:22:43.043534-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T17:25:15.996165-08:00 lotteh team: team [68484]: nano feed/nude.py 
+2024-12-17T17:25:24.334774-08:00 lotteh team: team [68484]: pip3 install --upgrade "nudenet>=3.4.2"
+2024-12-17T17:26:53.927249-08:00 lotteh team: team [68484]: sudo ascript setup
+2024-12-17T17:27:04.199265-08:00 lotteh team: team [68484]: nano feed/nude.py 
+2024-12-17T17:28:01.261414-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:29:23.729270-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:30:05.239383-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:31:15.408182-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:31:53.126468-08:00 lotteh team: team [68484]: nano feed/nude.py 
+2024-12-17T17:32:55.022872-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:33:25.502463-08:00 lotteh team: team [68484]: nano feed/nude.py 
+2024-12-17T17:34:29.070272-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T17:35:13.209778-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:35:16.767803-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T17:35:49.374327-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:36:10.226844-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:37:21.202829-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T17:38:40.128828-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:38:58.707343-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:39:03.957094-08:00 lotteh team: team [68484]: cat scripts/patchvenv
+2024-12-17T17:39:10.188873-08:00 lotteh team: team [68484]: cat scripts/resetvenv
+2024-12-17T17:42:49.756492-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:43:29.853705-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:44:45.705581-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:45:47.414818-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:45:55.448639-08:00 lotteh team: team [68484]: cat scripts/resetvenv
+2024-12-17T17:49:34.582746-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:52:35.188110-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:53:22.033150-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:53:24.644297-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T17:54:37.693194-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:54:49.212446-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T17:55:46.119696-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:56:22.508519-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:57:28.437845-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T17:59:05.713194-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T17:59:35.902929-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T17:59:59.999952-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T18:00:17.551875-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T18:00:26.647781-08:00 lotteh team: team [68484]: cat feed/models.py| greo enhance
+2024-12-17T18:00:30.730944-08:00 lotteh team: team [68484]: cat feed/models.py| grep enhance
+2024-12-17T18:00:37.490848-08:00 lotteh team: team [68484]: cat feed/models.py| grep enhance -nH
+2024-12-17T18:01:48.470830-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T18:02:35.641052-08:00 lotteh team: team [68484]: nano enhance/image.py 
+2024-12-17T18:02:40.610858-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T18:03:37.630304-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T18:04:13.358167-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T18:05:08.013825-08:00 lotteh team: team [68484]: nano enhance/image.py 
+2024-12-17T18:05:14.347308-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T18:05:30.558983-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T18:06:57.677056-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T18:10:49.359416-08:00 lotteh team: team [97931]: sudo systemctl status daphne
+2024-12-17T18:10:56.965618-08:00 lotteh team: team [98161]: sudo systemctl status daphne
+2024-12-17T18:11:09.852984-08:00 lotteh team: team [98161]: clear
+2024-12-17T18:11:11.336391-08:00 lotteh team: team [98161]: ls
+2024-12-17T18:11:13.513678-08:00 lotteh team: team [98161]: clear
+2024-12-17T18:11:16.536340-08:00 lotteh team: team [98161]: clear
+2024-12-17T18:11:18.078394-08:00 lotteh team: team [98161]: ls
+2024-12-17T18:11:35.689697-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T18:13:32.255345-08:00 lotteh team: team [68484]: nano shell/templates/shell/terminal.html 
+2024-12-17T18:13:38.024713-08:00 lotteh team: team [68484]: sudo daphnereload
+2024-12-17T18:13:48.998750-08:00 lotteh team: team [68484]: logs
+2024-12-17T18:13:50.345646-08:00 lotteh team: team [68484]: logsa
+2024-12-17T18:13:51.828115-08:00 lotteh team: team [68484]: logs
+2024-12-17T18:14:15.578512-08:00 lotteh team: team [68484]: nano shell/templates/shell/terminal.html 
+2024-12-17T18:14:18.325877-08:00 lotteh team: team [68484]: sudo daphnereload
+2024-12-17T18:16:29.859565-08:00 lotteh team: team [68484]: python bucket_posts.py 
+2024-12-17T18:16:50.983577-08:00 lotteh team: team [68484]: python bucket_posts.py 
+2024-12-17T18:17:05.611797-08:00 lotteh team: team [68484]: python bucket_posts.py 
+2024-12-17T18:19:20.301036-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T18:19:22.142381-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T18:19:56.813439-08:00 lotteh team: team [61283]: nano feed/blur.py 
+2024-12-17T18:20:35.174413-08:00 lotteh team: team [68484]: python bucket_posts.py 
+2024-12-17T18:20:44.304653-08:00 lotteh team: team [68484]: python force_publish.py 
+2024-12-17T18:21:45.125866-08:00 lotteh team: team [68484]: python bucket_posts.py 
+2024-12-17T18:22:52.678876-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T18:23:10.255143-08:00 lotteh team: team [68484]: nano security/censor_image.py 
+2024-12-17T18:25:02.442758-08:00 lotteh team: team [68484]: nano feed/blur.py 
+2024-12-17T18:25:13.321503-08:00 lotteh team: team [68484]: nano security/censor_image.py 
+2024-12-17T18:25:31.675559-08:00 lotteh team: team [68484]: nano security/censor_video.py 
+2024-12-17T18:26:58.573239-08:00 lotteh team: team [68484]: nano security/censor_video.py 
+2024-12-17T18:27:01.654017-08:00 lotteh team: team [68484]: nano feed/mdo
+2024-12-17T18:27:55.019454-08:00 lotteh team: team [68484]: nano feed/models.py
+2024-12-17T18:28:14.023865-08:00 lotteh team: team [68484]: nano lotteh/settings.py 
+2024-12-17T18:34:01.908304-08:00 lotteh team: team [192706]: sudo systemctl status daphne
+2024-12-17T18:34:04.444885-08:00 lotteh team: team [192886]: sudo systemctl status daphne
+2024-12-17T18:42:44.710246-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T18:50:43.073926-08:00 lotteh team: team [68484]: sudo pushweb
+2024-12-17T18:50:43.432097-08:00 lotteh team: message repeated 3 times: [ team [68484]: sudo pushweb]
+2024-12-17T18:50:47.350554-08:00 lotteh team: team [68484]: ls web/site/
+2024-12-17T18:51:03.870878-08:00 lotteh team: team [61283]: python manage.py shell
+2024-12-17T18:51:06.228955-08:00 lotteh team: team [61283]: cat misc/sitemap.py 
+2024-12-17T18:51:08.665054-08:00 lotteh team: team [68484]: ls web/site/ | grep fo
+2024-12-17T18:51:11.572639-08:00 lotteh team: team [68484]: ls web/site/ | grep cs
+2024-12-17T18:52:23.239251-08:00 lotteh team: team [68484]: ls web/site/ | grep tr
+2024-12-17T18:52:24.959650-08:00 lotteh team: team [68484]: ls web/site/ | grep cs
+2024-12-17T18:52:27.145629-08:00 lotteh team: team [68484]: ls web/site/ | grep c
+2024-12-17T18:52:28.943113-08:00 lotteh team: team [68484]: ls web/site/ | grep c
+2024-12-17T18:52:30.327232-08:00 lotteh team: team [68484]: ls web/site/ | grep cz
+2024-12-17T18:54:25.219597-08:00 lotteh team: team [61283]: cat misc/sitemap.py 
+2024-12-17T18:57:01.692939-08:00 lotteh team: team [61283]: nano misc/sitemap.py 
+2024-12-17T18:57:39.486385-08:00 lotteh team: team [61283]: nano templates/language.html 
+2024-12-17T18:57:58.633769-08:00 lotteh team: team [61283]: nano web/templates/web/language.html 
+2024-12-17T18:58:14.945307-08:00 lotteh team: team [61283]: nano templates/language.html 
+2024-12-17T18:58:23.280511-08:00 lotteh team: team [68484]: python manage.py shell
+2024-12-17T18:58:26.174768-08:00 lotteh team: team [68484]: python manage.py shell
+2024-12-17T18:58:27.282682-08:00 lotteh team: team [61283]: sudo pushweb
+2024-12-17T18:58:42.741338-08:00 lotteh team: team [61283]: nano web/templates/web/language.html 
+2024-12-17T18:59:22.060018-08:00 lotteh team: team [61283]: nano templates/language.html 
+2024-12-17T18:59:26.679934-08:00 lotteh team: team [61283]: nano web/templates/web/language.html 
+2024-12-17T18:59:33.208645-08:00 lotteh team: team [61283]: nano web/templates/web/language.html 
+2024-12-17T18:59:40.997902-08:00 lotteh team: team [68484]: nano web/generate.py
+2024-12-17T18:59:45.901267-08:00 lotteh team: team [68484]: nano misc/sitemap.py 
+2024-12-17T19:09:50.851375-08:00 lotteh team: team [411820]: sudo systemctl status daphne
+2024-12-17T19:09:54.359272-08:00 lotteh team: team [412209]: sudo systemctl status daphne

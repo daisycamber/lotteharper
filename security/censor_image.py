@@ -24,8 +24,8 @@ def censor_image(input_file, scale=1): # where scale <= 1
         h = h * extra * 3
         if x < 0: x = 0
         if y < 0: y = 0
-        if y + h > image.shape[0]: y = image.shape[0] - h
-        if x + w > image.shape[1]: x = image.shape[1] - w
+        if y + h > image.shape[0]: y = image.shape[0]
+        if x + w > image.shape[1]: x = image.shape[1]
         img = cv2.blur(image[y:y+h, x:x+w], (AVERAGE, AVERAGE))
         image[y:y+h, x:x+w] = img
     cv2.imwrite(input_file, image)
