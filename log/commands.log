@@ -675,3 +675,33 @@
 2024-12-17T22:02:53.555399-08:00 lotteh team: team [894034]: venv
 2024-12-17T22:04:27.276536-08:00 lotteh team: team [897787]: git remote -v
 2024-12-17T22:08:36.615479-08:00 lotteh team: team [899984]: git remote -v
+2024-12-18T13:26:23.683116-08:00 lotteh team: team [61194]: python approve_login.py 1
+2024-12-18T13:26:26.756444-08:00 lotteh team: team [61194]: logs
+2024-12-18T13:26:44.065139-08:00 lotteh team: team [61194]: df -h /
+2024-12-18T13:27:16.987602-08:00 lotteh team: team [61194]: sudo rm media/images/*
+2024-12-18T13:27:17.397785-08:00 lotteh team: team [61194]: sudo rm media/images/*
+2024-12-18T13:27:40.829253-08:00 lotteh team: team [61194]: df -h /
+2024-12-18T13:27:53.497627-08:00 lotteh team: team [61194]: sudo daphnereload
+2024-12-18T13:28:02.942438-08:00 lotteh team: team [61194]: loga
+2024-12-18T13:28:06.001844-08:00 lotteh team: team [61194]: logs
+2024-12-18T13:28:25.267226-08:00 lotteh team: team [61194]: sudo systemctl restart postgresql
+2024-12-18T13:28:27.206457-08:00 lotteh team: team [61194]: ligs
+2024-12-18T13:28:29.041992-08:00 lotteh team: team [61194]: logs
+2024-12-18T17:10:34.245369-08:00 lotteh team: team [3062027]: git remote -v
+2024-12-18T17:11:19.874298-08:00 lotteh team: team [3067013]: git remote -v
+2024-12-18T17:12:28.134797-08:00 lotteh team: team [3067013]: nano scripts/initialize 
+2024-12-18T17:12:43.893987-08:00 lotteh team: team [3067013]: python manage.py check
+2024-12-18T17:12:44.225757-08:00 lotteh team: team [3067013]: python manage.py check
+2024-12-18T17:22:41.368403-08:00 lotteh team: team [3067013]: python manage.py check
+2024-12-18T17:22:45.783572-08:00 lotteh team: message repeated 2 times: [ team [3067013]: python manage.py check]
+2024-12-18T17:23:04.438027-08:00 lotteh team: team [3067013]: python manage.py check
+2024-12-18T17:23:23.549349-08:00 lotteh team: team [3067013]: logs
+2024-12-18T17:23:30.191969-08:00 lotteh team: team [3067013]: cmds
+2024-12-18T17:23:38.730776-08:00 lotteh team: team [3067013]: compingo
+2024-12-18T21:11:38.623551-08:00 lotteh team: team [61283]: nano static/games/threethirteen.js 
+2024-12-18T21:11:50.538583-08:00 lotteh team: team [61283]: cat static/games/threethirteen.js |grep wonGame
+2024-12-18T21:11:53.663527-08:00 lotteh team: team [61283]: cat static/games/threethirteen.js |grep wonGame -nH
+2024-12-18T21:14:38.407532-08:00 lotteh team: team [61283]: nano static/games/threethirteen.js 
+2024-12-18T21:15:02.264875-08:00 lotteh team: team [61283]: sudo daphnereload
+2024-12-18T21:15:51.173284-08:00 lotteh team: team [61283]: nano static/games/threethirteen.js 
+2024-12-18T23:16:33.914896-08:00 lotteh team: team [61309]: venv

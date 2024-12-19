@@ -1224,11 +1224,6 @@ function drawDiscard(){
           } else if(sp[0] == "discard" && sp[2] != user){
             opponentDiscard(sp[1]);
             canPlayerDraw = true;
-          if(preparingForNextRound){
-            nextRound();
-            gameIsWon = false;
-            container.removeChild(wonContainer);
-          }
 /*          if(preparingForNextRound){
             nextRound();
             gameIsWon = false;
@@ -1259,16 +1254,16 @@ function drawDiscard(){
             playerDiscard(discardCard, discardSuit);
             canPlayerDiscard = false;
           if(preparingForNextRound){
-            nextRound();
+            /*nextRound();*/
             gameIsWon = false;
             container.removeChild(wonContainer);
           }
-          /*if(gameIsWon){
+          if(gameIsWon){
               container.removeChild(wonContainer);
               // Start next game
               nextRound();
               gameIsWon = false;
-            }*/
+            }
           }
         }
     currentTurn = gp.length-1;
@@ -1311,12 +1306,12 @@ function drawDiscard(){
             gameIsWon = false;
             container.removeChild(wonContainer);
           }
-/*          if(gameIsWon){
+          if(gameIsWon){
               container.removeChild(wonContainer);
               // Start next game
               nextRound();
               gameIsWon = false;
-            }*/
+            }
           }
         }
     stage.update();
@@ -1434,12 +1429,12 @@ function drawDiscard(){
       wonText.x = leftbound + 500;
       wonText.y = topbound + 935;
       wonText.textAlign = 'center'
-/*      wonContainer.on("mousedown", function(event) {
+      wonContainer.on("mousedown", function(event) {
         container.removeChild(wonContainer);
         // Start next game
         nextRound();
         gameIsWon = false;
-      });*/
+      });
       drawOpponentHandFaceup();
       prepareForNextRound();
       wonContainer.addChild(wonDialog);
