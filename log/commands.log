@@ -796,3 +796,41 @@
 2024-12-19T14:30:49.237871-08:00 lotteh team: team [4037262]: logs
 2024-12-19T14:51:01.943973-08:00 lotteh team: team [4037081]: compinfo
 2024-12-19T14:51:04.139827-08:00 lotteh team: team [4037081]: sudo daphnereload
+2024-12-19T14:51:36.785024-08:00 lotteh team: team [4037081]: sudo backup nodb
+2024-12-19T15:46:43.355816-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T15:47:27.594878-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T15:47:32.112974-08:00 lotteh team: team [4037262]: sudo doreload
+2024-12-19T15:47:34.258345-08:00 lotteh team: team [4037262]: doreload
+2024-12-19T15:47:39.156186-08:00 lotteh team: team [4037262]: sudo doreload
+2024-12-19T15:47:48.017136-08:00 lotteh team: team [4037262]: logs
+2024-12-19T15:47:48.975206-08:00 lotteh team: team [4037262]: logs
+2024-12-19T15:47:49.760798-08:00 lotteh team: team [4037262]: logs
+2024-12-19T15:48:56.330332-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T15:48:57.800014-08:00 lotteh team: team [4037262]: sudo doreload
+2024-12-19T15:49:25.702967-08:00 lotteh team: team [4037262]: logs
+2024-12-19T15:49:37.247402-08:00 lotteh team: team [4037262]: sudo doreload
+2024-12-19T15:51:01.369487-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T15:51:02.242805-08:00 lotteh team: team [4037262]: sudo doreload
+2024-12-19T15:51:18.888322-08:00 lotteh team: team [4037262]: watchlogs
+2024-12-19T15:51:24.827786-08:00 lotteh team: team [4037262]: logs
+2024-12-19T15:51:26.088818-08:00 lotteh team: team [4037262]: logs
+2024-12-19T15:51:32.540341-08:00 lotteh team: team [4037262]: logs
+2024-12-19T15:52:25.258788-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T15:52:38.437722-08:00 lotteh team: team [4037262]: sudo doreload
+2024-12-19T15:53:48.668788-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T15:53:58.108018-08:00 lotteh team: team [4037262]: cat static/games/threethirteen.js | grep wonContainer
+2024-12-19T15:54:00.634125-08:00 lotteh team: team [4037262]: cat static/games/threethirteen.js | grep wonContainer -nH
+2024-12-19T15:58:05.876273-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T15:58:08.220586-08:00 lotteh team: team [4037262]: sudo doreload
+2024-12-19T15:58:13.739637-08:00 lotteh team: team [4037262]: logs
+2024-12-19T15:59:34.641511-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T15:59:44.293629-08:00 lotteh team: team [4037262]: cat static/games/threethirteen.js | grep recoveringState
+2024-12-19T15:59:46.849373-08:00 lotteh team: team [4037262]: cat static/games/threethirteen.js | grep recoveringState -nH
+2024-12-19T16:00:59.075696-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T16:01:02.553426-08:00 lotteh team: team [4037262]: cat static/games/threethirteen.js | grep recoveringState -nH
+2024-12-19T16:06:53.156062-08:00 lotteh team: team [4037262]: nano static/games/threethirteen.js 
+2024-12-19T16:06:56.457792-08:00 lotteh team: team [4037262]: sudo doreload
+2024-12-19T16:07:12.224855-08:00 lotteh team: team [4037262]: logs
+2024-12-19T16:07:15.543198-08:00 lotteh team: team [4037262]: logs
+2024-12-19T16:11:37.845970-08:00 lotteh team: team [4037262]: watchlogs
+2024-12-19T16:11:43.634420-08:00 lotteh team: team [4037262]: cat static/games/threethirteen.js 

@@ -21,6 +21,7 @@
   var gameIsWon = false;
   var opponentWinsOnNextDiscard = false;
   var gameOverOnNextDiscard = false;
+  var recoveringState = false;
   function docReady(fn) {
     // see if DOM is already available
     if (document.readyState === "complete" || document.readyState === "interactive") {
@@ -1210,6 +1211,7 @@ function drawDiscard(){
 
   var recovered = false;
   function recoverState(gp){
+    recoveringState = true;
     for(let i = 0; i < gp.length-1; i++){
       console.log("Recovering turn: " + gp[i]);
           sp = gp[i].split(",");
@@ -1224,11 +1226,11 @@ function drawDiscard(){
           } else if(sp[0] == "discard" && sp[2] != user){
             opponentDiscard(sp[1]);
             canPlayerDraw = true;
-              if(preparingForNextRound){
+             /* if(preparingForNextRound){
                 nextRound();
                 gameIsWon = false;
                 container.removeChild(wonContainer);
-              }
+              }*/
 /*      if(gameIsWon){
               container.removeChild(wonContainer);
               // Start next game
@@ -1253,20 +1255,21 @@ function drawDiscard(){
             discardSuit = parseInt(theDiscard[1])
             playerDiscard(discardCard, discardSuit);
             canPlayerDiscard = false;
-          if(preparingForNextRound){
-            /*nextRound();*/
+/*          if(preparingForNextRound){
+            nextRound();
             gameIsWon = false;
             container.removeChild(wonContainer);
-          }
+          }*/
           if(gameIsWon){
               container.removeChild(wonContainer);
               // Start next game
               nextRound();
               gameIsWon = false;
-            }
           }
         }
+      }
     currentTurn = gp.length-1;
+    recoveringState = false;
   }
 
   function readCallback(){
@@ -1429,17 +1432,25 @@ function drawDiscard(){
       wonText.x = leftbound + 500;
       wonText.y = topbound + 935;
       wonText.textAlign = 'center'
-      wonContainer.on("mousedown", function(event) {
-        container.removeChild(wonContainer);
-        // Start next game
-        nextRound();
-        gameIsWon = false;
-      });
       drawOpponentHandFaceup();
       prepareForNextRound();
       wonContainer.addChild(wonDialog);
       wonContainer.addChild(wonText);
       container.addChild(wonContainer);
+      if(!recoveringState) {
+          wonContainer.on("mousedown", function(event) {
+            container.removeChild(wonContainer);
+            // Start next game
+            nextRound();
+            gameIsWon = false;
+          });
+      } else {
+        container.removeChild(wonContainer);
+            // Start next game
+            nextRound();
+            gameIsWon = false;
+
+      }
     }
   }
 
