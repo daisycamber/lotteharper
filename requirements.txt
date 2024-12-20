@@ -260,9 +260,17 @@ zope.interface
 zxing
 setuptools
 twilio
+setuptools
 autocorrect
+twilio
 paramiko
+autocorrect
 ccxt
+paramiko
+numpy
+ccxt
+urllib3
 numpy
 urllib3
+webauthn
 webauthn
