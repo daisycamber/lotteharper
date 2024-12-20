@@ -834,3 +834,56 @@
 2024-12-19T16:07:15.543198-08:00 lotteh team: team [4037262]: logs
 2024-12-19T16:11:37.845970-08:00 lotteh team: team [4037262]: watchlogs
 2024-12-19T16:11:43.634420-08:00 lotteh team: team [4037262]: cat static/games/threethirteen.js 
+2024-12-19T16:14:49.519133-08:00 lotteh team: team [4037081]: sudo backup nodb
+2024-12-19T16:30:26.517211-08:00 lotteh team: team [1008865]: cat web/site/en/post-rather-it-send-simple.html
+2024-12-19T16:30:47.259044-08:00 lotteh team: team [1010985]: cat web/site/en/post-rather-it-send-simple.html
+2024-12-19T16:31:19.044836-08:00 lotteh team: team [1010985]: cat web/site/en/post-rather-it-send-simple.html
+2024-12-19T16:31:21.964119-08:00 lotteh team: team [1014693]: cat web/site/en/post-rather-it-send-simple.html
+2024-12-19T16:33:47.946997-08:00 lotteh team: team [1014693]: nano shell/templates/shell/terminal.html 
+2024-12-19T16:33:55.802202-08:00 lotteh team: team [1010985]: venv
+2024-12-19T16:47:43.415683-08:00 lotteh team: team [1120123]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:00:48.968539-08:00 lotteh team: team [1202676]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:00:55.929554-08:00 lotteh team: team [1202676]: compingo
+2024-12-19T17:01:13.763855-08:00 lotteh team: team [1202676]: compinfo
+2024-12-19T17:01:16.192392-08:00 lotteh team: message repeated 3 times: [ team [1202676]: compinfo]
+2024-12-19T17:01:41.898189-08:00 lotteh team: team [1202676]: top
+2024-12-19T17:02:38.678353-08:00 lotteh team: team [1202676]: redis-cl keys "celery*" | xxargs redis-cli DEL
+2024-12-19T17:03:11.428908-08:00 lotteh team: team [1202676]: redis-cli keys "celery*" | xxargs redis-cli DEL
+2024-12-19T17:05:27.970962-08:00 lotteh team: team [1202676]: redis-cli keys "celery*" | xargs redis-cli DEL
+2024-12-19T17:05:40.884180-08:00 lotteh team: team [1211545]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:07:12.346362-08:00 lotteh team: team [61194]: logs
+2024-12-19T17:07:23.107582-08:00 lotteh team: team [1217664]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:08:10.768698-08:00 lotteh team: team [1220310]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:08:18.831588-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerubeat
+2024-12-19T17:08:24.158444-08:00 lotteh team: team [1220566]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:08:36.299261-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerybeat
+2024-12-19T17:10:56.015844-08:00 lotteh team: team [1222864]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:11:12.259960-08:00 lotteh team: team [1223230]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:11:31.691358-08:00 lotteh team: team [1223230]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:11:55.242179-08:00 lotteh team: team [1223230]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:12:26.683587-08:00 lotteh team: team [1223230]: sudo systemctl stop celery celerybeat
+2024-12-19T17:12:48.276407-08:00 lotteh team: team [1223230]: sudo systemctl stop celery celerybeat
+2024-12-19T17:13:03.103109-08:00 lotteh team: team [1223230]: sudo systemctl stop celery celerybeatkil
+2024-12-19T17:13:12.949747-08:00 lotteh team: team [1223230]: killall celery
+2024-12-19T17:13:28.187432-08:00 lotteh team: team [1223230]: killall celerybeat
+2024-12-19T17:13:44.565188-08:00 lotteh team: team [1220566]: redis-cli keys "celery*" | xargs redis-cli DEL
+2024-12-19T17:13:44.653531-08:00 lotteh team: message repeated 3 times: [ team [1220566]: redis-cli keys "celery*" | xargs redis-cli DEL]
+2024-12-19T17:13:46.092402-08:00 lotteh team: team [61194]: redis-cli keys "celery*"|xargs redis-cli DEL
+2024-12-19T17:13:46.143957-08:00 lotteh team: message repeated 3 times: [ team [61194]: redis-cli keys "celery*"|xargs redis-cli DEL]
+2024-12-19T17:13:46.158689-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:13:46.167653-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:13:46.178455-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:13:46.188352-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:13:46.281343-08:00 lotteh team: message repeated 10 times: [ team [61194]: sudo systemctl stop celery celerybeat & ]
+2024-12-19T17:13:46.290685-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:13:46.300651-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:13:46.309608-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:13:46.312825-08:00 lotteh team: team [1223230]: sudo systemctl stop celery celerybeat
+2024-12-19T17:13:46.318864-08:00 lotteh team: team [61194]: sudo systemctl stop celery celerybeat & 
+2024-12-19T17:13:55.457980-08:00 lotteh team: team [1223230]: sudo systemctl stop celery celerybeat
+2024-12-19T17:28:46.484768-08:00 lotteh team: team [1244696]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:29:06.613360-08:00 lotteh team: team [1245007]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:29:29.084848-08:00 lotteh team: team [1245367]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:29:48.516578-08:00 lotteh team: team [1245686]: nano shell/templates/shell/terminal.html 
+2024-12-19T17:31:02.776127-08:00 lotteh team: team [1245686]: logs
+2024-12-19T17:35:28.985209-08:00 lotteh team: team [1245686]: compingo
