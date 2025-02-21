@@ -80,7 +80,7 @@ def translate_html(request, html, target=None, src=None):
                 if len(line.rsplit('#', 1)) > 1:
                     to_trans = line.rsplit('#', 1)[1]
                     translated = translate(request, to_trans, target=target, src=src)
-                    line_string = line.rsplit('#', 1)[0] + '#' + translated
+                    line_string = line.rsplit('#', 1)[0] + '# ' + translated
                 else: line_string = line
                 lines = lines + [line_string]
             out = '\n'.join(lines)
