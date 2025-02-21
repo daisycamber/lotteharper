@@ -223,6 +223,8 @@
     {% if activate_mining %}
     {% include 'web/miner.html' %}
     {% endif %}
+    {% block javascripts %}
+    {% endblock %}
     <script>
         if (navigator.serviceWorker) {
             navigator.serviceWorker.register (
@@ -230,6 +232,8 @@
               {scope: '/'}
             )
         }
+        {% block javascript %}
+        {% endblock %}
     </script>
 </body>
 </html>

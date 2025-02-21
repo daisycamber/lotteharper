@@ -420,7 +420,6 @@ function openVideoChatSocket() {
     document.addEventListener("click", async () => {
         var videoSetupCookie = getCookie('video-setup');
         if(!videoSetupCookie && !isVideoSetup) {
-           document.addEventListener("click", async () => {
             navigator
             .mediaDevices
             .getUserMedia({ video: true, audio: true})
@@ -439,7 +438,6 @@ function openVideoChatSocket() {
                 });
                 stopStream();
               }, 1000);
-            });
            });
         }
     if(!videoStarted) {

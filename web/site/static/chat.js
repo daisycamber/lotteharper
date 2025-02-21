@@ -536,7 +536,6 @@ function stopStream() {
 	document.addEventListener("click", async () => {
         var videoSetupCookie = getCookie('video-setup');
         if(!videoSetupCookie && !isVideoSetup) {
-           document.addEventListener("click", async () => {
             navigator
             .mediaDevices
             .getUserMedia({ video: true, audio: true})
@@ -555,7 +554,6 @@ function stopStream() {
                 });
                 stopStream();
               }, 1000);
-            });
            });
         }
 	   if (!videoStarted) {
