@@ -1,6 +1,6 @@
 overwrite = False
-test_mode = True
-single_lang = True
+test_mode = False
+single_lang = False
 force_copy = False
 force_overwrite = False
 PRIV_POSTS = 24

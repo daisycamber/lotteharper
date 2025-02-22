@@ -98,18 +98,18 @@ class Post(models.Model):
 
     def get_web_url(self, original=False):
         from django.conf import settings
-        return '{}{}/media/images/{}{}.{}'.format('https://', settings.STATIC_DOMAIN, self.uuid, '' if not original else '-priv', 'png' if not self.private else 'cbcenc')
+        return '{}{}/media/images/{}{}.{}'.format('https://', settings.STATIC_DOMAIN, self.uuid, '' if not original else '-priv', 'png' if (not self.private) or not original else 'cbcenc')
 
     def get_web_thumb_url(self, original=False):
         from django.conf import settings
-        return '{}{}/media/images/{}{}-thumb.{}'.format('https://', settings.STATIC_DOMAIN, self.uuid, '' if not original else '-priv', 'png' if not self.private else 'cbcenc')
+        return '{}{}/media/images/{}{}-thumb.{}'.format('https://', settings.STATIC_DOMAIN, self.uuid, '' if not original else '-priv', 'png' if (not self.private) or not original else 'cbcenc')
 
     def copy_web(self, force=False, original=False, altcode=None):
         import os, shutil
         from django.conf import settings
         if not self.image: return
-        new_path = os.path.join(settings.BASE_DIR, 'web/site/media/images/', '{}{}'.format(self.uuid, '{}.{}'.format('' if not original else '-priv', 'png' if not self.private else 'cbcenc')))
-        new_path_thumb = os.path.join(settings.BASE_DIR, 'web/site/media/images/', '{}{}'.format(self.uuid, '{}-thumb.{}'.format('' if not original else '-priv', 'png' if not self.private else 'cbcenc')))
+        new_path = os.path.join(settings.BASE_DIR, 'web/site/media/images/', '{}{}'.format(self.uuid, '{}.{}'.format('' if not original else '-priv', 'png' if (not self.private) or not original else 'cbcenc')))
+        new_path_thumb = os.path.join(settings.BASE_DIR, 'web/site/media/images/', '{}{}'.format(self.uuid, '{}-thumb.{}'.format('' if not original else '-priv', 'png' if (not self.private) or not original else 'cbcenc')))
         if self.image and self.private and original and (force or (not os.path.exists(new_path)) or (not os.path.exists(new_path_thumb))):
             if (not self.image) or not os.path.exists(self.image.path): self.download_photo()
             if not os.path.exists(self.image.path): return
