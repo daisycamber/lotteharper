@@ -66,7 +66,7 @@ def blur_nude_only(input_path, output_path):
     if bc < MIN_BC_NUDE: bc = MIN_BC_NUDE
     for box in res:
         box = box['box']
-        print(box)
+#        print(box)
         x1 = int(box[0] - vs)
         y1 = int(box[1] - vs)
         x2 = int(box[2] + box[0] + vs)
@@ -75,7 +75,7 @@ def blur_nude_only(input_path, output_path):
         if y1 < 0: y1 = 0
         if y2 > image.shape[0]: y2 = image.shape[0]
         if x2 > image.shape[1]: x2 = image.shape[1]
-        print('x1: {}, y1: {}, x2: {}, y2: {}'.format(x1, y1, x2, y2))
+#        print('x1: {}, y1: {}, x2: {}, y2: {}'.format(x1, y1, x2, y2))
         part = image[y1:y2, x1:x2]
         part = cv2.GaussianBlur(part, (bc + 1,bc + 1), bc*2)
         image[y1:y2, x1:x2] = part

@@ -1,8 +1,8 @@
 overwrite = False
-test_mode = False
-single_lang = False
+test_mode = True
+single_lang = True
 force_copy = False
-force_overwrite = True
+force_overwrite = False
 PRIV_POSTS = 24
 import os, pytz
 from datetime import datetime
@@ -163,12 +163,14 @@ def generate_site():
         context['images'] = urllib.parse.quote(encrypt_cbc(images, settings.PRV_AES_KEY))
         context['nfc_images'] = urllib.parse.quote(encrypt_cbc(images, nfc_aes))
         context['path'] = '/{}/{}'.format(lang, 'private')
+        context['hiderrm'] = True
         context['title'] = translate(request, 'Private', lang, 'en')
         private = render_to_string('web/private.html', context)
         if (not os.path.exists(os.path.join(settings.BASE_DIR, 'web/site/', '{}/private.html'.format(lang)))) or overwrite: # or force_overwrite:
             with open(os.path.join(settings.BASE_DIR, 'web/site/', '{}/private.html'.format(lang)), 'w') as file:
                 file.write(private)
         context['footer'] = False # ...None).exclude(image_offsite=None)
+        context['hiderrm'] = False
         for post in [] if test_mode else Post.objects.filter(public=True, posted=True, published=True, feed="blog").union(Post.objects.filter(uploaded=True, public=True, posted=True, published=True, feed="private").exclude(image_bucket=None)).order_by('-date_posted'):
             if post:
                 url = '/{}/{}'.format(lang, post.friendly_name)
@@ -190,12 +192,13 @@ def generate_site():
                 url = '/{}/{}'.format(lang, post.friendly_name)
                 context['post'] = post
                 context['path'] = url
+                context['hiderrm'] = True
                 if post.image and not post.image_offsite: post.copy_web(force=force_copy, original=False)
                 context['or_image_url'] = post.get_web_url(original=False)
                 context['title'] = translate(request, 'Private Photo', lang, 'en') + ' - ' + translate(request, shorttitle(post.id), lang, 'en')
                 context['post_links'] = '<p>{}</p>\n'.format('<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), 'Buy with cryptocurrency on {}'.format(settings.SITE_NAME), translate(request, 'Buy with crypto', lang, 'en')))
                 path = os.path.join(settings.BASE_DIR, 'web/site/', '{}/{}.html'.format(lang, post.friendly_name))
-                if overwrite or (not os.path.exists(path)):
+                if overwrite or (not os.path.exists(path)) or True:
                     try:
                         index = render_to_string('web/post.html', context)
                         with open(path, 'w') as file:
@@ -204,6 +207,7 @@ def generate_site():
                         import traceback
                         print(traceback.format_exc())
 #                    print('Overwriting')
+        context['hiderrm'] = False
         context['title'] = 'Video Chat'
         context['path'] = '/{}/{}'.format(lang, 'chat')
         page = render_to_string('web/chat.html', context)
@@ -227,7 +231,6 @@ def generate_site():
             index = render_to_string('web/404.html', context)
             with open(path, 'w') as file:
                 file.write(index)
-
     context['hidenav'] = False
     context['hidefooter'] = False
     urls = ['/', '/news', '/landing','/private','/index','/contact']

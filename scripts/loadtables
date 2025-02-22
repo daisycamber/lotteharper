@@ -12,6 +12,7 @@ python clear_empty_profiles_table.py
 ./scripts/loadapp feed.bid
 ./scripts/loadapp chat
 ./scripts/loadapp verify
+python clear_empty_security_tables.py
 ./scripts/loadapp security
 ./scripts/loadapp payments
 ./scripts/loadapp vendors

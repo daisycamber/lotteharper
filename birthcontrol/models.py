@@ -39,9 +39,6 @@ class BirthControlPill(models.Model):
         from django.conf import settings
         return 'Patient - {} took a birth control pill on {}'.format(self.patient.vendor_profile.full_name, self.time_taken.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime("%m/%d/%Y at %H:%M:%S"))
 
-admin.site.register(BirthControlPill)
-
-
 class BirthControlProfile(models.Model):
     patient = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='birthcontrol_profile')
     birth_control = models.ImageField(null=True, blank=True, upload_to=get_image_path)

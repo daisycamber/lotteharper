@@ -146,7 +146,7 @@ class Post(models.Model):
             if not self.private and ((not self.image_thumbnail) or (not os.path.exists(self.image_thumbnail.path))):
                 self.download_thumbnail()
                 self.get_image_thumb_url()
-            if not os.path.exists(self.image_thumbnail.path): return
+            if not os.path.exists(self.image_thumbnail.path): self.download_thumbnail()
             if not original and self.private and ((not self.image_censored_thumbnail) or (not os.path.exists(self.image_censored_thumbnail.path))):
                 self.get_blur_thumb_url(gen=True)
             self = Post.objects.get(id=self.id)
