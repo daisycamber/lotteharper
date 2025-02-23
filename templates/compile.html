@@ -1,10 +1,9 @@
 {% load feed_filters %}
 {% load app_filters %}
+{% autoescape off %}
 {% if not filemode %}
 {% for obj in post.content|highlightcode %}
-{% autoescape off %}
 {{ obj.text|addhttpstodomains|embedlinks|tagusers|trans|safe }}
-{% endautoescape %}
 {% if obj.code and obj.lang %}
 <pre class="language-{{ obj.lang }}"><code>{% autoescape off %}{{ obj.code }}{% endautoescape %}</code></pre>
 {% endif %}
@@ -12,3 +11,4 @@
 {% else %}
 {{ post.content }}
 {% endif %}
+{% endautoescape %}

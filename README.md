@@ -107,6 +107,10 @@ As well as A and AAAA record matching the SPF record above.
 
 Note: This repo is automatically published by the software within every 12 hours and is usually in good shape to build at that time. If it's not working for you, consider pulling the repo again in a day or two to get a working copy of the app.
 
+This website and it's use is governed by the ![Code of Conduct](https://github.com/daisycamber/lotteharper/blob/main/CODE_OF_CONDUCT.md) and the privacy policy and terms of service at ![lotteh.com/terms/](https://lotteh.com/terms/)
+
+Questions? ![Contact me at GlamGirlX.com](https://glamgirlx.com/contact)
+
 ### Thank you!
 __Thank you for visiting, and for your interest in my project!__
 - Charlotte Harper (Daisy)

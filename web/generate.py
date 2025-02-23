@@ -3,7 +3,8 @@ test_mode = False
 single_lang = False
 force_copy = False
 force_overwrite = False
-disable_langs = True
+disable_langs = False
+end_after_langs = False
 PRIV_POSTS = 24
 import os, pytz
 from datetime import datetime
@@ -46,6 +47,40 @@ def generate_site():
     nfc_aes = User.objects.get(id=settings.MY_ID).vivokey_scans.last().nfc_id.replace(':','').upper() + 'FF'
     if test_mode: languages = ['en', 'de', 'fr'] if not single_lang else ['en']
     langs = languages
+    context = {
+        'site_name': settings.STATIC_SITE_NAME,
+        'the_site_name': settings.STATIC_SITE_NAME,
+        'static_url': settings.STATIC_SITE_URL,
+        'site_url': settings.BASE_URL,
+        'description': settings.BASE_DESCRIPTION,
+        'base_url': settings.STATIC_SITE_URL,
+        'add_url': settings.ADD_URL,
+        'author_name': settings.AUTHOR_NAME,
+        'activate_mining': settings.ACTIVATE_MINING,
+        'model_name': User.objects.get(id=settings.MY_ID).profile.name,
+        'model': User.objects.get(id=settings.MY_ID),
+        'my_profile': User.objects.get(id=settings.MY_ID).profile,
+        'typical_response_time': settings.TYPICAL_RESPONSE_TIME_HOURS,
+        'contact_form': ContactForm(),
+        'github_url': settings.GITHUB_URL,
+        'base_domain': settings.DOMAIN,
+        'base_description': settings.BASE_DESCRIPTION,
+        'clock_color': '#ffcccb',
+        'year': timezone.now().strftime('%Y'),
+        'show_ads': True,
+        'path': '/',
+        'request': {},
+        'footer': True,
+        'btc_wallet': settings.BITCOIN_WALLET,
+        'polling_now': timezone.now() < datetime(2024, 11, 6).replace(tzinfo=pytz.timezone(settings.TIME_ZONE)),
+        'default_vibration': settings.DEFAULT_VIBRATION,
+        'rel_aes_key': settings.REL_AES_KEY,
+        'monero_address': settings.MONERO_ADDRESS,
+        'the_ad_text': settings.AD_TEXT,
+        'languages': languages,
+    }
+    posts = Post.objects.filter(public=True, posted=True, private=False, published=True, feed="blog").union(Post.objects.filter(public=True, private=False, published=True, pinned=True, posted=True, feed='news')).order_by('-date_posted').order_by('-pinned')
+    context['posts'] = posts
     for lang in langs if not disable_langs else []:
         images = ''
         init_images = ''
@@ -54,6 +89,8 @@ def generate_site():
         request.GET = GetParams(lang)
         set_current_request(request)
 #        print(lang)
+        context['lang'] = lang
+        context['request'] = request
         try:
             os.mkdir(os.path.join(settings.BASE_DIR, 'web/site/{}'.format(lang)))
         except: pass
@@ -71,8 +108,9 @@ def generate_site():
                 else:
                     images = images + '<div id="div{}">{}'.format(count, translate(request, post.content, lang, 'en')) + ('<img width="100%" height="auto" src="{}" id="img{}" alt="{}"/>'.format(img_url, count, shorttitle(post.id)) if post.image else '')
                     images = images + '<p>{} | {} | {}</p></div><hr>\n'.format('<a href="/{}'.format(lang) + '/{}" title="{}">{}</a>'.format(post.friendly_name, 'View Post - {} by {}'.format(shorttitle(post.id), post.author.profile.name), translate(request, 'View', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-card', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid), translate(request, 'Buy on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), 'Buy with cryptocurrency on {}'.format(settings.SITE_NAME), translate(request, 'Buy with cryptocurrency', lang, 'en')))
+        context['images'] = images
+        context['init_images'] = init_images
         blog = ''
-        posts = Post.objects.filter(public=True, posted=True, private=False, published=True, feed="blog").union(Post.objects.filter(public=True, private=False, published=True, pinned=True, posted=True, feed='news')).order_by('-date_posted').order_by('-pinned')
         links = [None] * posts.count()
         count = 0
         for post in posts:
@@ -97,45 +135,8 @@ def generate_site():
                 blog = blog + '<hr>'
             links[count] = blog
             count = count + 1
-        context = {
-            'site_name': settings.STATIC_SITE_NAME,
-            'the_site_name': settings.STATIC_SITE_NAME,
-            'static_url': settings.STATIC_SITE_URL,
-            'site_url': settings.BASE_URL,
-            'description': settings.BASE_DESCRIPTION,
-            'base_url': settings.STATIC_SITE_URL,
-            'add_url': settings.ADD_URL,
-            'author_name': settings.AUTHOR_NAME,
-            'activate_mining': settings.ACTIVATE_MINING,
-            'images': images,
-            'init_images': init_images,
-            'model_name': User.objects.get(id=settings.MY_ID).profile.name,
-            'model': User.objects.get(id=settings.MY_ID),
-            'my_profile': User.objects.get(id=settings.MY_ID).profile,
-            'typical_response_time': settings.TYPICAL_RESPONSE_TIME_HOURS,
-            'contact_form': ContactForm(),
-            'blog': blog,
-            'posts': posts,
-            'links': links,
-            'github_url': settings.GITHUB_URL,
-            'base_domain': settings.DOMAIN,
-            'base_description': settings.BASE_DESCRIPTION,
-            'clock_color': '#ffcccb',
-            'year': timezone.now().strftime('%Y'),
-            'show_ads': True,
-            'path': '/',
-            'request': {},
-            'footer': True,
-            'btc_wallet': settings.BITCOIN_WALLET,
-            'polling_now': timezone.now() < datetime(2024, 11, 6).replace(tzinfo=pytz.timezone(settings.TIME_ZONE)),
-            'default_vibration': settings.DEFAULT_VIBRATION,
-            'rel_aes_key': settings.REL_AES_KEY,
-            'monero_address': settings.MONERO_ADDRESS,
-            'the_ad_text': settings.AD_TEXT,
-            'request': request,
-            'languages': languages,
-            'lang': lang
-        }
+        context['blog'] = blog
+        context['links'] = links
         context['path'] = '/{}/{}'.format(lang, '')
         context['title'] = translate(request, 'My Photos', lang, 'en')
         index = render_to_string('web/index.html', context)
@@ -198,7 +199,7 @@ def generate_site():
         for post in Post.objects.filter(private=True, posted=True, published=True, feed="private").union(Post.objects.filter(uploaded=True, private=True, posted=True, published=True, feed="private").exclude(image_bucket=None)).order_by('-date_posted')[:settings.PAID_POSTS * 2]:
             if post:
                 path = os.path.join(settings.BASE_DIR, 'web/site/', '{}/{}.html'.format(lang, post.friendly_name))
-                if overwrite or (not os.path.exists(path)) or True:
+                if overwrite or (not os.path.exists(path)):
                     url = '/{}/{}'.format(lang, post.friendly_name)
                     context['post'] = post
                     context['path'] = url
@@ -239,9 +240,17 @@ def generate_site():
             index = render_to_string('web/404.html', context)
             with open(path, 'w') as file:
                 file.write(index)
+    if end_after_langs: return
+    lang = 'en'
+    request = DummyRequest(lang)
+    request.GET = GetParams(lang)
+    set_current_request(request)
+#        print(lang)
+    context['lang'] = lang
+    context['request'] = request
     context['hidenav'] = False
     context['hidefooter'] = False
-    urls = ['/', '/news', '/landing','/private','/index','/contact']
+    urls = ['', 'news', 'landing','private','index','contact']
     images = None
     lang = 'en'
     request = DummyRequest(lang)
@@ -252,7 +261,7 @@ def generate_site():
     context['title'] = 'Error 404 - File Not Found'
     context['hiderrm'] = True
     path = os.path.join(settings.BASE_DIR, 'web/site/', '{}.html'.format('404'))
-    if not os.path.exists(path) or overwrite:
+    if not os.path.exists(path) or overwrite or True:
         index = render_to_string('web/404.html', context)
         with open(path, 'w') as file:
             file.write(index)
@@ -267,7 +276,8 @@ def generate_site():
     recovery = render_to_string('web/recovery.html', context)
     with open(os.path.join(settings.BASE_DIR, 'web/site/', 'recovery.html'), 'w') as file:
         file.write(recovery)
-    urls = urls + [url]
+    for post in context['posts']:
+        urls = urls + [post.friendly_name]
     sitemapcontext = {'base_url': settings.STATIC_SITE_URL, 'languages': languages, 'urls': urls, 'date': timezone.now().strftime('%Y-%m-%d')}
     index = render_to_string('web/sitemap.xml', sitemapcontext)
     with open(os.path.join(settings.BASE_DIR, 'web/site/', 'sitemap.xml'), 'w') as file:

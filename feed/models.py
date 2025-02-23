@@ -804,6 +804,8 @@ class Post(models.Model):
             from lotteh.celery import write_post_book
             write_post_book.delay(self.id)
             print('Scheduling write book')
+        if (this and ((this.content != self.content) or (not this))) and '***' in self.content and self.posted:
+            self.compile_content()
         try:
             super(Post, self).save(*args, **kwargs)
         except: pass

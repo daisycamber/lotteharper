@@ -62,7 +62,7 @@
               <a class="nav-link" href="/pt/landing" title="Visite a página de destino">Pousar</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://qoshlli.com" title="Bate -papo por vídeo">Bater papo</a>
+              <a class="nav-link" href="/pt/chat" title="Bate -papo por vídeo">Bater papo</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/pt/private" title="Veja fotos particulares com uma chave">Privado</a>
@@ -116,7 +116,7 @@
 	    
 <h1>Esta página não pôde ser encontrada.</h1>
 <p><i>Considere voltar ao <a href="/" title="Página inicial">Página inicial</a>.</i></p>
-<img class="mx-auto" style="width: 80%; height: auto" src="None" alt="Minha foto de capa">
+<img class="mx-auto" style="width: 80%; height: auto" src="https://i.imgur.com/OJSRIU3.jpeg" alt="Minha foto de capa">
 
 <div class="mx-auto p-1 m-1" style="display: flex; justify-content: space-around;">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
@@ -143,31 +143,34 @@
     <i class="bi bi-globe"></i> Linguagem
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="/en/404">English</a>
-    <a class="dropdown-item" href="/es/404">Española</a>
-    <a class="dropdown-item" href="/fr/404">Français</a>
-    <a class="dropdown-item" href="/de/404">Deutsch</a>
-    <a class="dropdown-item" href="/nl/404">Nederlands</a>
-    <a class="dropdown-item" href="/af/404">Afrikaans</a>
-    <a class="dropdown-item" href="/ar/404">عربي</a>
-    <a class="dropdown-item" href="/pt/404">Português (Portugal, Brazil)</a>
-    <a class="dropdown-item" href="/id/404">Bahasa</a>
-    <a class="dropdown-item" href="/hi/404">हिंदी</a>
-    <a class="dropdown-item" href="/ru/404">Русский</a>
-    <a class="dropdown-item" href="/ja/404">日本語</a>
-    <a class="dropdown-item" href="/th/404">แบบไทย</a>
-    <a class="dropdown-item" href="/zh-CN/404">中国人</a>
-    <a class="dropdown-item" href="/tl/404">Filipino</a>
-    <a class="dropdown-item" href="/cs/404">čeština</a>
-    <a class="dropdown-item" href="/he/404">עִברִית</a>
-    <a class="dropdown-item" href="/it/404">Italiana</a>
-    <a class="dropdown-item" href="/no/404">norsk</a>
-    <a class="dropdown-item" href="/pl/404">Polski</a>
-    <a class="dropdown-item" href="/sv/404">svenska</a>
-    <a class="dropdown-item" href="/tr/404">Türkçe</a>
-    <a class="dropdown-item" href="/uk/404">українська</a>
-    <a class="dropdown-item" href="/vi/404">Tiếng Việt</a>
-    <a class="dropdown-item" href="/zu/404">Zulu</a>
+    <div style="max-height: 50vh; overflow: scroll;">
+        <a class="dropdown-item" href="/en/404">English</a>
+        <a class="dropdown-item" href="/es/404">Española</a>
+        <a class="dropdown-item" href="/fr/404">Français</a>
+        <a class="dropdown-item" href="/de/404">Deutsch</a>
+        <a class="dropdown-item" href="/nl/404">Nederlands</a>
+        <a class="dropdown-item" href="/af/404">Afrikaans</a>
+        <a class="dropdown-item" href="/ar/404">عربي</a>
+        <a class="dropdown-item" href="/pt/404">Português (Portugal, Brazil)</a>
+        <a class="dropdown-item" href="/id/404">Bahasa</a>
+        <a class="dropdown-item" href="/hi/404">हिंदी</a>
+        <a class="dropdown-item" href="/ru/404">Русский</a>
+        <a class="dropdown-item" href="/ja/404">日本語</a>
+        <a class="dropdown-item" href="/th/404">แบบไทย</a>
+        <a class="dropdown-item" href="/zh-CN/404">中国人</a>
+        <a class="dropdown-item" href="/tl/404">Filipino</a>
+        <a class="dropdown-item" href="/cs/404">čeština</a>
+        <a class="dropdown-item" href="/he/404">עִברִית</a>
+        <a class="dropdown-item" href="/it/404">Italiana</a>
+        <a class="dropdown-item" href="/no/404">norsk</a>
+        <a class="dropdown-item" href="/pl/404">Polski</a>
+        <a class="dropdown-item" href="/sv/404">svenska</a>
+        <a class="dropdown-item" href="/tr/404">Türkçe</a>
+        <a class="dropdown-item" href="/uk/404">українська</a>
+        <a class="dropdown-item" href="/vi/404">Tiếng Việt</a>
+        <a class="dropdown-item" href="/zu/404">Zulu</a>
+        <a class="dropdown-item" href="/sq/404">shqiptare</a>
+    </div>
   </div>
 </div>
 </p>
@@ -389,8 +392,8 @@ if(document.getElementById("current-time")) {
               link.href = url;
               link.download = 'Glam Girl X - ' + filename;
               document.body.appendChild(link);
+              link.classList.add('hide');
               link.click();
-              document.body.removeChild(link);
             }
             function downloadQr() {
                     downloadQrImage(image.src, 'QR Code');
@@ -398,6 +401,8 @@ if(document.getElementById("current-time")) {
             qrdiv.onclick = downloadQr;
         });
     </script>
+    
+    
     
     
     <script>

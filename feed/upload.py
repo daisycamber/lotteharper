@@ -59,7 +59,8 @@ def upload_photo(path, key=None):
     im2.save(buffered2, format="PNG")
     image2 = base64.b64encode(buffered2.getvalue())
     if not len(image1) > 0: return None, None
-    return upload(image1, key=None) if len(image1) > 0 else None, upload(image2, key=None) if len(image2) > 0 else None
+    from django.conf import settings
+    return upload(image1, key=key if key else settings.IMGUR_ID) if len(image1) > 0 else None, upload(image2, key=key if key else settings.IMGUR_ID) if len(image2) > 0 else None
 
 def upload(base64_data, key=None):
 #    b64data = 'data:image/png;base64,' + base64_data.decode('utf-8')
@@ -134,7 +135,7 @@ def upload_post(post):
         from django.utils import timezone
         import datetime
         try:
-            i1, i2 = upload_photo((post.image.path if post.public and not post.private else post.image_censored.path), post.author.vendor_profile.imgur_token if post.author.vendor_profile.imgur_time > timezone.now() - datetime.timedelta(minutes=60) else None)
+            i1, i2 = upload_photo((post.image.path if post.public and not post.private else post.image_censored.path)) #, post.author.vendor_profile.imgur_token if post.author.vendor_profile.imgur_time > timezone.now() - datetime.timedelta(minutes=60) else None)
             post.image_offsite = i1
             post.image_thumb_offsite = i2
         except OSError:
