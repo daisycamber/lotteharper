@@ -15,8 +15,8 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/static/fonts/bootstrap-icons.css">
     
-<meta property="og:image" content="/feed/secure/photo/kE790oZeYMwSwtEvgYGQQVgJh536I3DJc6qBYtlUGGQ67pl8W5bQiei1Cfme9lugqrmqJOwfm3jKWn95cWLUKaoVRfQoWQHl9LAbvesj6YtwrO1wrWh33jm59Pm8m113IZnwpeEjKyDn2mLeJAt6JzgYxaWxNCrlKhifEENzLxWIkzeWANDiJQLyp4KsW5SDBDZYKsPk3FgZeMCdwGBeVjUh4kG5ux0R6G42q2-0.png">
-<meta name="pinterest:image" content="/feed/secure/photo/7caVI5XxQEQDQYVLeM0Cz6IrwCq3KAyBIIcnFdCtdypLAGOpIH07LIEBctOVBIKyCWN0BR4sZP0wLugUwvdcN1j0mcy01VNhykmjqXdeMsW0sfrPnF5nEEyPcsD8yTmws8sFZVBSPsHIUZDIy9qJuVtjwKPyEjo4VLzC0MnL20v7zrL2DQRepKpBwomsvkDQZ5yg71iBDKZT3vg1x004zAg5HZub7UMO3cITLz-0.png"/>
+<meta property="og:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/e8c8474f-fc1f-481f-a990-de6f92147ee3.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=XeZVYcm3gqztbIrAYSyiI8Ea6QU%3D&amp;Expires=1740935605">
+<meta name="pinterest:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/e8c8474f-fc1f-481f-a990-de6f92147ee3.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=XeZVYcm3gqztbIrAYSyiI8Ea6QU%3D&amp;Expires=1740935605"/>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
          crossorigin="anonymous"></script>
@@ -124,6 +124,7 @@
 <p><i>Sa pamamagitan ng Daisy</i></p>
 
 <div style="white-space: pre-wrap;">Isang babaeng nakasuot ng puting damit na nakaupo sa kama.</div>
+
 
 <div class="mx-auto p-1 m-1" style="display: flex; justify-content: space-around;">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
@@ -241,6 +242,23 @@
     <script>
         
 
+
+var currentReader = 0;
+function toggleReader(id) {
+	currentReader = id;
+	$('#reader-modal' + id).toggleClass('hide');
+	$('#reader-modal' + id).toggleClass('fade-in-fast');
+	$('#bnav' + id).toggleClass('hide');
+	$('#bnav' + id).toggleClass('fade-in-fast');
+	setTimeout(function() {
+		$('#reader-modal' + id).toggleClass('fade-in-fast');
+		$('#bnav' + id).toggleClass('fade-in-fast');
+	}, 1000);
+}
+function jumpbookto(page) {
+	document.getElementById('reader-modal' + currentReader).scrollTo(0, (parseInt(document.getElementById('jumpto' + page).value)-1) * parseInt(window.innerHeight));
+	document.getElementById('pagecount' + page).innerHTML = parseInt(document.getElementById('jumpto' + page).value);
+}
 
 
         

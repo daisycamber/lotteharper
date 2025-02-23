@@ -2032,7 +2032,7 @@ UsePAM yes
 X11Forwarding yes
 # X11DisplayOffset 10
 # X11uselocalHost Ja
-# Pille ja
+# Schädlich ja
 PrintMotd no
 # Printlastlog Ja
 # Tcpkeepalive Ja
@@ -2050,7 +2050,7 @@ PrintMotd no
 # Kein Standard -Bannerweg
 Banner /etc/banner
 
-# Ermöglichen
+# Erlauben Sie dem Kunden, lokale Variablen zu bestehen
 AcceptEnv LANG LC_*
 
 # Überschreiben Sie die Standardeinstellung ohne Subsysteme
@@ -2192,7 +2192,7 @@ sudo ufw allow 'Dovecot Secure POP3'
 sudo ufw allow 110/tcp
 sudo ufw allow 25/tcp
 echo "y" | sudo ufw enable
-# Deaktivierte iPatables
+# Deaktivieren Sie Iptables
 echo "Configuring firewall"
 sudo iptables -P INPUT ACCEPT
 sudo iptables -P OUTPUT ACCEPT
@@ -2263,7 +2263,7 @@ mkdir temp/data
 mkdir temp/gfpgan
 mkdir mail/inbox
 mkdir mailbox
-# SETUP VIRTUELENV
+# Setup Virtuallenv
 cd $DIR
 echo "Creating virtual environment"
 python -m venv venv
@@ -2398,7 +2398,7 @@ echo "Setup crontab/sudoers configuration"
 sudo crontab -l -u root | cat - config/crontab | sudo crontab -u root -
 sudo sh -c "cat config/sudoers &gt;&gt; /etc/sudoers"
 # PAM -Konfiguration injizieren und fehlerhafte SSH -Konfiguration entfernen
-# Sudo sed -i '' -und $ d '/etc/pam.d/ssshd
+# sudo sed -i '' -e '$ d' /tc/pam.d/ssshd
 # Sudo sed -i '' -und $ d ' /etc /Profil
 echo "session required pam_exec.so seteuid /home/team/femmebabe/pam.sh" | sudo tee -a /etc/pam.d/sshd
 echo "session required pam_exec.so seteuid /home/team/femmebabe/logout.sh" | sudo tee -a /etc/pam.d/sshd
@@ -2934,7 +2934,7 @@ submission inet n       -       y       -       -       smtpd
 # -O SMTPD_CLIENT_RESTRIKTIONS = $ MUA_CLIENS_RESTRIKTIONEN
 # -O SMTPD_HELO_RESTRIKTIONS = $ MUA_HELO_RESTRIKTIONS
 # -O SMTPD_SENDER_RESTRIKTIONS = $ MUA_SENDER_RESTRIKTIONS
-# -O SMTPD_RECIPIENT_TRASTRICTIONS =
+# -O SMTPD_RECIPIENT_RESTRIKTIONS =
 # -O SMTPD_RELAY_RESTRIKTIONS = CENN_SASL_AUTHENTICATION, Ablehnung
 # -O milter_macro_daemon_name = Ursprung
 # Wählen Sie eine aus: Aktivieren Sie SMTPS nur für Loopback -Clients oder für einen Kunden.
@@ -2999,11 +2999,11 @@ maildrop  unix  -       n       n       -       -       pipe
 # Neuere Cyrus -Versionen können den vorhandenen "lmtp" Master.cf -Eintrag verwenden.
 # 
 # Geben Sie in Cyrus.conf an:
-# Lmtp cmd = "lmtpd -a" hör = "localhost: lmtp" proto = tcp4
+# lmtp cmd = "lmtpd -a" hör = "localhost: lmtp" proto = tcp4
 # 
 # Geben Sie in main.cf eine oder mehrere der folgenden an:
 # mailbox_transport = lmtp: inet: localhost
-# virtual_transport = lmtp: inet: localhost
+# Virtual_transport = lmtp: inet: localhost
 # 
 # ====================================================== ===================
 # 
@@ -3016,7 +3016,7 @@ maildrop  unix  -       n       n       -       -       pipe
 # ====================================================== ===================
 # Altes Beispiel für die Lieferung über Cyrus.
 # 
-# Alt -Cyrus Unix - n n - - Pfeife
+# Alt -Korus unix - n - - Pfeife
 # flags = r user = cyrus argv =/cyrus/bin/liefer -e -m $ {Erweiterung} $ {user}
 # 
 # ====================================================== ===================
@@ -3052,7 +3052,7 @@ nano config/etc_default_opendkim
 # DAEMON_OPTS=""
 # Wechseln Sie zu/var/spool/postfix/run/opendkim, um eine UNIX -Socket mit zu verwenden
 # Postfix in einem Chroot:
-# Rundir =/var/spool/postfix/run/opendkim
+# Rundir =/war/spool/postfix/run/opendkim
 RUNDIR=/run/opendkim
 # 
 # Überzeugung, um einen alternativen Sockel anzugeben
@@ -3084,7 +3084,7 @@ nano config/etc_dovecot_conf.d_10-master.conf
 
 # Der Anmeldebutzer wird intern durch Anmeldeprozesse verwendet. Dies ist am nicht vertrauenswürdigsten
 # Benutzer im Dovecot -System. Es sollte überhaupt keinen Zugang zu irgendetwas haben.
-# default_login_user = dovenull
+# default_login_user = devenull
 
 # Der interne Benutzer wird von nicht privilegierten Prozessen verwendet. Es sollte getrennt sein von
 # Login -Benutzer, damit Anmeldungsprozesse andere Prozesse nicht stören.
@@ -3148,7 +3148,7 @@ service imap {
   # vsz_limit = $ default_vsz_limit
 
   # Max. Anzahl der IMAP -Prozesse (Verbindungen)
-  # Process_limit = 1024
+  # process_limit = 1024
 }
 
 service pop3 {
@@ -3239,7 +3239,7 @@ nano config/etc_dovecot_dovecot
 # kann -i &lt;instance_name&gt; verwenden, um auszuwählen, welche Instanz verwendet wird (eine Alternative
 # to -c &lt;config_path&gt;). Der Instanzname wird auch zu Dovecot -Prozessen hinzugefügt
 # in PS -Ausgang.
-# Instance_name = dovecot
+# instance_name = dovecot
 
 # Begrüßungsnachricht für Kunden.
 # login_greeting = dovecot bereit.
@@ -3291,7 +3291,7 @@ nano config/etc_dovecot_dovecot
 # "Proxy :: &lt;Name&gt;".
 
 dict {
-  # quota = mysql: /andc/dovecot/dovecot-dic-sql.conf.ext
+  # quota = mysql: /etc/dovecot/dovecot-dict-sql.conf.ext
 }
 
 # Der größte Teil der tatsächlichen Konfiguration wird unten enthalten. Die Dateinamen sind
@@ -3398,7 +3398,7 @@ nano config/etc_default_opendkim
 # DAEMON_OPTS=""
 # Wechseln Sie zu/var/spool/postfix/run/opendkim, um eine UNIX -Socket mit zu verwenden
 # Postfix in einem Chroot:
-# Rundir =/war/spool/postfix/run/opendkim
+# Rundir =/var/spool/postfix/run/opendkim
 RUNDIR=/run/opendkim
 # 
 # Überzeugung, um einen alternativen Sockel anzugeben

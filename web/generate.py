@@ -3,6 +3,7 @@ test_mode = False
 single_lang = False
 force_copy = False
 force_overwrite = False
+disable_langs = True
 PRIV_POSTS = 24
 import os, pytz
 from datetime import datetime
@@ -45,7 +46,7 @@ def generate_site():
     nfc_aes = User.objects.get(id=settings.MY_ID).vivokey_scans.last().nfc_id.replace(':','').upper() + 'FF'
     if test_mode: languages = ['en', 'de', 'fr'] if not single_lang else ['en']
     langs = languages
-    for lang in langs:
+    for lang in langs if not disable_langs else []:
         images = ''
         init_images = ''
         count = 0
@@ -196,16 +197,16 @@ def generate_site():
                         print(traceback.format_exc())
         for post in Post.objects.filter(private=True, posted=True, published=True, feed="private").union(Post.objects.filter(uploaded=True, private=True, posted=True, published=True, feed="private").exclude(image_bucket=None)).order_by('-date_posted')[:settings.PAID_POSTS * 2]:
             if post:
-                url = '/{}/{}'.format(lang, post.friendly_name)
-                context['post'] = post
-                context['path'] = url
-                context['hiderrm'] = True
-                if post.image and not post.image_offsite: post.copy_web(force=force_copy, original=False)
-                context['or_image_url'] = post.get_web_url(original=False)
-                context['title'] = translate(request, 'Private Photo', lang, 'en') + ' - ' + translate(request, shorttitle(post.id), lang, 'en')
-                context['post_links'] = '<p>{}</p>\n'.format('<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), 'Buy with cryptocurrency on {}'.format(settings.SITE_NAME), translate(request, 'Buy with crypto', lang, 'en')))
                 path = os.path.join(settings.BASE_DIR, 'web/site/', '{}/{}.html'.format(lang, post.friendly_name))
                 if overwrite or (not os.path.exists(path)) or True:
+                    url = '/{}/{}'.format(lang, post.friendly_name)
+                    context['post'] = post
+                    context['path'] = url
+                    context['hiderrm'] = True
+                    if post.image and not post.image_offsite: post.copy_web(force=force_copy, original=False)
+                    context['or_image_url'] = post.get_web_url(original=False)
+                    context['title'] = translate(request, 'Private Photo', lang, 'en') + ' - ' + translate(request, shorttitle(post.id), lang, 'en')
+                    context['post_links'] = '<p>{}</p>\n'.format('<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), 'Buy with cryptocurrency on {}'.format(settings.SITE_NAME), translate(request, 'Buy with crypto', lang, 'en')))
                     try:
                         index = render_to_string('web/post.html', context)
                         with open(path, 'w') as file:

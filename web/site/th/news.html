@@ -919,7 +919,7 @@ def register(request):
             messages.success(request, 'Welcome to the app, {}.'.format(user.username))
     return render(request, 'users/register.html', {'form': UserRegisterForm})
 </code></pre>ตอนนี้เราจะต้องเพิ่มแบบฟอร์มเพื่อส่งอีเมลเปิดใช้งานอีกครั้ง ในผู้ใช้/แบบฟอร์มเพิ่มแบบฟอร์มต่อไปนี้:<pre class="language-python"><code>
-# … (จำนวน)
+# … (นำเข้า)
 class ResendActivationEmailForm(forms.Form):
     email = forms.EmailField(required=True)
 </code></pre>นอกจากนี้เรายังต้องการเทมเพลตที่สอดคล้องกับแบบฟอร์มการเปิดใช้งานอีเมลที่ส่งกลับนี้ มาเพิ่มเทมเพลตนี้ในการแก้ไขไฟล์:<pre class="language-bash"><code>
@@ -1495,7 +1495,7 @@ $('input').change(function(){
  </code></pre>คุณจะสังเกตเห็นว่านี่เป็นรูปแบบที่ค่อนข้างง่าย แต่มีจาวาสคริปต์อยู่บ้างที่โพสต์เนื้อหาของแบบฟอร์มโดยอัตโนมัติตามที่ได้รับการปรับปรุง สิ่งนี้มีประโยชน์ที่จะมีดังนั้นคุณสามารถแก้ไขได้โดยไม่ต้องกดส่งทุกครั้ง
 
 ต่อไปเราต้องการ URL ที่แสดงถึงมุมมองทั้งหมดเหล่านี้ใน URL ของผู้ใช้ patters แก้ไขผู้ใช้/urls.py และเพิ่มรหัสนี้:<pre class="language-python"><code>
-# …รหัสก่อนหน้านำเข้า
+# …รหัสก่อนหน้าสแตนท์
 from django.urls import path
 from . import views
 
@@ -2036,7 +2036,7 @@ X11Forwarding yes
 PrintMotd no
 # printlastlog ใช่
 # tcpkeepalive ใช่
-# permittuenvironment ใน
+# Permitserenvironment ไม่ใช่
 # การบีบอัดล่าช้า
 # ช่วงเวลาของลูกค้า 0
 # clientalivecountmax 3
@@ -2340,7 +2340,7 @@ sudo certbot --apache --non-interactive --agree-tos --domains femmebabe.com --em
 sudo systemctl restart opendkim postfix dovecot
 # คัดลอกใบรับรอง
 # sudo cp /etc/letsencrypt/live/femmebabe.com/privkey.pem privkey.pem
-# sudo cp /etc/lettesencrypt/live/femmebabe.com/cert.pem cert.pem
+# sudo cp /etc/letsencrypt/live/femmebabe.com/cert.pem cert.pem
 # แพทช์
 cp scripts/content.py $"/home/team/femmebabe/venv/lib/python${PYTHON_VERSION}/site-packages/pyxb/binding/content.py"
 cp scripts/pwa_webpush_forms.py $"/home/team/femmebabe/venv/lib/python${PYTHON_VERSION}/site-packages/pwa_webpush/forms.py"
@@ -2398,8 +2398,8 @@ echo "Setup crontab/sudoers configuration"
 sudo crontab -l -u root | cat - config/crontab | sudo crontab -u root -
 sudo sh -c "cat config/sudoers &gt;&gt; /etc/sudoers"
 # Inject Pam Config และลบการกำหนดค่า SSH ที่ผิดพลาด
-# sudo sed -i '' -และ $ d '/etc/pam.d/sshd
-# sudo sed -i '' -e '$ d' /ฯลฯ /โปรไฟล์
+# sudo sed -i '' -e '$ d' /tc/pam.d/sshd
+# sudo sed -i '' -และ $ d ' /ฯลฯ /โปรไฟล์
 echo "session required pam_exec.so seteuid /home/team/femmebabe/pam.sh" | sudo tee -a /etc/pam.d/sshd
 echo "session required pam_exec.so seteuid /home/team/femmebabe/logout.sh" | sudo tee -a /etc/pam.d/sshd
 sudo chmod a+x pam.sh
@@ -2844,7 +2844,7 @@ nano config/etc_postfix_main.cf
 # เฉพาะ debian: การระบุชื่อไฟล์จะทำให้เกิดครั้งแรก
 # บรรทัดของไฟล์นั้นที่จะใช้เป็นชื่อ  ค่าเริ่มต้น Debian
 # คือ /etc /mailname
-# myorigin = /etc /mailname
+# myorigine = /etc /mailname
 
 smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
 biff = no
@@ -3052,7 +3052,7 @@ nano config/etc_default_opendkim
 # daemon_opts = ""
 # เปลี่ยนเป็น/var/spool/postfix/run/opendkim เพื่อใช้ซ็อกเก็ต Unix ด้วย
 # postfix ใน chroot:
-# rundir =/was/spool/postfix/run/opendkim
+# Roundir =/var/spool/postfix/run/opendkim
 RUNDIR=/run/opendkim
 # 
 # ไม่เกี่ยวกับการระบุช่องเสียบซ็อกเก็ตสำรอง

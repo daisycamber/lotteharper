@@ -1503,7 +1503,7 @@ $('input').change(function(){
  </code></pre>Vous remarquerez qu'il s'agit d'une forme assez simple, mais il y a un peu de javascript qui publie automatiquement le contenu du formulaire lorsqu'ils sont mis à jour. Ceci est utile à avoir, vous pouvez donc effectuer des modifications sans avoir à appuyer sur Soumettre à chaque fois.
 
 Ensuite, nous avons besoin d'URL représentant toutes ces vues dans les motifs URL des utilisateurs. Modifier les utilisateurs / urls.py et ajouter ce code:<pre class="language-python"><code>
-#  … previous code, imports
+# … Code précédent, importations
 from django.urls import path
 from . import views
 
@@ -2167,7 +2167,7 @@ sudo NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive apt install -y postfix
 sudo NEEDRESTART_MODE=a apt install -y rkhunter clamav-daemon libx264-dev ffmpeg libapache2-mod-wsgi-py3 apache2 cmake python-is-python3 python3-venv python3-pip python3-django expect tesseract-ocr openjdk-8-jdk redis-server libopencv-dev python3-opencv python3-dev libsasl2-dev opendkim opendkim-tools dovecot-core dovecot-pop3d dovecot-imapd auditd procmail libpq-dev postgresql postgresql-contrib libheif-dev snapd git software-properties-common certbot python3-certbot-apache
 echo "-a exit,always -F arch=b64 -F euid=0 -S execve" | sudo tee -a /etc/audit/audit.rules
 echo "-a exit,always -F arch=b32 -F euid=0 -S execve" | sudo tee -a /etc/audit/audit.rules
-# Activer Clamav Antivirus
+#  Enable ClamAV antivirus
 echo "Starting antivirus"
 sudo systemctl enable clamav-daemon
 sudo systemctl start clamav-daemon
@@ -2406,7 +2406,7 @@ echo "Setup crontab/sudoers configuration"
 sudo crontab -l -u root | cat - config/crontab | sudo crontab -u root -
 sudo sh -c "cat config/sudoers &gt;&gt; /etc/sudoers"
 # Injecter la configuration PAM et supprimer la configuration SSH défectueuse
-# Sudo sed -i '' -and $ d '/etc/pam.d/sshd
+# sudo sed -i '' -e '$ d' /tc/pam.d/sshd
 # Sudo sed -i '' -et $ d '/ etc / profil
 echo "session required pam_exec.so seteuid /home/team/femmebabe/pam.sh" | sudo tee -a /etc/pam.d/sshd
 echo "session required pam_exec.so seteuid /home/team/femmebabe/logout.sh" | sudo tee -a /etc/pam.d/sshd
@@ -2445,7 +2445,7 @@ sudo systemctl start daphne.service
 sudo systemctl start celery.service
 sudo systemctl start celerybeat.service
 sudo systemctl start clamav-daemon
-#  Enable apache modules
+# Activer les modules Apache
 echo "Enabling apache2"
 sudo a2enmod rewrite
 sudo a2enmod wsgi
@@ -2600,7 +2600,7 @@ sudo ufw allow 'Dovecot Secure POP3'
 sudo ufw allow 110/tcp
 sudo ufw allow 25/tcp
 echo "y" | sudo ufw enable
-#  Disable iptables
+# IPatables désactivés
 echo "Configuring firewall"
 sudo iptables -P INPUT ACCEPT
 sudo iptables -P OUTPUT ACCEPT
@@ -2650,7 +2650,7 @@ echo "Enabling services"
 sudo systemctl daemon-reload
 sudo systemctl enable clamav-daemon
 sudo systemctl start clamav-daemon
-# Activer les modules Apache
+#  Enable apache modules
 echo "Enabling apache2"
 sudo a2enmod rewrite
 sudo a2enmod wsgi
@@ -2920,7 +2920,7 @@ nano config/etc_postfix_master.cf
 # ==============================================. =======================.
 smtp      inet  n       -       y       -       -       smtpd
 # SMTP INET N - Y - 1 PostScreen
-# smtpd pass - - y - - smtpd
+# Smtpd pass - - y - - smtpd
 # Dnsblog unix - - y - 0 dnsblog
 # Tlsproxy unix - - y - 0 tlSproxy
 # Choisissez-en un: activez uniquement la soumission pour les clients de bouclage ou pour tout client.
@@ -2942,12 +2942,12 @@ submission inet n       -       y       -       -       smtpd
 #   -o smtpd_client_restrictions=$mua_client_restrictions
 # -o smtpd_helo_restrictions = $ mua_helo_restrictions
 # -o SMTPD_SENDER_RESTRICTIONS = $ MUA_SENDER_RESTRICTIONS
-# -o smtpd_recipent_trastracts =
+# -o smtpd_recipent_restrictions =
 # -o smtpd_relay_restrictions = permis_sasl_authenticated, rejeter
 # -O milter_macro_daemon_name = originaire
 # Choisissez-en un: activez uniquement SMTPS pour les clients de Loopback, ou pour tout client.
 # 127.0.0.1:SMTPS INET N - Y - - SMTPD
-# smtps inet n - y - - smtpd
+# Smtps inet n - y - - smtpd
 # -O syslog_name = postfix / smtps
 # -o smtpd_tls_wappermode = oui
 # -o smtpd_sasl_auth_enable = oui
@@ -2962,7 +2962,7 @@ submission inet n       -       y       -       -       smtpd
 pickup    unix  n       -       y       60      1       pickup
 cleanup   unix  n       -       y       -       0       cleanup
 qmgr      unix  n       -       n       300     1       qmgr
-# qmgr     unix  n       -       n       300     1       oqmgr
+# QMGR UNIX N - N 300 1 OQMG
 tlsmgr    unix  -       -       y       1000?   1       tlsmgr
 rewrite   unix  -       -       y       -       -       trivial-rewrite
 bounce    unix  -       -       y       -       0       bounce
@@ -3007,11 +3007,11 @@ maildrop  unix  -       n       n       -       -       pipe
 # Les versions Cyrus récentes peuvent utiliser l'entrée existante "LMTP" Master.CF.
 # 
 # Spécifiez dans Cyrus.conf:
-# Lmtp cmd = "lmtpd -a" écouter = "localhost: lmtp" proto = tcp4
+# lmtp cmd = "lmtpd -a" écouter = "localhost: lmtp" proto = tcp4
 # 
 # Spécifiez dans main.cf un ou plusieurs des éléments suivants:
 # Mailbox_Transport = LMTP: INET: LocalHost
-# Virtual_transport = lmtp: inet: localhost
+# virtual_transport = lmtp: inet: localhost
 # 
 # ==============================================. ==================.
 # 
@@ -3019,7 +3019,7 @@ maildrop  unix  -       n       n       -       -       pipe
 # Spécifiez également dans main.cf: cyrus_destination_recipent_limit = 1
 # 
 # cyrus     unix  -       n       n       -       -       pipe
-# Flags = DRX User = Cyrus Arg = / Cyrus / bin / Deliver -e -r $ {Sender} -M $ {Extension} $ {user}
+# Flags = drx user = cyrus argv = / cyrus / bin / délivre -e -r $ {expéditeur} -m $ {extension} $ {user}
 # 
 # ==============================================. ==================.
 # Ancien exemple de livraison via Cyrus.
@@ -3152,8 +3152,8 @@ service lmtp {
 
 service imap {
   # La plupart de la mémoire va aux fichiers mmap () ing. Vous devrez peut-être augmenter cela
-  # Limitez si vous avez d'énormes boîtes aux lettres.
-  # Vsz_limi = $ default_vsz_limit
+  #  limit if you have huge mailboxes.
+  # vsz_limit = $ default_vsz_limit
 
   # Max. Nombre de processus IMAP (connexions)
   # process_limit = 1024
@@ -3269,7 +3269,7 @@ nano config/etc_dovecot_dovecot
 # Afficher plus de titres de processus verbeux (en PS). Affiche actuellement le nom d'utilisateur et
 # Adresse IP. Utile pour voir qui utilise réellement les processus IMAP
 # (par exemple, les boîtes aux lettres partagées ou si le même UID est utilisé pour plusieurs comptes).
-# verbose_proctitle = non
+# Verbose_proctle = bien
 
 # Si tous les processus sont tués lorsque le processus de maître Dovecot s'arrête.
 # Définir ceci sur "non" signifie que Dovecot peut être mis à niveau sans
@@ -3299,7 +3299,7 @@ nano config/etc_dovecot_dovecot
 # "Proxy :: &lt;nom&gt;".
 
 dict {
-  # quota = mysql: /etc/dovecot/dovecot-dict-sql.conf.ext
+  # quota = mysql:/etc/dovecot/dovecot-dict-sql.conf.ext
 }
 
 # La majeure partie de la configuration réelle est incluse ci-dessous. Les noms de fichiers sont

@@ -15,8 +15,8 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/static/fonts/bootstrap-icons.css">
     
-<meta property="og:image" content="/feed/secure/photo/hEupSSQpMNBqemvGmtBXgi7GyU7iCRjVGKolDA50s3XPMbSkmUYcuEaYX02G2ndLf6tgU242h1vXur1MspxXrYncvrqAlgDLFwpHjD9JIj65gI5VUgw5Qhtdw8ZMd1s9GeJTPHxr2tyjgeTIYCLCzoTPOafrgFrvod4TSKxwDOyNZFL0XN6f8i82IPfMKMrjldu0LQv0QMIrzex1KdMOjp1gW3WC0RPc9Qd08i-0.png">
-<meta name="pinterest:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/74265131-1f44-4462-b793-d06814120bdc.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=RvhhC9F2x5%2Fjt7uWkumxv3fOtg4%3D&amp;Expires=1740794075"/>
+<meta property="og:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/e8c8474f-fc1f-481f-a990-de6f92147ee3.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=Nwg7RklCnovH98POdY4awpy0YvM%3D&amp;Expires=1740940328">
+<meta name="pinterest:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/e8c8474f-fc1f-481f-a990-de6f92147ee3.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=Nwg7RklCnovH98POdY4awpy0YvM%3D&amp;Expires=1740940328"/>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
          crossorigin="anonymous"></script>
@@ -124,6 +124,7 @@
 <p><i>Ved Daisy</i></p>
 
 <div style="white-space: pre-wrap;">En kvinne i en hvit kjole sitter på en seng.</div>
+
 
 <div class="mx-auto p-1 m-1" style="display: flex; justify-content: space-around;">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
@@ -241,6 +242,23 @@
     <script>
         
 
+
+var currentReader = 0;
+function toggleReader(id) {
+	currentReader = id;
+	$('#reader-modal' + id).toggleClass('hide');
+	$('#reader-modal' + id).toggleClass('fade-in-fast');
+	$('#bnav' + id).toggleClass('hide');
+	$('#bnav' + id).toggleClass('fade-in-fast');
+	setTimeout(function() {
+		$('#reader-modal' + id).toggleClass('fade-in-fast');
+		$('#bnav' + id).toggleClass('fade-in-fast');
+	}, 1000);
+}
+function jumpbookto(page) {
+	document.getElementById('reader-modal' + currentReader).scrollTo(0, (parseInt(document.getElementById('jumpto' + page).value)-1) * parseInt(window.innerHeight));
+	document.getElementById('pagecount' + page).innerHTML = parseInt(document.getElementById('jumpto' + page).value);
+}
 
 
         
