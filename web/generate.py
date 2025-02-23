@@ -71,7 +71,10 @@ def generate_site():
                     images = images + '<div id="div{}">{}'.format(count, translate(request, post.content, lang, 'en')) + ('<img width="100%" height="auto" src="{}" id="img{}" alt="{}"/>'.format(img_url, count, shorttitle(post.id)) if post.image else '')
                     images = images + '<p>{} | {} | {}</p></div><hr>\n'.format('<a href="/{}'.format(lang) + '/{}" title="{}">{}</a>'.format(post.friendly_name, 'View Post - {} by {}'.format(shorttitle(post.id), post.author.profile.name), translate(request, 'View', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-card', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid), translate(request, 'Buy on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), 'Buy with cryptocurrency on {}'.format(settings.SITE_NAME), translate(request, 'Buy with cryptocurrency', lang, 'en')))
         blog = ''
-        for post in Post.objects.filter(public=True, posted=True, private=False, published=True, feed="blog").order_by('-date_posted'):
+        posts = Post.objects.filter(public=True, posted=True, private=False, published=True, feed="blog").union(Post.objects.filter(public=True, private=False, published=True, pinned=True, posted=True, feed='news')).order_by('-date_posted').order_by('-pinned')
+        links = [None] * posts.count()
+        count = 0
+        for post in posts:
             text = ''
             title = translate(request, translate(request, 'Buy on', lang, 'en'), lang, 'en')
 #            print(post.content)
@@ -85,12 +88,14 @@ def generate_site():
             if post.image and not post.image_offsite: post.copy_web(force=force_copy)
             img_url = post.get_image_url() if post.image_offsite else post.get_web_url()
             if not img_url: img_url = post.image_bucket.url if post.image_bucket else post.author.profile.get_image_url()
-            blog = blog + '<div id="feed{}">{}'.format(count, translate(request, post.content_compiled, lang, 'en')) + ('<img width="100%" height="auto" src="{}" id="img{}" alt="{}"/>'.format(img_url, count, title) if post.image else '')
-            blog = blog + '<p>{} / {} | {} | {}</p></div><hr>\n'.format(translate(request, 'by', lang, 'en') + ' {}'.format(post.author.profile.name), '<a href="/{}'.format(lang) + '/{}" title="{}">{}</a>'.format(post.friendly_name, translate(request, 'View post', lang, 'en'), translate(request, 'View', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-card', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid), translate(request, 'Buy on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), translate(request, 'Buy with cryptocurrency on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy with cryptocurrency', lang, 'en')))
-            count = count + 1
-            if count%5 == 0:
+            blog = ''
+            blog = blog + '<img width="100%" height="auto" src="{}" id="img{}" alt="{}"/>'.format(img_url, count, title) if post.image else ''
+            blog = blog + '<p>{} / {} | {} | {}</p><hr>\n'.format(translate(request, 'by', lang, 'en') + ' {}'.format(post.author.profile.name), '<a href="/{}'.format(lang) + '/{}" title="{}">{}</a>'.format(post.friendly_name, translate(request, 'View post', lang, 'en'), translate(request, 'View', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-card', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid), translate(request, 'Buy on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy', lang, 'en')), '<a href="{}" title="{}">{}</a>'.format(settings.BASE_URL + reverse('payments:buy-photo-crypto', kwargs={'username': post.author.profile.name}) + '?id={}'.format(post.uuid) + '&crypto={}'.format(settings.DEFAULT_CRYPTO), translate(request, 'Buy with cryptocurrency on', lang, 'en') + ' {}'.format(settings.SITE_NAME), translate(request, 'Buy with cryptocurrency', lang, 'en')))
+            if count%8 == 0:
                 blog = blog + render_to_string('banner_ad.html', {'show_ads': True})
                 blog = blog + '<hr>'
+            links[count] = blog
+            count = count + 1
         context = {
             'site_name': settings.STATIC_SITE_NAME,
             'the_site_name': settings.STATIC_SITE_NAME,
@@ -109,6 +114,8 @@ def generate_site():
             'typical_response_time': settings.TYPICAL_RESPONSE_TIME_HOURS,
             'contact_form': ContactForm(),
             'blog': blog,
+            'posts': posts,
+            'links': links,
             'github_url': settings.GITHUB_URL,
             'base_domain': settings.DOMAIN,
             'base_description': settings.BASE_DESCRIPTION,
@@ -171,7 +178,7 @@ def generate_site():
                 file.write(private)
         context['footer'] = False # ...None).exclude(image_offsite=None)
         context['hiderrm'] = False
-        for post in [] if test_mode else Post.objects.filter(public=True, posted=True, published=True, feed="blog").union(Post.objects.filter(uploaded=True, public=True, posted=True, published=True, feed="private").exclude(image_bucket=None)).order_by('-date_posted'):
+        for post in [] if False else Post.objects.filter(public=True, posted=True, published=True, feed="blog").union(Post.objects.filter(uploaded=True, public=True, posted=True, published=True, feed="private").exclude(image_bucket=None)).union(Post.objects.filter(public=True, private=False, published=True, pinned=True, posted=True, feed='news')).order_by('-date_posted'):
             if post:
                 url = '/{}/{}'.format(lang, post.friendly_name)
                 context['post'] = post

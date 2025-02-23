@@ -7,11 +7,15 @@
 <div id="pg1" style="white-space: pre-wrap;">
 <legend>{{ 'News'|etrans }} - <a href="{{ site_url }}/" class="btn btn-outline-info btn-lg">{{ 'Visit Site'|etrans }}</a></legend>
 {% include 'banner_ad.html' %}
-<div style="white-space: pre-wrap;">
 {% autoescape off %}
-{{ blog }}
+{% for post in posts %}
+<div id="{{ forloop.counter0 }}" style="white-space: pre-wrap;">{% if post.content_compiled %}{{ post.content|transauthor:post.id|tagusers|trimlength }}{% else %}{{ post.content|transauthor:post.id|addhttpstodomains|embedlinks|trimlength }}{% endif %}</div>
+{% if post.content|charcountreader %}
+{% include 'reader.html' %}
+{% endif %}
+<div>{{ links|getelementbyindex:forloop.counter0 }}</div>
+{% endfor %}
 {% endautoescape %}
-</div>
 <hr>
 </div>
 <div style="margin:auto;" class="center col-md-6 p-3 rounded mb-3 {% if darkmode %}bg-dark{% else %}bg-white{% endif %}">
@@ -50,4 +54,5 @@
 {% block footer %}
 {% endblock %}
 {% block javascript %}
+{% include 'reader.js' %}
 {% endblock %}

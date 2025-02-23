@@ -1,6 +1,3 @@
-from django.test import TestCase
-
-# Create your tests here.
 def document_scanned(user):
     from barcode.models import DocumentScan
     import datetime

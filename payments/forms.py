@@ -45,6 +45,15 @@ class CardInfoForm(forms.ModelForm):
 
 CHOICES = [['individual','Individual'], ['business', 'Business']]
 
+class InvoiceForm(forms.Form):
+    client_email = forms.EmailField()
+    cost = forms.FloatField(required=True)
+    def __init__(self, *args, **kwargs):
+        super(InvoiceForm, self).__init__(*args, **kwargs)
+        self.fields['cost'].initial = 100.0
+    description = forms.CharField(widget=forms.TextArea(attrs={'rows': 7}))
+
+
 class PaymentForm(forms.Form):
     total = forms.FloatField(required=True, max_value=1000000000000, min_value=0.99, widget=forms.NumberInput(attrs={'step': "0.01"}))
     item_name = forms.CharField(max_length=100)

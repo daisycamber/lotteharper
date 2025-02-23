@@ -3,7 +3,6 @@ from feed.tests import identity_verified
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from vendors.tests import is_vendor
-from .models import Bot
 from django.views.generic import (
     UpdateView,
     DeleteView
@@ -110,6 +109,7 @@ def edit_bot(request, id):
 
 
 class BotDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    from .models import Bot
     model = Bot
     success_url = '/crypto/'
     def get_context_data(self, **kwargs):

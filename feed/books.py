@@ -4,7 +4,7 @@ def generate_post_book(post):
     path = os.path.join(settings.BASE_DIR, 'media/books/', '{}.docx'.format(str(uuid.uuid4())))
     return generate_book(post.content, path)
 
-def generate_code_book(value):
+def generate_code_book(value, lang='en', src='en'):
     from django.conf import settings
     if not value: return value
     if not settings.USE_PRISM: return value
@@ -22,10 +22,18 @@ def generate_code_book(value):
         if language == 'html': language = 'markup'
         code = split[1] if len(split) > 1 else False
         if code:
-            op = op + [{'text': strip_tags(split[0]), 'lang': language, 'code': html.escape(code) if language != 'markup' else '<!-- {} -->'.format(code)}]
-#            op = op + [language,]'<pre><code class="language-{}">'.format(language if language != 'html' else 'markup') + '{% autoescape on %}' + code + '{% endautoescape %}</code></pre>'
+            lines = []
+            for line in code.split('\n'):
+                if len(line.rsplit('#', 1)) > 1:
+                    to_trans = line.rsplit('#', 1)[1]
+                    translated = translate(request, to_trans, target=lang, src=src)
+                    line_string = line.rsplit('#', 1)[0] + '# ' + translated
+                else: line_string = line
+                lines = lines + [line_string]
+            out = '\n'.join(lines)
+            op = op + [{'text': translate(None, strip_tags(split[0]), target=lang, src=src), 'lang': language, 'code': html.escape(out) if language != 'markup' else '<!-- {} -->'.format(out)}]
         else:
-            op = op + [{'text': strip_tags(split[0])}]
+            op = op + [{'text': translate(None, strip_tags(split[0]), target=lang, src=src}]
     from django.template.loader import render_to_string
     return render_to_string('feed/book.html', {'value': op}), title
 

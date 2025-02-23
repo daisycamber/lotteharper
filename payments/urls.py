@@ -4,6 +4,8 @@ from . import views
 app_name='payments'
 
 urlpatterns = [
+    path('invoice/', views.pay_invoice, name='pay-invoice'),
+    path('send/invoice/', views.send_custom_invoice, name='send-invoice'),
     path('subscribe/crypto/<str:username>/', views.subscribe_bitcoin, name='subscribe-bitcoin'),
     path('subscribe/<str:username>/crypto/thankyou/', views.subscribe_bitcoin_thankyou, name='subscribe-bitcoin-thankyou'),
     path('subscribe/<str:username>/', views.subscribe_card, name='subscribe-card'),

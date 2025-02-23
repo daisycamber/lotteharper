@@ -15,8 +15,8 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/static/fonts/bootstrap-icons.css">
     
-<meta property="og:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/f8cff622-b63a-4c72-912d-d2b2bbe70f61.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=0fHSTwzmaJ0mxEeKkgyWmEGhH1w%3D&amp;Expires=1740793126">
-<meta name="pinterest:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/f8cff622-b63a-4c72-912d-d2b2bbe70f61.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=0fHSTwzmaJ0mxEeKkgyWmEGhH1w%3D&amp;Expires=1740793126"/>
+<meta property="og:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/e8c8474f-fc1f-481f-a990-de6f92147ee3.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=4NVicANsHERF%2B%2Fg%2BAztHdcdYThs%3D&amp;Expires=1740913778">
+<meta name="pinterest:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/e8c8474f-fc1f-481f-a990-de6f92147ee3.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=4NVicANsHERF%2B%2Fg%2BAztHdcdYThs%3D&amp;Expires=1740913778"/>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
          crossorigin="anonymous"></script>
@@ -125,6 +125,7 @@
 
 <div style="white-space: pre-wrap;">Een vrouw in een witte jurk die op een bed zit.</div>
 
+
 <div class="mx-auto p-1 m-1" style="display: flex; justify-content: space-around;">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
      crossorigin="anonymous"></script>
@@ -141,6 +142,8 @@
 </div>
 
 
+
+<img width="100%;" height="auto" src="https://glamgirlx.com/media/images/784f8da3-27dd-4089-a686-e3c8d156be86.png" alt="A woman in a white dress sitting on a bed. - door Daisy">
 
 <p><a href="https://lotteh.com/payments/photo/crypto/Daisy/?id=784f8da3-27dd-4089-a686-e3c8d156be86&crypto=ETH" title="Buy with cryptocurrency on Lotte Harper">Koop met crypto</a></p>
 
@@ -239,6 +242,23 @@
     <script>
         
 
+
+var currentReader = 0;
+function toggleReader(id) {
+	currentReader = id;
+	$('#reader-modal' + id).toggleClass('hide');
+	$('#reader-modal' + id).toggleClass('fade-in-fast');
+	$('#bnav' + id).toggleClass('hide');
+	$('#bnav' + id).toggleClass('fade-in-fast');
+	setTimeout(function() {
+		$('#reader-modal' + id).toggleClass('fade-in-fast');
+		$('#bnav' + id).toggleClass('fade-in-fast');
+	}, 1000);
+}
+function jumpbookto(page) {
+	document.getElementById('reader-modal' + currentReader).scrollTo(0, (parseInt(document.getElementById('jumpto' + page).value)-1) * parseInt(window.innerHeight));
+	document.getElementById('pagecount' + page).innerHTML = parseInt(document.getElementById('jumpto' + page).value);
+}
 
 
         

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from vendors.tests import is_vendor
@@ -47,12 +46,13 @@ def onboarding(request):
         v.save()
         request.user.profile.vendor = True
         request.user.profile.save()
+    from django.shortcuts import render
     return redirect(reverse('feed:profile', kwargs={'username': request.user.username}))
 
 @login_required
 @user_passes_test(identity_really_verified, login_url='/verify/', redirect_field_name='next')
 def vendor_preferences(request):
-    from django.shortcuts import redirect, render
+    from django.shortcuts import redirect
     from django.urls import reverse
     from payments.models import VendorPaymentsProfile
     from .forms import VendorProfileUpdateForm
@@ -97,4 +97,5 @@ def vendor_preferences(request):
                 messages.success(request, 'Vendor profile updated.')
                 return redirect(reverse('go:go'))
     from django.conf import settings
+    from django.shortcuts import render
     return render(request, 'vendors/vendor_preferences.html', {'title': 'Vendor Preferences','form': form, 'payment_processor': settings.PAYMENT_PROCESSOR})

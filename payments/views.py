@@ -7,6 +7,64 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.cache import patch_cache_control, never_cache
 from django.views.decorators.vary import vary_on_cookie
 
+@login_required
+@user_passes_test(is_vendor)
+@user_passes_test(identity_really_verified)
+def send_custom_invoice(request):
+    from payments.forms import InvoiceForm
+    from django.shortcuts import render, redirect
+    from django.urls import reverse
+    from django.contrib import messages
+    if request.method == 'POST':
+        form = InvoiceForm(request.POST)
+        if form.is_valid():
+            email = form.cleanded_data.get('client_email')
+            description = form.cleaned_data.get('description')
+            cus_user = User.objects.filter(email=form.cleaned_data.get('client_email', None)).order_by('-profile__last_seen').first()
+            print(cus_user)
+            if (not cus_user) or not (cus_user and cus_user.email != '' and cus_user.email != None):
+                from email_validator import validate_email
+                e = form.cleaned_data.get('client_email', None)
+                print(e)
+                if e:
+                    from security.apis import check_raw_ip_risk
+                    from security.models import SecurityProfile
+                    from users.models import Profile
+                    from users.email import send_verification_email, sendwelcomeemail
+                    from users.views import send_registration_push
+                    valid = validate_email(e, check_deliverability=True)
+                    us = User.objects.filter(email=e).last()
+                    safe = not check_raw_ip_risk(ip, soft=True, dummy=False, guard=True)
+                    if valid and not us and safe:
+                        cus_user = User.objects.create_user(email=e, username=get_random_username(e), password=get_random_string(length=8))
+                        profile = cus_user.profile
+                        profile.finished_signup = False
+                        profile.save()
+                        send_verification_email(cus_user)
+                        send_registration_push(cus_user)
+                        sendwelcomeemail(cus_user)
+            generate_invoice(vendor, user, form.cleaned_data.get('cost'), description)
+            messages.success(request, 'This invoice has been sent to {}.'.format(email))
+        else: messages.warning(request, 'The form is not valid.')
+    return render(request, 'payments/send_invoice.html', {'title': 'Send Invoice', 'form': InvoiceForm()})
+
+
+def pay_invoice(request):
+    pid = request.GET.get('pid', None)
+    from django.shortcuts import redirect, render
+    from django.urls import reverse
+    from django.contrib import messages
+    if not pid:
+        messages.warning(request, 'This invoice could not be found')
+        return redirect(reverse('users:login'))
+    from payments.models import Invoice
+    invoice = Invoice.objects.get(pid=int(pid))
+    from django.conf import settings
+    from .forms import CardPaymentForm
+    from django.contrib.auth.models import User
+    r = render(request, 'payments/pay_invoice.html', {'title': 'Pay Invoice', 'stripe_pubkey': settings.STRIPE_PUBLIC_KEY, 'email_query_delay': 30, 'contact_form': ContactForm(), 'helcim_key': settings.HELCIM_KEY, 'form': CardPaymentForm(), 'vendor': invoice.vendor})
+    return r
+
 @csrf_exempt
 def crypto_onramp(request, name, address, amount):
     from django.contrib.auth.models import User
@@ -325,6 +383,9 @@ def paypal(request):
         from payments.cart import process_cart_purchase
         if invoice.product == 'cart':
             process_cart_purchase(user, invoice.cart)
+        if invoice.product == 'invoice':
+            from payments.invoice import process_invoice
+            process_invoice(invoice)
         if invoice.product == 'post':
             from feed.models import Post
             post = Post.objects.get(author=vendor, id=invoice.pid)
@@ -387,9 +448,12 @@ def square(request):
         from django.contrib.auth.models import User
         from django.conf import settings
         vendor = invoice.vendor
-        from payments.cart import process_cart_purchase
         if invoice.product == 'cart':
+            from payments.cart import process_cart_purchase
             process_cart_purchase(user, invoice.cart)
+        if invoice.product == 'invoice':
+            from payments.invoice import process_invoice
+            process_invoice(invoice)
         if invoice.product == 'post':
             from feed.models import Post
             post = Post.objects.get(author=vendor, id=invoice.pid)
@@ -455,6 +519,9 @@ def helcim(request):
             from payments.cart import process_cart_purchase
             if invoice.product == 'cart':
                 process_cart_purchase(user, invoice.cart)
+            if invoice.product == 'invoice':
+                from payments.invoice import process_invoice
+                process_invoice(invoice)
             if invoice.product == 'post':
                 from feed.models import Post
                 post = Post.objects.get(author=vendor, id=invoice.pid)

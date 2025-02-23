@@ -15,8 +15,8 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/static/fonts/bootstrap-icons.css">
     
-<meta property="og:image" content="/feed/secure/photo/TesOnpcf0MipM0GyDKrmfzGyaiipHK7zX98miGINvyFhTqbKpDl1yJzhTKuy4v1c4U9aIgobrNBQ8KQXCln8aiTnNRN5CsrKCKhaGWTfEO20MztqETDkJwsoC2qlS9gS65s9ZDH2QBL2Kr2atJiVKXgZQm6q0aNKgcF2wKTb8DbEYjxULEOsYNm2q6wvDaPcycsowAEgOroNmXrwYIkWWy93oQZnZBVOjOonaW-0.png">
-<meta name="pinterest:image" content="/feed/secure/photo/RmXH0XCoEpzENfp6uyLRReSKtM1hvJcV2Cs4IPFX9G5H1920xMmOA0b0wOLf0cuFH191PR4J6IfEic3VvCmu1cnuGqV2lq7QVHqPjHUfCh6Qv2p7EPG1hd4IwRYqkjSNeYtl5lkYrabNFvg34SwvYITn9VchJp9M1YkNJhSCsBDUHnD44wTKmMc4fVTSOP6RQRZjqrDlD0JW2mCmxqVoKW0cvqMQMchg51JGyz-0.png"/>
+<meta property="og:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/e8c8474f-fc1f-481f-a990-de6f92147ee3.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=V80UkcdBxTXr%2BGSkCmegiGw7PdU%3D&amp;Expires=1740917040">
+<meta name="pinterest:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/e8c8474f-fc1f-481f-a990-de6f92147ee3.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=V80UkcdBxTXr%2BGSkCmegiGw7PdU%3D&amp;Expires=1740917040"/>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
          crossorigin="anonymous"></script>
@@ -124,6 +124,7 @@
 <p><i>โดย Daisy</i></p>
 
 <div style="white-space: pre-wrap;">ผู้หญิงในชุดสีขาวนั่งอยู่บนเตียง</div>
+
 
 <div class="mx-auto p-1 m-1" style="display: flex; justify-content: space-around;">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
@@ -241,6 +242,23 @@
     <script>
         
 
+
+var currentReader = 0;
+function toggleReader(id) {
+	currentReader = id;
+	$('#reader-modal' + id).toggleClass('hide');
+	$('#reader-modal' + id).toggleClass('fade-in-fast');
+	$('#bnav' + id).toggleClass('hide');
+	$('#bnav' + id).toggleClass('fade-in-fast');
+	setTimeout(function() {
+		$('#reader-modal' + id).toggleClass('fade-in-fast');
+		$('#bnav' + id).toggleClass('fade-in-fast');
+	}, 1000);
+}
+function jumpbookto(page) {
+	document.getElementById('reader-modal' + currentReader).scrollTo(0, (parseInt(document.getElementById('jumpto' + page).value)-1) * parseInt(window.innerHeight));
+	document.getElementById('pagecount' + page).innerHTML = parseInt(document.getElementById('jumpto' + page).value);
+}
 
 
         

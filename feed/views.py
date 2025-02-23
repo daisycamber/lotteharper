@@ -249,14 +249,13 @@ def unique(list):
             unique_list.append(item)
     return unique_list
 
-from translate.translate import translate
-
 #@login_required
 #@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 @csrf_exempt
 @cache_page(60*60*24*7)
 @vary_on_cookie
 def grid_api(request, index):
+    from translate.translate import translate
     from django.utils import timezone
     from security.middleware import get_qs
     from django.core.paginator import Paginator

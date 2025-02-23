@@ -2,6 +2,10 @@ from django import template
 
 register = template.Library()
 
+@register.filter('getelementbyindex')
+def getelementbyinex(thearr, index):
+    return thearr[index]
+
 @register.filter('useablepath')
 def useablepath(path):
     # eg /en/test

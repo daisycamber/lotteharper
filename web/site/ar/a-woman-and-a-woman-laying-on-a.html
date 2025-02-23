@@ -15,8 +15,8 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/static/fonts/bootstrap-icons.css">
     
-<meta property="og:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/5b6c721b-485b-4d3c-8895-7f0053e51fe9.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=zmp6n4N024S%2BWYl1qrU3K8GufHc%3D&amp;Expires=1740792950">
-<meta name="pinterest:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/5b6c721b-485b-4d3c-8895-7f0053e51fe9.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=zmp6n4N024S%2BWYl1qrU3K8GufHc%3D&amp;Expires=1740792950"/>
+<meta property="og:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/5b6c721b-485b-4d3c-8895-7f0053e51fe9.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=p4%2FVN7wo8pR2JTsw9kZ37iwh%2BVI%3D&amp;Expires=1740905634">
+<meta name="pinterest:image" content="https://uglek.s3.amazonaws.com/home/team/lotteh/media/images/5b6c721b-485b-4d3c-8895-7f0053e51fe9.png?AWSAccessKeyId=AKIA5A2IYPTJFQQ6WHXN&amp;Signature=p4%2FVN7wo8pR2JTsw9kZ37iwh%2BVI%3D&amp;Expires=1740905634"/>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
          crossorigin="anonymous"></script>
@@ -124,6 +124,7 @@
 <p><i>بواسطة Daisy</i></p>
 
 <div style="white-space: pre-wrap;">امرأة وامرأة مستلقية على السرير.</div>
+
 
 <div class="mx-auto p-1 m-1" style="display: flex; justify-content: space-around;">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209985848112194"
@@ -241,6 +242,23 @@
     <script>
         
 
+
+var currentReader = 0;
+function toggleReader(id) {
+	currentReader = id;
+	$('#reader-modal' + id).toggleClass('hide');
+	$('#reader-modal' + id).toggleClass('fade-in-fast');
+	$('#bnav' + id).toggleClass('hide');
+	$('#bnav' + id).toggleClass('fade-in-fast');
+	setTimeout(function() {
+		$('#reader-modal' + id).toggleClass('fade-in-fast');
+		$('#bnav' + id).toggleClass('fade-in-fast');
+	}, 1000);
+}
+function jumpbookto(page) {
+	document.getElementById('reader-modal' + currentReader).scrollTo(0, (parseInt(document.getElementById('jumpto' + page).value)-1) * parseInt(window.innerHeight));
+	document.getElementById('pagecount' + page).innerHTML = parseInt(document.getElementById('jumpto' + page).value);
+}
 
 
         
