@@ -1,4 +1,4 @@
-# Contributor Covenant Code of Conduct
+# Lotte Harper Code of Conduct
 
 ## Our Pledge
 
@@ -23,16 +23,16 @@ community include:
 * Accepting responsibility and apologizing to those affected by our mistakes,
   and learning from the experience
 * Focusing on what is best not just for us as individuals, but for the
-  overall community
+  overall community, and the project
 
 Examples of unacceptable behavior include:
 
-* The use of derogatory sexualized language or imagery, and unwelcome sexual attention or
-  unwanted advances of any kind
+* The use of derogatory sexualized language or imagery, and unwelcome sexual
+  attention or advances
 * Trolling, insulting or derogatory comments, and personal or political attacks
 * Public or private harassment
 * Publishing others' private information, such as a physical or email
-  address, without their explicit permission
+  address, photos of others, or account information without their explicit permission
 * Other conduct which could reasonably be considered inappropriate in a
   professional setting
 

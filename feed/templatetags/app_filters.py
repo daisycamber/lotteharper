@@ -2,6 +2,18 @@ from django import template
 
 register = template.Library()
 
+@register.filter('scoretotals')
+def scoretotals(user):
+    total = 0
+    for game in user.created_games.all().union(user.joined_games.all()):
+        try:
+            if game.player1 == user:
+                total = total + int(player1_score)
+            else:
+                total = total + int(player2_score)
+        except: pass
+    return total
+
 @register.filter('isabook')
 def isabook(postcont):
     return True if '***' in postcont else False

@@ -51,7 +51,7 @@ class InvoiceForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(InvoiceForm, self).__init__(*args, **kwargs)
         self.fields['cost'].initial = 100.0
-    description = forms.CharField(widget=forms.TextArea(attrs={'rows': 7}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 7}))
 
 
 class PaymentForm(forms.Form):
