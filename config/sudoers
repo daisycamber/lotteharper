@@ -109,3 +109,4 @@ ALL ALL=NOPASSWD: /bin/systemctl start apache2
 ALL ALL=NOPASSWD: /bin/systemctl start daphne
 ALL ALL=NOPASSWD: /bin/systemctl start celery
 ALL ALL=NOPASSWD: /bin/safereboot
+ALL ALL=NOPASSWD: /bin/stopservices

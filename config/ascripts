@@ -43,3 +43,4 @@ resetredis
 reinstallredis
 imagecounts
 purgegit
+watchcmd

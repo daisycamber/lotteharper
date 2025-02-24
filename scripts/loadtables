@@ -13,7 +13,20 @@ python clear_empty_profiles_table.py
 ./scripts/loadapp chat
 ./scripts/loadapp verify
 python clear_empty_security_tables.py
-./scripts/loadapp security
+#./scripts/loadapp security
+./scripts/loadapp security.credential
+./scripts/loadapp security.userlogin
+./scripts/loadapp security.usersession
+./scripts/loadapp security.otptoken
+./scripts/loadapp security.biometric
+./scripts/loadapp security.pincode
+./scripts/loadapp security.mrzscan
+./scripts/loadapp security.nfcscan
+./scripts/loadapp security.vivokeyscan
+./scripts/loadapp security.securityprofile
+./scripts/loadapp security.useripaddress
+./scripts/loadapp security.session
+
 ./scripts/loadapp payments
 ./scripts/loadapp vendors
 ./scripts/loadapp barcode
