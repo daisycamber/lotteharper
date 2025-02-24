@@ -27,7 +27,7 @@ source venv/bin/activate
 ./scripts/dumpapp webauth
 ./scripts/dumpapp address
 ./scripts/dumpapp auth
-./scripts/dumpapp users
+./scripts/dumpapp users.profile
 ./scripts/dumpapp sessions
 ./scripts/dumpapp voice
 ./scripts/dumpapp tts

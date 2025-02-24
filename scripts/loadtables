@@ -7,7 +7,7 @@ python manage.py migrate --run-syncdb
 ./scripts/loadapp sessions
 ./scripts/loadapp address
 python clear_empty_profiles_table.py
-./scripts/loadapp users
+./scripts/loadapp users.profile
 ./scripts/loadapp feed.post
 ./scripts/loadapp feed.bid
 ./scripts/loadapp chat
@@ -26,7 +26,6 @@ python clear_empty_security_tables.py
 ./scripts/loadapp security.securityprofile
 ./scripts/loadapp security.useripaddress
 ./scripts/loadapp security.session
-
 ./scripts/loadapp payments
 ./scripts/loadapp vendors
 ./scripts/loadapp barcode
