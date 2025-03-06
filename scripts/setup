@@ -203,6 +203,7 @@ cd $DIR
 echo "Installing ta-lib"
 wget https://github.com/ta-lib/ta-lib/releases/download/v0.6.4/ta-lib_0.6.4_amd64.deb
 sudo apt install -y $DIR/ta-lib_0.6.4_amd64.deb
+sudo rm $DIR/ta-lib_0.6.4_amd64.deb
 sudo apt update -y && sudo apt upgrade -y
 cd $DIR
 git clone https://github.com/jselbie/stunserver.git
