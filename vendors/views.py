@@ -62,7 +62,7 @@ def vendor_preferences(request):
     v.save()
     form = VendorProfileUpdateForm(instance=v)
     if request.method == 'POST':
-        form = VendorProfileUpdateForm(request.POST, instance=request.user.vendor_profile)
+        form = VendorProfileUpdateForm(request.POST, request.FILES, instance=request.user.vendor_profile)
         if form.is_valid():
             form.instance.user = request.user
             from payments.apis import validate_address

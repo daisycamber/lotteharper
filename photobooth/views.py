@@ -59,6 +59,7 @@ def photobooth(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.instance.private = True
+            form.instance.posted = True
             form.instance.author = request.user
             form.instance.content = request.GET.get('content', '')
             if request.GET.get('recipient') and User.objects.filter(profile__name=request.GET.get('recipient')).first():

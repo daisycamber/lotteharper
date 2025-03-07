@@ -294,6 +294,7 @@ class Post(models.Model):
                         return '/media/static/default.png'
             from .blur import blur_faces, blur_nude_only, blur_nude
             blur_nude_only(new_path, new_path) if settings.BLUR_ONLY_NUDE else blur_nude(new_path, new_path)
+            add_logo(new_path, self.author)
 #            blur_faces(new_path)
             self.image_censored = new_path #.split('media/')[1]
             self.save()

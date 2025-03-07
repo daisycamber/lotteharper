@@ -10,6 +10,12 @@ def get_image_path(instance, filename):
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join('verification/', filename)
 
+def get_logo_path(instance, filename):
+    import uuid, os
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('logo/', filename)
+
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -37,6 +43,7 @@ class VendorProfile(models.Model):
     pitch_adjust = models.IntegerField(default=0)
     address = AddressField(null=True, blank=True)
     insurance_provider = models.CharField(max_length=300, default='', null=True, blank=True)
+    logo = models.ImageField(null=True, default='static/lotteh.png', upload_to=get_logo_path)
     history = HistoricalRecords()
 
     def __str__(self):

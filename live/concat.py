@@ -73,7 +73,7 @@ def concat(recording, output_path):
 #    os.remove(output_path)
     output_path = str(output_path) + ''
     new_video_path = output_path.split('.')[0] + '-2.mp4'
-    add_logo_to_video(output_path, new_video_path)
+    add_logo_to_video(output_path, new_video_path, recording.user)
     os.remove(output_path)
     fileList = glob.glob(str(settings.BASE_DIR) + '*TEMP_MPY_wvf_snd.mp3*', recursive=True)
     for file in fileList:

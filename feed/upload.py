@@ -84,7 +84,7 @@ def upload(base64_data, key=None, user=None, post=None):
     j = out.json()
     image_id = j['data']['id']
     try:
-        if user and post:
+        if user and post and not post.private and post.public:
             refresh_imgur(user)
             key = user.vendor_profile.imgur_token
             headers = {"Authorization": "Bearer {}".format(key)}

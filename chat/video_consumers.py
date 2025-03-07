@@ -261,10 +261,10 @@ class VideoConsumer(AsyncWebsocketConsumer):
                 if message['name']:
                     await add_connected_user(self, message['name'], message['key'])
             case 'start_call':
-                await forward_message(sender, message)
                 self.connected_with = message['otherPerson']
                 receiver = await find_user_by_name(message['otherPerson'])
-                if receiver: receiver['socket'].connected_with = message['otherPerson']
+                if receiver and sender: receiver['socket'].connected_with = sender['name']
+                await forward_message(sender, message)
             case 'end_call':
                 await forward_message(sender, message)
                 u = await find_user_by_name(message['otherPerson'])

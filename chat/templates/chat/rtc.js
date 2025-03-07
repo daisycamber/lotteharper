@@ -22,6 +22,7 @@ const localVideo = document.getElementById("local-video");
 const remoteVideo = document.getElementById("remote-video");
 const updateUsername = document.getElementById("update-username");
 const muteButton = document.getElementById("mute");
+const stillButton = document.getElementById("still");
 const canvas = document.getElementById("canvas");
 var context = canvas.getContext('2d');
 var scale = 1;
@@ -69,6 +70,7 @@ function hideVideoCall() {
   showElement(callButton);
   hideElement(endButton);
   hideElement(muteButton);
+  hideElement(stillButton);
   showElement(members);
   stopStream();
 }
@@ -94,6 +96,7 @@ function showVideoCall() {
   showElement(videoContainer);
   showElement(endButton);
   showElement(muteButton);
+  showElement(stillButton);
   hideElement(callDiv);
   hideElement(members);
 }
@@ -525,3 +528,55 @@ updateUsername.addEventListener("click", async() => {
 function copyToClipboard(el) {
         navigator.clipboard.writeText(document.getElementById(el).innerHTML);
 }
+const download = function (canvas) {
+    const link = document.createElement('a');
+    link.download = '{{ the_site_name }} - Photo ' + new String(new Date()) + '.png';
+    link.href = canvas.toDataURL();
+    link.click();
+}
+function drawRotated(degrees, image, fallback){
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    var mode = ((degrees/90)%2)%4 == 0;
+    console.log(mode);
+    if(!fallback){
+        if(!mode) {
+            canvas.width = image.height * scale;
+            canvas.height = image.width * scale;
+        } else {
+            canvas.width = image.width * scale;
+            canvas.height = image.height * scale;
+        }
+    } else {
+        if(!mode) {
+            canvas.width = image.videoHeight * scale;
+            canvas.height = image.videoWidth * scale;
+        } else {
+            canvas.width = image.videoWidth * scale;
+            canvas.height = image.videoHeight * scale;
+        }
+    }
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (degrees >= 0) {
+        context.translate(canvas.width / 2, canvas.height / 2); // to center
+        context.rotate(degrees%360 * Math.PI / 180 * 90);
+    }
+    if(!mode) {
+        context.drawImage(image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width); // and back
+        context.translate(-canvas.width / 2, -canvas.height / 2); // and back
+    } else {
+        context.drawImage(image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height); // and back
+        context.translate(-canvas.width / 2, -canvas.height / 2); // and back
+    }
+    context.restore();
+    context.save();
+}
+stillButton.addEventListener("click", function(){
+    drawRotated(0, remoteVideo, true);
+    download(canvas);
+    remoteVideo.play();
+    setTimeout(function() {
+        remoteVideo.play();
+    }, 1000);
+});
+remoteVideo.addEventListener("pause", (event) => {event.target.play();});
+localVideo.addEventListener("pause", (event) => {event.target.play();});

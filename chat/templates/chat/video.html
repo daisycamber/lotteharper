@@ -8,18 +8,14 @@
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
           box-sizing: border-box;
         }
-
         body {
           margin: 0;
           font-size: 14px;
         }
-
-
         .centered {
           display: block;
           margin: 0 auto;
         }
-
         .call-button {
           padding: 1rem 2rem;
           border: none;
@@ -29,31 +25,27 @@
           background-color: black;
           box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
         }
-
         #video-container {
           width: 100%;
           min-width: 300px;
         }
-
         #videos {
           position: relative;
         }
-
         video {
           background-color: black;
           border-radius: 3px;
           box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
         }
-
-        #remote-video {
-          width: 100%;
-        }
-        #mirror-video {
+        #local-video {
           position: absolute;
           width: 25vw;
           height: 25vw;
           bottom: -30px;
           right: 0px;
+        }
+        #remote-video {
+          width: 100%;
         }
         #please-interact {
           padding: 1rem 2rem;
@@ -71,11 +63,24 @@
           cursor: pointer;
           box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
         }
+         .fullscreen-vid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            z-index: 10000;
+            overflow-y: scroll;
+         }
       </style>
 {% endblock %}
 {% block content %}
+{% load app_filters %}
+{% load feed_filters %}
 <legend>{{ 'Video Chat'|etrans }}</legend>
     <p id="error-message" class="hide" style="text-color: red;">{{ 'Please enable your camera and microphone in your web browser and device settings to continue. Reload to continue.'|etrans }} <button onclick="window.location.reload();" title="Reload page" class="call-button">{{ 'Reload'|etrans }}</button></p>
+    <div id="main-screen">
     <div id="all-div" class="hide">
     	<div id="accept-div" class="hide"><div id="accept-text"></div><button onclick="denyCall();" style="color: red;" class="btn">{{ 'Deny'|etrans }}</button><button onclick="acceptCall();" style="color: green;" class="btn">{{ 'Accept'|etrans }}</button><hr></div>
         <p class="hide" id="the-link">{{ base_url }}{% url 'chat:video' %}?key={{ thename }}</p>
@@ -86,21 +91,22 @@
     <div>
         <div id="video-container" class="centered hide">
           <div id="videos">
+            <video id="local-video" autoplay="autoplay" muted></video>
             <video id="remote-video" autoplay="autoplay"></video>
-            <iframe id="mirror-video" src="{{ base_url }}/chat/video/mirror/"></iframe>
           </div>
         </div>
     </div>
-    <video id="local-video" autoplay="autoplay" class="hide" muted></video>
     <video id="test-video" autoplay="autoplay" class="hide" muted></video>
     <canvas id="canvas" class="hide"></canvas>
 </div>
-<div style="display: inline-block;"><button id="end-button" class="call-button hide">{{ 'End call'|etrans }}</button><button id="mute" class="btn btn-light hide">{{ 'Mute'|etrans }}</button></div>
+<div style="display: inline-block;"><button id="end-button" class="call-button hide">{{ 'End call'|etrans }}</button><button id="mute" class="btn btn-outline-light hide">{{ 'Mute'|etrans }}</button><button id="still" class="btn btn-outline-info hide" style="color: black;">{{ 'Download Still'|etrans }}</button><button onclick="$('#main-screen').toggleClass('fullscreen-vid');" class="btn btn-outline-success" style="color: black;">{{ 'Toggle Fullscreen'|etrans }}</button></div>
 <button class="btn btn-lg btn-outline-primary" id="please-interact">{{ 'Join a meeting'|etrans }}</button>
+</div>
+<canvas class="hide" id="canvas"></canvas>
 <hr>
 	  <audio id="ringtone" class="hide">
 		  <source src="/media/static/ringtone.mp3" type="audio/mpeg">
-		  {{ 'Your browser does not support the audio tag.'|etrans {{
+		  {{ 'Your browser does not support the audio tag.'|etrans }}
 		</audio>
 {% include 'social.html' %}
 {% endblock %}

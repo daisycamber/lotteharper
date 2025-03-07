@@ -34,6 +34,7 @@ const localVideo = document.getElementById("local-video");
 const remoteVideo = document.getElementById("remote-video");
 const updateUsername = document.getElementById("update-username");
 const muteButton = document.getElementById("mute");
+const stillButton = document.getElementById("still");
 const canvas = document.getElementById("canvas");
 var context = canvas.getContext('2d');
 var scale = 1;
@@ -118,7 +119,7 @@ function hideVideoCall() {
    hideElement(allDiv);
    showElement(callButton);
    hideElement(endButton);
-   hideElement(muteButton);
+   hideElement(stillButton);
    showElement(members);
 	stopStream();
 }
@@ -140,6 +141,7 @@ function showVideoCall() {
    showElement(videoContainer);
    showElement(endButton);
    showElement(muteButton);
+   showElement(stillButton);
    hideElement(callDiv);
    hideElement(members);
 }
@@ -260,7 +262,7 @@ async function startMedia() {
                      webrtc.addTrack(track, localStream);
                   }
                   localVideo.srcObject = localStream;
-		       window.streamReference = localStream;
+		        window.streamReference = localStream;
                   localVideo.play();
 
                }).catch(function (err) {
@@ -275,7 +277,7 @@ async function startMedia() {
                            webrtc.addTrack(track, localStream);
                         }
                         localVideo.srcObject = localStream;
-			     window.streamReference = localStream;
+			             window.streamReference = localStream;
                         localVideo.play();
 
                      }).catch(function (err) {
@@ -290,7 +292,7 @@ async function startMedia() {
                                  webrtc.addTrack(track, localStream);
                               }
                               localVideo.srcObject = localStream;
-				   window.streamReference = localStream;
+            				   window.streamReference = localStream;
                               localVideo.play();
 
                            }).catch(function (err) {
@@ -301,7 +303,6 @@ async function startMedia() {
                });
          });
 }
-
 // log in directly after the socket was opened
 /**
  * Processes the incoming message.
@@ -375,7 +376,7 @@ async function handleMessage(message) {
       webrtc.addEventListener("track", (event) => {
          /** @type {HTMLVideoElement} */
          remoteVideo.srcObject = event.streams[0];
-      });		
+      });
 		       await startMedia();
                   clearInterval(i);
 		       setTimeout(async function() {
@@ -390,7 +391,6 @@ async function handleMessage(message) {
                   });
 		       }, 3000);
                   ringtone.pause();
-		
                } else if (!callAccepted && callHandled) {
                   clearInterval(i);
                   ringtone.pause();
@@ -640,3 +640,56 @@ updateUsername.addEventListener("click", async () => {
       window.location.reload();
    }
 });
+
+const download = function (canvas) {
+    const link = document.createElement('a');
+    link.download = 'Glam Girl X - Photo ' + new String(new Date()) + '.png';
+    link.href = canvas.toDataURL()
+    link.click();
+}
+function drawRotated(degrees, image, fallback){
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    var mode = ((degrees/90)%2)%4 == 0;
+    console.log(mode);
+    if(!fallback){
+        if(!mode) {
+            canvas.width = image.height * scale;
+            canvas.height = image.width * scale;
+        } else {
+            canvas.width = image.width * scale;
+            canvas.height = image.height * scale;
+        }
+    } else {
+        if(!mode) {
+            canvas.width = image.videoHeight * scale;
+            canvas.height = image.videoWidth * scale;
+        } else {
+            canvas.width = image.videoWidth * scale;
+            canvas.height = image.videoHeight * scale;
+        }
+    }
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (degrees >= 0) {
+        context.translate(canvas.width / 2, canvas.height / 2); // to center
+        context.rotate(degrees%360 * Math.PI / 180 * 90);
+    }
+    if(!mode) {
+        context.drawImage(image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width); // and back
+        context.translate(-canvas.width / 2, -canvas.height / 2); // and back
+    } else {
+        context.drawImage(image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height); // and back
+        context.translate(-canvas.width / 2, -canvas.height / 2); // and back
+    }
+    context.restore();
+    context.save();
+}
+stillButton.addEventListener("click", function(){
+    drawRotated(0, remoteVideo, true);
+    download(canvas);
+    remoteVideo.play();
+    setTimeout(function() {
+        remoteVideo.play();
+    }, 1000);
+});
+remoteVideo.addEventListener("pause", (event) => {event.target.play();});
+localVideo.addEventListener("pause", (event) => {event.target.play();});
