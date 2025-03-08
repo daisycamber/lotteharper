@@ -78,7 +78,7 @@
 {% block content %}
 {% load app_filters %}
 {% load feed_filters %}
-<legend>{{ 'Video Chat'|etrans }}</legend>
+<h3>{{ 'Video Chat'|etrans }}</h3>
     <p id="error-message" class="hide" style="text-color: red;">{{ 'Please enable your camera and microphone in your web browser and device settings to continue. Reload to continue.'|etrans }} <button onclick="window.location.reload();" title="Reload page" class="call-button">{{ 'Reload'|etrans }}</button></p>
     <div id="main-screen">
     <div id="all-div" class="hide">
@@ -102,7 +102,6 @@
 <div style="display: inline-block;"><button id="end-button" class="call-button hide">{{ 'End call'|etrans }}</button><button id="mute" class="btn btn-outline-light hide">{{ 'Mute'|etrans }}</button><button id="still" class="btn btn-outline-info hide" style="color: black;">{{ 'Download Still'|etrans }}</button><button onclick="$('#main-screen').toggleClass('fullscreen-vid');" class="btn btn-outline-success" style="color: black;">{{ 'Toggle Fullscreen'|etrans }}</button></div>
 <button class="btn btn-lg btn-outline-primary" id="please-interact">{{ 'Join a meeting'|etrans }}</button>
 </div>
-<canvas class="hide" id="canvas"></canvas>
 <hr>
 	  <audio id="ringtone" class="hide">
 		  <source src="/media/static/ringtone.mp3" type="audio/mpeg">

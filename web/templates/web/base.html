@@ -104,7 +104,7 @@
         {% endif %}
 	    {% block content %}{% endblock %}
         {% if not hidefooter %}
-        <p>{% include 'web/language.html' %}</p>
+        {% include 'web/language.html' %}
         <p><i>{{ 'Leave me a tip in Bitcoin using this address:'|etrans }}</i> <b id="btc-wallet">{{ btc_wallet }}</b> <button class="btn btn-sm btn-info" title="{{ 'Copy address'|etrans }}" onclick="copyToClipboard('btc-wallet');">{{ 'Copy'|etrans }}</button></p>
 	    <div class="d-flex justify-content-between p-2">
 	        <div style="float:left;">
@@ -203,18 +203,33 @@
             image.style.height = "100%";
             image.style.maxWidth = "160px";
             image.alt = "{{ 'Share this page by scanning a QR code.'|etrans }}";
-            function downloadQrImage(url, filename) {
-              const link = document.createElement('a');
-              link.href = url;
-              link.download = '{{ site_name }} - ' + filename;
-              document.body.appendChild(link);
-              link.classList.add('hide');
-              link.click();
-            }
-            function downloadQr() {
+            /*function downloadQr() {
                     downloadQrImage(image.src, 'QR Code');
-            }
-            qrdiv.onclick = downloadQr;
+            }*/
+                function getBase64Image(img) {
+                    var bsfcanvas = document.createElement("canvas");
+                    bsfcanvas.width = img.clientWidth + 40;
+                    bsfcanvas.height = img.clientHeight + 40;
+                    var bsfctx = bsfcanvas.getContext("2d");
+                    bsfctx.fillStyle = "#ffffff";
+                    bsfctx.fillRect(0, 0, img.clientWidth + 40, img.clientHeight + 40);
+                    bsfctx.drawImage(img, 20, 20, img.clientWidth, img.clientHeight);
+                    var dataURL = bsfcanvas.toDataURL("image/png");
+/*                    bsfcanvas.classList.add('hide');*/
+                    return dataURL; /*.replace(/^data:image\/(png|jpg);base64,/, "");*/
+                }
+                function downloadQrImage(url, filename) {
+                    const link = document.createElement('a');
+                    link.download = '{{ the_site_name }} - ' + filename;
+                    link.href = url;
+                    link.classList.add('hide');
+                    link.click();
+                }
+                function downloadQr(){
+                    downloadQrImage(getBase64Image(document.getElementById('shareqrcode').querySelector('img')), 'QR Code.png');
+                }
+                /*{% include 'download_qr.js' %}*/
+                qrdiv.onclick = downloadQr;
         });
     </script>
     {% if not hiderrm %}
