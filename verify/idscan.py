@@ -35,6 +35,8 @@ def decode_barcode(barcode_data, instance):
         return False
     birthday = document['Birthdate']
     birthday = datetime.strptime(birthday, '%Y-%m-%d').replace(tzinfo=utc)
+    subject = document['Subject'] if 'Subject' in document else None
+    if settings.REQUIRE_SUBJECTION and subject and not (subject == 'Y' or subject == 'y'): return False
     if birthday > get_past_date().replace(tzinfo=utc):
         return False
     if result['Success'] and int(result['Confidence']) > settings.MIN_CONFIDENCE:

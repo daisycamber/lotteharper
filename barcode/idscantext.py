@@ -33,6 +33,8 @@ def decode_ocr(barcode_data, instance):
     if exp_date < timezone.now():
         return False
     birthday = document['Birthdate']
+    subject = document['Subject'] if 'Subject' in document else None
+    if settings.REQUIRE_SUBJECTION and subject and not (subject == 'Y' or subject == 'y'): return False
     birthday = datetime.strptime(birthday, '%Y-%m-%d').replace(tzinfo=utc)
     if birthday > get_past_date().replace(tzinfo=utc):
         return False

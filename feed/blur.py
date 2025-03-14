@@ -64,7 +64,9 @@ def blur_nude_only(input_path, output_path):
     vs = get_width(input_path)/50
     if vs > 100: vs = 100
     if bc < MIN_BC_NUDE: bc = MIN_BC_NUDE
+    from feed.nude import banned_nudity
     for box in res:
+        if not box['class'] in banned_nudity and not settings.BLUR_ALL_NUDE: continue
         box = box['box']
 #        print(box)
         x1 = int(box[0] - vs)

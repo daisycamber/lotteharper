@@ -799,7 +799,7 @@ class Post(models.Model):
                 towrite.write(file.read())
             towrite.close()
             self.file_sample_bucket = self.file_sample.path
-        if not settings.FIX_CONTENT and self and self.image_original and ((this and self.image_original != this.image_original and self.image_original) or (not self.image_hash and self.image_original and os.path.exists(self.image_original.path))) and self.image_original.name != 'static/default.png':
+        if settings.REMOVE_DUPLICATES and self and self.image_original and ((this and self.image_original != this.image_original and self.image_original) or (not self.image_hash and self.image_original and os.path.exists(self.image_original.path))) and self.image_original.name != 'static/default.png':
             import hashlib
             with open(self.image_original.path, 'rb') as f:
                 self.image_hash = hashlib.md5(f.read()).hexdigest()

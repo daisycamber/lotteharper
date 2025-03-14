@@ -341,10 +341,11 @@ CELERY_TIMEZONE = 'America/Los_Angeles'
 ACTIVATE_MINING = False
 MONERO_ADDRESS = config['MONERO_ADDRESS']
 
-# Keys
+# Programmanble SMS keys
 TWILIO_ACCOUNT_SID = keys['TWILIO_ACCOUNT_SID']
 TWILIO_AUTH_TOKEN = keys['TWILIO_AUTH_TOKEN']
 
+# Moderation keys
 SIGHTENGINE_USER = keys['SIGHTENGINE_USER']
 SIGHTENGINE_SECRET = keys['SIGHTENGINE_SECRET']
 
@@ -355,13 +356,11 @@ ANTIDEO_KEY = keys['ANTIDEO_KEY']
 
 IDSCAN_AUTH_KEY = keys['IDSCAN_AUTH_KEY']
 
+# Maps key
 GOOGLE_API_KEY = keys['GOOGLE_MAPS_API_KEY']
 
+# Payment processing keys
 OPENNODE_KEY = keys['OPENNODE_KEY']
-
-TENSORDOCK_KEY = keys['TENSORDOCK_KEY']
-TENSORDOCK_TOKEN = keys['TENSORDOCK_TOKEN']
-TENSORDOCK_SERVER = keys['TENSORDOCK_SERVER']
 
 NOWPAYMENTS_KEY = keys['NOWPAYMENTS_KEY']
 NOWPAYMENTS_EMAIL = keys['NOWPAYMENTS_EMAIL']
@@ -370,55 +369,78 @@ NOWPAYMENTS_PASSWORD = keys['NOWPAYMENTS_PASSWORD']
 ANET_KEY = keys['ANET_KEY']
 ANET_NAME = keys['ANET_NAME']
 
+# Hosting keys
+TENSORDOCK_KEY = keys['TENSORDOCK_KEY']
+TENSORDOCK_TOKEN = keys['TENSORDOCK_TOKEN']
+TENSORDOCK_SERVER = keys['TENSORDOCK_SERVER']
+
+# AES Keys for internal encryption
 AES_KEY = keys['AES_KEY']
 PRV_AES_KEY = keys['PRV_AES_KEY']
 PUB_AES_KEY = keys['PUB_AES_KEY']
 REL_AES_KEY = keys['REL_AES_KEY']
 
+# AWS s3 Bucket keys
 AWS_ACCESS_KEY_ID = keys['AWS_ACCESS']
 AWS_SECRET_ACCESS_KEY = keys['AWS_SECRET']
 AWS_QUERYSTRING_EXPIRE = 60*60*24*7
 
+# Tensorfusion API key
 TF_API_KEY = keys['TF_API_KEY']
 
+# Geolocation API key
 GEOLOCATION_API_KEY = keys['GEOLOCATION_API_KEY']
 
+# Twitter Keys
 TWITTER_KEY = keys['TWITTER_KEY']
 TWITTER_SECRET = keys['TWITTER_SECRET']
 TWITTER_ACCESS_TOKEN = keys['TWITTER_ACCESS_TOKEN']
 TWITTER_TOKEN_SECRET = keys['TWITTER_TOKEN_SECRET']
 
+# Google recaptcha keys
 RECAPTCHA_PUBLIC_KEY = config['RECAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = config['RECAPTCHA_PRIVATE_KEY']
 
+# Stripe keys
 STRIPE_API_KEY = config['STRIPE_KEY']
 STRIPE_PUBLIC_KEY = config['STRIPE_PUBLIC_KEY']
 
+# Square keys
 SQUARE_APP_ID = config['SQUARE_APP_ID']
 SQUARE_ACCESS_TOKEN = config['SQUARE_ACCESS_TOKEN']
 
+# Cloudinary keys (not in use)
 CLOUDINARY_CLOUD_NAME = config['CLOUDINARY_CLOUD_NAME']
 CLOUDINARY_API_KEY = config['CLOUDINARY_API_KEY']
 CLOUDINARY_API_SECRET = config['CLOUDINARY_API_SECRET']
 
+# TOTP Key
 OTP_SECRET_CODE = config['OTP_SECRET_CODE']
 
-SQUARE_LOCATION = config['SQUARE_LOCATION']
-
+# Paypal keys
 PAYPAL_ID = config['PAYPAL_ID']
 PAYPAL_SECRET = config['PAYPAL_SECRET']
 
+# Location for Square
+SQUARE_LOCATION = config['SQUARE_LOCATION']
+
+# Crypto wallets
 BITCOIN_WALLET = config['BITCOIN_WALLET']
 ETHEREUM_WALLET = config['ETHEREUM_WALLET']
 
+# Vivokey cryptobionics JWT API key
 VIVOKEY_KEY = config['VIVOKEY_KEY']
 
+# Image host key
 IMAGE_HOST_KEY = keys['IMAGE_HOST_KEY']
 
+# OpenAI key for GPT
 OPENAI_KEY = keys['OPENAI_KEY']
 
+# Helcim key
 HELCIM_KEY = keys['HELCIM_KEY']
 
+# Imgur keys
 IMGUR_ID = keys['IMGUR_ID']
 IMGUR_SECRET = keys['IMGUR_SECRET']
 
@@ -767,6 +789,7 @@ BANNED_ID_TYPES = ['SexOffenderCard']
 ENABLE_AGECHECKER = False
 USE_IDWARE = True
 BARCODE_SIZE = 300
+REQUIRE_SUBJECTION = True
 OCR_LANG = 'eng'
 
 # Interval to assess kick
@@ -775,38 +798,57 @@ ASSESS_KICK_INTERVAL = 60 * 30
 # Number of words to add to post for unique naming
 POST_WORDS = 3
 
+# Audio sample length in ms
 FREE_AUDIO_MS = 10000
 
+# Auction settings
 AUCTION_END_DAYS=0
 MIN_BID = 10
 
-FIX_CONTENT = False
+# Remove duplicate content
+REMOVE_DUPLICATES = True
 
+# Bank/processing statement descriptor
 STATEMENT_DESCRIPTOR = 'LOTTEH.COM'
 
-EMAIL_ICON_URL = '/email/static/logo.png'
+# Icon URL for email
+EMAIL_ICON_URL = '/em6ail/static/logo.png'
 
+# Session update query interval
 SESSION_UPDATE_SECONDS = 5
 
+# Minimum crypto payment percentage
 MIN_CRYPTO_PERCENTAGE = 90
 
+# Programmable voice blog feed
 VOICE_FEED = 'blog'
 
+# Offsite images (eg. imgur)
 USE_OFFSITE = True
 
+# Id scan is valid for (hours)
 ID_VALID_HOURS = 24 * 30 * 6
+# Signature valid for
 SIG_VALID_HOURS = 24 * 30 * 6
 
+# Multiple sales of one product
 ALLOW_MULTIPLE_SALES = False
 
+# Vibration settings
 DEFAULT_VIBRATION = 400
 
+# Adult content allowed?
 ADULT_CONTENT = True
 
+# Blur nude parts of image only? (vs full photo)
 BLUR_ONLY_NUDE = True
+# Liberally?
+BLUR_ALL_NUDE = False
 
+# Search in your language?
 MULTILINGUAL_SEARCH = True
 
+# Text for the site ad
 AD_TEXT = 'Charlotte Harper is a full stack developer living in {}. I use she/her pronouns and build internet enabled software, including apps, games, devices, and other software. This website is a secure Kubernetes at the edge solution where you can visit me and see what I\'m building. Thank you for visiting my webapp.'.format(CITY_STATE)
 
 # Sentry
