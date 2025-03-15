@@ -707,6 +707,10 @@ def post_detail(request, uuid):
     post = Post.objects.filter(friendly_name=uuid).order_by('-date_posted').first()
     if not post:
         post = Post.objects.filter(friendly_name__icontains=uuid[:32]).order_by('-date_posted').first()
+    if not post:
+        post = Post.objects.filter(friendly_name__icontains=uuid[:24]).order_by('-date_posted').first()
+    if not post:
+        post = Post.objects.filter(friendly_name__icontains=uuid[:15]).order_by('-date_posted').first()
     if (((not request.user.is_authenticated or not hasattr(request.user, 'profile') or not post.author in request.user.profile.subscriptions.all()) and post.private) and post.author != request.user and not post.recipient == request.user) or (post.secure or (post.private)) and not (request.user.is_authenticated and document_scanned(request.user)):
         from django.urls import reverse
         from django.shortcuts import redirect
@@ -901,7 +905,10 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         import pytz
         from django.conf import settings
         from security.crypto import decrypt_cbc
-        return {'time': self.get_object().date_posted.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%H:%M:00'), 'date': self.get_object().date_posted.astimezone(pytz.timezone(settings.TIME_ZONE)).date, 'auction_message': decrypt_cbc(self.get_object().auction_message, settings.AES_KEY)} #.strftime('%m-%d-%Y')
+        try:
+            return {'time': self.get_object().date_posted.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%H:%M:00'), 'date': self.get_object().date_posted.astimezone(pytz.timezone(settings.TIME_ZONE)).date, 'auction_message': decrypt_cbc(self.get_object().auction_message, settings.AES_KEY)} #.strftime('%m-%d-%Y')
+        except:
+            return {'time': self.get_object().date_posted.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%H:%M:00'), 'date': self.get_object().date_posted.astimezone(pytz.timezone(settings.TIME_ZONE)).date} #.strftime('%m-%d-%Y')
 
     def form_valid(self, form):
         from django.contrib import messages

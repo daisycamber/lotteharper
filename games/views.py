@@ -42,6 +42,9 @@ def invite(request, id):
     from django.conf import settings
     from django.shortcuts import render, get_object_or_404, redirect
     post = Post.objects.filter(friendly_name__icontains=id).order_by('-date_posted').first()
+    if not post: post = Post.objects.filter(friendly_name__icontains=id[:32]).order_by('-date_posted').first()
+    if not post: post = Post.objects.filter(friendly_name__icontains=id[:24]).order_by('-date_posted').first()
+    if not post: post = Post.objects.filter(friendly_name__icontains=id[:15]).order_by('-date_posted').first()
     code = str(random.randint(get_num_length(1, settings.GAME_CODE_LENGTH), get_num_length(9, settings.GAME_CODE_LENGTH)))
     user_code = str(random.randint(get_num_length(1, settings.GAME_CODE_LENGTH), get_num_length(9, settings.GAME_CODE_LENGTH)))
     while (Game.objects.filter(uid=user_code, time__gte=timezone.now() - datetime.timedelta(hours=48)).last() or Game.objects.filter(uid=user_code, time__gte=timezone.now() - datetime.timedelta(hours=48)).last()):
