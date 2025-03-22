@@ -227,8 +227,8 @@ def process_live(camera_id, frame_id):
         frame.frame = path
 #    camera.mime = frame.frame.name.split('.')[1]
 #    camera.save()
-#    frame.safe = not is_nude_fast(frame.still.path) # TODO FIX THIS
-    if False and not frame.safe and settings.NUDITY_FILTER: # or not is_safe_image(frame.still.path):
+    frame.safe = not is_nude_fast(frame.still.path) if frame.still and os.path.exists(frame.still.path) else False
+    if not frame.safe and settings.NUDITY_FILTER: # or not is_safe_image(frame.still.path):
         frame.public = False
         frame.processed = True
         frame.save()
