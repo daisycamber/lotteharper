@@ -310,6 +310,7 @@ class VideoRecording(models.Model):
     frames = models.ManyToManyField(VideoFrame, blank=True, related_name='recording')
     file = models.FileField(upload_to=get_file_path, null=True, blank=True)
     file_processed = models.FileField(upload_to=get_file_path, storage=MediaStorage(), null=True, blank=True)
+    thumbnail_bucket = models.FileField(upload_to=get_still_path, storage=MediaStorage(), null=True, blank=True)
     uuid = models.CharField(max_length=100, default=uuid.uuid4)
     camera = models.CharField(max_length=100, default=DEFAULT_CAMERA_NAME)
     last_frame = models.DateTimeField(default=timezone.now)

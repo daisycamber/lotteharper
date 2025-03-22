@@ -58,8 +58,8 @@ def upload_youtube(user, file_path, title, description, tags, category='22', pri
         "tags" : tags,
         "category" : category,
         "privacy" : privacy_status,
+        "thumbnailLink" : thumbnail,
         "kids" : False,
-        "thumbnailLink" : thumbnail
     }
     import httplib2
     import os
@@ -147,9 +147,15 @@ def upload_youtube(user, file_path, title, description, tags, category='22', pri
           description=options['description'],
           tags=options['tags'],
           categoryId=options['category']
+          thumbnails=dict(
+            default=dict(
+              url=options['thumbnail']
+            ),
+          ) if options['thumbnail'] else None,
         ),
         status=dict(
-          privacyStatus=options['privacy']
+          privacyStatus=options['privacy'],
+          selfDeclaredMadeForKids=options['kids']
         )
       )
 

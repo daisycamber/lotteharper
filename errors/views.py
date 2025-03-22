@@ -42,13 +42,16 @@ def handler500(request):
         Error.objects.create(user=user, stack_trace=get_current_exception(), notes='Logged by 500 handler.')
     except: pass
     from django.shortcuts import render
-    return render(request, 'errors/error.html', {'title': 'Error 500', 'pagetitle': 'Error 500', 'notes': 'There is a problem with the server, or with a request coming from you. Thank you for your understanding while we get things set up.', 'trace': get_current_exception()})
+    model = User.objects.get(id=settings.MY_ID)
+    return render(request, 'errors/error.html', {'title': 'Error 500', 'pagetitle': 'Error 500', 'notes': 'There is a problem with the server, or with a request coming from you. Thank you for your understanding while we get things set up.', 'trace': get_current_exception(), 'model': model})
 
 
 def handler403(request, exception):
     from django.shortcuts import render
-    return render(request, 'errors/error.html', {'title': 'Error 403', 'pagetitle': 'Error 403', 'notes': 'You don\'t have permission to preform this request. If you think this is in error, please contact the server administrator.', 'is_403': True})
+    model = User.objects.get(id=settings.MY_ID)
+    return render(request, 'errors/error.html', {'title': 'Error 403', 'pagetitle': 'Error 403', 'notes': 'You don\'t have permission to preform this request. If you think this is in error, please contact the server administrator.', 'is_403': True, 'model': model})
 
 def handler400(request, exception):
     from django.shortcuts import render
-    return render(request, 'errors/error.html', {'title': 'Error 400', 'pagetitle': 'Error 400', 'notes': 'This was a bad request.'})
+    model = User.objects.get(id=settings.MY_ID)
+    return render(request, 'errors/error.html', {'title': 'Error 400', 'pagetitle': 'Error 400', 'notes': 'This was a bad request.', 'model': model})

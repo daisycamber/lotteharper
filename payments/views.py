@@ -735,7 +735,14 @@ def surrogacy(request, username):
     from .forms import CardPaymentForm
     signature = None
     parent_signature = None
-    vendor = User.objects.get(profile__name=username, profile__vendor=True)
+    vendor = User.objects.filter(profile__name=username, profile__vendor=True, vendor_profile__activate_surrogacy=True).order_by('-profile__last_seen').first()
+    if not vendor:
+        from django.shortcuts import redirect
+        from django.urls import reverse
+        from django.contrib import messages
+        messages.warning(request, '@{} is not accepting surrogacy contracts at the moment. Please stay in touch and revisit in the future.'.format(username))
+        if request.user.is_authenticated: return redirect(reverse('app:app'))
+        else: return redirect(reverse('users:login'))
     if vendor.verifications.last(): signature = render_to_string('raw_signature.html', {'theuser': vendor})
     if request.user.is_authenticated and request.user.verifications.last(): parent_signature = render_to_string('raw_signature.html', {'theuser': request.user})
     from translate.translate import translate
@@ -1340,7 +1347,7 @@ def onetime_checkout_surrogacy(request):
     from django.http import JsonResponse
     from payments.stripe import SURROGACY_PRICE_ID
     import random
-    vendor = User.objects.get(id=int(request.GET.get('vendor', None)))
+    vendor = User.objects.get(id=int(request.GET.get('vendor', None)), vendor_profile__activate_surrogacy=True)
     price = SURROGACY_PRICE_ID
     if request.method == "GET":
         domain_url = settings.BASE_URL
@@ -1872,11 +1879,9 @@ def surrogacy_crypto(request, username):
     crypto = request.GET.get('crypto') if request.GET.get('crypto') else 'BTC'
     network = None if not request.GET.get('lightning', False) else 'lightning'
     from django.contrib.auth.models import User
-    user = User.objects.get(profile__name=username, profile__vendor=True)
+    user = User.objects.get(profile__name=username, profile__vendor=True, vendor_profile__activate_surrogacy=True)
     from django.contrib import messages
     from django.urls import reverse
-    if request.user.is_authenticated and user in request.user.profile.subscriptions.all():
-        return redirect(reverse('feed:profile', kwargs={'username': user.profile.name}))
     from payments.models import VendorPaymentsProfile
     profile, created = VendorPaymentsProfile.objects.get_or_create(vendor=user)
     usd_fee = user.vendor_profile.subscription_fee

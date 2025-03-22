@@ -98,4 +98,4 @@ def vendor_preferences(request):
                 return redirect(reverse('go:go'))
     from django.conf import settings
     from django.shortcuts import render
-    return render(request, 'vendors/vendor_preferences.html', {'title': 'Vendor Preferences','form': form, 'payment_processor': settings.PAYMENT_PROCESSOR})
+    return render(request, 'vendors/vendor_preferences.html', {'title': 'Vendor Preferences','form': form, 'payment_processor': settings.PAYMENT_PROCESSOR, 'vendor': request.user})

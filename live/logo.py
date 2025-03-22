@@ -8,7 +8,7 @@ def add_logo_to_video(video_path, new_video_path, vendor):
     logo = (mp.ImageClip(os.path.join(settings.BASE_DIR, "media/", vendor.vendor_profile.logo.path))
               .with_duration(video.duration)
               .resized(height=int(video.w/13)) # if you need to resize...
-              .with_effects([Margin(margin_size=30,opacity=0)])
+              .with_effects([Margin(margin_size=10,opacity=0)])
               .with_position(("left","bottom")))
     final = mp.CompositeVideoClip([video, logo])
     final.write_videofile(new_video_path)

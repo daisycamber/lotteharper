@@ -369,7 +369,7 @@ def process_recording(id):
     import datetime as dt
     recording = VideoRecording.objects.get(id=id)
     camera = VideoCamera.objects.filter(user=recording.user, name=recording.camera).order_by('-last_frame').first()
-    if (not recording.last_frame or (recording.last_frame < timezone.now() - dt.timedelta(seconds=settings.LIVE_INTERVAL/1000 - 2))) and not recording.processing: # 4
+    if (not recording.last_frame or (recording.last_frame < timezone.now() - dt.timedelta(seconds=settings.LIVE_INTERVAL/1000 + 4))) and not recording.processing: # 4 (the number is the gap, a larger number adds more length to the recording with a longer gap
         recording.processing = True
         for frame in recording.frames.filter(processed=False): process_live(VideoCamera.objects.filter(user=recording.user, name=recording.camera).first().id, frame.id)
         recording.save()
@@ -389,12 +389,26 @@ def process_recording(id):
             towrite.write(file.read())
         towrite.close()
         recording.file_processed = recording.file.path
+        thumbnail = None
+        first_frame = recording.frames.first()
+        if first_frame.animate_video and first_frame.still and os.path.exists(first_frame.still.path):
+            path = os.path.join(settings.BASE_DIR, 'media', get_still_path(first_frame, 'file.png'))
+            from feed.anime import convert_photo_anime
+            convert_photo_anime(first_frame.still.path, path)
+            towrite = recording.thumbnail_bucket.storage.open(path, mode='wb')
+            with open(path, 'rb') as file:
+                towrite.write(file.read())
+            towrite.close()
+            os.remove(path)
+            thumbnail = recording.thumbnail_bucket.url
+        else:
+            thumbnail = first_frame.still_bucket.url
         if camera.upload and recording.public:
             from recordings.youtube import upload_youtube
             import traceback
             try:
                 from better_profanity import profanity
-                upload_youtube(camera.user, recording.file.path, profanity.censor(camera.title[:69-len(recording.last_frame.strftime('%A %B %d, %Y %H:%M:%S'))]) + ' ' + recording.last_frame.strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3]), [tag for tag in camera.tags], category='22', privacy_status='public', thumbnail=None)
+                upload_youtube(camera.user, recording.file.path, profanity.censor(camera.title[:69-len(recording.last_frame.strftime('%A %B %d, %Y %H:%M:%S'))]) + ' ' + recording.last_frame.strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3]), [tag for tag in camera.tags], category='22', privacy_status='public', thumbnail=thumbnail)
                 recording.uploaded = True
             except: print(traceback.format_exc())
         os.remove(recording.file.path)

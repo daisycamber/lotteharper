@@ -8,7 +8,9 @@
 {% endblock %}
 {% block content %}
         <legend class="border-bottom mb-4">Vendor Settings</legend>
-{% if True or payment_processor == 'stripe' %}	<a class="btn btn-outline-danger" title="Connect your bank account or debit card to get paid" href="{% url 'payments:create-link' %}">Payouts</a>{% endif %}
+        <p><img alt="{{ 'Your saved logo used in videos and email'|etrans }}" src="{{ vendor.vendor_profile.logo.url }}" style="width: 30%; max-width: 150px; height: auto;"> - <b>"{{ vendor.profile.name }}"</b> ({{ vendor.verifications.last.full_name }}) <i>{% if vendor == my_profile.user %} - Author{% endif %}{% if vendor.profile.admin %} - Admin{% endif %}</i></p>
+        <hr>
+        {% if True or payment_processor == 'stripe' %}	<a class="btn btn-outline-danger" title="Connect your bank account or debit card to get paid" href="{% url 'payments:create-link' %}">Payouts</a>{% endif %}
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset class="form-group">
