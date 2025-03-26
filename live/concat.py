@@ -57,7 +57,7 @@ def concat(recording, output_path):
     if camera.adjust_pitch and camera.name == 'private' and camera.user.profile.vendor:
         op_path = os.path.join(settings.MEDIA_ROOT, get_file_path(frame, 'frame.mp4'))
         from live.voice_changer import adjust_video_pitch
-        new_path = adjust_video_pitch(recording.file, op_path, camera.user.vendor_profile.pitch_adjust)
+        new_path = adjust_video_pitch(recording.file.path, op_path, camera.user.vendor_profile.pitch_adjust)
         try:
             os.remove(new_video_path)
         except: pass
@@ -68,7 +68,7 @@ def concat(recording, output_path):
         except OSError:
             print("Error while deleting file")
     recording.save()
-    return recording.file
+    return recording.file.path
 
 def concat_old(recording, output_path):
     clips =[]
