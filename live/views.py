@@ -112,7 +112,7 @@ def book_show(request, username):
 @login_required
 @user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 def still(request, filename):
-    from django.core.exeptions import PermissionDenied
+    from django.core.exceptions import PermissionDenied
     import os
     from django.http import Http404
     from django.conf import settings
@@ -350,7 +350,7 @@ def golivevideo(request):
                     recording.save()
                 else:
                     recording = recordings.first()
-                if timezone.now() < recording.last_frame + datetime.timedelta(seconds=(settings.LIVE_INTERVAL/1000) * 4) or (recording.frames.first() and ((recording.last_frame - recording.frames.first().time_captured).total_seconds() > settings.RECORDING_LENGTH_SECONDS)):
+                if recording.last_frame < timezone.now() - datetime.timedelta(seconds=(settings.LIVE_INTERVAL/1000) * 5) or (recording.frames.first() and ((recording.last_frame - recording.frames.first().time_captured).total_seconds() > settings.RECORDING_LENGTH_SECONDS)):
                     recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp, public=False if Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).count() > 0 else True, recipient=show.user if show else None)
                     recording.compressed = camera.compress_video
                     recording.save()
@@ -390,7 +390,8 @@ def golivevideo(request):
     from django.urls import reverse
     if not request.user.is_authenticated: return redirect(reverse('users:login'))
     from django.shortcuts import render
-    return render(request, 'live/golivevideo.html', {'title': 'Go Live', 'camera': camera, 'full': True, 'form': CameraForm(), 'preload': True, 'load_timeout': 5000, 'should_compress_live': request.user.vendor_profile.compress_video, 'key': camera_key, 'use_websocket': camera.use_websocket})
+    return render(request, 'live/golivevideo.html', {'title': 'Go Live', 'camera': camera, 'full': True, 'form': CameraForm(), 'preload': True, 'load_timeout': 5000, 'should_compress_live': request.user.vendor_profile.compress_video, 'key': camera_key, 'use_websocket': camera.use_websocket
+})
 
 #@login_required
 #@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
@@ -427,7 +428,7 @@ def livevideo(request, username):
         messages.warning(request, '{}\'s camera is not active. Consider booking a show.'.format(username))
         return redirect(reverse('live:book-live-show', kwargs={'username': username}) + get_qs(request.GET)) if hasattr(request, 'user') and request.user.is_authenticated else redirect(reverse('feed:follow', kwargs={'username': username}) + get_qs(request.GET))
     from django.shortcuts import render
-    return render(request, 'live/livevideo.html', {'profile': profile, 'camera': cameras.first(), 'title': 'Live Video', 'hidenavbar': hidenav, 'should_compress_live': model.vendor_profile.compress_video})
+    return render(request, 'live/livevideo.html', {'profile': profile, 'camera': cameras.first(), 'title': 'Live Video', 'use_websocket': camera.use_websocket, 'hidenavbar': hidenav, 'should_compress_live': model.vendor_profile.compress_video, 'frame_count': camera.frames.filter(processed=False).count() - 4})
 
 @login_required
 @user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')

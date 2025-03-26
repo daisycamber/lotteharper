@@ -75,6 +75,9 @@ class VideoFrame(models.Model):
     animate_video = models.BooleanField(default=False)
     difference = models.FloatField(default=0)
 
+    def get_local_url(self):
+        return '/media/live/files/' + self.frame.name.split('/')[-1]
+
     def get_still_thumb_url(self, url=True):
         from PIL import Image
         if self.still_thumbnail_bucket: return self.still_thumbnail_bucket.url
@@ -215,7 +218,7 @@ class VideoCamera(models.Model):
     public = models.BooleanField(default=True)
     live = models.BooleanField(default=True)
     recording = models.BooleanField(default=False)
-    use_websocket = models.BooleanField(default=False)
+    use_websocket = models.BooleanField(default=True)
     key = models.TextField(default='', blank=True)
     frame_count = models.IntegerField(default=0)
     confirmation_id = models.TextField(default="", null=True, blank=True)

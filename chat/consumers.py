@@ -60,6 +60,7 @@ async def chat_event(self):
         await self.send(text_data=chat)
 
 async def chat_thread(self):
+    import asyncio
     while self.connected:
         await chat_event(self)
         await asyncio.sleep(15)

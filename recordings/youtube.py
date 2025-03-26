@@ -224,3 +224,4 @@ def upload_youtube(user, file_path, title, description, tags, category='22', pri
     except HttpError as e:
       print(traceback.format_exc())
       print("An HTTP error %d occurred:\n%s" % (e.resp.status, e.content))
+      raise Exception('An error has occured with upload, raising')

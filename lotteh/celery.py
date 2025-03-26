@@ -362,7 +362,7 @@ def process_recording(id):
     import datetime as dt
     recording = VideoRecording.objects.get(id=id)
     camera = VideoCamera.objects.filter(user=recording.user, name=recording.camera).order_by('-last_frame').first()
-    if (not recording.last_frame or (recording.last_frame < timezone.now() - dt.timedelta(seconds=(settings.LIVE_INTERVAL/1000) * 3))): # 4 (the number is the gap, a larger number adds more length to the recording with a longer gap
+    if (not recording.last_frame or (recording.last_frame < timezone.now() - dt.timedelta(seconds=(settings.LIVE_INTERVAL/1000) * 6))): # 4 (the number is the gap, a larger number adds more length to the recording with a longer gap
         recording.processing = True
         for frame in recording.frames.filter(processed=False):
             try:
@@ -412,7 +412,9 @@ def process_recording(id):
                 from better_profanity import profanity
                 upload_youtube(camera.user, recording.file.path, profanity.censor(camera.title[:67-len(recording.last_frame.strftime('%A %B %d, %Y %H:%M:%S'))]) + ' - ' + recording.last_frame.strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3]), [tag for tag in camera.tags], category='22', privacy_status='public', thumbnail=thumbnail, age_restricted=not recording.public)
                 recording.uploaded = True
-            except: print(traceback.format_exc())
+            except:
+                recording.uploaded = False
+                print(traceback.format_exc())
         os.remove(recording.file.path)
         recording.file = None
         recording.processed = True
