@@ -53,7 +53,6 @@ def concat(recording, output_path):
     ret_path = add_logo_to_video(output_path, new_video_path, recording.user)
     os.remove(output_path)
     recording.file = ret_path
-    fileList = glob.glob(str(settings.BASE_DIR) + '*TEMP_MPY_wvf_snd.mp3*', recursive=True)
     if camera.adjust_pitch and camera.name == 'private' and camera.user.profile.vendor:
         op_path = os.path.join(settings.MEDIA_ROOT, get_file_path(frame, 'frame.mp4'))
         from live.voice_changer import adjust_video_pitch
@@ -62,6 +61,7 @@ def concat(recording, output_path):
             os.remove(new_video_path)
         except: pass
         recording.file = new_path
+    fileList = glob.glob(str(os.path.join(settings.BASE_DIR, '*TEMP_MPY_wvf_snd.mp3*')), recursive=True)
     for file in fileList:
         try:
             os.remove(file)
