@@ -69,18 +69,83 @@ const videoElement = document.querySelector('video');
 videodiv.style.backgroundImage = '{{ still }}';
 video.poster = '{{ still }}';
 {% endwith %}
-const mimeCodec = "video/webm; codecs=vp8,opus";
-let mediaSource;
-if ("MediaSource" in window && MediaSource.isTypeSupported(mimeCodec)) {
-  mediaSource = new MediaSource();
-  console.log(mediaSource.readyState); // closed
-  videoElement.src = URL.createObjectURL(mediaSource);
-  mediaSource.addEventListener("sourceopen", sourceOpen);
-} else {
-  console.error("Unsupported MIME type or codec: ", mimeCodec);
+const mimeCodec = "video/webm; codecs=vp8, opus;";
+var mediaSource = new MediaSource();
+videoElement.src = URL.createObjectURL(mediaSource);
+var urls = [];
+var sourceBuffer;
+var queue = [];
+var files = [];
+let currentFileIndex = 0;
+
+function loadAndAppend(url) {
+    fetch(url)
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+            sourceBuffer.appendBuffer(buffer);
+        })
+        .catch(error => console.error('Error fetching video:', error));
 }
+
+function playNextFile() {
+    if (currentFileIndex < files.length - 1) {
+        currentFileIndex++;
+        loadAndAppend(files[currentFileIndex]);
+    } else {
+        mediaSource.endOfStream();
+    }
+}
+
 var alreadyOpen = false;
-async function sourceOpen() {
+var first = true;
+var index = {{ frame_count }};
+var isReset = false;
+    /*
+function loadVideo(url) {
+	{% if camera.compress_video  %}
+	const vidBlob = await (await fetch(url)).blob();
+		var zip = new JSZip();
+		zip.loadAsync(vidBlob).then(function(zip) { 
+			object.keys(zip.files).forEach(function(filename){
+		    	        var content = zip.files[filename];
+        				content.async('ArrayBuffer').then(function(vidBuff) {
+			        	sourceBuffer.appendBuffer(vidBuff);
+        				sourceBuffer.onupdateend = () => {
+						if(!first) {
+        		        			videoElement.play();
+        				       	} else {
+                					first = false;
+        			        	}
+				        };
+				});
+			});
+		});
+	{% else %}
+    async function dataUrlToArrayBuffer(dataUrl) {
+      const response = await fetch(dataUrl);
+      const buffer = await response.arrayBuffer();
+      return buffer;
+    }
+    const vidBuff = await vidBlob.arrayBuffer();
+    const vidBuff = await dataUrlToArrayBuffer(url);
+	const vidBuff = await (await fetch(url)).arrayBuffer();
+    console.log(vidBuff);
+    sourceBuffer.appendBuffer(vidBuff);
+    console.log(sourceBuffer);
+	sourceBuffer.onupdateend = () => {
+		if(!first) {
+			videoElement.play();
+			clearTimeout(idle_timeout);
+			idle_timeout = setTimeout(function() {
+				idle = true;
+			}, {{ video_interval }} * 3);
+		} else {
+			first = false;
+		}
+	};
+	{% endif %}
+}*/
+/*async function sourceOpen() {
     if(!alreadyOpen) {
         alreadyOpen = true;
         console.log(this.readyState);
@@ -94,87 +159,49 @@ async function sourceOpen() {
         	});
         	index++;
         }
-        var first = true;
-        async function loadVideo(url) {
-            if(sourceBuffer.readyState != 'open') return;
-        	{% if True %}
-        	// Fetch remote URL, getting contents as binary blob
-        	const vidBlob = await (await fetch(url)).blob();
-        		var zip = new JSZip();
-        		zip.loadAsync(vidBlob).then(function(zip) { 
-        			object.keys(zip.files).forEach(function(filename){
-        		    	        var content = zip.files[filename];
-                				content.async('ArrayBuffer').then(function(vidBuff) {
-        			        	sourceBuffer.appendBuffer(vidBuff);
-                				sourceBuffer.onupdateend = () => {
-        						if(!first) {
-                		        			videoElement.play();
-                				       	} else {
-                        					first = false;
-                			        	}
-        				        };
-        				});
-        			});
-        		});
-        	{% else %}
-            async function dataUrlToArrayBuffer(dataUrl) {
-              const response = await fetch(dataUrl);
-              const buffer = await response.arrayBuffer();
-              return buffer;
-            }
-        	// We need array buffers to work with media source
-            const vidBuff = await dataUrlToArrayBuffer(url);
-        	sourceBuffer.appendBuffer(vidBuff);
-        	sourceBuffer.onupdateend = () => {
-        		if(!first) {
-        			videoElement.play();
-        			clearTimeout(idle_timeout);
-        			idle_timeout = setTimeout(function() {
-        				idle = true;
-        			}, {{ video_interval }} * 3);
-        		} else {
-        			first = false;
-        		}
-        	};
-        	{% endif %}
-        }
-        var index = {{ frame_count }};
-        var isReset = false;
-        function reset(){
-        	var pi = document.getElementById("pleaseinteract");
-        	pi.style.height = "0px";
-        	pi.style.visibility = "hidden";
-        	if(!isReset) {
-        		isReset = true;
-        		{% if camera.use_websocket %}
-        			function openSocket() {
-        		        var socket = new WebSocket("wss://" + window.location.hostname + '/ws/live/video/{{ camera.user.profile.name }}/{% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %}/?index=' + index);
-            			socket.addEventListener("open", (event) => {
-            			    console.log('Socket open.');
-            			});
-            			socket.addEventListener("closed", (event) => {
-            			    console.log('Socket closed.');
-            			    setTimeout(function() {
-            			        openSocket();
-            			    }, {{ reload_time }});
-                		});
-        				socket.addEventListener("message", async function(event) {
-                            console.log(event.data);
-        					await loadVideo(event.data);
-        /*                    videoElement.src = event.data;
-                            videoElement.play();*/
-        				});
-        			}
-        			openSocket();
-        		{% else %}
-        		setInterval(load, {{ video_interval }});
-        		{% endif %}
-        	}
-        }
-        document.querySelector('body').addEventListener('mousedown', reset);
-        document.querySelector('body').addEventListener('touchstart', reset);
-        document.querySelector('body').addEventListener('keydown', reset);
-        window.addEventListener('scroll', reset); 
     }
-}    
+} */   
+function reset(){
+	var pi = document.getElementById("pleaseinteract");
+	pi.style.height = "0px";
+	pi.style.visibility = "hidden";
+	if(!isReset) {
+		isReset = true;
+		{% if camera.use_websocket %}
+			function openSocket() {
+		        var socket = new WebSocket("wss://" + window.location.hostname + '/ws/live/video/{{ camera.user.profile.name }}/{% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %}/?index=' + index);
+    			socket.addEventListener("open", (event) => {
+    			    console.log('Socket open.');
+    			});
+    			socket.addEventListener("closed", (event) => {
+    			    console.log('Socket closed.');
+    			    setTimeout(function() {
+    			        openSocket();
+    			    }, {{ reload_time }});
+        		});
+				socket.addEventListener("message", async function(event) {
+                    files.push(event.data);
+                    console.log(event.data);
+/*                    urls.push(event.data);
+					await loadVideo(event.data);
+                    videoElement.src = event.data;
+                    videoElement.play();*/
+				});
+			}
+			openSocket();
+            mediaSource.addEventListener('sourceopen', () => {
+                sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
+
+                sourceBuffer.addEventListener('updateend', playNextFile);
+                loadAndAppend(files[currentFileIndex]);
+            });
+		{% else %}
+		setInterval(load, {{ video_interval }});
+		{% endif %}
+	}
+}
+document.querySelector('body').addEventListener('mousedown', reset);
+document.querySelector('body').addEventListener('touchstart', reset);
+document.querySelector('body').addEventListener('keydown', reset);
+window.addEventListener('scroll', reset);
 {% endblock %}

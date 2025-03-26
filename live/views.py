@@ -343,6 +343,7 @@ def golivevideo(request):
             recording = None
             is_frame_still, error = is_still(camera.frame.path)
             if camera.recording and not is_frame_still:
+                from live.models import Show
                 show = Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).first()
                 recordings = VideoRecording.objects.filter(user=camera.user, camera=camera.name, public=False if Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).count() > 0 else True, recipient=show.user if show else None)
                 if recordings.count() == 0:
@@ -374,6 +375,7 @@ def golivevideo(request):
             print('5 second video uploaded')
             return HttpResponse(status=200)
         except:
+            import traceback
             print(traceback.format_exc())
         return HttpResponse(status=200)
     from django.shortcuts import redirect
