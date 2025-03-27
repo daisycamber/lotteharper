@@ -3,6 +3,7 @@ cd /home/team/lotteh
 source venv/bin/activate
 python manage.py makemigrations
 python manage.py migrate --run-syncdb
+python set_site.py
 ./scripts/loadapp auth
 ./scripts/loadapp sessions
 ./scripts/loadapp address

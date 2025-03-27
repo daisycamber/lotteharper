@@ -69,31 +69,40 @@ const videoElement = document.querySelector('video');
 videodiv.style.backgroundImage = '{{ still }}';
 video.poster = '{{ still }}';
 {% endwith %}
-const mimeCodec = "video/webm; codecs=vp8, opus;";
-var mediaSource = new MediaSource();
-videoElement.src = URL.createObjectURL(mediaSource);
+const mimeCodec = "video/webm; codecs=vp8,opus;";
 var urls = [];
-var sourceBuffer;
 var queue = [];
 var files = [];
 let currentFileIndex = 0;
-
-function loadAndAppend(url) {
-    fetch(url)
-        .then(response => response.arrayBuffer())
-        .then(buffer => {
-            sourceBuffer.appendBuffer(buffer);
-        })
-        .catch(error => console.error('Error fetching video:', error));
+let mediaSource;
+if ("MediaSource" in window && MediaSource.isTypeSupported(mimeCodec)) {
+  mediaSource = new MediaSource();
+  console.log(mediaSource.readyState); // closed
+  videoElement.src = URL.createObjectURL(mediaSource);
+  mediaSource.addEventListener("sourceopen", sourceOpen);
+} else {
+  console.error("Unsupported MIME type or codec: ", mimeCodec);
 }
-
-function playNextFile() {
-    if (currentFileIndex < files.length - 1) {
-        currentFileIndex++;
-        loadAndAppend(files[currentFileIndex]);
-    } else {
-        mediaSource.endOfStream();
-    }
+function sourceOpen() {
+  console.log(this.readyState); // open
+  const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
+  fetchAB(files[currentFileIndex++], (buf) => {
+    sourceBuffer.addEventListener("updateend", () => {
+      video.play();
+      console.log(mediaSource.readyState); // ended
+    });
+    sourceBuffer.appendBuffer(buf);
+  });
+}
+function fetchAB(url, cb) {
+  console.log(url);
+  const xhr = new XMLHttpRequest();
+  xhr.open("get", url);
+  xhr.responseType = "arraybuffer";
+  xhr.onload = () => {
+    cb(xhr.response);
+  };
+  xhr.send();
 }
 
 var alreadyOpen = false;
@@ -145,7 +154,7 @@ function loadVideo(url) {
 	};
 	{% endif %}
 }*/
-/*async function sourceOpen() {
+/* async function sourceOpen() {
     if(!alreadyOpen) {
         alreadyOpen = true;
         console.log(this.readyState);
@@ -185,16 +194,10 @@ function reset(){
 /*                    urls.push(event.data);
 					await loadVideo(event.data);
                     videoElement.src = event.data;
-                    videoElement.play();*/
+                    videoElement.play(); */
 				});
 			}
 			openSocket();
-            mediaSource.addEventListener('sourceopen', () => {
-                sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
-
-                sourceBuffer.addEventListener('updateend', playNextFile);
-                loadAndAppend(files[currentFileIndex]);
-            });
 		{% else %}
 		setInterval(load, {{ video_interval }});
 		{% endif %}

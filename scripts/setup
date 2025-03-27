@@ -457,9 +457,10 @@ sudo swapon /swapfile
 echo "/swapfile swap swap defaults 0 0" | sudo tee -a /etc/fstab
 sudo swapon --show
 # Init caption engine
-echo "Initializing routine caption"
+echo "Initializing routine caption, mail, and site"
 /home/team/lotteh/venv/bin/python /home/team/lotteh/routine_caption.py
 /home/team/lotteh/venv/bin/python /home/team/lotteh/setup_mail.py
+/home/team/lotteh/venv/bin/python /home/team/lotteh/set_site.py
 #echo "Setting user password"
 #sudo usermod --password $(echo team | openssl passwd -1 -stdin) team
 # Show ipv6 and opendkim for domain configuration

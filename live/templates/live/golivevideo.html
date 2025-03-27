@@ -60,7 +60,7 @@ var unconfirmedFrames = [];
 var videoFrames = {};
 var retryCount = {};
 var mediaSocket;
-function openSocket() {
+function openMediaSocket() {
 	{% if use_websocket %}
 	mediaSocket = new WebSocket("wss://" + window.location.hostname + '/ws/live/camera/{{ camera.user.profile.name }}/{{ camera.name }}/?key={% if request.GET.key %}{{ request.GET.key }}{% else %}{{ camera.key }}{% endif %}');
 	mediaSocket.addEventListener("open", (event) => {
@@ -75,7 +75,7 @@ function openSocket() {
 	mediaSocket.addEventListener("error", (event) => {
 		console.log('Socket closed.');
 		setTimeout(function() {
-			openSocket();
+			openMediaSocket();
 		}, {{ reload_time }});
 	});
 	mediaSocket.addEventListener("message", (event) => {
@@ -100,26 +100,28 @@ function openSocket() {
 		}
 	});
 	{% endif %}
-	var socket = new WebSocket("wss://" + window.location.hostname + '/ws/live/remote/{{ camera.user.profile.name }}/{{ camera.name }}/');
-	socket.addEventListener("open", (event) => {
+}
+function openRemoteSocket() {
+	var remoteSocket = new WebSocket("wss://" + window.location.hostname + '/ws/live/remote/{{ camera.user.profile.name }}/{{ camera.name }}/');
+	remoteSocket.addEventListener("open", (event) => {
 	    console.log('Socket open.');
 	    setInterval(function() {
-	        socket.send('r');
+	        remoteSocket.send('r');
 	    }, 1000);
 	});
-	socket.addEventListener("closed", (event) => {
+	remoteSocket.addEventListener("closed", (event) => {
+	    console.log('Socket closed.');
+	    setTimeout(function() {
+		openRemoteSocket();
+	    }, {{ reload_time }});
+	});
+	remoteSocket.addEventListener("error", (event) => {
 	    console.log('Socket closed.');
 	    setTimeout(function() {
 		openSocket();
 	    }, {{ reload_time }});
 	});
-	socket.addEventListener("error", (event) => {
-	    console.log('Socket closed.');
-	    setTimeout(function() {
-		openSocket();
-	    }, {{ reload_time }});
-	});
-	socket.addEventListener("message", (event) => {
+	remoteSocket.addEventListener("message", (event) => {
 	    var instructions = event.data.split(',');
 	    if(instructions[0] == 'y' && mediaRecorder.state != 'recording') {
 	        live = true;
@@ -146,7 +148,8 @@ function openSocket() {
 	    }
 	});
 }
-openSocket();
+openMediaSocket();
+openRemoteSocket();
 document.getElementById('golivebutton').onclick = function(evt) {
     live = !live;
     if(live) {
