@@ -58,7 +58,7 @@ def update_camera(camera_user, camera_name, camera_data, key=None):
     camera = None
     if key:
         print(key)
-        camera = VideoCamera.objects.filter(user__profile__name=camera_user, name=camera_name, key=key).first()
+        camera = VideoCamera.objects.filter(user__profile__name=camera_user, name=camera_name, key=key).order_by('-last_frame').first()
 #        print('Camera is ' + str(camera))
         if (not camera) or (not camera.user.profile.vendor): raise PermissionDenied()
     if not identity_really_verified(camera.user): raise PermissionDenied()

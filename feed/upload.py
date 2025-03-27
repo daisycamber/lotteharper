@@ -68,6 +68,7 @@ def upload_photo(path, key=None, user=None, post=None):
         refresh_imgur(user)
         key = user.vendor_profile.imgur_token
     i2 = upload(image2, key=key if key else settings.IMGUR_ID, user=user, post=post) if len(image2) > 0 else None
+    return i1, i2
 
 def upload(base64_data, key=None, user=None, post=None):
 #    b64data = 'data:image/png;base64,' + base64_data.decode('utf-8')
