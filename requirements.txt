@@ -4,6 +4,7 @@ altair
 AMFM_decompy
 amqp
 annotated-types
+anyio
 apprise
 asn1crypto
 astunparse
@@ -30,6 +31,7 @@ cssselect
 cycler
 Cython
 decorator
+distro
 Django
 django-address
 django-allauth
@@ -93,6 +95,7 @@ imutils
 incremental
 jellyfish
 Jinja2
+jiter
 jmespath
 joblib
 jsonschema
@@ -140,6 +143,7 @@ nvidia-nvtx-cu12
 oauth2client
 oauthlib
 onnxruntime
+openai
 openai-clip
 opt_einsum
 optree

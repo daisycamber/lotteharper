@@ -294,3 +294,4 @@ zope.interface
 zxing
 python-cryptapi
 realtime-crypto
+openai
