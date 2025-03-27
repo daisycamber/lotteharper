@@ -599,3 +599,833 @@ branch 'main' set up to track 'originlab/main'.
 sending incremental file list
 ./
 .gitignore
+backup.log
+backup_date.txt
+backup_init_date.txt
+celerybeat-schedule
+email_list.txt
+requirements.txt
+cache/
+cache/0176880334999d6407aafee7fe1e9244.djcache
+cache/01d62ec59f8d052d82dfb5e1322852f6.djcache
+cache/021d20805b1183e912cac701e7d08bbf.djcache
+cache/02afe7a97f789f36422bb3226da21d20.djcache
+cache/038ead9c61c4402d172c6892ff262e02.djcache
+cache/03f4700f20c0a62e99947651d744f073.djcache
+cache/0a6da0d6a8ef528871a8efeef5a768a2.djcache
+cache/0bb5b8e956da903820cd1f2092533bf2.djcache
+cache/0e27f6c3c483cc7182ce5e12b8bb0d31.djcache
+cache/0e9faf1ee2c92d66fe9754ec16a5c855.djcache
+cache/0ee42904335c48eabfe03ff54626ad70.djcache
+cache/119ffd65c9defe4e5d3ca704d9aad525.djcache
+cache/12f8dc41eeabda8d9d109b3003a3609b.djcache
+cache/1449a27a28f85714ca703c6bf4a465bb.djcache
+cache/14b46fbd937b6277ff7a29672269d50e.djcache
+cache/1524b14fc1c4d61693a027a00b3001cc.djcache
+cache/15efe9c67d165f64c9d2f0fcab9cf159.djcache
+cache/17f8098b6d0ba7262e2bb12b942a3c66.djcache
+cache/19c50af7cede54ed07f6b0dc0ef656e6.djcache
+cache/19fb630e47f8d4805b7915c819f1845a.djcache
+cache/1b145f44311c861230bd69e125fbd0ed.djcache
+cache/1ca9e5faf970dbe7b828caae0e664b88.djcache
+cache/1cbb28715d4862bc9da8a9639eb6ea34.djcache
+cache/1d4baf3da80dd896554f5ba2367df34d.djcache
+cache/1d89dd99e8026dc72fbb461dfc2e5c64.djcache
+cache/1e5fb258aaed70884a84f1d1e2a323a9.djcache
+cache/1ed943b10f0d07ddda0e3eeb98784e14.djcache
+cache/21009137b9fa651f418246f6c512e741.djcache
+cache/2209a54201d0469c540959aab2e9a909.djcache
+cache/235b480ac4b4866fe0c02e313924e331.djcache
+cache/23e87f02abd12db14b27dffc3a633cac.djcache
+cache/269e20b1fb5a8a178beeb538fc63bd8f.djcache
+cache/27ddf0c8e30b5e581d67d31eab47f988.djcache
+cache/2825fa191119f21824a7c391f3068fe4.djcache
+cache/28d3780ae1e6712a21eb7b3d4102d052.djcache
+cache/28fb267874b1e9a55970fc01efa56394.djcache
+cache/2928421b8d72346573155c4c8a8d99f8.djcache
+cache/2b503a440956ad3c7662fb3c1ea0587f.djcache
+cache/2c2d20b8ac652fd68f987164b4a38022.djcache
+cache/2c347425dbc6bbf1212b3a9fb60052e8.djcache
+cache/3105fb584946c5e88dffdc6cd73c7599.djcache
+cache/3407b6b56eda583d98603cb53e483c80.djcache
+cache/36a6f347f3522bd75b43eb189c33fa9f.djcache
+cache/3810b3d36033ebf29169147c70070d15.djcache
+cache/3a44101be5d609cf75ac632677661720.djcache
+cache/3a70ea85a34f0bdcd05907cb3d9496c8.djcache
+cache/3b893e92d8fd4a183af746304976497a.djcache
+cache/3d30fb9cd0ae0c4b547cb640af298d2e.djcache
+cache/3fc150bde245ff1ff87e01a55f5d6438.djcache
+cache/413d59012da71f6d0d6fe18dd3112bcf.djcache
+cache/420b2ce50bd29aa3b5d6cbab5c6d7416.djcache
+cache/42b9356db7cbc5d6d2a0711970e7b453.djcache
+cache/46f5479c8b6442252bcd773fdff2a06f.djcache
+cache/47b6a41d6b2e74684933cd7003150c62.djcache
+cache/47bd10803fa0f0402c80af6b1160a450.djcache
+cache/4a83524cd2920c2ecc1c98414a614fcb.djcache
+cache/4ac6999fe5feea537d371284f1532981.djcache
+cache/4b6a4f4e0d8ee7a4fe658ef57f26e752.djcache
+cache/4c1e6ff9ae7cb3c7e4c19a303464f322.djcache
+cache/4cc898ed5ad8492c9db117f879cda0b2.djcache
+cache/4cd66b02679d818843a33403cab129e9.djcache
+cache/4cfd51de83f2506e85e29b3c47273373.djcache
+cache/4e2b5d49a0657ee981dcd91b31ba9429.djcache
+cache/4ea71aeb98a228747d54d218956dc9c3.djcache
+cache/4ed511194cf486ac8500a45d0bac293c.djcache
+cache/502bff8bada5c2beec116f54fd431fd5.djcache
+cache/515f4df3434573a93fd2ba9329194529.djcache
+cache/516e85dd6068f28e721060d68dfadf81.djcache
+cache/5a80094e7f50b87494c75f0b376a1d70.djcache
+cache/5be2b9ef45efd04cb603c00cd6b1f1a8.djcache
+cache/5d1b02635942ceca99349d6830050d2e.djcache
+cache/5d5f7e95a3e0f93c8a23a8929ec446ba.djcache
+cache/5ed811d32f213f22c7d648d77ca0829f.djcache
+cache/609beb35c77eda8c84f4b51d0e8a916a.djcache
+cache/62664e1e2ad903e6f729fcc24c3ea789.djcache
+cache/62a0e25fca017d89596462a03bbc06bc.djcache
+cache/6375d81bb142efab9d22d89526c176fa.djcache
+cache/6380ccc90609d9756b9858ddd94eea8f.djcache
+cache/64b50d25abbdd72666ee22d672a08c11.djcache
+cache/6910835e068035895ad6684e48748f59.djcache
+cache/6991826c1ea4241918bfaaae88df9811.djcache
+cache/6ac7cdf7eada69e4b433c07590e44156.djcache
+cache/6af7614e2f413f91a975643d2d339bd5.djcache
+cache/6b4efa0b7dd262718d8e7434a1eed8f1.djcache
+cache/6d50905a4ef3b9839a87c6612e9f100a.djcache
+cache/6ffcb77bc4e702e2cc860b0224044c7c.djcache
+cache/70505ac35a775f4288a333bcd12d8f07.djcache
+cache/707c776ac872e7bcb0a5c66674611fd6.djcache
+cache/710b2ed07518d599e40506826baa92b1.djcache
+cache/7155e8e4cf95014506473b656cc614a7.djcache
+cache/7406dc1bdccd8122c39b390702066581.djcache
+cache/746a0d749c761fdcfe54f7d4eafc1da1.djcache
+cache/74841a01f8b70ad289d1b1f1442d32a6.djcache
+cache/74cbb612abaee0e4edbb4975c84826b0.djcache
+cache/75585fc5dcddc6d1692004b2157f9e96.djcache
+cache/79896f93eb63b725af0cc4af5e6c93c0.djcache
+cache/79c3317beed229622e6bb4771f2663c2.djcache
+cache/79e20a405e757fc9516edbfc29efb816.djcache
+cache/7bccb44ae6c7a96d47f50bcb74ad7a0e.djcache
+cache/7be1edfdb24599e0ed198f4d59c78347.djcache
+cache/7d4a1b61836568db342cbee9004ad0e7.djcache
+cache/81d432bd2d32b4e7427a16fa01d51b4b.djcache
+cache/822d53c91392f5381d3ee9fdbc550346.djcache
+cache/82323cda1327529be0443ce5de7eed04.djcache
+cache/835243b6e218b3a28f1d6073516f6982.djcache
+cache/84079241c091981b4aba205626d8d57d.djcache
+cache/8545ac31546bd733133123d74d818e84.djcache
+cache/895680a18f9eb20445896b7ed3bb9312.djcache
+cache/8a0ba79774870266cef2002b456fc657.djcache
+cache/8c20764ef333c753a7f881a49abc197d.djcache
+cache/8c672f20d5ea9b0e89c5260511caa283.djcache
+cache/8cf3f61feb6e4090c3737f9c5d47e50b.djcache
+cache/8dade3fa5fd0065906b7ffe6a5f4022f.djcache
+cache/8dd73fdcde9e5b3ff9cc30587f2b1eb1.djcache
+cache/8de163dcd4f19e226a335d77f1d036cd.djcache
+cache/8f8d8ab4fbbc06493e4271de0fd9e185.djcache
+cache/90f9f63388c8d18a427fde881f813963.djcache
+cache/91791185faf1549afec5da7ce123b6f6.djcache
+cache/92f8b78b3b1663a2f3d309f859f3b64f.djcache
+cache/94878ade260beaf39e171b63bf6b372b.djcache
+cache/9562b92e3f870f216155465966e98fa9.djcache
+cache/96cce71aa7d56ac48567eb66d85c4e86.djcache
+cache/97262613d45e8a0a5b0404731e822371.djcache
+cache/97409f233843b1536ebe94a4b780cc11.djcache
+cache/98580dddc735f68a8ff32f7dca931b53.djcache
+cache/99d6f0b21410c80823f46aef138def40.djcache
+cache/99fed06b98b616900ff74124cdadde41.djcache
+cache/9bfd32523e970c87901bf3f2492360cd.djcache
+cache/9c4e636cca91471921d7ae1e81997e3c.djcache
+cache/9c6662da96f29799ba9d244d4874f889.djcache
+cache/9ca09418ed9ccb5ff082765ccd4fefee.djcache
+cache/9d7f04ece2e79ce9bc11384b99fa7eb8.djcache
+cache/9eefdce6ee1720b665aa9e9fba6ddda0.djcache
+cache/9f7da1bea1667b3cd139129fda72e187.djcache
+cache/a13d8348e271b46e78c54a0858fac91d.djcache
+cache/a38c668206be00793a8db127fdfae6c9.djcache
+cache/a4534b651b8588440348faa159e530ed.djcache
+cache/a4a916ccc28d142ec81d8f53ddbc460f.djcache
+cache/a4d6b96c3a2c069652c0a7cf9a40feb7.djcache
+cache/a51a38dd2d3dc9021fe56e7bf8bd0cfc.djcache
+cache/a8ef4c1c86cdd3e8aa9a3d12d7b5ca48.djcache
+cache/ab01b73a116b6b9ad253cac68bff0c15.djcache
+cache/ab146683c4f8090adcfba140ff97f110.djcache
+cache/ab4cf90c3cf02f1d1701978d70e3d161.djcache
+cache/ab9413fc1f382c3e7302c53ac50d7103.djcache
+cache/abf3d3971aff61c88bee0465953f715c.djcache
+cache/ac013e326b4ccc11d61c6051550c4fa6.djcache
+cache/accd41a1695861d2fce677602b8740c8.djcache
+cache/adb1decedfbe650db757eb18381c5260.djcache
+cache/aee07eb3c645982d9b884751ff4dd118.djcache
+cache/afa3a4edaf831f3cf5e87ebe7761f41a.djcache
+cache/b0385d8f10e4df7a8f3b996f0f70903c.djcache
+cache/b053beb07fe6129972f34c032c6d470a.djcache
+cache/b1e2edb9fa11eea10660764d1949f2eb.djcache
+cache/b390baa767584b066bb6accf3afdb267.djcache
+cache/b3b82a62d91c31026d9e4b4f67f1f382.djcache
+cache/b43ec2631a2875bf0eaa56dbc67dc6c1.djcache
+cache/b488b31753e3d152b85c46874b90df2e.djcache
+cache/b5dd3113612a12654b58b5516315f283.djcache
+cache/b6651804e31822f799fc84bc6d75812c.djcache
+cache/b6902daafbdc7b3213a1bc0612bc35d2.djcache
+cache/b7082f401b414e70446e13421d1a9fde.djcache
+cache/b8676d1da1dec7d24d63c203b3b95f92.djcache
+cache/b873072f9bf8b58e43f3c7bdc7bf2f48.djcache
+cache/b9740fdc5fd15b4fe7267e1530e41689.djcache
+cache/bac14e40036c55e86aadb270cee070aa.djcache
+cache/bc8836fc74cb9cf2b3612acbedada727.djcache
+cache/be52b3cb3a15640e0d86a8c577c28fa1.djcache
+cache/bea8e20f7a76c521999cb3b92ffb5344.djcache
+cache/bfe322c63e3db59e4abf4cc429b587d0.djcache
+cache/c0164e2e93fa49e3d3b533c37e3ff75d.djcache
+cache/c06c2be0e7cf0c5c3c63d50a369fa7d8.djcache
+cache/c6cc2b5abe77fd3fe94447ba5aea902b.djcache
+cache/c8f6397c5e55c5e86690992fefcbbe06.djcache
+cache/ca447430676c1a817cf702887aca080b.djcache
+cache/caf020dae764d30d2891f29e298d772c.djcache
+cache/cc4e3ba5713d4cceb9bc6409f40c122c.djcache
+cache/ce1f27b52544c4e8e3852a7a1f9ddaf9.djcache
+cache/ced9b6df0bd8237ce516c4ad483e5fb3.djcache
+cache/cf0569ed052ed9883b67367161bb0349.djcache
+cache/d05c18aff959acd4a03a21ef30df01aa.djcache
+cache/d131ecf8d0e59a39dd9c9bddfce15ed7.djcache
+cache/d176e37248763ab6780094a0258b8afe.djcache
+cache/d2173b1a49e248f39693de0c70c60a7a.djcache
+cache/d26156d6ccf16c737186542c7966c556.djcache
+cache/d395e11bb54d88d521d96c87c88306c1.djcache
+cache/d4f4ad9834b9e43aefec1fc878953563.djcache
+cache/d567df70e1626417e747ef44798275ad.djcache
+cache/d64ac3a997f5a56d5fb2080143175764.djcache
+cache/d71f910bb4d6db3fcc09c4f1b3de56f4.djcache
+cache/d79888f215f4f8dd2a6578bfa6c12c35.djcache
+cache/da0860c59764d4b7e6de85ce5ced58d5.djcache
+cache/da7a19a04463804ee0ec7556d5d05bd2.djcache
+cache/db209e6138fb3c5102a3bc0f66f0d640.djcache
+cache/dbcfe460ace932b35902f257dab491d3.djcache
+cache/de700eaf108a5c433f8e92ee9cf1df60.djcache
+cache/dea8a3d8361b228d387fd265fe055122.djcache
+cache/df6b7b47953349e153e9b787838a439b.djcache
+cache/df96d752230b0a074ed448569c511b26.djcache
+cache/e035d202f471ab8101878adf3a2148a8.djcache
+cache/e0895407394b113caa384308eea7f3d1.djcache
+cache/e1694b880fa0be48eaa934e9a9ffd66a.djcache
+cache/e22584d5fd583a8d7836f3934bf62cc2.djcache
+cache/e3de34cac18d1ccde57811fa0bf2933e.djcache
+cache/e4386b7eb19e618971d2d46a45bf64df.djcache
+cache/e5807d2293bf719b2927c82604e8228c.djcache
+cache/e5f0cc0acccf13118c82f31615135827.djcache
+cache/e7d4a4ed90e579bc7f9365aec416609b.djcache
+cache/e90b1ff0cd3fa15985b57a708147875c.djcache
+cache/ebe573016716526c1eba2512b6d1e040.djcache
+cache/edbc1c596896a34b4838a3afdb02186f.djcache
+cache/ee0d236840b4161114201c216d09c812.djcache
+cache/eee8df94b50dfcdf36b72dccb11804ce.djcache
+cache/f12769424ddc991b84b66488b8bc2ca3.djcache
+cache/f1c011394effd27430d31c6da8c029e7.djcache
+cache/f4c019525cf96ecb9434576d0244654c.djcache
+cache/f4ec4dbbd53322bccb9cb9f598f26644.djcache
+cache/f5b75c8f61384614b8d118b50d2d5690.djcache
+cache/f86fc0229f8dbb7adc63bf0d88ef5728.djcache
+cache/f96691a75ad53e79f80057f6c99c04b6.djcache
+cache/f96c4cc19efffbda58bbd559a4e91b7a.djcache
+cache/fa0d676c5ad4f3234ee2df9f3ff4768e.djcache
+cache/fa413cc77bfdf8d2f568bdeb7b7c5986.djcache
+cache/fb0952cdd7d208cadad6f9e64c45d123.djcache
+cache/fb6c5f1f815f8b64d9c39426595c6a65.djcache
+cache/fbf85fe3ebe7cef40d36353f29b2fd91.djcache
+cache/febd9ec3849757cada8f104bfffdf601.djcache
+config/
+config/Xwrapper.config
+config/apis-example.json
+config/apis.json
+config/ascripts
+config/banner
+config/config-example.json
+config/config.json
+config/crontab
+config/etc_default_celery
+config/etc_default_opendkim
+config/etc_dovecot_conf.d_10-auth.conf
+config/etc_dovecot_conf.d_10-master.conf
+config/etc_dovecot_dovecot.conf
+config/etc_dovecot_passwd
+config/etc_init.d_celery
+config/etc_init.d_celerybeat
+config/etc_opendkim.conf
+config/etc_pam.d_login
+config/etc_pam.d_sshd
+config/etc_postfix_main.cf
+config/etc_postfix_master.cf
+config/etc_systemd_system_celery.service
+config/etc_systemd_system_celerybeat.service
+config/etc_systemd_system_daphne.service
+config/etc_systemd_system_stun.service
+config/lotteh-le-ssl.conf
+config/postgresql.conf
+config/sudoers
+config/vd-model.py
+config/vd-requirements.txt
+data/
+data/address.json.aa
+data/audio.json.aa
+data/auth.json.aa
+data/barcode.json.aa
+data/birthcontrol.json.aa
+data/chat.json.aa
+data/contact.json.aa
+data/crypto.json.aa
+data/feed.bid.json.aa
+data/feed.post.json.aa
+data/games.json.aa
+data/live.json.aa
+data/payments.json.aa
+data/security.biometric.json.aa
+data/security.credential.json.aa
+data/security.mrzscan.json.aa
+data/security.nfcscan.json.aa
+data/security.otptoken.json.aa
+data/security.pincode.json.aa
+data/security.securityprofile.json.aa
+data/security.session.json.aa
+data/security.useripaddress.json.aa
+data/security.userlogin.json.aa
+data/security.usersession.json.aa
+data/security.vivokeyscan.json.aa
+data/sessions.json.aa
+data/sessions.json.ab
+data/sessions.json.ac
+data/survey.json.aa
+data/translate.json.aa
+data/tts.json.aa
+data/users.profile.json.aa
+data/vendors.json.aa
+data/verify.json.aa
+data/voice.json.aa
+data/webauth.json.aa
+data/webpush.json.aa
+live/
+live/views.py
+live/__pycache__/
+live/__pycache__/views.cpython-312.pyc
+live/templates/live/
+live/templates/live/.livevideo.html.swp
+live/templates/live/livevideo.html
+log/commands.log
+mailbox/nobody
+mailbox/root
+mailbox/team
+media/audio/fingerprints/
+media/audio/fingerprints/02183028-0168-40b4-bdde-35fe9f74c8fa.npy
+media/audio/fingerprints/024af8b8-23e7-418a-8572-b0583c7e6d22.npy
+media/audio/fingerprints/03ab870c-f255-4b75-bb16-ad4533cdb598.npy
+media/audio/fingerprints/059c5ae0-a02c-4492-9544-a29dc8830360.npy
+media/audio/fingerprints/060de4d1-715b-43d0-87dd-743f32b8feca.npy
+media/audio/fingerprints/07ecd115-3b8f-4522-87e1-39b43bd7e0cd.npy
+media/audio/fingerprints/09773011-505d-4c41-8e55-49897e29d265.npy
+media/audio/fingerprints/0b679374-5a6e-4766-a24a-4b6ebf55953f.npy
+media/audio/fingerprints/0bd2e826-4bdf-433e-b521-09b37376d83f.npy
+media/audio/fingerprints/0d1c1574-356e-451e-99df-49d6c717661f.npy
+media/audio/fingerprints/0ddf01de-907a-4a80-ae14-cb207dbc97bc.npy
+media/audio/fingerprints/0de81a82-091b-4850-bf42-d7531f5242fb.npy
+media/audio/fingerprints/0e278d4c-f2e7-4e86-b524-6018bbe11d9c.npy
+media/audio/fingerprints/0e392393-0d5e-42bc-a51c-f606bdfe194a.npy
+media/audio/fingerprints/1099003c-0da9-406a-818b-9759bfa0fc15.npy
+media/audio/fingerprints/10bc02cd-aa0b-4866-92df-1d11d44e850c.npy
+media/audio/fingerprints/183765dd-56c0-4d7e-ba6c-3d1444a34545.npy
+media/audio/fingerprints/18934ace-de3d-41af-8e54-90f24b5466bd.npy
+media/audio/fingerprints/19a01130-c320-44f7-bdb2-ae18df5c6a2d.npy
+media/audio/fingerprints/1ae7b48a-2831-4159-8965-1e9a53a4a2b4.npy
+media/audio/fingerprints/1c0650b3-b439-4ee1-9e61-74fdb7c5cdd0.npy
+media/audio/fingerprints/1d7704db-30c6-4676-9d26-0934d1649310.npy
+media/audio/fingerprints/1e5d7e45-58ca-48c0-9a20-ee505d3cc247.npy
+media/audio/fingerprints/21ca0ded-f2ed-4a8f-9852-991f0f40c675.npy
+media/audio/fingerprints/224b0d7a-64d6-4364-a937-de10e14193e7.npy
+media/audio/fingerprints/22c4c201-32e2-462b-9e55-b24e286f0dc1.npy
+media/audio/fingerprints/24e5bd0b-22f2-4ef2-812e-8e4595eb432e.npy
+media/audio/fingerprints/24f34bd4-c5ce-4b63-8b8e-29b9e13b4966.npy
+media/audio/fingerprints/28b684cc-a6af-49af-8169-7ff0d8527e72.npy
+media/audio/fingerprints/29376370-5c7b-4bd3-9135-a66a9f14f778.npy
+media/audio/fingerprints/29f6667a-9c7c-45e8-9a8d-86f9c3b0ccb6.npy
+media/audio/fingerprints/2b3d5720-feda-4287-9195-cb40899b3945.npy
+media/audio/fingerprints/2bea0dba-a4ec-4408-a3fa-80925b483d2d.npy
+media/audio/fingerprints/2dac2df1-31b2-4314-adb9-d1b9fa2d7e3b.npy
+media/audio/fingerprints/2dd0d6f7-0d02-47a3-9e31-710a23dfe895.npy
+media/audio/fingerprints/2ed43411-093e-42bd-9fe1-c1cb40e6e270.npy
+media/audio/fingerprints/3038e3d2-39a9-4ace-80fa-4f1e9021c1b5.npy
+media/audio/fingerprints/31df5ab7-dc74-44b3-b8c8-28682c6582fb.npy
+media/audio/fingerprints/33f27b43-40ca-4aa1-bb56-bbab366fae06.npy
+media/audio/fingerprints/36798828-7a73-4cb4-b0ee-546030a047dd.npy
+media/audio/fingerprints/3741cee0-3343-4f0f-b36f-547becb604b1.npy
+media/audio/fingerprints/383d6e21-c4c1-48ac-9c32-41f938fdb6dd.npy
+media/audio/fingerprints/39aa0573-336a-4262-8614-fc8b386cbc7b.npy
+media/audio/fingerprints/3ad0d10d-adc1-49d4-8c4a-6f46f091390a.npy
+media/audio/fingerprints/3b19761c-c0b8-4a73-b2c6-b5fdffacdf3f.npy
+media/audio/fingerprints/3c9f833a-f54b-40d5-bec5-34b2748374ce.npy
+media/audio/fingerprints/3d57ff09-f622-48af-b100-f4114f73101b.npy
+media/audio/fingerprints/40d8c543-499c-4e4c-8f8e-747b7a8d632b.npy
+media/audio/fingerprints/412438b4-8413-4e8a-a656-8827d058215f.npy
+media/audio/fingerprints/41c65519-4688-4b36-a8bd-81401f40474f.npy
+media/audio/fingerprints/441c2c2a-c563-46e9-bd69-1131d9cb7757.npy
+media/audio/fingerprints/44790ffb-6961-49f9-85c3-b5c8a44acda0.npy
+media/audio/fingerprints/448299d6-8411-45c3-945b-ce9b94b17631.npy
+media/audio/fingerprints/47fb6108-f433-46b1-8f98-aaf7e819be1c.npy
+media/audio/fingerprints/4829976c-dd24-4dcf-b4da-dec289af63c0.npy
+media/audio/fingerprints/483eb285-ca0b-46ce-8284-c49578d0d74c.npy
+media/audio/fingerprints/4872072e-54d9-44da-b62f-76cb0ee1380e.npy
+media/audio/fingerprints/492480da-5503-485e-92ef-ffdc6bae874b.npy
+media/audio/fingerprints/4a16df76-9fae-45ff-80a4-11a875a184b0.npy
+media/audio/fingerprints/4b85f4d3-1b44-49ae-aea5-b12afeb94147.npy
+media/audio/fingerprints/4bc889b3-7ec2-4ce0-b9f8-80093f87932b.npy
+media/audio/fingerprints/4efe9494-f8a3-453f-817a-ab2c2cbb862a.npy
+media/audio/fingerprints/4f857337-c09b-41c7-b6c7-ad60220e72a2.npy
+media/audio/fingerprints/4f9ae312-96eb-4900-9935-9ff8ff45784d.npy
+media/audio/fingerprints/50cdc73e-59a9-49e9-9234-da88ec46a78f.npy
+media/audio/fingerprints/531fb1a4-12d8-41b8-b471-597ccde4895b.npy
+media/audio/fingerprints/53678a6d-e958-4ced-89c4-8f06b73711da.npy
+media/audio/fingerprints/53a87b8f-6f49-4493-9b18-72362900362a.npy
+media/audio/fingerprints/53eb48af-57eb-4e91-ae6d-93bc828810e9.npy
+media/audio/fingerprints/5437f635-3dbe-458a-9318-55cf27b3f73f.npy
+media/audio/fingerprints/5575f232-10f4-454e-b2ed-f16b2c430f4a.npy
+media/audio/fingerprints/55c58e47-fa48-45b0-887f-65a6f38f84f3.npy
+media/audio/fingerprints/58047e09-7e10-41cf-9957-41afb604f99f.npy
+media/audio/fingerprints/589c6877-45a6-4e6d-822f-cf6822b8d087.npy
+media/audio/fingerprints/5aaa7b92-abb3-4289-802f-1654ac162d1a.npy
+media/audio/fingerprints/5b719bf1-0740-43d3-8542-657ba7ba78ac.npy
+media/audio/fingerprints/5baaef71-ae09-4b0b-9544-9fab3bd23057.npy
+media/audio/fingerprints/5eefaed0-a2fd-4a0d-8cb4-6a8dd73a2af3.npy
+media/audio/fingerprints/5f8156c3-e425-441e-9cd4-9fd52a791c4d.npy
+media/audio/fingerprints/6027ed4d-eb9b-4b75-a832-2bc595ce1803.npy
+media/audio/fingerprints/618b3ec9-8868-44a0-8382-f7423226fcb9.npy
+media/audio/fingerprints/633945fe-ba64-4a74-807b-7f384e05c626.npy
+media/audio/fingerprints/639d5af2-be7e-453a-b736-9ce0dfc48c7d.npy
+media/audio/fingerprints/6408e4f8-280f-4a0d-b87b-9d8133d1186a.npy
+media/audio/fingerprints/64e6c016-630d-4c79-8472-4ad5b875fbf0.npy
+media/audio/fingerprints/663538a5-afaf-46b1-82d0-e9fc77fcbcad.npy
+media/audio/fingerprints/6663394f-d3e2-43b3-bf99-273e84cd1ad4.npy
+media/audio/fingerprints/66d1e689-1204-4e1b-9dfa-a1809f4ec4cd.npy
+media/audio/fingerprints/66fcc34e-5d50-4145-bc27-7f8f97cfc87c.npy
+media/audio/fingerprints/67553318-9718-44fb-a615-9f2f0d0c6b9b.npy
+media/audio/fingerprints/6885e4ea-e07c-403b-8425-98b6184d16e8.npy
+media/audio/fingerprints/68b32963-5e48-4a34-8b00-588d3042f7d4.npy
+media/audio/fingerprints/69c754c7-cdbe-499b-9327-4619e0f966bc.npy
+media/audio/fingerprints/6a29ef73-5c59-43b9-a71f-3bf49bdbb423.npy
+media/audio/fingerprints/6af2f22d-f771-4bdd-a6b3-cf231a44df4f.npy
+media/audio/fingerprints/6ccb3acc-6dee-473f-8990-f7819e5e732a.npy
+media/audio/fingerprints/6cf7355b-0a58-47d6-b599-644d94aeafcf.npy
+media/audio/fingerprints/6e74f02f-5e4c-4656-9046-80bdf606a93c.npy
+media/audio/fingerprints/6f9e1afa-e3ef-44fc-abfb-67c6c4f17b41.npy
+media/audio/fingerprints/7046572d-50f0-42a1-9692-b7627500f770.npy
+media/audio/fingerprints/70a1ceac-cc83-46ce-9f1a-bef834ff8097.npy
+media/audio/fingerprints/7198e197-5daa-4f02-aa8d-685f80820527.npy
+media/audio/fingerprints/72c8ed7d-a500-4486-9ce9-31246ebc8c23.npy
+media/audio/fingerprints/7380f1b9-9040-4a8c-a427-64a71d30ecf5.npy
+media/audio/fingerprints/73d5c791-021a-4627-bea8-8e7ec4a0894e.npy
+media/audio/fingerprints/743c19bf-c7ae-417e-9518-02f475ba6636.npy
+media/audio/fingerprints/75319657-e39c-401f-a86e-e51b0146aa91.npy
+media/audio/fingerprints/753b8a8e-2320-4704-928d-f6cb39f8e067.npy
+media/audio/fingerprints/773ac648-9464-48d3-910b-bac38a8bb15f.npy
+media/audio/fingerprints/7893f8aa-9c06-4fad-9621-1a264f4609eb.npy
+media/audio/fingerprints/7971309f-9767-485b-90ee-22443e996aae.npy
+media/audio/fingerprints/7bb05054-8684-44ef-b870-57df3ce4db43.npy
+media/audio/fingerprints/7cadcfb2-de80-424b-8f93-1b98cac3e69a.npy
+media/audio/fingerprints/7e2977da-45bb-443b-bc5f-01d226909f9d.npy
+media/audio/fingerprints/808caef9-e3c7-45db-8b1b-77f9bd72e254.npy
+media/audio/fingerprints/8186cf4b-5893-4a2a-acef-d7514c564e82.npy
+media/audio/fingerprints/837a215b-5709-45c9-b299-350adb396bd5.npy
+media/audio/fingerprints/84e7c76b-b84d-4962-a4e8-8887351de833.npy
+media/audio/fingerprints/86877915-313b-48a3-a8ff-274d7dd57e2f.npy
+media/audio/fingerprints/87bb9ee3-2173-4fd3-8256-ab3644f92a16.npy
+media/audio/fingerprints/88a4e462-4027-4fcb-96fb-d34c9926f7a8.npy
+media/audio/fingerprints/890f959b-08dd-48c0-a74b-cedcda548715.npy
+media/audio/fingerprints/89161c1b-086e-4495-8ee6-a99447eaa6c2.npy
+media/audio/fingerprints/896f2f46-12d9-4eca-a252-5fc2af30e433.npy
+media/audio/fingerprints/8abd9a55-38be-46f5-986e-153381de2451.npy
+media/audio/fingerprints/8b1914b7-1f2f-4bc9-876e-31b70263fe68.npy
+media/audio/fingerprints/8d9bac16-aff5-45dd-bb62-2010a0a5c9b4.npy
+media/audio/fingerprints/8fe2b7c3-f3c7-4b4f-9a60-f606e8485c0f.npy
+media/audio/fingerprints/8fe2e6c9-401b-4a00-b839-4084b6404228.npy
+media/audio/fingerprints/909a9673-f5b9-4355-9df6-ed616e7fdd38.npy
+media/audio/fingerprints/90a178e8-0621-4cbd-8ccc-b3a7111dbe77.npy
+media/audio/fingerprints/93075ada-6b78-48a6-9a04-46d0faa599d8.npy
+media/audio/fingerprints/936f52cb-fe03-460a-8cd8-e6bb52ef74b4.npy
+media/audio/fingerprints/960c4116-e4c3-4c56-9ef5-ff8bc4e50169.npy
+media/audio/fingerprints/9a2cff9f-70e2-4336-bc28-57f428f1b4e2.npy
+media/audio/fingerprints/9a7b61d8-2417-47d2-bfba-031544f63f6a.npy
+media/audio/fingerprints/9ad8e3a5-d427-4f73-882a-a2fbf983a2e4.npy
+media/audio/fingerprints/9c75f4f4-66eb-409c-aacf-cb325cd60752.npy
+media/audio/fingerprints/9d233bfa-9fdd-4c9c-8091-6eb071444f14.npy
+media/audio/fingerprints/9e2e3f7f-bd79-42f8-b6e5-48940a080e63.npy
+media/audio/fingerprints/a1e052d7-4238-4df8-b26b-72542aef776a.npy
+media/audio/fingerprints/a3318b34-512a-44ba-85fe-9d008d28b1eb.npy
+media/audio/fingerprints/a38c5bbc-0c9e-4977-8871-308b15552d9c.npy
+media/audio/fingerprints/a4839789-6da5-46b4-89f0-d29a10a4e498.npy
+media/audio/fingerprints/ac93564f-aba6-4e10-a96c-ba89c120be6d.npy
+media/audio/fingerprints/acb68ca0-fa7a-4046-bb47-036696eab1e5.npy
+media/audio/fingerprints/ace7476d-67aa-487a-824e-d396762ca91c.npy
+media/audio/fingerprints/af0212c8-2150-4a50-bc13-3ab8188ed2e8.npy
+media/audio/fingerprints/af36a207-b608-4cc8-866b-6730cd7e46f4.npy
+media/audio/fingerprints/b1c973ab-f9e2-496c-b33e-28770992f079.npy
+media/audio/fingerprints/b326290e-8775-4ea3-a5e4-e212cd68d34c.npy
+media/audio/fingerprints/b3ded770-4379-4a6b-bfee-bf7483d1bb56.npy
+media/audio/fingerprints/b439683a-f5d7-4e56-bc52-ac09a4379ffb.npy
+media/audio/fingerprints/b494f556-61d4-4536-8a4e-a9457c38afed.npy
+media/audio/fingerprints/b4a3dd51-58de-45df-bf31-aac6e25f64c3.npy
+media/audio/fingerprints/b56e5369-1e5e-4f0b-b59b-b9cf100c5d75.npy
+media/audio/fingerprints/b734a0bc-1961-4100-8c3a-8138024d1207.npy
+media/audio/fingerprints/bb8c3e6a-1306-4e8c-8080-c882a5f83f33.npy
+media/audio/fingerprints/bdb1eeeb-cd9f-46db-a5aa-384cfc9d2658.npy
+media/audio/fingerprints/c132fb59-1c1d-4958-ae60-5b61c36c9154.npy
+media/audio/fingerprints/c581a7a5-75a9-4738-b3ca-ad608369aec2.npy
+media/audio/fingerprints/c5c80810-d108-46c6-ae69-910b5df7affc.npy
+media/audio/fingerprints/c91970d9-f957-4451-acf5-7c2503057fbe.npy
+media/audio/fingerprints/c91f14d0-a2b7-48d8-ba9b-a0e708c58391.npy
+media/audio/fingerprints/c930cb70-a708-4f22-9e31-892a635bc6da.npy
+media/audio/fingerprints/c99d7946-deea-4264-ade1-bee7e8f072e2.npy
+media/audio/fingerprints/c9cee9cc-3a7b-4568-b5ac-19abada41c88.npy
+media/audio/fingerprints/ca35375b-1575-413c-85b3-1ed232c35117.npy
+media/audio/fingerprints/ca723a27-9afa-4862-a980-fa9cc382cb79.npy
+media/audio/fingerprints/ca8a13e0-e9ff-4c43-ab8f-f59bd1937ca1.npy
+media/audio/fingerprints/d039e0ab-1ef6-432b-844d-4e317b194286.npy
+media/audio/fingerprints/d0cbce1a-2736-45d4-abf4-1895035ebc57.npy
+media/audio/fingerprints/d1e76dd7-56ea-404f-bf8b-3d2b9844d4a5.npy
+media/audio/fingerprints/d36892e0-d1f3-4032-a5c1-49f52f5f8542.npy
+media/audio/fingerprints/d3a25f38-1bec-4143-a745-b36becb8d1f2.npy
+media/audio/fingerprints/d66c3c24-c007-472c-a076-2dfb4dbbf0ac.npy
+media/audio/fingerprints/d6fffabb-aeb9-4b5f-9683-e181b70198f6.npy
+media/audio/fingerprints/d7943b52-0064-45d1-b959-24398bbefd83.npy
+media/audio/fingerprints/d97dd1f3-6afc-49e6-9fce-232421efe9f1.npy
+media/audio/fingerprints/dd4dafad-9404-4581-a758-749ae5f9cf24.npy
+media/audio/fingerprints/de0009d9-76ca-4a6e-89ea-d797eb3a1741.npy
+media/audio/fingerprints/defe0c31-04a4-4379-bfb2-e4dabf3685c5.npy
+media/audio/fingerprints/e0477257-62cc-4283-aceb-a26f44881794.npy
+media/audio/fingerprints/e114f080-54a1-455e-93c7-fcfb9259f093.npy
+media/audio/fingerprints/e12ef7d7-c296-494e-b991-b6f24ebe7aae.npy
+media/audio/fingerprints/e1748f92-b51b-4170-9a27-d84e493b1b10.npy
+media/audio/fingerprints/e1aa7ca3-adc5-44fe-a956-cbb2f5716597.npy
+media/audio/fingerprints/e1f5bfa9-a3ec-45f7-8460-fb070c9dc0d6.npy
+media/audio/fingerprints/e20948f5-a75a-49e7-81f7-168178bb19c2.npy
+media/audio/fingerprints/e2416c79-8cf6-44fe-b829-ef32d40a72e2.npy
+media/audio/fingerprints/e55200a4-08ac-4933-abe1-dd8fb16b6ccd.npy
+media/audio/fingerprints/e6019eaa-e1c9-440d-9a49-e6599217bf1a.npy
+media/audio/fingerprints/e686eb3f-ae8b-44ed-9e05-65b475359035.npy
+media/audio/fingerprints/e708d7e3-d4a0-4950-81a8-f0a4ceb9fc54.npy
+media/audio/fingerprints/e741e24a-dc14-43c9-8944-05f6ef5fed3f.npy
+media/audio/fingerprints/e87e5a45-b448-493c-8c2a-ff454019427c.npy
+media/audio/fingerprints/e8f9f5de-ca77-40fa-b7f0-93b8f021e0d7.npy
+media/audio/fingerprints/e94b31ed-61e5-4cde-a045-9480ca7675fc.npy
+media/audio/fingerprints/ea822115-9305-4772-a27e-e56247a6fd7e.npy
+media/audio/fingerprints/eae9ccc9-4301-46e4-9004-a9a979bb7761.npy
+media/audio/fingerprints/ed08e6ac-0418-4607-a393-62a0c51c5c07.npy
+media/audio/fingerprints/f078ee1f-89af-4377-bfcc-707831687cc3.npy
+media/audio/fingerprints/f33ba2a5-fcab-459d-b14c-ad740a4be018.npy
+media/audio/fingerprints/f60db4e4-0134-4c40-98a3-cf300366507d.npy
+media/audio/fingerprints/f6251ceb-a544-4ce9-afda-7eac487fea6e.npy
+media/audio/fingerprints/f8585b60-9bef-486e-896e-5b2194386901.npy
+media/audio/fingerprints/f873fcf6-9978-48ba-bf57-8474723db9b3.npy
+media/audio/fingerprints/f8f1a11c-711c-4352-810f-e3b24c8ae458.npy
+media/audio/fingerprints/fa0928a1-ff97-4c44-badf-9546479b03e7.npy
+media/audio/fingerprints/fc8cca02-69e3-47d1-8878-7dcc3b3dc72f.npy
+media/audio/fingerprints/fca6889b-7fb6-4170-8821-29c23809b609.npy
+media/audio/fingerprints/fde352fd-dc07-42bb-959a-7c49eb3fba8b.npy
+media/audio/fingerprints/ff9c1e0c-d196-448b-bed6-35e318b1c61d.npy
+media/audio/fingerprints/ffe915cf-971e-4d3c-8ef1-d4500416be61.npy
+pytorch-animeGAN/models/__pycache__/
+pytorch-animeGAN/utils/__pycache__/
+scripts/
+scripts/activate
+scripts/ascript
+scripts/ascripts
+scripts/asyncbackup
+scripts/backup
+scripts/catkeys
+scripts/check
+scripts/client.py
+scripts/cmds
+scripts/commitlog
+scripts/compinfo
+scripts/daphnereload
+scripts/dbinfo
+scripts/disgpu
+scripts/doreload
+scripts/enagpu
+scripts/finishsetup
+scripts/fixfile
+scripts/googletrans_client.py
+scripts/imagecounts
+scripts/init
+scripts/initialize
+scripts/inspecttask
+scripts/json.py
+scripts/jump
+scripts/lockout
+scripts/logs
+scripts/logssh
+scripts/mailtest
+scripts/makemigrate
+scripts/nude.py
+scripts/opendkimkey
+scripts/patchvenv
+scripts/purgecache
+scripts/purgegit
+scripts/pushweb
+scripts/reinstallredis
+scripts/reload
+scripts/resetredis
+scripts/resetvenv
+scripts/rotatekeys
+scripts/safepoweroff
+scripts/safereboot
+scripts/setp
+scripts/setup
+scripts/setupisfinished
+scripts/startservices
+scripts/stopservices
+scripts/updateupgrade
+scripts/watchcmd
+scripts/watchlogs
+scripts/webauth_views.py
+temp/
+temp/1ac61b31-e7ef-4393-bc08-93d54277f1cd.txt
+temp/21c3fca3-cec9-4670-8389-8f48bffc5ea8.txt
+temp/2b0346ab-f4d6-4801-9aa4-a40febb20554.txt
+temp/45768275-3d3a-411d-922b-cb94ab332cd3.txt
+temp/4c4c44f3-5621-4226-a698-651c8acd37c5.txt
+temp/5285501c-508f-4733-9016-39d5f27f0e97.txt
+temp/54034bb1-4852-4661-bf9e-c8c348acc507.txt
+temp/5e3e2292-3ed7-43e1-8035-15b7843c47f0.txt
+temp/61f02f0c-57aa-4494-b710-9913b5e6b0e7.txt
+temp/7f21a739-7304-4f78-8344-6101a6ac4db0.txt
+temp/7f89c1ab-dcdb-495b-aaca-1fcd09812272.txt
+temp/826d061e-62b5-4bcf-bd9f-bbb68ddbb29a.txt
+temp/829c89ee-456e-463c-afe8-186eafcfe404.txt
+temp/8fe160d7-2b91-4c2c-8f12-270150a839c0.txt
+temp/a3c10119-41b8-41cf-bce2-235fe07421c2.txt
+temp/b0736497-e6dd-4500-8b5f-af2426461de4.txt
+temp/bdfcde82-1927-4d21-a5c2-393fcd7ffeed.txt
+temp/be9aa7ac-bbef-4dfc-ae96-6f9f098e5bb1.txt
+temp/c1a78f6d-4d58-4679-bd98-4051e4dd6aee.txt
+temp/c8607312-a152-42c5-afa8-d77ca89f853d.txt
+temp/d037cbe5-a7e1-42d6-8ab6-a46ed0000c91.txt
+temp/e656a655-5c8c-46c7-a504-bfa9627b86d2.txt
+temp/e6f6ddc7-3b5a-4951-b4fe-c7f49dec388b.txt
+temp/e9e534d8-a6c5-4b01-99ae-224dc5941c2d.txt
+
+sent 420,092,302 bytes  received 15,662 bytes  280,071,976.00 bytes/sec
+total size is 1,720,107,884  speedup is 4.09
+Reinitialized existing Git repository in /home/team/lotteh-backup-open/.git/
+[main 89c9c11a] open source
+ 221 files changed, 707 insertions(+), 674 deletions(-)
+ create mode 100755 media/audio/fingerprints/02183028-0168-40b4-bdde-35fe9f74c8fa.npy
+ create mode 100755 media/audio/fingerprints/024af8b8-23e7-418a-8572-b0583c7e6d22.npy
+ create mode 100755 media/audio/fingerprints/03ab870c-f255-4b75-bb16-ad4533cdb598.npy
+ create mode 100755 media/audio/fingerprints/059c5ae0-a02c-4492-9544-a29dc8830360.npy
+ create mode 100755 media/audio/fingerprints/060de4d1-715b-43d0-87dd-743f32b8feca.npy
+ create mode 100755 media/audio/fingerprints/07ecd115-3b8f-4522-87e1-39b43bd7e0cd.npy
+ create mode 100755 media/audio/fingerprints/09773011-505d-4c41-8e55-49897e29d265.npy
+ create mode 100755 media/audio/fingerprints/0b679374-5a6e-4766-a24a-4b6ebf55953f.npy
+ create mode 100755 media/audio/fingerprints/0bd2e826-4bdf-433e-b521-09b37376d83f.npy
+ create mode 100755 media/audio/fingerprints/0d1c1574-356e-451e-99df-49d6c717661f.npy
+ create mode 100755 media/audio/fingerprints/0ddf01de-907a-4a80-ae14-cb207dbc97bc.npy
+ create mode 100755 media/audio/fingerprints/0de81a82-091b-4850-bf42-d7531f5242fb.npy
+ create mode 100755 media/audio/fingerprints/0e278d4c-f2e7-4e86-b524-6018bbe11d9c.npy
+ create mode 100755 media/audio/fingerprints/0e392393-0d5e-42bc-a51c-f606bdfe194a.npy
+ create mode 100755 media/audio/fingerprints/1099003c-0da9-406a-818b-9759bfa0fc15.npy
+ create mode 100755 media/audio/fingerprints/10bc02cd-aa0b-4866-92df-1d11d44e850c.npy
+ create mode 100755 media/audio/fingerprints/183765dd-56c0-4d7e-ba6c-3d1444a34545.npy
+ create mode 100755 media/audio/fingerprints/18934ace-de3d-41af-8e54-90f24b5466bd.npy
+ create mode 100755 media/audio/fingerprints/19a01130-c320-44f7-bdb2-ae18df5c6a2d.npy
+ create mode 100755 media/audio/fingerprints/1ae7b48a-2831-4159-8965-1e9a53a4a2b4.npy
+ create mode 100755 media/audio/fingerprints/1c0650b3-b439-4ee1-9e61-74fdb7c5cdd0.npy
+ create mode 100755 media/audio/fingerprints/1d7704db-30c6-4676-9d26-0934d1649310.npy
+ create mode 100755 media/audio/fingerprints/1e5d7e45-58ca-48c0-9a20-ee505d3cc247.npy
+ create mode 100755 media/audio/fingerprints/21ca0ded-f2ed-4a8f-9852-991f0f40c675.npy
+ create mode 100755 media/audio/fingerprints/224b0d7a-64d6-4364-a937-de10e14193e7.npy
+ create mode 100755 media/audio/fingerprints/22c4c201-32e2-462b-9e55-b24e286f0dc1.npy
+ create mode 100755 media/audio/fingerprints/24e5bd0b-22f2-4ef2-812e-8e4595eb432e.npy
+ create mode 100755 media/audio/fingerprints/24f34bd4-c5ce-4b63-8b8e-29b9e13b4966.npy
+ create mode 100755 media/audio/fingerprints/28b684cc-a6af-49af-8169-7ff0d8527e72.npy
+ create mode 100755 media/audio/fingerprints/29376370-5c7b-4bd3-9135-a66a9f14f778.npy
+ create mode 100755 media/audio/fingerprints/29f6667a-9c7c-45e8-9a8d-86f9c3b0ccb6.npy
+ create mode 100755 media/audio/fingerprints/2b3d5720-feda-4287-9195-cb40899b3945.npy
+ create mode 100755 media/audio/fingerprints/2bea0dba-a4ec-4408-a3fa-80925b483d2d.npy
+ create mode 100755 media/audio/fingerprints/2dac2df1-31b2-4314-adb9-d1b9fa2d7e3b.npy
+ create mode 100755 media/audio/fingerprints/2dd0d6f7-0d02-47a3-9e31-710a23dfe895.npy
+ create mode 100755 media/audio/fingerprints/2ed43411-093e-42bd-9fe1-c1cb40e6e270.npy
+ create mode 100755 media/audio/fingerprints/3038e3d2-39a9-4ace-80fa-4f1e9021c1b5.npy
+ create mode 100755 media/audio/fingerprints/31df5ab7-dc74-44b3-b8c8-28682c6582fb.npy
+ create mode 100755 media/audio/fingerprints/33f27b43-40ca-4aa1-bb56-bbab366fae06.npy
+ create mode 100755 media/audio/fingerprints/36798828-7a73-4cb4-b0ee-546030a047dd.npy
+ create mode 100755 media/audio/fingerprints/3741cee0-3343-4f0f-b36f-547becb604b1.npy
+ create mode 100755 media/audio/fingerprints/383d6e21-c4c1-48ac-9c32-41f938fdb6dd.npy
+ create mode 100755 media/audio/fingerprints/39aa0573-336a-4262-8614-fc8b386cbc7b.npy
+ create mode 100755 media/audio/fingerprints/3ad0d10d-adc1-49d4-8c4a-6f46f091390a.npy
+ create mode 100755 media/audio/fingerprints/3b19761c-c0b8-4a73-b2c6-b5fdffacdf3f.npy
+ create mode 100755 media/audio/fingerprints/3c9f833a-f54b-40d5-bec5-34b2748374ce.npy
+ create mode 100755 media/audio/fingerprints/3d57ff09-f622-48af-b100-f4114f73101b.npy
+ create mode 100755 media/audio/fingerprints/40d8c543-499c-4e4c-8f8e-747b7a8d632b.npy
+ create mode 100755 media/audio/fingerprints/412438b4-8413-4e8a-a656-8827d058215f.npy
+ create mode 100755 media/audio/fingerprints/41c65519-4688-4b36-a8bd-81401f40474f.npy
+ create mode 100755 media/audio/fingerprints/441c2c2a-c563-46e9-bd69-1131d9cb7757.npy
+ create mode 100755 media/audio/fingerprints/44790ffb-6961-49f9-85c3-b5c8a44acda0.npy
+ create mode 100755 media/audio/fingerprints/448299d6-8411-45c3-945b-ce9b94b17631.npy
+ create mode 100755 media/audio/fingerprints/47fb6108-f433-46b1-8f98-aaf7e819be1c.npy
+ create mode 100755 media/audio/fingerprints/4829976c-dd24-4dcf-b4da-dec289af63c0.npy
+ create mode 100755 media/audio/fingerprints/483eb285-ca0b-46ce-8284-c49578d0d74c.npy
+ create mode 100755 media/audio/fingerprints/4872072e-54d9-44da-b62f-76cb0ee1380e.npy
+ create mode 100755 media/audio/fingerprints/492480da-5503-485e-92ef-ffdc6bae874b.npy
+ create mode 100755 media/audio/fingerprints/4a16df76-9fae-45ff-80a4-11a875a184b0.npy
+ create mode 100755 media/audio/fingerprints/4b85f4d3-1b44-49ae-aea5-b12afeb94147.npy
+ create mode 100755 media/audio/fingerprints/4bc889b3-7ec2-4ce0-b9f8-80093f87932b.npy
+ create mode 100755 media/audio/fingerprints/4efe9494-f8a3-453f-817a-ab2c2cbb862a.npy
+ create mode 100755 media/audio/fingerprints/4f857337-c09b-41c7-b6c7-ad60220e72a2.npy
+ create mode 100755 media/audio/fingerprints/4f9ae312-96eb-4900-9935-9ff8ff45784d.npy
+ create mode 100755 media/audio/fingerprints/50cdc73e-59a9-49e9-9234-da88ec46a78f.npy
+ create mode 100755 media/audio/fingerprints/531fb1a4-12d8-41b8-b471-597ccde4895b.npy
+ create mode 100755 media/audio/fingerprints/53678a6d-e958-4ced-89c4-8f06b73711da.npy
+ create mode 100755 media/audio/fingerprints/53a87b8f-6f49-4493-9b18-72362900362a.npy
+ create mode 100755 media/audio/fingerprints/53eb48af-57eb-4e91-ae6d-93bc828810e9.npy
+ create mode 100755 media/audio/fingerprints/5437f635-3dbe-458a-9318-55cf27b3f73f.npy
+ create mode 100755 media/audio/fingerprints/5575f232-10f4-454e-b2ed-f16b2c430f4a.npy
+ create mode 100755 media/audio/fingerprints/55c58e47-fa48-45b0-887f-65a6f38f84f3.npy
+ create mode 100755 media/audio/fingerprints/58047e09-7e10-41cf-9957-41afb604f99f.npy
+ create mode 100755 media/audio/fingerprints/589c6877-45a6-4e6d-822f-cf6822b8d087.npy
+ create mode 100755 media/audio/fingerprints/5aaa7b92-abb3-4289-802f-1654ac162d1a.npy
+ create mode 100755 media/audio/fingerprints/5b719bf1-0740-43d3-8542-657ba7ba78ac.npy
+ create mode 100755 media/audio/fingerprints/5baaef71-ae09-4b0b-9544-9fab3bd23057.npy
+ create mode 100755 media/audio/fingerprints/5eefaed0-a2fd-4a0d-8cb4-6a8dd73a2af3.npy
+ create mode 100755 media/audio/fingerprints/5f8156c3-e425-441e-9cd4-9fd52a791c4d.npy
+ create mode 100755 media/audio/fingerprints/6027ed4d-eb9b-4b75-a832-2bc595ce1803.npy
+ create mode 100755 media/audio/fingerprints/618b3ec9-8868-44a0-8382-f7423226fcb9.npy
+ create mode 100755 media/audio/fingerprints/633945fe-ba64-4a74-807b-7f384e05c626.npy
+ create mode 100755 media/audio/fingerprints/639d5af2-be7e-453a-b736-9ce0dfc48c7d.npy
+ create mode 100755 media/audio/fingerprints/6408e4f8-280f-4a0d-b87b-9d8133d1186a.npy
+ create mode 100755 media/audio/fingerprints/64e6c016-630d-4c79-8472-4ad5b875fbf0.npy
+ create mode 100755 media/audio/fingerprints/663538a5-afaf-46b1-82d0-e9fc77fcbcad.npy
+ create mode 100755 media/audio/fingerprints/6663394f-d3e2-43b3-bf99-273e84cd1ad4.npy
+ create mode 100755 media/audio/fingerprints/66d1e689-1204-4e1b-9dfa-a1809f4ec4cd.npy
+ create mode 100755 media/audio/fingerprints/66fcc34e-5d50-4145-bc27-7f8f97cfc87c.npy
+ create mode 100755 media/audio/fingerprints/67553318-9718-44fb-a615-9f2f0d0c6b9b.npy
+ create mode 100755 media/audio/fingerprints/6885e4ea-e07c-403b-8425-98b6184d16e8.npy
+ create mode 100755 media/audio/fingerprints/68b32963-5e48-4a34-8b00-588d3042f7d4.npy
+ create mode 100755 media/audio/fingerprints/69c754c7-cdbe-499b-9327-4619e0f966bc.npy
+ create mode 100755 media/audio/fingerprints/6a29ef73-5c59-43b9-a71f-3bf49bdbb423.npy
+ create mode 100755 media/audio/fingerprints/6af2f22d-f771-4bdd-a6b3-cf231a44df4f.npy
+ create mode 100755 media/audio/fingerprints/6ccb3acc-6dee-473f-8990-f7819e5e732a.npy
+ create mode 100755 media/audio/fingerprints/6cf7355b-0a58-47d6-b599-644d94aeafcf.npy
+ create mode 100755 media/audio/fingerprints/6e74f02f-5e4c-4656-9046-80bdf606a93c.npy
+ create mode 100755 media/audio/fingerprints/6f9e1afa-e3ef-44fc-abfb-67c6c4f17b41.npy
+ create mode 100755 media/audio/fingerprints/7046572d-50f0-42a1-9692-b7627500f770.npy
+ create mode 100755 media/audio/fingerprints/70a1ceac-cc83-46ce-9f1a-bef834ff8097.npy
+ create mode 100755 media/audio/fingerprints/7198e197-5daa-4f02-aa8d-685f80820527.npy
+ create mode 100755 media/audio/fingerprints/72c8ed7d-a500-4486-9ce9-31246ebc8c23.npy
+ create mode 100755 media/audio/fingerprints/7380f1b9-9040-4a8c-a427-64a71d30ecf5.npy
+ create mode 100755 media/audio/fingerprints/73d5c791-021a-4627-bea8-8e7ec4a0894e.npy
+ create mode 100755 media/audio/fingerprints/743c19bf-c7ae-417e-9518-02f475ba6636.npy
+ create mode 100755 media/audio/fingerprints/75319657-e39c-401f-a86e-e51b0146aa91.npy
+ create mode 100755 media/audio/fingerprints/753b8a8e-2320-4704-928d-f6cb39f8e067.npy
+ create mode 100755 media/audio/fingerprints/773ac648-9464-48d3-910b-bac38a8bb15f.npy
+ create mode 100755 media/audio/fingerprints/7893f8aa-9c06-4fad-9621-1a264f4609eb.npy
+ create mode 100755 media/audio/fingerprints/7971309f-9767-485b-90ee-22443e996aae.npy
+ create mode 100755 media/audio/fingerprints/7bb05054-8684-44ef-b870-57df3ce4db43.npy
+ create mode 100755 media/audio/fingerprints/7cadcfb2-de80-424b-8f93-1b98cac3e69a.npy
+ create mode 100755 media/audio/fingerprints/7e2977da-45bb-443b-bc5f-01d226909f9d.npy
+ create mode 100755 media/audio/fingerprints/808caef9-e3c7-45db-8b1b-77f9bd72e254.npy
+ create mode 100755 media/audio/fingerprints/8186cf4b-5893-4a2a-acef-d7514c564e82.npy
+ create mode 100755 media/audio/fingerprints/837a215b-5709-45c9-b299-350adb396bd5.npy
+ create mode 100755 media/audio/fingerprints/84e7c76b-b84d-4962-a4e8-8887351de833.npy
+ create mode 100755 media/audio/fingerprints/86877915-313b-48a3-a8ff-274d7dd57e2f.npy
+ create mode 100755 media/audio/fingerprints/87bb9ee3-2173-4fd3-8256-ab3644f92a16.npy
+ create mode 100755 media/audio/fingerprints/88a4e462-4027-4fcb-96fb-d34c9926f7a8.npy
+ create mode 100755 media/audio/fingerprints/890f959b-08dd-48c0-a74b-cedcda548715.npy
+ create mode 100755 media/audio/fingerprints/89161c1b-086e-4495-8ee6-a99447eaa6c2.npy
+ create mode 100755 media/audio/fingerprints/896f2f46-12d9-4eca-a252-5fc2af30e433.npy
+ create mode 100755 media/audio/fingerprints/8abd9a55-38be-46f5-986e-153381de2451.npy
+ create mode 100755 media/audio/fingerprints/8b1914b7-1f2f-4bc9-876e-31b70263fe68.npy
+ create mode 100755 media/audio/fingerprints/8d9bac16-aff5-45dd-bb62-2010a0a5c9b4.npy
+ create mode 100755 media/audio/fingerprints/8fe2b7c3-f3c7-4b4f-9a60-f606e8485c0f.npy
+ create mode 100755 media/audio/fingerprints/8fe2e6c9-401b-4a00-b839-4084b6404228.npy
+ create mode 100755 media/audio/fingerprints/909a9673-f5b9-4355-9df6-ed616e7fdd38.npy
+ create mode 100755 media/audio/fingerprints/90a178e8-0621-4cbd-8ccc-b3a7111dbe77.npy
+ create mode 100755 media/audio/fingerprints/93075ada-6b78-48a6-9a04-46d0faa599d8.npy
+ create mode 100755 media/audio/fingerprints/936f52cb-fe03-460a-8cd8-e6bb52ef74b4.npy
+ create mode 100755 media/audio/fingerprints/960c4116-e4c3-4c56-9ef5-ff8bc4e50169.npy
+ create mode 100755 media/audio/fingerprints/9a2cff9f-70e2-4336-bc28-57f428f1b4e2.npy
+ create mode 100755 media/audio/fingerprints/9a7b61d8-2417-47d2-bfba-031544f63f6a.npy
+ create mode 100755 media/audio/fingerprints/9ad8e3a5-d427-4f73-882a-a2fbf983a2e4.npy
+ create mode 100755 media/audio/fingerprints/9c75f4f4-66eb-409c-aacf-cb325cd60752.npy
+ create mode 100755 media/audio/fingerprints/9d233bfa-9fdd-4c9c-8091-6eb071444f14.npy
+ create mode 100755 media/audio/fingerprints/9e2e3f7f-bd79-42f8-b6e5-48940a080e63.npy
+ create mode 100755 media/audio/fingerprints/a1e052d7-4238-4df8-b26b-72542aef776a.npy
+ create mode 100755 media/audio/fingerprints/a3318b34-512a-44ba-85fe-9d008d28b1eb.npy
+ create mode 100755 media/audio/fingerprints/a38c5bbc-0c9e-4977-8871-308b15552d9c.npy
+ create mode 100755 media/audio/fingerprints/a4839789-6da5-46b4-89f0-d29a10a4e498.npy
+ create mode 100755 media/audio/fingerprints/ac93564f-aba6-4e10-a96c-ba89c120be6d.npy
+ create mode 100755 media/audio/fingerprints/acb68ca0-fa7a-4046-bb47-036696eab1e5.npy
+ create mode 100755 media/audio/fingerprints/ace7476d-67aa-487a-824e-d396762ca91c.npy
+ create mode 100755 media/audio/fingerprints/af0212c8-2150-4a50-bc13-3ab8188ed2e8.npy
+ create mode 100755 media/audio/fingerprints/af36a207-b608-4cc8-866b-6730cd7e46f4.npy
+ create mode 100755 media/audio/fingerprints/b1c973ab-f9e2-496c-b33e-28770992f079.npy
+ create mode 100755 media/audio/fingerprints/b326290e-8775-4ea3-a5e4-e212cd68d34c.npy
+ create mode 100755 media/audio/fingerprints/b3ded770-4379-4a6b-bfee-bf7483d1bb56.npy
+ create mode 100755 media/audio/fingerprints/b439683a-f5d7-4e56-bc52-ac09a4379ffb.npy
+ create mode 100755 media/audio/fingerprints/b494f556-61d4-4536-8a4e-a9457c38afed.npy
+ create mode 100755 media/audio/fingerprints/b4a3dd51-58de-45df-bf31-aac6e25f64c3.npy
+ create mode 100755 media/audio/fingerprints/b56e5369-1e5e-4f0b-b59b-b9cf100c5d75.npy
+ create mode 100755 media/audio/fingerprints/b734a0bc-1961-4100-8c3a-8138024d1207.npy
+ create mode 100755 media/audio/fingerprints/bb8c3e6a-1306-4e8c-8080-c882a5f83f33.npy
+ create mode 100755 media/audio/fingerprints/bdb1eeeb-cd9f-46db-a5aa-384cfc9d2658.npy
+ create mode 100755 media/audio/fingerprints/c132fb59-1c1d-4958-ae60-5b61c36c9154.npy
+ create mode 100755 media/audio/fingerprints/c581a7a5-75a9-4738-b3ca-ad608369aec2.npy
+ create mode 100755 media/audio/fingerprints/c5c80810-d108-46c6-ae69-910b5df7affc.npy
+ create mode 100755 media/audio/fingerprints/c91970d9-f957-4451-acf5-7c2503057fbe.npy
+ create mode 100755 media/audio/fingerprints/c91f14d0-a2b7-48d8-ba9b-a0e708c58391.npy
+ create mode 100755 media/audio/fingerprints/c930cb70-a708-4f22-9e31-892a635bc6da.npy
+ create mode 100755 media/audio/fingerprints/c99d7946-deea-4264-ade1-bee7e8f072e2.npy
+ create mode 100755 media/audio/fingerprints/c9cee9cc-3a7b-4568-b5ac-19abada41c88.npy
+ create mode 100755 media/audio/fingerprints/ca35375b-1575-413c-85b3-1ed232c35117.npy
+ create mode 100755 media/audio/fingerprints/ca723a27-9afa-4862-a980-fa9cc382cb79.npy
+ create mode 100755 media/audio/fingerprints/ca8a13e0-e9ff-4c43-ab8f-f59bd1937ca1.npy
+ create mode 100755 media/audio/fingerprints/d039e0ab-1ef6-432b-844d-4e317b194286.npy
+ create mode 100755 media/audio/fingerprints/d0cbce1a-2736-45d4-abf4-1895035ebc57.npy
+ create mode 100755 media/audio/fingerprints/d1e76dd7-56ea-404f-bf8b-3d2b9844d4a5.npy
+ create mode 100755 media/audio/fingerprints/d36892e0-d1f3-4032-a5c1-49f52f5f8542.npy
+ create mode 100755 media/audio/fingerprints/d3a25f38-1bec-4143-a745-b36becb8d1f2.npy
+ create mode 100755 media/audio/fingerprints/d66c3c24-c007-472c-a076-2dfb4dbbf0ac.npy
+ create mode 100755 media/audio/fingerprints/d6fffabb-aeb9-4b5f-9683-e181b70198f6.npy
+ create mode 100755 media/audio/fingerprints/d7943b52-0064-45d1-b959-24398bbefd83.npy
+ create mode 100755 media/audio/fingerprints/d97dd1f3-6afc-49e6-9fce-232421efe9f1.npy
+ create mode 100755 media/audio/fingerprints/dd4dafad-9404-4581-a758-749ae5f9cf24.npy
+ create mode 100755 media/audio/fingerprints/de0009d9-76ca-4a6e-89ea-d797eb3a1741.npy
+ create mode 100755 media/audio/fingerprints/defe0c31-04a4-4379-bfb2-e4dabf3685c5.npy
+ create mode 100755 media/audio/fingerprints/e0477257-62cc-4283-aceb-a26f44881794.npy
+ create mode 100755 media/audio/fingerprints/e114f080-54a1-455e-93c7-fcfb9259f093.npy
+ create mode 100755 media/audio/fingerprints/e12ef7d7-c296-494e-b991-b6f24ebe7aae.npy
+ create mode 100755 media/audio/fingerprints/e1748f92-b51b-4170-9a27-d84e493b1b10.npy
+ create mode 100755 media/audio/fingerprints/e1aa7ca3-adc5-44fe-a956-cbb2f5716597.npy
+ create mode 100755 media/audio/fingerprints/e1f5bfa9-a3ec-45f7-8460-fb070c9dc0d6.npy
+ create mode 100755 media/audio/fingerprints/e20948f5-a75a-49e7-81f7-168178bb19c2.npy
+ create mode 100755 media/audio/fingerprints/e2416c79-8cf6-44fe-b829-ef32d40a72e2.npy
+ create mode 100755 media/audio/fingerprints/e55200a4-08ac-4933-abe1-dd8fb16b6ccd.npy
+ create mode 100755 media/audio/fingerprints/e6019eaa-e1c9-440d-9a49-e6599217bf1a.npy
+ create mode 100755 media/audio/fingerprints/e686eb3f-ae8b-44ed-9e05-65b475359035.npy
+ create mode 100755 media/audio/fingerprints/e708d7e3-d4a0-4950-81a8-f0a4ceb9fc54.npy
+ create mode 100755 media/audio/fingerprints/e741e24a-dc14-43c9-8944-05f6ef5fed3f.npy
+ create mode 100755 media/audio/fingerprints/e87e5a45-b448-493c-8c2a-ff454019427c.npy
+ create mode 100755 media/audio/fingerprints/e8f9f5de-ca77-40fa-b7f0-93b8f021e0d7.npy
+ create mode 100755 media/audio/fingerprints/e94b31ed-61e5-4cde-a045-9480ca7675fc.npy
+ create mode 100755 media/audio/fingerprints/ea822115-9305-4772-a27e-e56247a6fd7e.npy
+ create mode 100755 media/audio/fingerprints/eae9ccc9-4301-46e4-9004-a9a979bb7761.npy
+ create mode 100755 media/audio/fingerprints/ed08e6ac-0418-4607-a393-62a0c51c5c07.npy
+ create mode 100755 media/audio/fingerprints/f078ee1f-89af-4377-bfcc-707831687cc3.npy
+ create mode 100755 media/audio/fingerprints/f33ba2a5-fcab-459d-b14c-ad740a4be018.npy
+ create mode 100755 media/audio/fingerprints/f60db4e4-0134-4c40-98a3-cf300366507d.npy
+ create mode 100755 media/audio/fingerprints/f6251ceb-a544-4ce9-afda-7eac487fea6e.npy
+ create mode 100755 media/audio/fingerprints/f8585b60-9bef-486e-896e-5b2194386901.npy
+ create mode 100755 media/audio/fingerprints/f873fcf6-9978-48ba-bf57-8474723db9b3.npy
+ create mode 100755 media/audio/fingerprints/f8f1a11c-711c-4352-810f-e3b24c8ae458.npy
+ create mode 100755 media/audio/fingerprints/fa0928a1-ff97-4c44-badf-9546479b03e7.npy
+ create mode 100755 media/audio/fingerprints/fc8cca02-69e3-47d1-8878-7dcc3b3dc72f.npy
+ create mode 100755 media/audio/fingerprints/fca6889b-7fb6-4170-8821-29c23809b609.npy
+ create mode 100755 media/audio/fingerprints/fde352fd-dc07-42bb-959a-7c49eb3fba8b.npy
+ create mode 100755 media/audio/fingerprints/ff9c1e0c-d196-448b-bed6-35e318b1c61d.npy
+ create mode 100755 media/audio/fingerprints/ffe915cf-971e-4d3c-8ef1-d4500416be61.npy
+branch 'main' set up to track 'originhub/main'.

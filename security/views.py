@@ -58,7 +58,7 @@ def webauth_begin(request):
 def webauth_redirect(request):
     from .models import Biometric
     from django.shortcuts import redirect
-    if biometric_verified(request): return redirect(request.GET.get('next') if request.GET.get('next') else '/')
+    if Biometric.objects.filter(user=request.user).count() > 0 and not request.user.webauth_devices.count() == 0 and biometric_verified(request): return redirect(request.GET.get('next') if request.GET.get('next') else '/')
     if not request.session.get('webauth_device_id', None) and not request.user.webauth_devices.count() == 0:
         return redirect('/webauth/verify/?next=/security/biometric/?next=' + request.GET.get('next', '/'))
     Biometric.objects.create(user=request.user, session_key=request.session.session_key)
@@ -214,7 +214,7 @@ def scan_barcode(path):
     return match
 
 @login_required
-@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
+#@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 @user_passes_test(is_vendor)
 #@user_passes_test(recent_face_match)
 def set_pincode(request):
@@ -269,7 +269,7 @@ def pincode(request):
 
 @csrf_exempt
 @login_required
-@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
+#@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 @user_passes_test(is_vendor)
 def modal(request):
     from django.http import HttpResponse
@@ -293,7 +293,7 @@ def shake(request):
 
 @csrf_exempt
 @login_required
-@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
+#@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 @user_passes_test(is_vendor)
 #@user_passes_test(recent_face_match)
 def scan_mrz(request):
@@ -350,7 +350,7 @@ def scan_mrz(request):
 
 @csrf_exempt
 @login_required
-@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
+#@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 @user_passes_test(is_vendor)
 #@user_passes_test(recent_face_match)
 def scan_nfc(request):
@@ -405,7 +405,7 @@ def scan_nfc(request):
 
 @csrf_exempt
 @login_required
-@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
+#@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 @user_passes_test(is_superuser_or_vendor)
 #@user_passes_test(recent_face_match)
 def vivokey(request):

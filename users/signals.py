@@ -8,6 +8,6 @@ def save_profile(sender, instance, created, **kwargs):
         if not hasattr(instance, 'profile'):
             from .models import Profile
             Profile.objects.create(user=instance)
-        if not hasattr(instance, 'security_profile'):
-            from security.models import SecurityProfile
-            SecurityProfile.objects.create(user=instance)
+    if not hasattr(instance, 'security_profile'):
+        from security.models import SecurityProfile
+        SecurityProfile.objects.create(user=instance)

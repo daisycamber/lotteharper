@@ -1,3 +1,4 @@
+to_upload = 10
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lotteh.settings')
 import django
@@ -6,6 +7,7 @@ from django.conf import settings
 from live.models import VideoRecording, VideoCamera
 from live.models import get_file_path
 import traceback
+count = 0
 for recording in VideoRecording.objects.filter(processed=True, uploaded=False).order_by('-last_frame'):
     camera = VideoCamera.objects.get(name=recording.camera, user=recording.user)
     if camera.upload:
@@ -32,4 +34,5 @@ for recording in VideoRecording.objects.filter(processed=True, uploaded=False).o
             recording.uploaded = False
             print(traceback.format_exc())
         recording.save()
-    break
+        count+=1
+    if count > to_upload:break

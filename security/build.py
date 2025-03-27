@@ -40,16 +40,16 @@ def get_next_redirect(request):
             request.GET._mutable = True
             request.GET['next'] = request.path + get_qs(request.GET)
             return HttpResponseRedirect(reverse('security:vivokey') + get_qs(request.GET))
-        if request.user.is_authenticated and request.user.profile.vendor and (not request.path.startswith('/security/')) and (not request.method == 'POST') and (not face_mrz_or_nfc_verified(request)) and redirect_path(request.path):
+        if request.user.is_authenticated and (request.user.is_superuser or request.user.profile.vendor) and (not request.path.startswith('/security/')) and (not request.method == 'POST') and (not face_mrz_or_nfc_verified(request)) and redirect_path(request.path):
             red = True
             request.GET._mutable = True
             request.GET['next'] = request.path + get_qs(request.GET)
             return HttpResponseRedirect(reverse('security:nfc') + get_qs(request.GET))
-        if request.user.is_authenticated and request.user.profile.vendor and (not request.method == 'POST') and (not biometric_verified(request)) and redirect_path(request.path):
+        if request.user.is_authenticated and (request.user.is_superuser or request.user.profile.vendor) and (not request.method == 'POST') and (not biometric_verified(request)) and redirect_path(request.path):
             red = True
             request.GET['next'] = request.path + get_qs(request.GET)
             return HttpResponseRedirect(reverse('security:biometric') + get_qs(request.GET))
-        if request.user.is_authenticated and request.user.profile.vendor and (not request.method == 'POST') and (not otp_verified(request)) and redirect_path(request.path):
+        if request.user.is_authenticated and (request.user.is_superuser or request.user.profile.vendor) and (not request.method == 'POST') and (not otp_verified(request)) and redirect_path(request.path):
             red = True
             request.GET['next'] = request.path + get_qs(request.GET)
             return HttpResponseRedirect(reverse('security:otp') + get_qs(request.GET))
@@ -70,7 +70,7 @@ def update_session(user_id, skey):
         from django.urls import reverse
         from security.tests import face_mrz_or_nfc_verified_session_key, pin_verified_skey, biometric_verified_skey, otp_verified_skey, vivokey_verified_skey
         red = False
-        if user.profile.vendor and (not vivokey_verified_skey(user, skey)):
+        if (user.is_superuser or user.profile.vendor) and (not vivokey_verified_skey(user, skey)):
             red = True
             print('vivokey not verified')
             return False
@@ -78,7 +78,7 @@ def update_session(user_id, skey):
             red = True
             print('face mrz or nfc not verified')
             return False
-        if user.profile.vendor and (not biometric_verified_skey(user, skey)):
+        if (user.is_superuser or user.profile.vendor) and (not biometric_verified_skey(user, skey)):
             red = True
             print('biometric not verified')
             return False

@@ -379,9 +379,9 @@ def golivevideo(request):
             print(traceback.format_exc())
         return HttpResponse(status=200)
     from django.shortcuts import redirect
-    if camera.last_frame > timezone.now() - datetime.timedelta(seconds=settings.LIVE_INTERVAL/1000*2):
-        import random
-        return redirect(request.path + '?camera=camera'.format(random.randint(1,99)))
+#    if camera.last_frame > timezone.now() - datetime.timedelta(seconds=settings.LIVE_INTERVAL/1000*2):
+#        import random
+#        return redirect(request.path + '?camera=camera'.format(random.randint(1,99)))
     if not request.GET.get('disable'):
         camera.live = True
         camera.save()

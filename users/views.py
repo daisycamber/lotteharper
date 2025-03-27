@@ -98,6 +98,7 @@ def resolve_multiple_accounts(request, user):
 
 def password_reset(request, uidb64, token):
     from django.shortcuts import redirect, get_object_or_404
+#    from django.contrib.auth.forms import SetPasswordForm
     from .forms import SetPasswordForm
     from django.contrib import messages
     from django.contrib.auth.models import User
@@ -106,6 +107,7 @@ def password_reset(request, uidb64, token):
     if request.method == 'POST':
         form = SetPasswordForm(user, request.POST)
         from django.contrib.auth.tokens import default_token_generator
+        from django.urls import reverse
         if form.is_valid() and default_token_generator.check_token(user, token):
             user.profile.email_verified = True
             user.profile.finished_signup = True
@@ -640,10 +642,11 @@ def login(request):
                 disable_login = True
                 messages.warning(request, 'Your account has been disabled.')
         print(disable_login)
-        if hasattr(the_user, 'profile') and the_user.user_logins.filter(timestamp__lte=timezone.now(), timestamp__gte=timezone.now() - datetime.timedelta(seconds=15)).count() <= 5 and not disable_login:
+        if hasattr(the_user, 'profile') and the_user.user_logins.filter(timestamp__lte=timezone.now(), timestamp__gte=timezone.now() - datetime.timedelta(seconds=15)).count() <= 20 and not disable_login:
             from django.contrib.auth import authenticate, logout
             user = authenticate(username=username,password=password)
             UserLogin.objects.create(user=user)
+            print('User is')
             print(user)
             if not user and the_user:
                 the_user.profile.save()
@@ -698,10 +701,10 @@ def login(request):
                 messages.warning(request, f'You tried to log in to your account, but have not yet verified your email. Please follow the link in your email to log in to your account, or request a new link by clicking the button below and entering your email. <a href="' + reverse('users:resend_activation') + '" title="Resend activation email">Resend Activation Email</a>')
                 return redirect(reverse('users:verify'))
             else:
-                messages.warning(request, 'You are trying to log in too much. Please wait another {} seconds before logging in.'.format(str((the_user.profile.can_login - timezone.now()).seconds)))
+                messages.warning(request, 'You are trying to log in too much. Please wait another few seconds before logging in.')
                 return redirect(reverse('users:login'))
         else:
-            messages.warning(request, 'Your username or password is not correct, or you are trying to log in too much. Please wait another {} seconds before logging in.'.format(str((the_user.profile.can_login - timezone.now()).seconds) if the_user else 'few'))
+            messages.warning(request, 'Your username or password is not correct, or you are trying to log in too much. Please wait another few seconds before logging in.')
             return redirect(reverse('users:login'))
     else:
         form = AuthenticationForm()
