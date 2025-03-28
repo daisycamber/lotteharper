@@ -29,7 +29,7 @@ def concat(recording, output_path):
     from live.models import VideoRecording
     recording = VideoRecording.objects.get(id=recording.id)
     for frame in recording.frames.order_by('time_captured'):
-        inputs = inputs + 'file \'' + frame.frame.path + '\'\n'
+        if frame.frame: inputs = inputs + 'file \'' + frame.frame.path + '\'\n'
     if len(inputs) == 0:
         recording.delete()
         return
@@ -43,7 +43,9 @@ def concat(recording, output_path):
         check_output(cmd)
         os.remove(filename)
     except:
-        shutil.copy(recording.frames.first().frame.path, output_path)
+        try:
+            shutil.copy(recording.frames.first().frame.path, output_path)
+        except: return
 #    run_command('sudo chown love:users ' + str(output_path))
 #    cmd = 'ffmpeg -i {} -crf 1 -c:v libx264 {}.mp4'.format(filename, output_path).split(' ')
 #    check_output(cmd)

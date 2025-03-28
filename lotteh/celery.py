@@ -362,7 +362,7 @@ def process_recording(id):
     import datetime as dt
     recording = VideoRecording.objects.get(id=id)
     camera = VideoCamera.objects.filter(user=recording.user, name=recording.camera).order_by('-last_frame').first()
-    if (not recording.last_frame or (recording.last_frame < timezone.now() - dt.timedelta(seconds=(settings.LIVE_INTERVAL/1000) * 6))): # 4 (the number is the gap, a larger number adds more length to the recording with a longer gap
+    if not recording.processed and (not recording.last_frame or (recording.last_frame < timezone.now() - dt.timedelta(seconds=(settings.LIVE_INTERVAL/1000) * 6))): # 4 (the number is the gap, a larger number adds more length to the recording with a longer gap
         recording.processing = True
         for frame in recording.frames.filter(processed=False):
             try:
@@ -378,6 +378,10 @@ def process_recording(id):
         try:
             run_command('sudo chmod 777 ' + str(recording.file.path))
         except: pass
+        if (recording.file and os.path.exists(recording.file.path)) != True:
+            recording.processed = True
+            recording.save()
+            return
         recording.transcript, recording.fingerprint = get_transcript(recording.file.path)
         recording.save()
         if '*' in recording.camera:
@@ -408,9 +412,10 @@ def process_recording(id):
         if camera.upload and recording.public:
             from recordings.youtube import upload_youtube
             import traceback
+            import pytz
             try:
                 from better_profanity import profanity
-                upload_youtube(camera.user, recording.file.path, profanity.censor(camera.title[:67-len(recording.last_frame.strftime('%A %B %d, %Y %H:%M:%S'))]) + ' - ' + recording.last_frame.strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3]), [tag for tag in camera.tags], category='22', privacy_status='public', thumbnail=thumbnail, age_restricted=not recording.public)
+                upload_youtube(camera.user, recording.file.path, profanity.censor(camera.title[:67-len(recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'))]) + ' - ' + recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3]), [tag for tag in camera.tags], category='22', privacy_status='public', thumbnail=thumbnail, age_restricted=not recording.public)
                 recording.uploaded = True
             except:
                 recording.uploaded = False
