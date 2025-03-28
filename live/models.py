@@ -348,6 +348,8 @@ class VideoRecording(models.Model):
         from django.conf import settings
         return 'Last frame at {}, Interactive "{}", public = {}'.format(self.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime("%m/%d/%Y, %H:%M:%S"), self.interactive, self.public)
 
+#
+
     def save(self, *args, **kwargs):
         from .concat import concat
 #        old = VideoRecording.objects.filter(id=self.id).first()

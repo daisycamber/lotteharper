@@ -46,7 +46,7 @@ def get_camera_status(camera_user, camera_name):
 def update_camera(camera_user, camera_name, camera_data, key=None):
     from live.models import VideoCamera
     from live.models import get_file_path, VideoFrame, VideoRecording, Show
-    import pytz, datetime, os, base64, asyncio
+    import pytz, datetime, os, base64, asyncio, time
     from django.utils import timezone
     from django.conf import settings
     import urllib.parse
@@ -64,7 +64,8 @@ def update_camera(camera_user, camera_name, camera_data, key=None):
     if not identity_really_verified(camera.user): raise PermissionDenied()
     camera.last_frame = timezone.now()
     camera_data = camera_data.split("&")
-    timestamp = datetime.datetime.fromtimestamp(int(camera_data[4].split('=', 1)[1]) / 1000, tz=pytz.UTC)
+    timestamp = int(camera_data[4].split('=', 1)[1])
+    timestamp = datetime.datetime.utcfromtimestamp(timestamp / 1000) - datetime.timedelta(hours=7) #, tz=pytz.UTC)
     frame_data = urllib.parse.unquote(camera_data[5].split('=', 1)[1]).split(',')[1]
     path = os.path.join(settings.MEDIA_ROOT, get_file_path(camera, 'frame.webm'))
     with open(path, "wb") as file:
