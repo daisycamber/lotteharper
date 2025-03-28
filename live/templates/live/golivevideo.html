@@ -69,7 +69,7 @@ function openMediaSocket() {
 	mediaSocket.addEventListener("closed", (event) => {
 		console.log('Socket closed.');
 		setTimeout(function() {
-			openSocket();
+			openMediaSocket();
 		}, {{ reload_time }});
 	});
 	mediaSocket.addEventListener("error", (event) => {
@@ -112,13 +112,13 @@ function openRemoteSocket() {
 	remoteSocket.addEventListener("closed", (event) => {
 	    console.log('Socket closed.');
 	    setTimeout(function() {
-		openRemoteSocket();
+    		openRemoteSocket();
 	    }, {{ reload_time }});
 	});
 	remoteSocket.addEventListener("error", (event) => {
 	    console.log('Socket closed.');
 	    setTimeout(function() {
-		openSocket();
+	    	openRemoteSocket();
 	    }, {{ reload_time }});
 	});
 	remoteSocket.addEventListener("message", (event) => {
@@ -126,24 +126,24 @@ function openRemoteSocket() {
 	    if(instructions[0] == 'y' && mediaRecorder.state != 'recording') {
 	        live = true;
 	        mediaRecorder.start();
-                liveButton.innerHTML = '<i class="bi bi-toggle-on"></i>';
+            liveButton.innerHTML = '<i class="bi bi-toggle-on"></i>';
 	    } else if(instructions[0] == 'n' && mediaRecorder.state == 'recording') {
 	        live = false;
 	        mediaRecorder.stop();
                 liveButton.innerHTML = '<i class="bi bi-toggle-off"></i>';
 	    }
 	    if(instructions[1] == 'y') {
-		recording = true;
+		    recording = true;
 	        recordButton.innerHTML = '<i class="bi bi-toggle-on"></i>';
 	    } else {
-		recording = false;
+    		recording = false;
 	        recordButton.innerHTML = '<i class="bi bi-toggle-off"></i>';
 	    }
 	    if(instructions[2] == 'y') {
-		muted = true;
+    		muted = true;
 	        muteButton.innerHTML = '<i class="bi bi-mic-fill"></i>';
 	    } else {
-		muted = false;
+	    	muted = false;
 	        muteButton.innerHTML = '<i class="bi bi-mic-mute-fill"></i>';
 	    }
 	});

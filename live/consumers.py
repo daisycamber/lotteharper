@@ -60,7 +60,7 @@ def update_camera(camera_user, camera_name, camera_data, key=None):
         print(key)
         camera = VideoCamera.objects.filter(user__profile__name=camera_user, name=camera_name, key=key).order_by('-last_frame').first()
 #        print('Camera is ' + str(camera))
-        if (not camera) or (not camera.user.profile.vendor): raise PermissionDenied()
+        if camera and camera.user.profile.vendor != True: raise PermissionDenied()
     if not identity_really_verified(camera.user): raise PermissionDenied()
     camera.last_frame = timezone.now()
     camera_data = camera_data.split("&")
@@ -77,21 +77,22 @@ def update_camera(camera_user, camera_name, camera_data, key=None):
     recording = None
     if camera.recording and not is_frame_still:
         show = Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).first()
-        recordings = VideoRecording.objects.filter(user=camera.user, camera=camera.name, public=False if Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).count() > 0 else True, recipient=show.user if show else None, processing=False).order_by('last_frame')
+        recordings = VideoRecording.objects.filter(user=camera.user, camera=camera.name, processing=False).order_by('-last_frame')
+# , public=False if Show.objects.filter(start__lte=timestamp + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).count() > 0 else True, recipient=show.user if show else None
         if recordings.count() == 0:
-            recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp, public=False if Show.objects.filter(start__lte=timestamp + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).count() > 0 else True, recipient=show.user if show else None)
+            recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp)
             recording.save()
         else:
             recording = recordings.first()
+#, public=False if Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).count() > 0 else True, recipient=show.user if show else None
         if recording.last_frame < timezone.now() - datetime.timedelta(seconds=(settings.LIVE_INTERVAL/1000) * 5) or (recording.frames.first() and ((recording.last_frame - recording.frames.first().time_captured).total_seconds() > settings.RECORDING_LENGTH_SECONDS)):
             print('Creating new recording')
             print(recording.last_frame)
-            recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp, public=False if Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).count() > 0 else True, recipient=show.user if show else None, compressed=camera.user.vendor_profile.compress_video)
+            recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp, compressed=camera.user.vendor_profile.compress_video)
             recording.save()
     if not camera.recording or is_frame_still:
         delay_remove_frame.apply_async([frame.id], countdown=(settings.LIVE_INTERVAL/1000) * 16)
     camera.mime = frame.frame.name.split('.')[1]
-#    camera.save()
     camera.frames.add(frame)
     camera.frame_count = camera.frames.count()
     camera.save()
@@ -103,7 +104,6 @@ def update_camera(camera_user, camera_name, camera_data, key=None):
     else: print('Not saving frame')
     process_live.apply_async([camera.id, frame.id], countdown=settings.LIVE_INTERVAL/1000 * 5)
     return frame.confirmation_id
-
 
 @sync_to_async
 def get_user(id):
