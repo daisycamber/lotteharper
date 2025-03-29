@@ -36,6 +36,7 @@ sudo cp /etc/init.d/celerybeat config/etc_init.d_celerybeat
 sudo cp /etc/postfix/main.cf config/etc_postfix_main.cf
 sudo cp /etc/postfix/master.cf config/etc_postfix_master.cf
 sudo cp /etc/dovecot/conf.d/10-auth.conf config/etc_dovecot_conf.d_10-auth.conf
+sudo cp /etc/dovecot/conf.d/10-mail.conf config/etc_dovecot_conf.d_10-mail.conf
 sudo cp /etc/dovecot/conf.d/10-master.conf config/etc_dovecot_conf.d_10-master.conf
 sudo cp /etc/dovecot/dovecot.conf config/etc_dovecot_dovecot.conf
 sudo cp /etc/dovecot/passwd config/etc_dovecot_passwd

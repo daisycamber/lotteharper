@@ -107,6 +107,7 @@ sudo cp config/etc_postfix_main.cf /etc/postfix/main.cf
 sudo cp config/etc_postfix_master.cf /etc/postfix/master.cf
 sudo cp config/etc_default_opendkim /etc/default/opendkim
 sudo cp config/etc_dovecot_conf.d_10-auth.conf /etc/dovecot/conf.d/10-auth.conf
+sudo cp config/etc_dovecot_conf.d_10-mail.conf /etc/dovecot/conf.d/10-mail.conf
 sudo cp config/etc_dovecot_conf.d_10-master.conf /etc/dovecot/conf.d/10-master.conf
 sudo cp config/etc_dovecot_dovecot.conf /etc/dovecot/dovecot.conf
 sudo cp config/etc_dovecot_passwd /etc/dovecot/passwd

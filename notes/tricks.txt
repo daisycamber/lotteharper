@@ -17,3 +17,7 @@ git reset HEAD~
 sudo git reset HEAD~
 
 pkill -9 -f path/to/my_script.py
+
+# Root's crontab
+MAILTO=someone@example.com
+0 0 * * * /usr/bin/somescript

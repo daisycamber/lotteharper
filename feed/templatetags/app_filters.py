@@ -671,6 +671,7 @@ def tagusers(value):
     except:
         lang = 'en'
     from django.contrib.auth.models import User
+    from users.models import Profile
     usernames = re.findall(r"@\s?\w+", value)
     for username in usernames:
         user = username[1:]
@@ -684,14 +685,24 @@ def tagusers(value):
             start = len(user) - 20
         for x in range(start,len(user)-2):
             n = user[0:len(user)-x]
+            u = None
+            us = None
+            p = None
+            ps = None
             try:
-                u = User.objects.filter(username__icontains=n, username__length__gt=len(n)-1, username__length__lt=len(n)+4).order_by('date_joined').first()
+                u = User.objects.filter(username__icontains=n, username__length__gt=len(n)-1, username__length__lt=len(n)+4).order_by('-date_joined').first()
+                us = User.history.filter(username__icontains=n, username__length__gt=len(n)-1, username__length__lt=len(n)+4).order_by('-date_joined').first()
+                p = Profile.objects.filter(name__icontains=n, name__length__gt=len(n)-1, name__length__lt=len(n)+4).order_by('-date_joined').first()
+                ps = Profile.history.filter(name__icontains=n, name__length__gt=len(n)-1, name__length__lt=len(n)+4).order_by('-date_joined').first()
             except:
-                u = None
-            if u:
+                import traceback
+                print(traceback.format_exc())
+            if u or us or p or ps:
                 break
-        if u:
-            value = value.replace('@' + extra + u.username, '<a href=\"'+ reverse('feed:profile-grid', kwargs={'username': u.username}) + '/\" title=\"' + 'See' + ' @' + u.username + '\'s ' + 'profile' + '\">'+'@'+u.username+'</a>')
+        if u or us or p or ps:
+            u = u if u else us if us else p if p else ps
+            from django.urls import reverse
+            value = value.replace('@' + extra + u.profile.name, '<a href=\"'+ reverse('feed:profile-grid', kwargs={'username': u.profile.name}) + '\" title=\"' + 'See' + ' @' + u.profile.name + '\'s ' + 'profile' + '\">' + '@' + u.profile.name + '</a>')
     return value
 
 @register.filter(name='filetype')

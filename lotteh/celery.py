@@ -782,10 +782,10 @@ app.conf.beat_schedule = {
 #        'task': 'lotteh.celery.automatic_backup',
 #        'schedule': crontab(day_of_month='*', hour='*', minute=0),
 #    },
-    'routine-process-recordings': {
-        'task': 'lotteh.celery.process_recordings',
-        'schedule': crontab(hour='*', minute='*/30'),
-    },
+#    'routine-process-recordings': {
+#        'task': 'lotteh.celery.process_recordings',
+#        'schedule': crontab(hour='*', minute='*/30'),
+#    },
     'clear-shell-logins': {
         'task': 'lotteh.celery.clear_shell_logins',
         'schedule': crontab(hour='*', minute=0)
