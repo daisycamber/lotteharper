@@ -58,15 +58,15 @@ def process_user_request(ip, user_id, user_is_authenticated, path, content_lengt
                 pr.ip_addresses.add(ip_address)
                 pr.save()
         else:
-            ip_address.page_loads += 1
-            ip_address.save()
-            if ip_address.page_loads == FRAUD_MOD:
-                if ip_address.risk_detected: pass
+            ip_obj.page_loads += 1
+            ip_obj.save()
+            if ip_obj.page_loads == FRAUD_MOD:
+                if ip_obj.risk_detected: pass
                 else:
-                    ip_address.risk_detected = check_ip_risk(ip_address) if not risk else True
-                    if ip_address.risk_detected:
-                        ip_address.risk_count += 1
-                    ip_address.save()
+                    ip_obj.risk_detected = check_ip_risk(ip_obj) if not risk else True
+                    if ip_obj.risk_detected:
+                        ip_obj.risk_count += 1
+                    ip_obj.save()
 
     except:
         try:
@@ -76,3 +76,4 @@ def process_user_request(ip, user_id, user_is_authenticated, path, content_lengt
         print(traceback.format_exc())
 #    response = get_response(request)
     return response
+

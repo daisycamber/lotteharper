@@ -9,6 +9,7 @@ annotated-types
 anyio
 apprise
 asn1crypto
+astral
 astunparse
 AuthEncoding
 Automat

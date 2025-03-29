@@ -65,4 +65,4 @@ class ChooseCameraForm(forms.Form):
         for camera in cameras:
             CHOICES.append((camera.name,camera.name))
         self.fields['choice'].widget = forms.Select(choices=CHOICES)
-        self.fields['choice'].initial = [cameras.first().name]
+        self.fields['choice'].initial = [cams.first().name]

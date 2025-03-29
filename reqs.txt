@@ -296,3 +296,4 @@ python-cryptapi
 realtime-crypto
 openai
 coinaddrvalidator
+astral

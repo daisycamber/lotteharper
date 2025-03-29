@@ -366,6 +366,9 @@ class VideoRecording(models.Model):
                 try:
                     os.remove(frame.frame.path)
                 except: pass
+                try:
+                    os.remove(frame.still.path)
+                except: pass
         if self.file:
             try:
                 os.remove(self.file.path)

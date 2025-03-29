@@ -387,15 +387,16 @@ def process_recording(id):
         if '*' in recording.camera:
             recording.processed = True
             recording.save()
-            return
-        towrite = recording.file_processed.storage.open(recording.file.path, mode='wb')
-        with recording.file.open('rb') as file:
-            towrite.write(file.read())
-        towrite.close()
-        recording.file_processed = recording.file.path
+#            return
+        else:
+            towrite = recording.file_processed.storage.open(recording.file.path, mode='wb')
+            with recording.file.open('rb') as file:
+                towrite.write(file.read())
+            towrite.close()
+            recording.file_processed = recording.file.path
         thumbnail = None
         first_frame = recording.frames.first()
-        if first_frame.animate_video and first_frame.still and os.path.exists(first_frame.still.path):
+        if camera.upload and first_frame.animate_video and first_frame.still and os.path.exists(first_frame.still.path):
             from live.models import get_still_path
             path = os.path.join(settings.BASE_DIR, 'media', get_still_path(first_frame, 'file.png'))
             from feed.anime import convert_photo_anime
