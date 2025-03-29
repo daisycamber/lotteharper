@@ -295,3 +295,4 @@ zxing
 python-cryptapi
 realtime-crypto
 openai
+coinaddrvalidator

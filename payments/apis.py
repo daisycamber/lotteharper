@@ -71,7 +71,17 @@ def get_crypto_price_nowpayments(crypto):
         return price
     except: raise Exception('This currency is not supported at this time.')
 
-def validate_address(address, currency):
+def validate_address(currency, address):
+    from django.conf import settings
+    data = {'address': address, 'network': currency.lower()}
+    url = "https://api.checkcryptoaddress.com/wallet-checks"
+    data = requests.post(url, data=json.dumps(data), headers={'X-Api-Key': settings.CCA_KEY, 'Content-Type': 'application/json'})
+#    print(data)
+#    print(data.text)
+    r = data.json()
+    return r['valid'] if 'valid' in r else False
+
+def validate_address_nowpayments(address, currency):
     from django.conf import settings
     data = {'address': address, 'currency': currency}
     url = "https://api.nowpayments.io/v1/payout/validate-address?"

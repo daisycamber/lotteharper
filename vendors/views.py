@@ -34,7 +34,6 @@ def send_bitcoin(request):
     profile, created = VendorPaymentsProfile.objects.get_or_create(vendor=request.user)
     return render(request, 'vendors/send_bitcoin.html', {'title': 'Crypto', 'info': profile.get_crypto_balances()})
 
-
 @login_required
 @user_passes_test(identity_really_verified, login_url='/verify/', redirect_field_name='next')
 def onboarding(request):
@@ -67,8 +66,10 @@ def vendor_preferences(request):
             form.instance.user = request.user
             from payments.apis import validate_address
             accepted = True
+            import coinaddrvalidator as crv
+            from payments.apis import validate_address
             try:
-                if False and form.cleaned_data.get('payout_address') and not validate_address(form.cleaned_data.get('payout_address'), form.cleaned_data.get('payout_currency')):
+                if form.cleaned_data.get('payout_address') and not crv.validate(form.cleaned_data.get('payout_currency').lower(), form.cleaned_data.get('payout_address')).valid:
                     form.instance.payout_address = ''
                     messages.warning(request, 'This crypto address could not be accepted. Please check the address and the currency.')
                     accepted = False
@@ -76,20 +77,24 @@ def vendor_preferences(request):
                 form.instance.payout_address = ''
                 messages.warning(request, 'This crypto address could not be accepted. Please check the address and the currency.')
                 accepted = False
-            try:
-                if False and form.cleaned_data.get('bitcoin_address') and not validate_address(form.cleaned_data.get('bitcoin_address'), 'BTC'):
-                    form.instance.bitcoin_address = ''
-                    messages.warning(request, 'This bitcoin address could not be accepted. Please check the address and the currency.')
-            except:
-                form.instance.bitcoin_address = ''
-                messages.warning(request, 'This bitcoin address could not be accepted. Please check the address and the currency.')
-            try:
-                if False and form.cleaned_data.get('ethereum_address') and not validate_address(form.cleaned_data.get('ethereum_address'), 'ETH'):
-                    form.instance.ethereum_address = ''
-                    messages.warning(request, 'This ethereum address could not be accepted. Please check the address and the currency.')
-            except:
-                form.instance.ethereum_address = ''
-                messages.warning(request, 'This ethereum address could not be accepted. Please check the address and the currency.')
+            cloc = {'btc': 'bitcoin', 'eth': 'ethereum', 'xlm': 'stellarlumens'}
+            cnet = {'usdc': 'usdcoin', 'sol': 'solana', 'matic': 'polygon', 'avax': 'avalanche'}
+            for key, val in cloc.items():
+                try:
+                    if form.cleaned_data.get('{}_address'.format(val)) and not crv.validate(key, form.cleaned_data.get('{}_address'.format(val))).valid:
+                        exec("form.instance.{}_address = ''".format(val))
+                        messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
+                except:
+                    exec("form.instance.{}_address = ''".format(val))
+                    messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
+            for key, val in cnet.items():
+                try:
+                    if form.cleaned_data.get('{}_address'.format(val)) and not validate_address(key, form.cleaned_data.get('{}_address'.format(val))):
+                        exec("form.instance.{}_address = ''".format(val))
+                        messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
+                except:
+                    exec("form.instance.{}_address = ''".format(val))
+                    messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
             if accepted:
                 p = form.save()
                 p.user.profile.vendor = True

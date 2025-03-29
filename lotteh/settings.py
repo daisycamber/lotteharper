@@ -444,6 +444,10 @@ HELCIM_KEY = keys['HELCIM_KEY']
 IMGUR_ID = keys['IMGUR_ID']
 IMGUR_SECRET = keys['IMGUR_SECRET']
 
+# OpenAI key for GPT
+CCA_KEY = keys['CCA_VALIDATOR_KEY']
+
+
 # Message storage dedup middleware
 MESSAGE_STORAGE = 'lotteh.message_storage.SessionDedupStorage'
 
@@ -599,7 +603,7 @@ PITCHES_PER_SECOND = 8
 TARGET_PITCH = 'G3'
 MAX_PITCH = 1200
 LIVE_INTERVAL = 1000 * 5
-RECORDING_LENGTH_SECONDS = 60 * 30
+RECORDING_LENGTH_SECONDS = 60 * 15
 CAMERA_KEY_LENGTH = 64
 
 # recordings with a * in the name expire after this many days
@@ -814,7 +818,7 @@ REMOVE_DUPLICATES = True
 STATEMENT_DESCRIPTOR = 'LOTTEH.COM'
 
 # Icon URL for email
-EMAIL_ICON_URL = '/em6ail/static/logo.png'
+EMAIL_ICON_URL = '/email/static/logo.png'
 
 # Session update query interval
 SESSION_UPDATE_SECONDS = 5
