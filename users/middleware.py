@@ -1,14 +1,10 @@
 from django.utils import timezone
-from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from users.models import Profile
 from security.models import SecurityProfile
 from django.shortcuts import redirect
 from django.urls import reverse
-import urllib, json
-from threading import local
-import urllib.request
 import traceback
 from django.utils.deprecation import MiddlewareMixin
 from django.http import HttpResponse, HttpResponseRedirect
@@ -20,7 +16,6 @@ from stacktrace.models import Error
 from security.apis import get_client_ip
 from security.middleware import get_qs
 from django.conf import settings
-from feed.models import Post
 from security.models import UserIpAddress
 from django.contrib.auth.models import User
 import datetime
@@ -97,6 +92,9 @@ def simple_middleware(get_response):
                     "%a, %d-%b-%Y %H:%M:%S GMT",
                 )
                 response.set_cookie('push_cookie', True, max_age=max_age, expires=expires)
+            if request.user.is_authenticated and not hasattr(request.user, 'security_profile'):
+                from security.models import SecurityProfile
+                SecurityProfile.objects.create(user=request.user)
         except:
             try:
                 Error.objects.create(user=request.user if request.user.is_authenticated else None, stack_trace=get_current_exception(), notes='Logged by users middleware.')

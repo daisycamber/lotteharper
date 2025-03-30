@@ -33,16 +33,18 @@ def get_num_length(num, length):
 
 def send_verification_text(user, token):
     length = user.profile.verification_code_length
-    code = random.randint(get_num_length(1, length), get_num_length(9, length));
-    token.set_password(str(code))
+    from django.utils.crypto import get_random_string
+    code = get_random_string(length=length, allowed_chars='0123456789' if length < 8 else '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' if length < 10 else '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~`!@#$%^&*()_+{}|\\:;"\'<,>.?/')
+    token.set_password(code)
     token.expires = timezone.now() + datetime.timedelta(minutes=settings.AUTH_VALID_MINUTES)
     token.save()
     send_user_text(user, "Your verification code for {} is {}".format(settings.SITE_NAME, str(code)))
 
 def send_verification_email(user, token):
     length = user.profile.verification_code_length
-    code = random.randint(get_num_length(1, length), get_num_length(9, length));
-    token.set_password(str(code))
+    from django.utils.crypto import get_random_string
+    code = get_random_string(length=length, allowed_chars='0123456789' if length < 8 else '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' if length < 10 else '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~`!@#$%^&*()_+{}|\\:;"\'<,>.?/')
+    token.set_password(code)
     token.expires = timezone.now() + datetime.timedelta(minutes=settings.AUTH_VALID_MINUTES)
     token.save()
     send_html_email(user, "You have requested a code to access your account. Your verification code for {} is {}".format(settings.SITE_NAME, str(code)), "<p>Dear {},</p><p>Your verification code for {} is {}. Use this code to securely access your account. This email is auto-generated. Please do not reply to this email. If you did not request this code, you can safely disregard this email.</p><h2>{}</h2><p>Sincerely, {}</p>".format(user.profile.name, settings.SITE_NAME, str(code), str(code), settings.SITE_NAME))

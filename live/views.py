@@ -46,7 +46,7 @@ def name_camera(request):
     from .models import VideoCamera
     from django.contrib import messages
     name = request.GET.get('camera')
-    cameras = VideoCamera.objects.filter(user=request.user, name=name)
+    cameras = VideoCamera.objects.filter(user=request.user, name=name).order_by('-last_frame')
     if not cameras.first() and name != '': VideoCamera.objects.create(user=request.user, name=name)
     elif not cameras.first(): cameras = VideoCamera.objects.filter(user=request.user).order_by('-last_frame')
     camera = cameras.first()
