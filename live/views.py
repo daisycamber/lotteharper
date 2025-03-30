@@ -326,7 +326,7 @@ def golivevideo(request):
         name = 'private'
     camera = None
     if request.user.is_authenticated:
-        camera, created = VideoCamera.objects.get_or_create(user=request.user, name=name)
+        camera = VideoCamera.objects.filter(user=request.user, name=name).order_by('-last_frame').first()
     else:
         camera = VideoCamera.objects.get(key=request.GET.get('key', None)) #, recording=False)
         if not camera.user.profile.vendor: raise PermissionDenied()
