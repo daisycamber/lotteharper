@@ -44,5 +44,5 @@ set timeout -1
 sudo su $USER_NAME -c "mv /home/$USER_NAME/$GIT_PROJ /home/$USER_NAME/$PROJECT_NAME"
 sudo su $USER_NAME -c "mv /home/$USER_NAME/$PROJECT_NAME/lotteh /home/$USER_NAME/$PROJECT_NAME/$PROJECT_NAME"
 sudo su $USER_NAME -c "sudo chown -R $USER_NAME:users /home/$USER_NAME/$PROJECT_NAME"
-sudo su $USER_NAME -c "/home/$USER_NAME/$PROJECT_NAME/scripts/convert 'Makeup Girl' '<insert domain here, eg glamgirlx.com>' $PROJECT_NAME 'Daisy' your-letsencrypt-email@gmail.com"
+sudo su $USER_NAME -c "/home/$USER_NAME/$PROJECT_NAME/scripts/convert 'Makeup Girl' '<insert domain here, eg glamgirlx.com>' $PROJECT_NAME 'Daisy' your-letsencrypt-email@gmail.com" $USER_NAME
 sudo su $USER_NAME -c "/home/$USER_NAME/$PROJECT_NAME/scripts/setup"
