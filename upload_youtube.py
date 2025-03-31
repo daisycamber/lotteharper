@@ -11,8 +11,11 @@ from django.conf import settings
 from recordings.youtube import upload_youtube
 from better_profanity import profanity
 count = 0
-for recording in VideoRecording.objects.filter(processed=True, uploaded=False).order_by('-last_frame')[1:]:
-    camera = VideoCamera.objects.get(name=recording.camera, user=recording.user)
+for recording in VideoRecording.objects.filter(processed=True, uploaded=False).order_by('-last_frame'):
+    cameras = VideoCamera.objects.filter(name=recording.camera, user=recording.user).order_by('-last_frame')
+    print(recording.camera)
+    print(cameras)
+    camera = cameras.first()
     if camera.upload:
         try:
             if not recording.file or not os.path.exists(recording.file.path):

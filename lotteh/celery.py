@@ -409,8 +409,10 @@ def process_recording(id):
             os.remove(path)
             thumbnail = recording.thumbnail_bucket.url
         else:
-            thumbnail = first_frame.still_bucket.url
-        if camera.upload and recording.public:
+            try:
+                thumbnail = first_frame.still_bucket.url
+            except: pass
+        if camera.upload:
             from recordings.youtube import upload_youtube
             import traceback
             import pytz

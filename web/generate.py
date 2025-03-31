@@ -78,6 +78,10 @@ def generate_site():
         'monero_address': settings.MONERO_ADDRESS,
         'the_ad_text': settings.AD_TEXT,
         'languages': languages,
+        'show_social_links': True,
+        'twitter_link': settings.TWITTER_LINK,
+        'instagram_link': settings.INSTAGRAM_LINK,
+        'youtube_link': settings.YOUTUBE_LINK,
     }
     posts = Post.objects.filter(public=True, posted=True, private=False, published=True, feed="blog").union(Post.objects.filter(public=True, private=False, published=True, pinned=True, posted=True, feed='news')).order_by('-date_posted').order_by('-pinned')
     context['posts'] = posts

@@ -97,4 +97,4 @@ def play(request, id, code):
     elif request.user.is_authenticated and not player:
         game.player2 = request.user
         game.save()
-    return render(request, 'games/game.html', {'hidenavbar': True, 'title': 'Play Game', 'post': post, 'game': game, 'player': player, 'full': True, 'game_code': code})
+    return render(request, 'games/game.html', {'hidenavbar': True, 'title': 'Play Game', 'post': post, 'game': game, 'player': player, 'full': True, 'game_code': code, 'show_ads': False})
