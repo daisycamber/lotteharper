@@ -9,6 +9,7 @@ import traceback
 from django.utils.deprecation import MiddlewareMixin
 from django.http import HttpResponse, HttpResponseRedirect
 import uuid
+from threading import local
 from django.contrib.auth import logout
 from feed.middleware import set_current_exception, get_current_exception
 from django.contrib.sessions.models import Session as SecureSession
