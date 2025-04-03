@@ -18,7 +18,7 @@ for recording in VideoRecording.objects.filter(processed=True, uploaded=False).o
     camera = cameras.first()
     if camera.upload:
         try:
-            if not recording.file or not os.path.exists(recording.file.path):
+            if not (recording.file and os.path.exists(recording.file.path)):
                 print('Getting file from bucket for upload')
                 full_path = os.path.join(settings.BASE_DIR, 'media/', get_file_path(None, 'rec.mp4'))
                 with recording.file_processed.storage.open(str(recording.file_processed.name), mode='rb') as bucket_file:

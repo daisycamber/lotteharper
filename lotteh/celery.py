@@ -423,10 +423,11 @@ def process_recording(id):
             except:
                 recording.uploaded = False
                 print(traceback.format_exc())
-        try:
-            os.remove(recording.file.path)
-        except: pass
-        recording.file = None
+        if recording.uploaded:
+            try:
+                os.remove(recording.file.path)
+            except: pass
+            recording.file = None
         recording.processed = True
         recording.public = not recording.frames.filter(public=False).last()
         recording.save()
