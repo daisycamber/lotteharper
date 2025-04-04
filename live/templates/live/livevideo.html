@@ -69,107 +69,79 @@ const videoElement = document.querySelector('video');
 videodiv.style.backgroundImage = '{{ still }}';
 video.poster = '{{ still }}';
 {% endwith %}
-const mimeCodec = "video/webm; codecs=vp8,opus;";
+const mimeCodec = "video/webm;codecs=vp8,opus";
 var urls = [];
 var queue = [];
 var files = [];
 let currentFileIndex = 0;
 let mediaSource;
-if ("MediaSource" in window && MediaSource.isTypeSupported(mimeCodec)) {
-  mediaSource = new MediaSource();
-  console.log(mediaSource.readyState); // closed
-  videoElement.src = URL.createObjectURL(mediaSource);
-  mediaSource.addEventListener("sourceopen", sourceOpen);
-} else {
-  console.error("Unsupported MIME type or codec: ", mimeCodec);
-}
-function sourceOpen() {
-  console.log(this.readyState); // open
-  const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
-  fetchAB(files[currentFileIndex++], (buf) => {
-    sourceBuffer.addEventListener("updateend", () => {
-      video.play();
-      console.log(mediaSource.readyState); // ended
-    });
-    sourceBuffer.appendBuffer(buf);
-  });
-}
-function fetchAB(url, cb) {
-  console.log(url);
-  const xhr = new XMLHttpRequest();
-  xhr.open("get", url);
-  xhr.responseType = "arraybuffer";
-  xhr.onload = () => {
-    cb(xhr.response);
-  };
-  xhr.send();
+function startStream() {
+    if ("MediaSource" in window && MediaSource.isTypeSupported(mimeCodec)) {
+      mediaSource = new MediaSource();
+      console.log(mediaSource.readyState); // closed
+      videoElement.src = URL.createObjectURL(mediaSource);
+      mediaSource.addEventListener("sourceopen", sourceOpen);
+    } else {
+      console.error("Unsupported MIME type or codec: ", mimeCodec);
+    }
+    function sourceOpen() {
+      console.log(this.readyState); // open
+      var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
+      sourceBuffer.mode = 'sequence';
+      setInterval(() => {
+         try {
+        	{% if camera.compress_video  %}
+            	const vidBlob = await (await fetch(files[currentFileIndex++])).blob();
+        		var zip = new JSZip();
+        		zip.loadAsync(vidBlob).then(function(zip) { 
+        			object.keys(zip.files).forEach(function(filename){
+        		    	        var content = zip.files[filename];
+                				content.async('ArrayBuffer').then(function(vidBuff) {
+                                sourceBuffer.addEventListener("updateend", () => {
+                                  videoElement.play();
+                                  console.log(mediaSource.readyState); // ended
+                                });
+                                sourceBuffer.appendBuffer(vidBuff);
+        				});
+        			});
+        		});
+        	{% else %}
+                  fetchAB(files[currentFileIndex++], (buf) => {
+                    sourceBuffer.addEventListener("updateend", () => {
+                      videoElement.play();
+                      console.log(mediaSource.readyState); // ended
+                    });
+                    sourceBuffer.appendBuffer(buf);
+                  });
+            {% endif %}
+              } catch {
+                currentFileIndex--;
+              }
+      }, {{ video_interval }} - 20);
+    }
+    function fetchAB(url, cb) {
+      console.log(url);
+      const xhr = new XMLHttpRequest();
+      xhr.open("get", url);
+      xhr.responseType = "arraybuffer";
+      xhr.onload = () => {
+        cb(xhr.response);
+      };
+      xhr.send();
+    }
 }
 
 var alreadyOpen = false;
 var first = true;
 var index = {{ frame_count }};
 var isReset = false;
-    /*
-function loadVideo(url) {
-	{% if camera.compress_video  %}
-	const vidBlob = await (await fetch(url)).blob();
-		var zip = new JSZip();
-		zip.loadAsync(vidBlob).then(function(zip) { 
-			object.keys(zip.files).forEach(function(filename){
-		    	        var content = zip.files[filename];
-        				content.async('ArrayBuffer').then(function(vidBuff) {
-			        	sourceBuffer.appendBuffer(vidBuff);
-        				sourceBuffer.onupdateend = () => {
-						if(!first) {
-        		        			videoElement.play();
-        				       	} else {
-                					first = false;
-        			        	}
-				        };
-				});
-			});
-		});
-	{% else %}
-    async function dataUrlToArrayBuffer(dataUrl) {
-      const response = await fetch(dataUrl);
-      const buffer = await response.arrayBuffer();
-      return buffer;
-    }
-    const vidBuff = await vidBlob.arrayBuffer();
-    const vidBuff = await dataUrlToArrayBuffer(url);
-	const vidBuff = await (await fetch(url)).arrayBuffer();
-    console.log(vidBuff);
-    sourceBuffer.appendBuffer(vidBuff);
-    console.log(sourceBuffer);
-	sourceBuffer.onupdateend = () => {
-		if(!first) {
-			videoElement.play();
-			clearTimeout(idle_timeout);
-			idle_timeout = setTimeout(function() {
-				idle = true;
-			}, {{ video_interval }} * 3);
-		} else {
-			first = false;
-		}
-	};
-	{% endif %}
-}*/
-/* async function sourceOpen() {
-    if(!alreadyOpen) {
-        alreadyOpen = true;
-        console.log(this.readyState);
-        const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
-        sourceBuffer.mode = 'sequence';
-        videoElement.src = URL.createObjectURL(mediaSource);
-        async function load(){
-        	var url = "/live/{{ profile.name }}/frame/?camera={% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %}&index=" + index;
-        	$.get(url, function(data){
-        		loadVideo(data);
-        	});
-        	index++;
-        }
-    }
-} */   
+function load(){
+	var url = "/live/{{ profile.name }}/frame/?camera={% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %}&index=" + index;
+	$.get(url, function(data){
+        files.push(data);
+	});
+    index++;
+}
 function reset(){
 	var pi = document.getElementById("pleaseinteract");
 	pi.style.height = "0px";
@@ -189,6 +161,9 @@ function reset(){
     			    }, {{ reload_time }});
         		});
 				socket.addEventListener("message", async function(event) {
+                    if(files.length == 2) {
+                        startStream();
+                    }
                     files.push(event.data);
                     console.log(event.data);
 /*                    urls.push(event.data);
@@ -207,4 +182,5 @@ document.querySelector('body').addEventListener('mousedown', reset);
 document.querySelector('body').addEventListener('touchstart', reset);
 document.querySelector('body').addEventListener('keydown', reset);
 window.addEventListener('scroll', reset);
+videoElement.addEventListener("pause", (event) => {event.target.play();});
 {% endblock %}

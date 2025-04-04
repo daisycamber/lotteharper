@@ -25,11 +25,11 @@ def get_camera_data(camera_user, camera_name, index, request_user):
     # , public=True if profile.user.id != request_user else None
     frame = None
     try:
-        frame = camera.frames.filter(processed=False).order_by('time_captured')[index]
+        frame = camera.frames.order_by('time_captured')[index]
     except: pass
     if not frame:
         print('skip to last frame')
-        frame = camera.frames.filter(processed=False).order_by('-time_captured').first()
+        frame = camera.frames.order_by('-time_captured').first()
     ext = frame.frame.name.split('.')[-1]
     return frame.get_local_url()
 #    header = 'data:video/{};base64,'.format(ext)

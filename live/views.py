@@ -415,7 +415,7 @@ def livevideo(request, username):
     if not request.GET.get('key') and not model == request.user and is_live_show(request, model) and hasattr(request, 'user') and get_live_show(request, model) and get_live_show(request, model).user != request.user:
         messages.warning(request, '{} is in a live show with someone else right now. Please book a private show.'.format(username))
         return redirect(reverse('live:book-live-show', kwargs={'username': username}) + get_qs(request.GET))
-    if not request.GET.get('key') and not model == request.user and request.GET.get('camera', None) and request.GET.get('camera') != 'private':
+    if not request.GET.get('key') and not model == request.user and request.GET.get('camera', None) and not request.GET.get('camera').startswith('private'):
         messages.warning(request, 'You need to follow {} before you can see their live show.'.format(username))
         return redirect(reverse('feed:follow', kwargs={'username': username}) + get_qs(request.GET))
     hidenav = None
@@ -430,7 +430,7 @@ def livevideo(request, username):
         messages.warning(request, '{}\'s camera is not active. Consider booking a show.'.format(username))
         return redirect(reverse('live:book-live-show', kwargs={'username': username}) + get_qs(request.GET)) if hasattr(request, 'user') and request.user.is_authenticated else redirect(reverse('feed:follow', kwargs={'username': username}) + get_qs(request.GET))
     from django.shortcuts import render
-    return render(request, 'live/livevideo.html', {'profile': profile, 'camera': cameras.first(), 'title': 'Live Video', 'use_websocket': camera.use_websocket, 'hidenavbar': hidenav, 'should_compress_live': model.vendor_profile.compress_video, 'frame_count': camera.frames.filter(processed=False).count() - 4})
+    return render(request, 'live/livevideo.html', {'profile': profile, 'camera': cameras.first(), 'title': 'Live Video', 'use_websocket': camera.use_websocket, 'hidenavbar': hidenav, 'should_compress_live': model.vendor_profile.compress_video, 'frame_count': camera.frames.count() - 2})
 
 @login_required
 @user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')

@@ -14,6 +14,7 @@ sudo cp web/site/en/* web/site/
 # Sub website backup
 cd $"/home/$U/$DIR/web/site/"
 #sudo rm -r .git
+git config --global --add safe.directory /home/team/lotteh/web/site
 sudo git config --global --add safe.directory $"/home/$U/$DIR/web/site/"
 sudo git init --initial-branch=main
 sudo git add --all
