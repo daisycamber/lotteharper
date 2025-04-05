@@ -39,9 +39,9 @@
             send("join,x,"+user);
         });
         gameSocket.addEventListener("message", (event) => {
-		read(event.data);
+    		read(event.data);
         });
-        gameSocket.addEventListener("closed", (event) => {
+        gameSocket.addEventListener("close", (event) => {
             console.log('Socket closed.');
             setTimeout(function() {
                 openGameSocket();

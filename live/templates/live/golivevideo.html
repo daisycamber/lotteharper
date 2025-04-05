@@ -66,13 +66,7 @@ function openMediaSocket() {
 	mediaSocket.addEventListener("open", (event) => {
 		console.log('Media socket open.');
 	});
-	mediaSocket.addEventListener("closed", (event) => {
-		console.log('Socket closed.');
-		setTimeout(function() {
-			openMediaSocket();
-		}, {{ reload_time }});
-	});
-	mediaSocket.addEventListener("error", (event) => {
+	mediaSocket.addEventListener("close", (event) => {
 		console.log('Socket closed.');
 		setTimeout(function() {
 			openMediaSocket();
@@ -109,16 +103,10 @@ function openRemoteSocket() {
 	        remoteSocket.send('r');
 	    }, 1000);
 	});
-	remoteSocket.addEventListener("closed", (event) => {
+	remoteSocket.addEventListener("close", (event) => {
 	    console.log('Socket closed.');
 	    setTimeout(function() {
     		openRemoteSocket();
-	    }, {{ reload_time }});
-	});
-	remoteSocket.addEventListener("error", (event) => {
-	    console.log('Socket closed.');
-	    setTimeout(function() {
-	    	openRemoteSocket();
 	    }, {{ reload_time }});
 	});
 	remoteSocket.addEventListener("message", (event) => {

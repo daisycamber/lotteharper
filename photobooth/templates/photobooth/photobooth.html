@@ -319,7 +319,7 @@ function openSocket() {
                 socket.send('i');
             }, 1000);
         });
-        socket.addEventListener("closed", (event) => {
+        socket.addEventListener("close", (event) => {
             console.log('Socket closed.');
             setTimeout(function() {
                 openSocket();

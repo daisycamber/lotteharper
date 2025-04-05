@@ -250,7 +250,7 @@
         		        console.log('Error:', error);
         		    });
             });
-            socket.addEventListener("closed", (event) => {
+            socket.addEventListener("close", (event) => {
                 console.log('Socket closed.');
                 setTimeout(function() {
                     openSocket();

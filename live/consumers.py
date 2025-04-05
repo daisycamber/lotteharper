@@ -101,14 +101,16 @@ def update_camera(camera_user, camera_name, camera_data, key=None):
         recording.frames.add(frame)
         recording.last_frame = timestamp
         recording.save()
-        process_recording.apply_async([recording.id], countdown=settings.LIVE_INTERVAL/1000 * 7)
+        process_recording.apply_async([recording.id], countdown=settings.LIVE_INTERVAL/1000 * 12)
     else: print('Not saving frame')
-    process_live.apply_async([camera.id, frame.id], countdown=settings.LIVE_INTERVAL/1000 * 5)
+    process_live.apply_async([camera.id, frame.id], countdown=settings.LIVE_INTERVAL/1000 * 12)
     return frame.confirmation_id
 
 @sync_to_async
 def get_user(id):
-    user = User.objects.get(id=int(id))
+    try:
+        user = User.objects.get(id=int(id))
+    except: return False
 #    if not (user.profile.vendor or user.is_superuser): return False
     return True
 
@@ -182,7 +184,9 @@ class VideoConsumer(AsyncWebsocketConsumer):
     index = None
     connected = False
     async def connect(self):
-        self.user = await get_user(self.scope['user'].id)
+        try:
+            self.user = await get_user(self.scope['user'].id)
+        except: pass
         self.camera_user = self.scope['url_route']['kwargs']['username']
         self.camera_name = self.scope['url_route']['kwargs']['name']
         from urllib.parse import parse_qs

@@ -156,7 +156,7 @@
         		        console.log('Error:', error);
         		    });
             });
-            remoteSocket.addEventListener("closed", (event) => {
+            remoteSocket.addEventListener("close", (event) => {
                 console.log('Socket closed.');
                 setTimeout(function() {
                     openRemoteSocket();

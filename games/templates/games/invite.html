@@ -39,7 +39,7 @@ function openSocket() {
 			document.getElementById('joinButton').disabled = false;
 		}
 	});
-	socket.addEventListener("closed", (event) => {
+	socket.addEventListener("close", (event) => {
 		console.log('Socket closed.');
 		setTimeout(function() {
 			openSocket();

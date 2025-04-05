@@ -75,6 +75,7 @@ var queue = [];
 var files = [];
 let currentFileIndex = 0;
 let mediaSource;
+var mediaInterval;
 function startStream() {
     if ("MediaSource" in window && MediaSource.isTypeSupported(mimeCodec)) {
       mediaSource = new MediaSource();
@@ -88,7 +89,9 @@ function startStream() {
       console.log(this.readyState); // open
       var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
       sourceBuffer.mode = 'sequence';
-      setInterval(() => {
+    function setMediaInterval() {
+     if(mediaInterval) clearInterval(mediaInterval);
+     mediaInterval = setInterval(() => {
          try {
         	{% if camera.compress_video  %}
             	const vidBlob = await (await fetch(files[currentFileIndex++])).blob();
@@ -115,11 +118,21 @@ function startStream() {
                   });
             {% endif %}
               } catch {
+                clearInterval(mediaInterval);
+                setTimeout(function(){
+                    setMediaInterval();
+                }, {{ reload_time }});
                 currentFileIndex--;
               }
-      }, {{ video_interval }} - 20);
+      }, {{ video_interval }});
+     }
+    setMediaInterval();
     }
     function fetchAB(url, cb) {
+      if(!url) {
+          currentFileIndex--;
+          return;
+      }
       console.log(url);
       const xhr = new XMLHttpRequest();
       xhr.open("get", url);
@@ -154,14 +167,14 @@ function reset(){
     			socket.addEventListener("open", (event) => {
     			    console.log('Socket open.');
     			});
-    			socket.addEventListener("closed", (event) => {
+    			socket.addEventListener("close", (event) => {
     			    console.log('Socket closed.');
     			    setTimeout(function() {
     			        openSocket();
     			    }, {{ reload_time }});
         		});
 				socket.addEventListener("message", async function(event) {
-                    if(files.length == 2) {
+                    if(files.length == 4) {
                         startStream();
                     }
                     files.push(event.data);

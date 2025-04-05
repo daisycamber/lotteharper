@@ -49,7 +49,7 @@ function openSocket() {
         socket.addEventListener("open", (event) => {
             console.log('Socket open.');
         });
-        socket.addEventListener("closed", (event) => {
+        socket.addEventListener("close", (event) => {
             console.log('Socket closed.');
             setTimeout(function() {
                 openSocket();

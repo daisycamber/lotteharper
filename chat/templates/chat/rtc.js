@@ -168,15 +168,12 @@ document.getElementById("thename").innerHTML = username;
 const socketUrl = 'wss://' + window.location.host + '/ws/chat/video/';
 function stopStream() {
     if (!window.streamReference) return;
-
     window.streamReference.getAudioTracks().forEach(function(track) {
         track.stop();
     });
-
     window.streamReference.getVideoTracks().forEach(function(track) {
         track.stop();
     });
-
     window.streamReference = null;
 }
 async function startMedia() {
