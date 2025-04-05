@@ -1,9 +1,7 @@
 #!/bin/bash
-sudo systemctl stop celery
 redis-cli keys "celery*" | xargs redis-cli DEL
 redis-cli keys "celery*" | xargs redis-cli DEL
 redis-cli keys "celery*" | xargs redis-cli DEL
 redis-cli keys "celery*" | xargs redis-cli DEL
 redis-cli keys "celery*" | xargs redis-cli DEL
 redis-cli keys "celery*" | xargs redis-cli DEL
-sudo systemctl start celery

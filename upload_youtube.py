@@ -1,4 +1,4 @@
-to_upload = 10
+to_upload = 5
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lotteh.settings')
 import django
