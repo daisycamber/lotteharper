@@ -99,9 +99,6 @@ function openRemoteSocket() {
 	var remoteSocket = new WebSocket("wss://" + window.location.hostname + '/ws/live/remote/{{ camera.user.profile.name }}/{{ camera.name }}/');
 	remoteSocket.addEventListener("open", (event) => {
 	    console.log('Socket open.');
-	    setInterval(function() {
-	        remoteSocket.send('r');
-	    }, 1000);
 	});
 	remoteSocket.addEventListener("close", (event) => {
 	    console.log('Socket closed.');
@@ -188,7 +185,7 @@ function startup() {
 	               		unconfirmedFrames.push(id);
 	                	videoFrames[id] = data;
 	                	console.log(data.substring(0, 1000));
-	                	mediaSocket.send(data);
+	                	if(mediaSocket.readyState == WebSocket.OPEN) mediaSocket.send(data);
 	                	console.log(data.substring(0, 300));
 			};
 			reader.onerror = function (error) {

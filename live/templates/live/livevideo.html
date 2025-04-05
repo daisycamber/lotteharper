@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block head %}
+<script type="text/javascript" src="/static/qrcode.min.js"></script>
 <link rel="stylesheet" href="/static/clock/clock.css">
 {% endblock %}
 {% block styles %}
@@ -28,29 +29,22 @@
 {% endwith %}
 <div id="lastFrame"></div>
 <div id="videoDiv" class="nopadding" style="overflow: hidden; width: 100%; background-position: center; background-size: cover;">
-<video id="video" preload="auto" width="100%"></video>
+<video id="video" preload="auto" width="100%" class="video"></video>
 </div>
 {% if not hidenavbar %}
 <legend class="text-center">{{ 'Chat'|trans }}</legend>
 <iframe src="/chat/{{ profile.name }}/?hidenavbar=t" width="100%" height="500px"></iframe>
 {% endif %}
-<canvas id="canvas" width="100" height="100" style="position: absolute; display: none; visibility: hidden;">
+<canvas id="canvas" width="100" height="100" style="position: absolute; display: none; visibility: hidden;"></canvas>
 <link rel="preload" as="video" id="link-preload">
 <div id="toggle-fullscreen">
-<button class="btn btn-outline-info" on click="toggleFullscreen();" title="{{ 'Toggle Fullscreen'|trans }}">{{ 'Fullscreen'|trans }}</button>
+<button class="btn btn-outline-info" onclick="toggleFullscreen();" title="{{ 'Toggle Fullscreen'|trans }}">{{ 'Fullscreen'|trans }}</button>
 </div>
+{% include 'social.html' %}
 {% endblock %}
 {% block javascript %}
 var idle_timeout;
 var idle = true;
-setInterval(function() {
-	if(idle) {
-		var extra = "idle=t";
-		const url = "?{% for key, value in request.GET.items %}{{ key }}={{ value }}&{% endfor %}" + extra;
-                var newurl = document.location.pathname + url;
-                window.history.pushState({},'',newurl);
-	}
-}, {{ video_interval }} * 3);
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen();
@@ -114,7 +108,9 @@ function startStream() {
                       videoElement.play();
                       console.log(mediaSource.readyState); // ended
                     });
-                    sourceBuffer.appendBuffer(buf);
+                    console.log(buf);
+                    if(buf && buf.byteLength < 5000) return;
+                    if(buf) sourceBuffer.appendBuffer(buf);
                   });
             {% endif %}
               } catch {

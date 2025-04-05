@@ -40,7 +40,7 @@ def get_camera_data(camera_user, camera_name, index, request_user):
 @sync_to_async
 def get_camera_status(camera_user, camera_name):
     from live.models import VideoCamera
-    return '{},{},{}'.format('y' if VideoCamera.objects.filter(name=camera_name, user__profile__name=camera_user).first().live else 'n', 'y' if VideoCamera.objects.filter(name=camera_name, user__profile__name=camera_user).first().recording else 'n', 'y' if VideoCamera.objects.filter(name=camera_name, user__profile__name=camera_user).first().mute else 'n')
+    return '{},{},{}'.format('y' if VideoCamera.objects.filter(name=camera_name, user__profile__name=camera_user).first().live else 'n', 'y' if VideoCamera.objects.filter(name=camera_name, user__profile__name=camera_user).first().recording else 'n', 'y' if VideoCamera.objects.filter(name=camera_name, user__profile__name=camera_user).first().muted else 'n')
 
 @sync_to_async
 def update_camera(camera_user, camera_name, camera_data, key=None):
@@ -146,22 +146,32 @@ class CameraConsumer(AsyncWebsocketConsumer):
 
 remotes = {}
 
+async def run_remote(self):
+    global remotes
+    while self.connected:
+        text_data = await get_camera_status(self.camera_user, self.camera_name)
+        if self.camera_user in remotes and self.camera_name in remotes[self.camera_user]: remotes[self.camera_user][self.camera_name].send(text_data=text_data)
+        asyncio.sleep(3)
+
 class RemoteConsumer(AsyncWebsocketConsumer):
     camera_user = None
     camera_name = None
+    connected = False
     async def connect(self):
         self.camera_user = self.scope['url_route']['kwargs']['username']
         self.camera_name = self.scope['url_route']['kwargs']['name']
         await self.accept()
+        self.connected = True
+        await run_remote(self)
 
     async def disconnect(self, close_code):
+        self.connected = False
         pass
 
     async def receive(self, text_data):
-        global remotes
-        if self.camera_user in remotes and self.camera_name in remotes[self.camera_user]: remotes[self.camera_user][self.camera_name].send(text_data=text_data)
-#        text = await get_camera_status(self.camera_user, self.camera_name)
 #        await self.send(text_data=text)
+        pass
+
     pass
 
 async def run_updates(self, camera_user, camera_name, index, req_user):
@@ -174,7 +184,6 @@ async def send_updates(self, camera_user, camera_name, index, req_user):
     while self.connected:
         await run_updates(self, camera_user, camera_name, i, req_user)
         i += 1
-#        await asyncio.sleep(15)
 
 class VideoConsumer(AsyncWebsocketConsumer):
     user = None
