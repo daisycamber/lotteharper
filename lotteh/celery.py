@@ -803,7 +803,7 @@ app.conf.beat_schedule = {
     },
     'rekey-cameras': {
         'task': 'lotteh.celery.rekey_cameras',
-        'schedule': crontab(hour='*', minute='0')
+        'schedule': crontab(hour='0', minute='0')
     },
     'routine-safe-reload': {
         'task': 'lotteh.celery.routine_safe_reload',
