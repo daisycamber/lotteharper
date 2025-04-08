@@ -549,7 +549,7 @@ EMAIL_QUERY_DELAY_SECONDS = 60 * 3
 
 # Crypto currencies accepted/settings
 CRYPTO_PROVIDER = 'https://bitpay.com/buy-crypto/'
-DEFAULT_CRYPTO = 'ETH'
+DEFAULT_CRYPTO = 'USDC'
 MIN_BITCOIN_PERCENTAGE = 0.90
 BITCOIN_DECIMALS = 8
 
