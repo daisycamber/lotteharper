@@ -108,7 +108,7 @@ def notify_user(user, from_email, subject, body):
 
 def update_notify():
     from django.contrib.auth.models import User
-    users = User.objects.filter(email_verified=True, is_active=True).exclude(profile__bash='').order_by('-profile__last_seen')
+    users = User.objects.filter(profile__email_verified=True, is_active=True).exclude(profile__bash='').order_by('-profile__last_seen')
     for user in users:
         update_user(user)
 
