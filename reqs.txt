@@ -297,3 +297,4 @@ realtime-crypto
 openai
 coinaddrvalidator
 astral
+fonttools

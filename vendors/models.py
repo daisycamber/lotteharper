@@ -57,7 +57,7 @@ class VendorProfile(models.Model):
     address = AddressField(null=True, blank=True)
     insurance_provider = models.CharField(max_length=300, default='', null=True, blank=True)
     logo = models.ImageField(null=True, default='static/lotteh.png', upload_to=get_logo_path)
-    video_intro_font = models.ImageField(null=True, blank=True, default='', upload_to=get_font_path)
+    video_intro_font = models.FileField(null=True, blank=True, default='', upload_to=get_font_path)
     history = HistoricalRecords()
 
     def __str__(self):

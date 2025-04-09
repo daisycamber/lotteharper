@@ -108,7 +108,31 @@ def vendor_preferences(request):
                 messages.warning(request, 'This color could not be accepted. Please use a hexadecimal color in the form #ABCDEF')
                 form.instance.video_intro_color = '#FFFFFF'
                 accepted = False
+            from fontTools.ttLib import TTFont
+            def validate_ttf(file_path):
+                """
+                Validates a TTF file.
+
+                Args:
+                    file_path (str): The path to the TTF file.
+
+                Returns:
+                    bool: True if the TTF file is valid, False otherwise.
+                """
+                try:
+                    font = TTFont(file_path)
+                    font.close()
+                    return True
+                except Exception as e:
+                    print(f"Error validating TTF file: {e}")
+                    return False
+            if form.instance.video_intro_font and not (form.instance.video_intro_font.name.rsplit('.', 1)[1] == 'ttf'):
+                messages.warning(request, 'The font you uploaded is not valid because the extension is wrong. Please upload a valid OpenType font in .ttf format.')
+                accepted = False
             p = form.save()
+            if p.video_intro_font and not (p.video_intro_font.name.rsplit('.', 1)[1] == 'ttf' and validate_ttf(p.video_intro_font.path)):
+                messages.warning(request, 'The font you uploaded is not valid. Please upload a valid OpenType font in .ttf format.')
+                accepted = False
             if accepted:
                 p.user.profile.vendor = True
                 p.user.profile.save()

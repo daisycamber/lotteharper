@@ -10,7 +10,7 @@ def add_logo_to_video(video_path, new_video_path, vendor):
               .resized(height=int(video.w/13)) # if you need to resize...
               .with_effects([Margin(margin_size=10,opacity=0)])
               .with_position(("left","bottom")))
-    text_logo = create_text_overlay(video, vendor.vendor_profile.video_intro_text, vendor.vendor_profile.video_intro_font.path if vendor.vendor_profile.video_intro_font and os.path.exists(vendor.vendor_profile.video_intro_font.path) else None, vendor.vendor_profile.video_intro_color)
+    text_logo = create_text_overlay(video, vendor.vendor_profile.video_intro_text, str(os.path.join(settings.MEDIA_ROOT, vendor.vendor_profile.video_intro_font.path)) if vendor.vendor_profile.video_intro_font and os.path.exists(vendor.vendor_profile.video_intro_font.path) else None, vendor.vendor_profile.video_intro_color)
     final = mp.CompositeVideoClip([video, logo, text_logo])
     final.write_videofile(new_video_path)
     for f in glob.glob(str(settings.BASE_DIR) + '*TEMP_MPY_wvf_snd.mp3'):

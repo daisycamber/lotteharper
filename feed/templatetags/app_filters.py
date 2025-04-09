@@ -925,3 +925,27 @@ def scoretotal(player):
 def fixalph(currency):
     if currency == 'ALPH': return 'ETH'
     return currency
+
+
+def hex_to_hls(hex_color):
+    """Converts a hex color to HLS (Hue, Lightness, Saturation)."""
+    hex_color = hex_color.lstrip('#')
+    r = int(hex_color[0:2], 16) / 255.0
+    g = int(hex_color[2:4], 16) / 255.0
+    b = int(hex_color[4:6], 16) / 255.0
+    import colorsys
+    return colorsys.rgb_to_hls(r, g, b)
+
+def get_lightness(hex_color):
+  """Gets the lightness of a hex color."""
+  return hex_to_hls(hex_color)[1]
+
+@register.filter('blendbright')
+def blendbright(color):
+    from django.conf import settings
+    return get_lightness(color) > get_lightness(settings.BACKGROUND_COLOR) - 0.3
+
+@register.filter('blenddark')
+def blenddark(color):
+    from django.conf import settings
+    return get_lightness(color) < get_lightness(settings.BACKGROUND_COLOR_DARK) + 0.3
