@@ -137,6 +137,7 @@ sudo chmod -R a+rwx /var/mail/*
 sudo systemctl restart opendkim postfix dovecot
 # Create dirs
 cd $DIR
+mkdir media/font
 mkdir media/audio
 mkdir media/audio/fingerprints
 mkdir media/security
