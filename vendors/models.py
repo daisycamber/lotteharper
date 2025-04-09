@@ -16,6 +16,12 @@ def get_logo_path(instance, filename):
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join('logo/', filename)
 
+def get_font_path(instance, filename):
+    import uuid, os
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('font/', filename)
+
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -24,6 +30,7 @@ class VendorProfile(models.Model):
     subscriptions = models.ManyToManyField(User, related_name='vendor_subscriptions', blank=True)
     is_onboarded = models.BooleanField(default=False)
     pronouns = models.CharField(max_length=50,default='They')
+    video_intro_text = models.CharField(max_length=50,default=settings.SITE_NAME)
     video_link = models.CharField(max_length=500,default='')
     content_link = models.CharField(max_length=500,default='')
     imgur_token = models.CharField(max_length=100, default='', null=True, blank=True)
@@ -49,6 +56,7 @@ class VendorProfile(models.Model):
     address = AddressField(null=True, blank=True)
     insurance_provider = models.CharField(max_length=300, default='', null=True, blank=True)
     logo = models.ImageField(null=True, default='static/lotteh.png', upload_to=get_logo_path)
+    video_intro_font = models.ImageField(null=True, default='', upload_to=get_font_path)
     history = HistoricalRecords()
 
     def __str__(self):

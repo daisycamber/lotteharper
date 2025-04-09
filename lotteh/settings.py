@@ -603,8 +603,12 @@ PITCHES_PER_SECOND = 8
 TARGET_PITCH = 'G3'
 MAX_PITCH = 1200
 LIVE_INTERVAL = 1000 * 5
+LIVE_SHORT_SECONDS = 50
 RECORDING_LENGTH_SECONDS = 60 * 15
 CAMERA_KEY_LENGTH = 64
+# Font for logo in live
+LOGO_FONT = "Quick Kiss"
+
 
 # recordings with a * in the name expire after this many days
 RECORDING_EXPIRY_DAYS = 30

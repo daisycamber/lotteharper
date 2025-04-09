@@ -308,7 +308,7 @@ def show_reminder_text():
     from django.utils import timezone
     import datetime
     from users.tfa import send_user_text
-    shows = Show.objects.filter(start__lte=timezone.now() + dt.timedelta(minutes=65), start__gte=timezone.now() - dt.timedelta(minutes=5))
+    shows = Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=65), start__gte=timezone.now() - datetime.timedelta(minutes=5))
     for show in shows:
         send_user_text(show.model, 'Remember to log in to your live show with {} starting {}'.format(show.user, show.start.strftime('%m/%d/%Y %H:%M:%S')))
         send_user_text(show.user, 'Remember to log in to your live show with {} starting {}. Here is a link: {}'.format(show.model, show.start.strftime('%m/%d/%Y %H:%M:%S'), settings.BASE_URL + reverse('live:livevideo', kwargs={'username': model.profile.name})))

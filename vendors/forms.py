@@ -78,6 +78,7 @@ class VendorProfileUpdateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(VendorProfileUpdateForm, self).__init__(*args, **kwargs)
         self.fields['logo'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
+        self.fields['video_intro_font'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
     class Meta:
         model = VendorProfile
-        fields = ['logo', 'hide_profile', 'activate_surrogacy', 'pronouns', 'address', 'insurance_provider', 'video_link', 'content_link', 'pitch_adjust', 'subscription_fee', 'free_trial', 'photo_tip', 'payout_currency', 'payout_address', 'bitcoin_address', 'ethereum_address', 'usdcoin_address', 'solana_address', 'polygon_address', 'avalanche_address']
+        fields = ['logo', 'video_intro_font', 'video_intro_text', 'hide_profile', 'activate_surrogacy', 'pronouns', 'address', 'insurance_provider', 'video_link', 'content_link', 'pitch_adjust', 'subscription_fee', 'free_trial', 'photo_tip', 'payout_currency', 'payout_address', 'bitcoin_address', 'ethereum_address', 'usdcoin_address', 'solana_address', 'polygon_address', 'avalanche_address']
