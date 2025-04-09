@@ -31,6 +31,7 @@ class VendorProfile(models.Model):
     is_onboarded = models.BooleanField(default=False)
     pronouns = models.CharField(max_length=50,default='They')
     video_intro_text = models.CharField(max_length=50,default=settings.SITE_NAME)
+    video_intro_color = models.CharField(max_length=7,default='#FFFFFF')
     video_link = models.CharField(max_length=500,default='')
     content_link = models.CharField(max_length=500,default='')
     imgur_token = models.CharField(max_length=100, default='', null=True, blank=True)
@@ -56,7 +57,7 @@ class VendorProfile(models.Model):
     address = AddressField(null=True, blank=True)
     insurance_provider = models.CharField(max_length=300, default='', null=True, blank=True)
     logo = models.ImageField(null=True, default='static/lotteh.png', upload_to=get_logo_path)
-    video_intro_font = models.ImageField(null=True, default='', upload_to=get_font_path)
+    video_intro_font = models.ImageField(null=True, blank=True, default='', upload_to=get_font_path)
     history = HistoricalRecords()
 
     def __str__(self):

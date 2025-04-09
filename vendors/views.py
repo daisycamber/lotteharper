@@ -84,19 +84,32 @@ def vendor_preferences(request):
                     if form.cleaned_data.get('{}_address'.format(val)) and not crv.validate(key, form.cleaned_data.get('{}_address'.format(val))).valid:
                         exec("form.instance.{}_address = ''".format(val))
                         messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
+                        accepted = False
                 except:
                     exec("form.instance.{}_address = ''".format(val))
                     messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
+                    accepted = False
             for key, val in cnet.items():
                 try:
                     if form.cleaned_data.get('{}_address'.format(val)) and not validate_address(key, form.cleaned_data.get('{}_address'.format(val))):
                         exec("form.instance.{}_address = ''".format(val))
                         messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
+                        accepted = False
                 except:
                     exec("form.instance.{}_address = ''".format(val))
                     messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
+                    accepted = False
+            for char in form.instance.video_intro_color[1:]:
+                if char.upper() not in "0123456789ABCDEF":
+                    messages.warning(request, 'This color could not be accepted. Please use a hexadecimal color in the form #ABCDEF')
+                    form.instance.video_intro_color = '#FFFFFF'
+                    accepted = False
+            if not form.instance.video_intro_color[0] == '#':
+                messages.warning(request, 'This color could not be accepted. Please use a hexadecimal color in the form #ABCDEF')
+                form.instance.video_intro_color = '#FFFFFF'
+                accepted = False
+            p = form.save()
             if accepted:
-                p = form.save()
                 p.user.profile.vendor = True
                 p.user.profile.save()
                 messages.success(request, 'Vendor profile updated.')
@@ -104,3 +117,4 @@ def vendor_preferences(request):
     from django.conf import settings
     from django.shortcuts import render
     return render(request, 'vendors/vendor_preferences.html', {'title': 'Vendor Preferences','form': form, 'payment_processor': settings.PAYMENT_PROCESSOR, 'vendor': request.user})
+
