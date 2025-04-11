@@ -679,16 +679,15 @@ def tagusers(value):
         if user[0:1] == " ":
             extra = " "
             user = user[1:]
-        u = None
         start = 0
         if len(user) > 20:
             start = len(user) - 20
+        u = None
+        us = None
+        p = None
+        ps = None
         for x in range(start,len(user)-2):
             n = user[0:len(user)-x]
-            u = None
-            us = None
-            p = None
-            ps = None
             try:
                 u = User.objects.filter(username__icontains=n, username__length__gt=len(n)-1, username__length__lt=len(n)+4).order_by('-date_joined').first()
                 us = User.history.filter(username__icontains=n, username__length__gt=len(n)-1, username__length__lt=len(n)+4).order_by('-date_joined').first()
