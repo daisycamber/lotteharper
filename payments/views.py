@@ -119,7 +119,7 @@ def send_custom_invoice(request):
             generate_invoice(request.user, cus_user, form.cleaned_data.get('cost'), description)
             messages.success(request, 'This invoice has been sent to {}.'.format(email))
         else: messages.warning(request, 'The form is not valid.')
-    return render(request, 'payments/send_invoice.html', {'title': 'Send Invoice', 'form': InvoiceForm()})
+    return render(request, 'payments/send_invoice.html', {'title': 'Send Invoice', 'form': InvoiceForm(initial={'client_email': request.GET.get('email', None)})})
 
 
 @never_cache

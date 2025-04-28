@@ -20,6 +20,7 @@ setup_downloader.tar*
 celerybeat-schedule*
 keys/*
 mailbox/root
+pytorch-animeGAN
 db.json.*
 client_secret.json
 client_secrets.json
