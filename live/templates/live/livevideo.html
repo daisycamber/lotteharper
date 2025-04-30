@@ -66,7 +66,7 @@ const videoElement = document.querySelector('video');
 videodiv.style.backgroundImage = '{{ still }}';
 video.poster = '{{ still }}';
 {% endwith %}
-const mimeCodec = "video/webm;codecs=vp8";
+const mimeCodec = 'video/webm; codecs="vp9,opus"';
 var urls = [];
 var queue = [];
 var files = [];
@@ -108,12 +108,13 @@ function startStream() {
         	{% else %}
                   fetchAB(files[currentFileIndex++], (buf) => {
                     sourceBuffer.addEventListener("updateend", () => {
-                      videoElement.play();
+                      if (sourceBuffer.buffered.length > 0) {
+                        videoElement.play();
+                      }
                       console.log(mediaSource.readyState); // ended
                     });
                     console.log(buf);
-                    if(buf && buf.byteLength < 5000) return;
-                    if(buf) sourceBuffer.appendBuffer(buf);
+                    sourceBuffer.appendBuffer(buf);
                   });
             {% endif %}
               } catch {
