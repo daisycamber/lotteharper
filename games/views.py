@@ -54,7 +54,8 @@ def invite(request, id):
     return render(request, 'games/invite.html', {'game': game, 'code': code, 'user_code': user_code, 'post': post, 'title': 'Invite Player', 'small': True})
 
 @csrf_exempt
-@cache_page(60*60*24*30)
+@never_cache
+#@cache_page(60*60*24*30)
 def join(request):
     from .forms import JoinForm
     from django.urls import reverse
@@ -68,6 +69,7 @@ def join(request):
         if form.is_valid():
             game = Game.objects.filter(code=form.cleaned_data.get('code', None), time__gte=timezone.now() - datetime.timedelta(hours=48)).last()
             if not game:
+                from django.contrib import messages
                 messages.warning(request, 'This code was not recognized. Please try again.')
                 return redirect(request.path)
             game.started = True
