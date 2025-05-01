@@ -1,5 +1,5 @@
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import cache_page, never_cache
 
 def get_num_length(num, length):
     n = ''
