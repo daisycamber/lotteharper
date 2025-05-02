@@ -163,7 +163,7 @@ function startup() {
   navigator.mediaDevices.getUserMedia({video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } }, audio: {echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %} } }).then(function(stream) {
     video.srcObject = stream;
     video.play();
-    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder = new MediaRecorder(stream, { 'mimeType': mimeType });
     mediaRecorder.addEventListener("dataavailable", (event) => {
         mediaChunks.push(event.data);
     	if(live) { mediaRecorder.start(); }
