@@ -14,13 +14,16 @@
 {% load feed_filters %}
 <h1>{{ 'Buy a Surrogacy Plan'|etrans }}</h1>
 <p>{{ 'Conceive a child carried by'|etrans }} {{ vendor.profile.name }}, {{ 'according to the agreement below.'|etrans }}</p>
+{% include 'language.html' %}
 <div style="display: flex; justify-content: space-around;">
 <img class="rounded" style="float: left; width: 50%; max-width: 400px;" src="{% if request.user.is_authenticated %}{{ post.get_image_url }}{% else %}{{ post.get_face_blur_thumb_url }}{% endif %}" alt="{{ 'Conceive a child carried by'|etrans }} {{ vendor.profile.name }}"></img>
 </div>
 <div style="white-space: pre-wrap;">
+{% blocktrans %}
 {% autoescape off %}
 {{ agreement }}
 {% endautoescape %}
+{% endblocktrans %}
 </div>
 <hr>
 <p>{{ 'Surrogacy services are provided according to the agreement above. If you do not agree to the agreement, please do not continue. You will need to create an account and verify your identity as well as add your signature in order to make the payment.'|etrans }}</p>
@@ -34,8 +37,8 @@
 <div class="col-md-6 m-2 p-2 rounded  mx-auto" style="display: inline-block; background-color: #{% if darkmode %}555555{% else %}DDDDDD{% endif %};">
 {% if request.user.is_authenticated and request.user.profile.identity_verified %}
 <p>{{ 'Finalize'|etrans }}</p>
-<legend>{{ 'Cost'|etrans }}: ${{ surrogacy_fee|sub_fee }} {{ 'billed in installments according to the agreement.'|etrans }}</legend>
-<p>The down payment required to begin the plan is ${{ down_payment|elegant_sub_fee }}. Payments will be invoiced according to a 36 week term after confirmation of pregnancy. Weekly payment of ${{ weekly_payment|sub_fee }} is required and will be invoiced.</p>
+<legend>{{ 'Cost'|etrans }}: ${{ surrogacy_fee|sub_fee }} {{ 'billed in installments following a down payment according to the agreement.'|etrans }}</legend>
+<p>{{ 'The down payment required to begin the plan is'|etrans }} ${{ down_payment|elegant_sub_fee }}. {{ 'Payments will be invoiced according to a 36 week term after confirmation of pregnancy. Weekly payment of'|etrans }} ${{ weekly_payment|sub_fee }} {{ 'in 36 weekly payments is required and will be invoiced according to the agreement. Please note that this agreement is not final until completion of digital verification including ID scan and facial recognition with'|etrans }} {{ the_site_name }} {{ 'of all signing parties pursuant to this agreement, as well as all payment as arranged.'|etrans }}</p>
 <div style="display: flex; justify-content: space-around;">
 <form id="pay-form" onsubmit="event.preventDefault(); payFee();">
 {{ form|crispy }}

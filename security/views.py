@@ -176,9 +176,9 @@ def approve_login(request, id):
     from django.http import HttpResponse
     login = UserSession.objects.filter(id=id).first()
     if request.method == 'POST' and login:
-        login.bypass = True
+        login.bypass = not login.bypass
         login.save()
-    return HttpResponse('<i class="bi bi-door-open-fill"></i>')
+    return HttpResponse('<i class="bi bi-door-open-fill"></i>' if login.bypass else '<i class="bi bi-door-closed"></i>')
 
 @login_required
 @user_passes_test(is_superuser_or_vendor)
@@ -188,7 +188,7 @@ def logins(request):
     from django.utils import timezone
     import datetime
     from django.conf import settings
-    the_logins = UserSession.objects.filter(bypass=False, user=request.user, timestamp__gte=timezone.now() - datetime.timedelta(minutes=settings.LOGIN_VALID_MINUTES)).order_by('-timestamp')
+    the_logins = UserSession.objects.filter(user=request.user, timestamp__gte=timezone.now() - datetime.timedelta(minutes=settings.LOGIN_VALID_MINUTES)).order_by('-timestamp')
     return render(request, 'security/bypass.html', {
         'title': 'Approve Logins',
         'logins': list(the_logins)[:32]

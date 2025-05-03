@@ -93,7 +93,7 @@ def google_auth_callback(request):
 
 def resolve_multiple_accounts(request, user):
     from .models import AccountLink
-    if request.user.is_authenticated and not request.user.account_link:
+    if request.user.is_authenticated and not request.user.account_link.objects.filter(to_user=user):
         AccountLink.objects.create(from_user=request.user, to_user=user)
 
 def password_reset(request, uidb64, token):

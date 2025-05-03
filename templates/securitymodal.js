@@ -6,7 +6,7 @@ function openSecuritySocket() {
         securityModalSocket.addEventListener("open", (event) => {
             console.log('Security socket open.');
         });
-        securityModalSocket.addEventListener("closed", (event) => {
+        securityModalSocket.addEventListener("close", (event) => {
             console.log('Security socket closed.');
             setTimeout(function() {
                 openSecuritySocket();
