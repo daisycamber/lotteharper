@@ -1,4 +1,6 @@
-to_upload = 10
+import sys
+to_upload = 1
+if len(sys.argv) > 1: to_upload = int(sys.argv[1])
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lotteh.settings')
 import django
