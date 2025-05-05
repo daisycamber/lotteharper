@@ -1,4 +1,15 @@
 #!/home/team/lotteh/venv/bin/python3
+
+width="30" height="30" fill="currentColor" class="bi bi-twitter-x"
+
+width="30" height="30" fill="currentColor" class="bi bi-twitter-x"
+
+window.location.protocol + '//'
+
+window.location.protocol + '//'
+
+window.location.protocol + '//'
+
 "closed" "closed"
 meme is a test meme
 of my shell editor template

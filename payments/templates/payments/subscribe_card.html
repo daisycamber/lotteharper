@@ -61,7 +61,7 @@ function payFee() {
         url: '{{ base_url }}{% url 'payments:paypal-checkout' %}?vendor=' + vendor + '&email=' + email + '&price=' + price + '&product=' + product + '&pid=' + pid + '&sub=t',
         method:'POST',
         success: function(data) {
-            if(data.startsWith('https://')) {
+            if(data.startsWith(window.location.protocol + '//')) {
                 window.location.href = data;
             } else { console.log('Invalid response from server.'); }
         },
@@ -74,7 +74,7 @@ function payFee() {
         url: '{{ base_url }}{% url 'payments:square-checkout' %}?vendor=' + vendor + '&email=' + email + '&price=' + price + '&product=' + product + '&pid=' + pid + '&sub=t',
         method:'POST',
         success: function(data) {
-            if(data.startsWith('https://')) {
+            if(data.startsWith(window.location.protocol + '//')) {
                 window.location.href = data;
             } else { console.log('Invalid response from server.'); }
         },

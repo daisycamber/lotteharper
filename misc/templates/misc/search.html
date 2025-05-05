@@ -2,6 +2,7 @@
 {% block head %}
 {% if use_prism %}
 <script type="text/javascript" src="/static/js/prism.js"></script>
+<script type="text/javascript" src="/static/qrcode.min.js"></script>
 <link rel="stylesheet" href="/static/css/prism.css">
 {% endif %}
 {% endblock %}
@@ -18,6 +19,7 @@
 {% endfor %}
 {% include 'pagelinks.html' %}
 {% include 'search.html' %}
+{% include 'social.html' %}
 {% include 'banner_ad.html' %}
 {% else %}
 <p>{{ 'Please enter a query in the navbar to begin your search.'|etrans }}</p>

@@ -96,8 +96,6 @@ def simple_middleware(get_response):
             if request.user.is_authenticated and not hasattr(request.user, 'security_profile'):
                 from security.models import SecurityProfile
                 SecurityProfile.objects.create(user=request.user)
-            if request.user.is_authenticated and request.path == '/' and request.user.profile.vendor and not request.GET.get('k', False):
-                return HttpResponseRedirect(reverse('go:go'))
         except:
             try:
                 Error.objects.create(user=request.user if request.user.is_authenticated else None, stack_trace=get_current_exception(), notes='Logged by users middleware.')

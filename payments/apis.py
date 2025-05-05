@@ -73,7 +73,8 @@ def get_crypto_price(crypto):
         "ETC": "Ethereum Classic",
         "ICP": "Internet Computer",
         "DCR": "Decred",
-        "TRUMP": "SOL/TRUMP"
+        "TRUMP": "SOL/TRUMP",
+        "AVAX": "avalanche",
     }
     from realtime_crypto import RealTimeCrypto
     tracker = RealTimeCrypto()

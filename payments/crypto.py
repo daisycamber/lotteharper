@@ -84,6 +84,7 @@ def get_payment_address(model, currency, amount, tip=False):
         'LTC': model.vendor_profile.litecoin_address,
         'USDT': model.vendor_profile.usdtether_address,
         'DOGE': model.vendor_profile.dogecoin_address,
+        'AVAX': model.vendor_profile.avalanche_address,
     }
     tickers = {
         'BTC': 'btc',

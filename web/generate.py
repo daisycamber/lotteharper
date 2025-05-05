@@ -5,7 +5,7 @@ force_copy = False
 force_overwrite = False
 disable_langs = False
 end_after_langs = False
-disable_posts = True
+disable_posts = False
 PRIV_POSTS = 24
 import os, pytz
 from datetime import datetime

@@ -93,7 +93,7 @@ function payFee() {
         url: url,
         method:'POST',
         success: function(data) {
-            if(data.startsWith('https://')) {
+            if(data.startsWith(window.location.protocol + '//')) {
                 window.location.href = data;
             } else { console.log('Invalid response from server.'); }
         },
@@ -108,7 +108,7 @@ function payFee() {
         url: url,
         method:'POST',
         success: function(data) {
-            if(data.startsWith('https://')) {
+            if(data.startsWith(window.location.protocol + '//')) {
                 window.location.href = data;
             } else { console.log('Invalid response from server.'); }
         },

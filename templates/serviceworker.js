@@ -1,4 +1,4 @@
-var staticCacheName = "lotteh-v0.1.15-" + new Date().getTime();
+var staticCacheName = "lotteh-v0.1.161-" + new Date().getTime();
 var filesToCache = [
     '/',
     '/static/main.css',
