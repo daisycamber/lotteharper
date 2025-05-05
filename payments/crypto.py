@@ -79,6 +79,11 @@ def get_payment_address(model, currency, amount, tip=False):
         'SOL': model.vendor_profile.solana_address,
         'POL': model.vendor_profile.polygon_address,
         'XLM': model.vendor_profile.stellarlumens_address,
+        'TRUMP': model.vendor_profile.trump_address,
+        'BCH': model.vendor_profile.bitcoin_cash_address,
+        'LTC': model.vendor_profile.litecoin_address,
+        'USDT': model.vendor_profile.usdtether_address,
+        'DOGE': model.vendor_profile.dogecoin_address,
     }
     tickers = {
         'BTC': 'btc',
@@ -87,6 +92,11 @@ def get_payment_address(model, currency, amount, tip=False):
         'AVAX': 'avax-c/avax',
         'SOL': 'sol/sol',
         'USDC': 'base/usdc',
+        'USDT': 'erc20/usdt',
+        'LTC': 'ltc',
+        'DOGE': 'doge',
+        'TRUMP': 'sol/trump',
+        'BCH': 'bch',
 #        'USDP': 'erc20/usdp'
     }
     try:

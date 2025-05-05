@@ -300,3 +300,4 @@ astral
 fonttools
 timezonefinder
 django-db-connection-pool[postgresql]
+web3

@@ -250,7 +250,7 @@ def unique(list):
 #@login_required
 #@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 @csrf_exempt
-@cache_page(60*60*24*7)
+@cache_page(60*60*24*3)
 @vary_on_cookie
 def grid_api(request, index):
     from translate.translate import translate
@@ -366,7 +366,7 @@ def grid_api(request, index):
 
 #@login_required
 #@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
-@cache_page(60*60*24*7)
+@cache_page(60*60*24*3)
 def profile_grid(request, username):
     from misc.views import get_posts_for_query
     from django.core.paginator import Paginator
@@ -579,7 +579,7 @@ def profiles(request):
 #@login_required
 #@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 @csrf_exempt
-@cache_page(60*60*24*7)
+@cache_page(60*60*24*3)
 @vary_on_cookie
 def profile(request, username):
     from django.conf import settings
@@ -695,7 +695,7 @@ def all(request):
 
 #@login_required
 #@user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
-@cache_page(60*60*24*365)
+@cache_page(60*60*24*7)
 def post_detail(request, uuid):
     from django.core.paginator import Paginator
     from django.contrib import messages

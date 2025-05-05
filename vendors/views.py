@@ -77,16 +77,16 @@ def vendor_preferences(request):
                 form.instance.payout_address = ''
                 messages.warning(request, 'This crypto address could not be accepted. Please check the address and the currency.')
                 accepted = False
-            cloc = {'btc': 'bitcoin', 'eth': 'ethereum', 'xlm': 'stellarlumens'}
-            cnet = {'usdc': 'usdcoin', 'sol': 'solana', 'matic': 'polygon', 'avax': 'avalanche'}
+            cloc = {'btc': 'bitcoin', 'eth': 'ethereum', 'xlm': 'stellarlumens', 'bch': 'bitcoin-cash', 'ltc': 'litecoin', 'doge': 'dogecoin'}
+            cnet = {'usdc': 'usdcoin', 'sol': 'solana', 'matic': 'polygon', 'avax': 'avalanche', 'trump': 'trump', 'usdt': 'usdtether'}
             for key, val in cloc.items():
                 try:
                     if form.cleaned_data.get('{}_address'.format(val)) and not crv.validate(key, form.cleaned_data.get('{}_address'.format(val))).valid:
-                        exec("form.instance.{}_address = ''".format(val))
+                        exec("form.instance.{}_address = ''".format(val.replace('-', '_')))
                         messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
                         accepted = False
                 except:
-                    exec("form.instance.{}_address = ''".format(val))
+                    exec("form.instance.{}_address = ''".format(val.replace('-', '_')))
                     messages.warning(request, 'This {} address could not be accepted. Please check the address and the currency.'.format(val))
                     accepted = False
             for key, val in cnet.items():

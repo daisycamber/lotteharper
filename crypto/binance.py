@@ -46,4 +46,6 @@ def create_order(user, symbol,side,type,quantity):
 
 def get_crypto_price(ticker):
     resp = requests.get('https://api.binance.us/api/v3/ticker/price?symbol={}'.format(ticker))
+    print(resp)
+    print(resp.text)
     return float(resp.json()['price'])
