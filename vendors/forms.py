@@ -82,6 +82,12 @@ class VendorProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = VendorProfile
         fields = ['logo', 'video_intro_font', 'video_intro_text', 'video_intro_color', 'hide_profile', 'activate_surrogacy', 'pronouns', 'address', 'insurance_provider', 'video_link', 'content_link', 'video_embed', 'playlist_embed', 'pitch_adjust', 'subscription_fee', 'free_trial', 'photo_tip', 'payout_currency', 'payout_address', 'bitcoin_address', 'ethereum_address', 'usdcoin_address', 'solana_address', 'trump_address', 'polygon_address', 'avalanche_address', 'bitcoin_cash_address', 'litecoin_address', 'usdtether_address', 'dogecoin_address']
+        labels = {
+            'usdcoin_address': 'USDCoin address',
+            'usdtether_address': 'USD Tether address',
+            'bitcoincash_address': 'Bitcoin Cash address',
+            'trump_address': 'TRUMP address',
+        }
         widgets = {
             'video_intro_color': forms.TextInput(attrs={'type': 'color'}),
         }
