@@ -49,7 +49,7 @@ def caption_image(image_path):
 
 def caption_post(post):
     print(post.id)
-    if post.uploaded:
+    if True: #post.uploaded:
         if post.image:
             try:
                 if not os.path.exists(post.image.path) and (post.image or post.image_bucket): post.download_photo()
@@ -76,5 +76,5 @@ def routine_caption_image():
             if p: return
     for post in Post.objects.filter(content='', public=False).exclude(image=None).order_by('-date_posted'):
         if post.image:
-            caption_post(post)
+            p = caption_post(post)
             if p: return

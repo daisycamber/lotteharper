@@ -787,7 +787,8 @@ def new_post(request):
     unpublished_post = None
     if not text:
         unpublished_post = Post.objects.filter(posted=False, author=request.user).order_by('-date_posted').last()
-    if request.method == 'POST' and not fraud_detect(request, True):
+    from security.security import fraud_detect
+    if request.method == 'POST' and not fraud_detect(request, hard=False):
         form = PostForm(request.POST, request.FILES, instance=unpublished_post) if not request.GET.get('schedule') else ScheduledPostForm(request.POST, request.FILES, instance=unpublished_post)
         if form.is_valid():
             form.instance.author = request.user

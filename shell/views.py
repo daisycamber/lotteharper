@@ -212,6 +212,7 @@ def edit(request):
         with io.open(path, "r", encoding="utf-8") as f:
             content = str(f.read())
     return render(request, 'shell/edit.html', {'title': 'Edit file', 'pagetitle': 'Edit file', 'trace': '', 'full': True, 'form': EditFileForm(initial={'text': content}), 'saved_files': SavedFile.objects.filter(path=str(path), current=False).order_by('-saved_at')})
+
 @never_cache
 @login_required
 @user_passes_test(is_superuser_or_vendor)
@@ -263,3 +264,12 @@ def shell(request):
         return HttpResponse('{}$ {}'.format(request.user.profile.preferred_name, command) + output)
     from django.utils.crypto import get_random_string
     return render(request, 'shell/shell.html', {'title': 'Shell', 'pagetitle': 'Shell', 'trace': '', 'full': True, 'form': CommandForm(), 'token': urllib.parse.quote(request.user.profile.make_shell_token()), 'term_key': get_random_string(16)})
+
+
+from django.views.decorators.cache import cache_page
+
+@cache_page(60*60*24*7)
+def jshell(request):
+    from django.shortcuts import render
+    from .forms import CommandForm
+    return render(request, 'shell/jshell.html', {'title': 'JavaScript Shell', 'pagetitle': 'Shell', 'trace': '', 'full': True, 'form': CommandForm()})

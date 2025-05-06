@@ -5,6 +5,7 @@ app_name='shell'
 
 urlpatterns = [
     path('', views.shell, name='shell'),
+    path('javascript/', views.jshell, name='jshell'),
     path('terminal/', views.terminal, name='terminal'),
     path('edit/', views.edit, name='edit'),
     path('read/<int:id>/', views.read, name='read'),
