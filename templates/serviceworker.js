@@ -1,6 +1,5 @@
-var staticCacheName = "lotteh-v0.1.162-" + new Date().getTime();
+var staticCacheName = "lotteh-v0.1.164-" + new Date().getTime();
 var filesToCache = [
-    '/',
     '/static/main.css',
     '/static/main.js',
     '/static/qrcode.min.js',

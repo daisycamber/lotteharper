@@ -166,6 +166,10 @@ def users(request):
     import datetime
     from django.core.paginator import Paginator
     from django.contrib import messages
+    active_today = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=1)).count()
+    active_this_week = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=7)).count()
+    active_this_month = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=30)).count()
+    active_this_year = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=365)).count()
     new_today = User.objects.filter(is_active=True, date_joined__gte=timezone.now() - datetime.timedelta(hours=24)).count()
     new_this_month = User.objects.filter(is_active=True, date_joined__gte=timezone.now() - datetime.timedelta(hours=24*30)).count()
     subscribers = User.objects.filter(is_active=True, profile__subscribed=True).count()
@@ -184,9 +188,12 @@ def users(request):
         'users': p.page(page),
         'new_today': new_today,
         'new_this_month': new_this_month,
-        'subscribers': subscribers
+        'subscribers': subscribers,
+        'active_today': active_today,
+        'active_this_week': active_this_week,
+        'active_this_month': active_this_month,
+        'active_this_year': active_this_year,
     })
-
 
 def logout_visitor(request):
     from django.contrib import messages

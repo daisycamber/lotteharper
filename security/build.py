@@ -39,24 +39,24 @@ def get_next_redirect(request):
             red = True
             request.GET._mutable = True
             request.GET['next'] = request.path + get_qs(request.GET)
-            return HttpResponseRedirect(reverse('security:vivokey') + get_qs(request.GET))
+            return redirect(reverse('security:vivokey') + get_qs(request.GET))
         if request.user.is_authenticated and (request.user.is_superuser or request.user.profile.vendor) and (not request.path.startswith('/security/')) and (not request.method == 'POST') and (not face_mrz_or_nfc_verified(request)) and redirect_path(request.path):
             red = True
             request.GET._mutable = True
             request.GET['next'] = request.path + get_qs(request.GET)
-            return HttpResponseRedirect(reverse('security:nfc') + get_qs(request.GET))
+            return redirect(reverse('security:nfc') + get_qs(request.GET))
         if request.user.is_authenticated and (request.user.is_superuser or request.user.profile.vendor) and (not request.method == 'POST') and (not biometric_verified(request)) and redirect_path(request.path):
             red = True
             request.GET['next'] = request.path + get_qs(request.GET)
-            return HttpResponseRedirect(reverse('security:biometric') + get_qs(request.GET))
+            return redirect(reverse('security:biometric') + get_qs(request.GET))
         if request.user.is_authenticated and (request.user.is_superuser or request.user.profile.vendor) and (not request.method == 'POST') and (not otp_verified(request)) and redirect_path(request.path):
             red = True
             request.GET['next'] = request.path + get_qs(request.GET)
-            return HttpResponseRedirect(reverse('security:otp') + get_qs(request.GET))
+            return redirect(reverse('security:otp') + get_qs(request.GET))
         if request.user.is_authenticated and request.user.profile.vendor and (not request.method == 'POST') and (not pin_verified(request)) and redirect_path(request.path):
             red = True
             request.GET['next'] = request.path + get_qs(request.GET)
-            return HttpResponseRedirect(reverse('security:pin') + get_qs(request.GET))
+            return redirect(reverse('security:pin') + get_qs(request.GET))
         if (not red) and (not request.method == 'POST') and redirect_path(request.path): sync_patch_session(request.user.id, request.session.session_key)
         return False
     return False

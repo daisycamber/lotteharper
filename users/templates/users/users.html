@@ -3,6 +3,7 @@
 {% block content %}
 <h1>All Registered Visitors</h1>
 <p>{{ new_today|nts|capitalize }} new today, {{ new_this_month|nts }} new this month, {{ subscribers|nts }} subscribers, {{ users.count|nts }} total.</p>
+<small>{{ active_today|nonts|capitalize }} active today, {{ active_this_week|nonts }} this week, {{ active_this_month|nonts }} this month, {{ active_this_year|nonts }} this year.</small>
 <hr style="color: red;">
 {% for user in users %}
 {% include 'users/_user.html' %}

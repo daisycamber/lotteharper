@@ -36,7 +36,7 @@ def get_qs(get_data):
     except: pass
     return qs
 
-redirect_paths = ['verify', 'accounts', 'face', 'admin', 'kick', 'appeal', 'auth', 'recovery', 'barcode', 'time', 'feed/secure', 'logs', 'feed/grid/api', 'feed/profile', 'shell/edit', 'serviceworker.js', 'security', 'melanin', 'terms', 'feed/secure', 'hypnosis', 'payments/idscan', 'payments/webdev', 'sitemap.xml', 'news.xml', 'webauth', 'remote']
+redirect_paths = ['', 'verify', 'accounts', 'face', 'admin', 'kick', 'appeal', 'auth', 'recovery', 'barcode', 'time', 'feed/secure', 'logs', 'feed/grid/api', 'feed/profile', 'shell/edit', 'serviceworker.js', 'security', 'melanin', 'terms', 'feed/secure', 'hypnosis', 'payments/idscan', 'payments/webdev', 'sitemap.xml', 'news.xml', 'webauth', 'remote']
 
 def redirect_path(path):
 #    if path == '/': return False
@@ -71,6 +71,7 @@ def security_middleware(get_response):
     def middleware(request):
         response = None
         try:
+            print(request.path)
             ip = get_client_ip(request)
             qs = get_qs(request.GET)
             sessions = None

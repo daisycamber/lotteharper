@@ -22,28 +22,24 @@ def go(request):
     from django.conf import settings
     from barcode.models import DocumentScan
     import datetime
-#    if not request.user.profile.vendor:
-#        return redirect(reverse('landing:landing'))
     sc = 0
     for user in User.objects.filter(profile__vendor=True):
         sc = sc + len(all_unexpired_sessions_for_user(user))
-#    pins = Post.objects.filter(author=request.user, public=True, private=False, pinned=True).order_by('-date_posted')
-    users = User.objects.filter(is_active=True).count()
-    verified_users = User.objects.filter(is_active=True)
+    verified_users = User.objects.filter(is_active=True, profile__email_verified=True)
     verified_user_count = 0
     for user in verified_users:
         verified_user_count = verified_user_count + (1 if user.verifications.count() > 0 else 0)
-    active_today = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=1)).count()
-    active_this_week = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=7)).count()
-    active_this_month = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=30)).count()
-    active_this_year = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=365)).count()
     id = DocumentScan.objects.filter(user=request.user, side=True).last().document_isolated.url if DocumentScan.objects.filter(user=request.user, side=True).last() and DocumentScan.objects.filter(user=request.user, side=True).last().document_isolated else ''
     smp = None #Post.objects.filter(id=settings.STATUS_SAMPLE).first()
     post = Post.objects.filter(id=settings.SPLASH).first()
 #    ad_post = Post.objects.filter(public=False, private=True, feed="ad", author__id=settings.MY_ID).last()
     ad_post = None
     status_messages = None #smp.content.split('\n') if smp else []
-    r = render(request, 'go/go.html', {'title': 'Go', 'session_count': sc, 'status_messages': status_messages, 'smp_id': smp.id if smp else 1, 'splash_id': post.id if post else 1, 'digital_id': id, 'ad_post': ad_post.id if ad_post else None, 'user_count': users, 'verified_user_count': verified_user_count, 'active_today': active_today, 'active_this_week': active_this_week, 'active_this_month': active_this_month, 'active_this_year': active_this_year})
+    r = render(request, 'go/go.html', {'title': 'Go', 'session_count': sc, 'status_messages': status_messages, 'smp_id': smp.id if smp else 1, 'splash_id': post.id if post else 1, 'digital_id': id, 'ad_post': ad_post.id if ad_post else None, 'user_count': verified_users.count(), 'verified_user_count': verified_user_count})
     patch_cache_control(r, private=True)
     return r
 # 'user_count': users, 'verified_user_count': verified_user_count, 'active_today': active_today, 'active_this_week': active_this_week, 'active_this_month': active_this_month, 'active_this_year': active_this_year, 
+#    active_today = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=1)).count()
+#    active_this_week = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=7)).count()
+#    active_this_month = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=30)).count()
+#    active_this_year = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=365)).count()
