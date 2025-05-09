@@ -439,6 +439,9 @@ IMAGE_HOST_KEY = keys['IMAGE_HOST_KEY']
 # OpenAI key for GPT
 OPENAI_KEY = keys['OPENAI_KEY']
 
+# Upload key for youtube api
+UPLOAD_KEY = keys['UPLOAD_KEY']
+
 # Helcim key
 HELCIM_KEY = keys['HELCIM_KEY']
 

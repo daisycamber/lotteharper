@@ -41,5 +41,6 @@
   "IMGUR_ID": null,
   "IMGUR_SECRET": null,
   "OPENNODE_KEY": null,
-  "CCA_VALIDATOR_KEY": null
+  "CCA_VALIDATOR_KEY": null,
+  "UPLOAD_KEY": null
 }

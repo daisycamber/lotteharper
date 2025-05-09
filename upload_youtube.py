@@ -19,7 +19,7 @@ for recording in VideoRecording.objects.filter(processed=True, uploaded=False).o
     print(cameras)
     camera = cameras.first()
     from live.duration import get_duration
-    if camera.upload and get_duration(recording.file.path) > settings.LIVE_INTEVAL/1000 * 1.5:
+    if camera.upload and get_duration(recording.file.path) > settings.LIVE_INTERVAL/1000 * 1.5:
         try:
             if not (recording.file and os.path.exists(recording.file.path)):
                 print('Getting file from bucket for upload')

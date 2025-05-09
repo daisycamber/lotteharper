@@ -16,6 +16,7 @@ urlpatterns = [
     path('sitemap.xml', views.sitemap, name='sitemap'),
     path('news.xml', views.news, name='news'),
     path('map/', views.map, name='map'),
+    path('upload/', views.upload_video_api, name='upload'),
     path('site.webmanifest', views.webmanifest, name='webmanifest'),
     path('serviceworker.js', views.service_worker, name='serviceworker'),
 ]

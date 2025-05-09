@@ -265,3 +265,51 @@ def search(request):
 def robotstxt(request):
     from django.shortcuts import render
     return render(request, 'robots.txt')
+
+@csrf_exempt
+def upload_video_api(request):
+    from django.http import HttpResponse
+    from .forms import UploadForm
+    from django.conf import settings
+    if not request.GET.get('k', None) == settings.UPLOAD_KEY: return HttpResponse(400)
+    if request.method == 'POST':
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            from django.contrib.auth.models import User
+            user = User.objects.get(id=settings.MY_ID)
+            form.instance.user = user
+            recording = form.save()
+            from live.models import VideoRecording, VideoCamera
+            from live.models import get_file_path
+            import pytz, os, traceback
+            from django.conf import settings
+            from recordings.youtube import upload_youtube
+            from better_profanity import profanity
+            count = 0
+            if recording:
+                cameras = VideoCamera.objects.filter(name='private*', user=user).order_by('-last_frame')
+                print(recording.camera)
+                print(cameras)
+                camera = cameras.first()
+                from live.duration import get_duration
+                if camera.upload and get_duration(recording.file.path) > settings.LIVE_INTERVAL/1000 * 1.5:
+                    try:
+                        if not (recording.file and os.path.exists(recording.file.path)):
+                            print('Getting file from bucket for upload')
+                            full_path = os.path.join(settings.BASE_DIR, 'media/', get_file_path(None, 'rec.mp4'))
+                            with recording.file_processed.storage.open(str(recording.file_processed.name), mode='rb') as bucket_file:
+                                with open(full_path, "wb") as video_file:
+                                    video_file.write(bucket_file.read())
+                                video_file.close()
+                            bucket_file.close()
+                            recording.file = full_path
+                            recording.save()
+                    except: print(traceback.format_exc())
+                    try:
+                        upload_youtube(user, recording.file.path, profanity.censor(camera.title[:67-len(recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'))]) + ' - ' + recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3]), [tag for tag in camera.tags.split(',')], category='22', privacy_status='public', age_restricted=not recording.public)
+                        recording.uploaded = True
+                    except:
+                        recording.uploaded = False
+                        print(traceback.format_exc())
+                    recording.save()
+    return HttpResponse(500)
