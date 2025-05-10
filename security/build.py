@@ -11,7 +11,7 @@ def async_build_sessions():
     from django.conf import settings
     from django.utils import timezone
     import datetime
-    for s in UserSession.objects.filter(timestamp__gte=timezone.now() - datetime.timedelta(hours=24*30)).union(UserSession.objects.filter(user__is_superuser=True, timestamp__gte=timezone.now() - datetime.timedelta(hours=24*30))).order_by('-timestamp'):
+    for s in UserSession.objects.filter(timestamp__gte=timezone.now() - datetime.timedelta(minutes=settings.LOGIN_VALID_MINUTES)).union(UserSession.objects.filter(user__is_superuser=True, timestamp__gte=timezone.now() - datetime.timedelta(minutes=settings.LOGIN_VALID_MINUTES))).order_by('-timestamp'):
         async_build_session(s.user.id, s.session_key)
 
 def sync_patch_session(user_id, session_key):
@@ -32,6 +32,7 @@ def get_next_redirect(request):
         from security.middleware import get_qs, redirect_path
         from django.http import HttpResponseRedirect
         from django.urls import reverse
+        from django.shortcuts import redirect
         from security.tests import face_mrz_or_nfc_verified, pin_verified, biometric_verified, otp_verified, vivokey_verified
         red = False
         request.GET._mutable = True

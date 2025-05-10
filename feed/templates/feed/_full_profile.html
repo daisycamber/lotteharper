@@ -42,15 +42,6 @@
 <a href="{% url 'face:faces' %}?model={{ profile.name }}" class="btn btn-outline-info" title="{{ 'All login photos'|etrans }}">{{ 'Faces'|etrans }}</a>
 {% endif %}
 {% include 'language.html' %}
-{% if not request.path|startswith:"/feed/grid/" %}
-<a class="btn btn-outline-secondary" href="{% url 'feed:profile-grid' profile.name %}" title="{{ 'Image grid'|etrans }}">{{ 'Grid'|etrans }}</a>
-{% endif %}
-{% if not request.path|startswith:"/feed/profile/" %}
-<a class="btn btn-outline-primary" href="{% url 'feed:profile' profile.name %}" title="{{ 'Full profile'|etrans }}">{{ 'Profile'|etrans }}</a>
-{% endif %}
-{% if not request.GET.feed == 'news' %}
-<a class="btn btn-outline-primary" href="{% url 'feed:profile' profile.name %}?feed=news" title="{{ 'News, books, games and more'|etrans }}">{{ 'News'|etrans }}</a>
-{% endif %}
 </div>
 {% if user.is_authenticated %}
 <hr style="background-color: blue;">
@@ -59,6 +50,15 @@
 <a class="btn btn-outline-success" href="{{ request.path }}" title="{{ 'All posts, not just what you like'|etrans }}">{{ 'All posts'|etrans }}</a>
 {% else %}
 <a class="btn btn-outline-success" href="{{ request.path }}?likes=true" title="{{ 'Posts you like'|etrans }}">{{ 'Likes'|etrans }}</a>
+{% endif %}
+{% if not request.path|startswith:"/feed/grid/" %}
+<a class="btn btn-outline-secondary" href="{% url 'feed:profile-grid' profile.name %}" title="{{ 'Image grid'|etrans }}">{{ 'Grid'|etrans }}</a>
+{% endif %}
+{% if not request.path|startswith:"/feed/profile/" %}
+<a class="btn btn-outline-primary" href="{% url 'feed:profile' profile.name %}" title="{{ 'Full profile'|etrans }}">{{ 'Profile'|etrans }}</a>
+{% endif %}
+{% if not request.GET.feed == 'news' %}
+<a class="btn btn-outline-primary" href="{% url 'feed:profile' profile.name %}?feed=news" title="{{ 'News, books, games and more'|etrans }}">{{ 'News'|etrans }}</a>
 {% endif %}
 </div>
 {% endif %}
