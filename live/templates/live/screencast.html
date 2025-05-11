@@ -214,10 +214,10 @@ const cancelVideoFrame = function(id) {
 async function startWebcamFn() {
   if(!localCamStream) {
   localCamStream = await navigator.mediaDevices.getUserMedia({
-	video: true,
+	video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
 	audio: { deviceId: { ideal: "communications" } },
 /*    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } }, 
-    audio: {echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %},},*/
+    audio: { echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %},},*/
   }).catch((error) => {
     console.log(error);
     $('#errormessage').removeClass('hide');
@@ -231,7 +231,7 @@ async function startWebcamFn() {
 async function startScreenShareFn() {
   if(!localScreenStream) {
   localScreenStream = await navigator.mediaDevices.getDisplayMedia({
-    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } }, 
+    video: { width: { ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
     audio: {echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %},},
   }).catch((error) => {
     console.log(error);
@@ -272,12 +272,13 @@ async function makeComposite() {
     canvasElement.setAttribute("height", `${screen.videoHeight}px`);
     canvasCtx.clearRect(0, 0, screen.videoWidth, screen.videoHeight);
     canvasCtx.drawImage(screen, 0, 0, screen.videoWidth, screen.videoHeight);
+    const scaleConst = (cam.videoWidth/screen.videoWidth * 1.0);
     canvasCtx.drawImage(
       cam,
-      Math.floor(screen.videoWidth - cam.videoWidth / 4),
-      Math.floor(screen.videoHeight - cam.videoHeight / 4),
-      Math.floor(cam.videoWidth / 4),
-      Math.floor(cam.videoHeight / 4)
+      Math.floor(screen.videoWidth - (cam.videoWidth / 4 * scaleConst)),
+      Math.floor(screen.videoHeight - (cam.videoHeight / 4 * scaleConst)),
+      Math.floor(cam.videoWidth / 4 * scaleConst),
+      Math.floor(cam.videoHeight / 4 * scaleConst)
     ); // this is just a rough calculation to offset the webcam stream to bottom left
     let imageData = canvasCtx.getImageData(
       0,
