@@ -218,10 +218,8 @@ const cancelVideoFrame = function(id) {
 async function startWebcamFn() {
   if(!localCamStream) {
   localCamStream = await navigator.mediaDevices.getUserMedia({
-        video: true,
+    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: { ideal: 320 },  frameRate: { ideal: 30 } },
         audio: { deviceId: { ideal: "communications" }, width: {ideal: 320 } },
-/*    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
-    audio: {echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %},},*/
   }).catch((error) => {
     console.log(error);
     $('#errormessage').removeClass('hide');
@@ -235,7 +233,7 @@ async function startWebcamFn() {
 async function startScreenShareFn() {
   if(!localScreenStream) {
   localScreenStream = await navigator.mediaDevices.getDisplayMedia({
-    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
+    video: { width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
     audio: {echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %},},
   }).catch((error) => {
     console.log(error);
@@ -273,6 +271,7 @@ logo.src = "{{ camera.user.vendor_profile.logo.url }}";
 async function makeComposite() {
   if (cam && screen) {
     canvasCtx.save();
+    canvasCtx.globalAlpha = 1;
     canvasElement.setAttribute("width", `${screen.videoWidth}px`);
     canvasElement.setAttribute("height", `${screen.videoHeight}px`);
     canvasCtx.clearRect(0, 0, screen.videoWidth, screen.videoHeight);
@@ -282,10 +281,10 @@ async function makeComposite() {
       cam,
       Math.floor(screen.videoWidth - (cam.videoWidth / 4 * scaleConst)),
       Math.floor(screen.videoHeight - (cam.videoHeight / 4 * scaleConst)),
-      Math.floor(cam.videoWidth / 4 * scaleConst),
+      Math.floor(cam.videoWidth / 4 * scaleConst),                                  
       Math.floor(cam.videoHeight / 4 * scaleConst),
     ); // this is just a rough calculation to offset the webcam stream to bottom left
-    {% if camera.embed_logo %}
+    {% if camera.embed_logo and camera.user.vendor_profile.logo %}
     const logoSize = parseInt(screen.videoWidth / 13);
     canvasCtx.drawImage(
         logo,
@@ -294,24 +293,26 @@ async function makeComposite() {
         logoSize,
         logoSize
     );
+    {% if camera.user.vendor_profile.video_intro_text %}
     currentTime = new Date().getTime()/1000;
     if(currentTime - recordingStartTime < 1) {
         canvasCtx.globalAlpha = (currentTime - recordingStartTime);
-        canvasCtx.font = new String(parseInt(screen.videoWidth/20)) + 'px VendorSpecified';
+        canvasCtx.font = new String(parseInt(screen.videoWidth/20)) + 'px {% if camera.user.vendor_profile.video_intro_font %}VendorSpecified{% else %}Arial{% endif %}';
         canvasCtx.fillStyle = "{{ camera.user.vendor_profile.video_intro_color }}";
         canvasCtx.fillText("{{ camera.user.vendor_profile.video_intro_text }}", parseInt(screen.videoWidth/13) + 20, screen.videoHeight - 19);
         canvasCtx.globalAlpha = 1;
     } else if(currentTime - recordingStartTime < 14) {
-        canvasCtx.font = new String(parseInt(screen.videoWidth/20)) + 'px VendorSpecified';
+        canvasCtx.font = new String(parseInt(screen.videoWidth/20)) + 'px {% if camera.user.vendor_profile.video_intro_font %}VendorSpecified{% else %}Arial{% endif %}';
         canvasCtx.fillStyle = "{{ camera.user.vendor_profile.video_intro_color }}";
         canvasCtx.fillText("{{ camera.user.vendor_profile.video_intro_text }}", parseInt(screen.videoWidth/13) + 20, screen.videoHeight - 19);
     } else if(currentTime - recordingStartTime < 15) {
         canvasCtx.globalAlpha = 15 - (currentTime - recordingStartTime);
-        canvasCtx.font = new String(parseInt(screen.videoWidth/20)) + 'px VendorSpecified';
+        canvasCtx.font = new String(parseInt(screen.videoWidth/20)) + 'px {% if camera.user.vendor_profile.video_intro_font %}VendorSpecified{% else %}Arial{% endif %}';
         canvasCtx.fillStyle = "{{ camera.user.vendor_profile.video_intro_color }}";
         canvasCtx.fillText("{{ camera.user.vendor_profile.video_intro_text }}", parseInt(screen.videoWidth/13) + 20, screen.videoHeight - 19);
         canvasCtx.globalAlpha = 1;
     }
+    {% endif %}
     {% endif %}
     let imageData = canvasCtx.getImageData(
       0,
@@ -370,7 +371,9 @@ async function mergeStreamsFn() {
   }
 }
 
+var recordingStartTime;
 async function startRecordingFn() {
+  recordingStartTime = new Date().getTime()/1000;
   live = true;
   mediaRecorder.start();
   console.log(mediaRecorder.state);
@@ -390,7 +393,6 @@ async function attachToDOM(id, stream) {
   videoElem.volume = 0;
   videoElem.setAttribute("playsinline", true);
   videoElem.srcObject = new MediaStream(stream.getTracks());
-  videoElem.addEventListener("pause", (event) => {event.target.play();});
   videoElem.play();
   mediaWrapperDiv.appendChild(videoElem);
   return videoElem;
