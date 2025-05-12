@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block head %}
 <style>
+<link rel="preload" as="image" href="{{ camera.user.vendor_profile.logo.url }}">
 video {
     width: 100%;
     pointer-events: none;
 }
+{% if camera.user.vendor_profile.video_intro_font %}
+@font-face { font-family: 'VendorSpecified'; src: url('{{ camera.user.vendor_profile.video_intro_font.url }}'); }
+{% endif %}
 </style>
 {% endblock %}
 {% block content %}
@@ -77,77 +81,77 @@ var videoFrames = {};
 var retryCount = {};
 var mediaSocket;
 function openMediaSocket() {
-	{% if use_websocket %}
-	mediaSocket = new WebSocket("wss://" + window.location.hostname + '/ws/live/camera/{{ camera.user.profile.name }}/{{ camera.name }}/?key={% if request.GET.key %}{{ request.GET.key }}{% else %}{{ camera.key }}{% endif %}');
-	mediaSocket.addEventListener("open", (event) => {
-		console.log('Media socket open.');
-	});
-	mediaSocket.addEventListener("close", (event) => {
-		console.log('Socket closed.');
-		setTimeout(function() {
-			openMediaSocket();
-		}, {{ reload_time }});
-	});
-	mediaSocket.addEventListener("message", (event) => {
+        {% if use_websocket %}
+        mediaSocket = new WebSocket((window.location.protocol == 'https:' ? "wss://" : "ws://") + window.location.hostname + '/ws/live/camera/{{ camera.user.profile.name }}/{{ camera.name }}/?nologo=t&key={% if request.GET.key %}{{ request.GET.key }}{% else %}{{ camera.key }}{% endif %}');
+        mediaSocket.addEventListener("open", (event) => {
+                console.log('Media socket open.');
+        });
+        mediaSocket.addEventListener("close", (event) => {
+                console.log('Socket closed.');
+                setTimeout(function() {
+                        openMediaSocket();
+                }, {{ reload_time }});
+        });
+        mediaSocket.addEventListener("message", (event) => {
         return;
-		if(unconfirmedFrames.includes(event.data)) {
-			var index = unconfirmedFrames.indexOf(event.data);
-			console.log('Frame posted');
-			unconfirmedFrames.splice(index, 1);
-			videoFrames.splice(index, 1);
-			videoFrames[event.data] = null;
-		} else {
-			if(retryCount[event.data] < 5) {
-				/*mediaSocket.send(videoFrames[event.data]);*/
-				console.log('Sending capture again');
-			} else {
-				console.log('Forfeiting capture');
-				videoFrames[event.data] = null;
-				return;
-			}
-			if(!(event.data in retryCount)) retryCount[event.data] = 0;
-			retryCount[event.data] = retryCount[event.data] + 1;
-		}
-	});
-	{% endif %}
+                if(unconfirmedFrames.includes(event.data)) {
+                        var index = unconfirmedFrames.indexOf(event.data);
+                        console.log('Frame posted');
+                        unconfirmedFrames.splice(index, 1);
+                        videoFrames.splice(index, 1);
+                        videoFrames[event.data] = null;
+                } else {
+                        if(retryCount[event.data] < 5) {
+                                /*mediaSocket.send(videoFrames[event.data]);*/
+                                console.log('Sending capture again');
+                        } else {
+                                console.log('Forfeiting capture');
+                                videoFrames[event.data] = null;
+                                return;
+                        }
+                        if(!(event.data in retryCount)) retryCount[event.data] = 0;
+                        retryCount[event.data] = retryCount[event.data] + 1;
+                }
+        });
+        {% endif %}
 }
 function openRemoteSocket() {
-	var remoteSocket = new WebSocket("wss://" + window.location.hostname + '/ws/live/remote/{{ camera.user.profile.name }}/{{ camera.name }}/');
-	remoteSocket.addEventListener("open", (event) => {
-	    console.log('Socket open.');
-	});
-	remoteSocket.addEventListener("close", (event) => {
-	    console.log('Socket closed.');
-	    setTimeout(function() {
-    		openRemoteSocket();
-	    }, {{ reload_time }});
-	});
-	remoteSocket.addEventListener("message", (event) => {
-	    var instructions = event.data.split(',');
-	    if(instructions[0] == 'y' && mediaRecorder.state != 'recording') {
-	        live = true;
-	        mediaRecorder.start();
+        var remoteSocket = new WebSocket((window.location.protocol == 'https:' ? "wss://" : "ws://") + window.location.hostname + '/ws/live/remote/{{ camera.user.profile.name }}/{{ camera.name }}/');
+        remoteSocket.addEventListener("open", (event) => {
+            console.log('Socket open.');
+        });
+        remoteSocket.addEventListener("close", (event) => {
+            console.log('Socket closed.');
+            setTimeout(function() {
+                openRemoteSocket();
+            }, {{ reload_time }});
+        });
+        remoteSocket.addEventListener("message", (event) => {
+            var instructions = event.data.split(',');
+            if(instructions[0] == 'y' && mediaRecorder.state != 'recording') {
+                live = true;
+                mediaRecorder.start();
             liveButton.innerHTML = '<i class="bi bi-toggle-on"></i>';
-	    } else if(instructions[0] == 'n' && mediaRecorder.state == 'recording') {
-	        live = false;
-	        mediaRecorder.stop();
+            } else if(instructions[0] == 'n' && mediaRecorder.state == 'recording') {
+                live = false;
+                mediaRecorder.stop();
                 liveButton.innerHTML = '<i class="bi bi-toggle-off"></i>';
-	    }
-	    if(instructions[1] == 'y') {
-		    recording = true;
-	        recordButton.innerHTML = '<i class="bi bi-toggle-on"></i>';
-	    } else {
-    		recording = false;
-	        recordButton.innerHTML = '<i class="bi bi-toggle-off"></i>';
-	    }
-	    if(instructions[2] == 'y') {
-    		muted = true;
-	        muteButton.innerHTML = '<i class="bi bi-mic-fill"></i>';
-	    } else {
-	    	muted = false;
-	        muteButton.innerHTML = '<i class="bi bi-mic-mute-fill"></i>';
-	    }
-	});
+            }
+            if(instructions[1] == 'y') {
+                    recording = true;
+                recordButton.innerHTML = '<i class="bi bi-toggle-on"></i>';
+            } else {
+                recording = false;
+                recordButton.innerHTML = '<i class="bi bi-toggle-off"></i>';
+            }
+            if(instructions[2] == 'y') {
+                muted = true;
+                muteButton.innerHTML = '<i class="bi bi-mic-fill"></i>';
+            } else {
+                muted = false;
+                muteButton.innerHTML = '<i class="bi bi-mic-mute-fill"></i>';
+            }
+        });
 }
 openMediaSocket();
 openRemoteSocket();
@@ -165,7 +169,7 @@ var data;
 var mediaChunks = [];
 var captureInterval;
 function capture(){
-	mediaRecorder.stop();
+        mediaRecorder.stop();
 }
 const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
 let localCamStream,
@@ -214,10 +218,10 @@ const cancelVideoFrame = function(id) {
 async function startWebcamFn() {
   if(!localCamStream) {
   localCamStream = await navigator.mediaDevices.getUserMedia({
-	video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
-	audio: { deviceId: { ideal: "communications" } },
-/*    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } }, 
-    audio: { echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %},},*/
+        video: true,
+        audio: { deviceId: { ideal: "communications" }, width: {ideal: 320 } },
+/*    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
+    audio: {echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %},},*/
   }).catch((error) => {
     console.log(error);
     $('#errormessage').removeClass('hide');
@@ -231,7 +235,7 @@ async function startWebcamFn() {
 async function startScreenShareFn() {
   if(!localScreenStream) {
   localScreenStream = await navigator.mediaDevices.getDisplayMedia({
-    video: { width: { ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
+    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
     audio: {echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %},},
   }).catch((error) => {
     console.log(error);
@@ -264,7 +268,8 @@ async function stopAllStreamsFn() {
   mediaWrapperDiv.innerHTML = "";
   document.getElementById("pipOverlayStream").style.border = "none";
 }
-
+var logo = new Image();
+logo.src = "{{ camera.user.vendor_profile.logo.url }}";
 async function makeComposite() {
   if (cam && screen) {
     canvasCtx.save();
@@ -272,14 +277,42 @@ async function makeComposite() {
     canvasElement.setAttribute("height", `${screen.videoHeight}px`);
     canvasCtx.clearRect(0, 0, screen.videoWidth, screen.videoHeight);
     canvasCtx.drawImage(screen, 0, 0, screen.videoWidth, screen.videoHeight);
-    const scaleConst = (cam.videoWidth/screen.videoWidth * 1.0);
+    const scaleConst = (screen.videoWidth/cam.videoWidth * 1.0);
     canvasCtx.drawImage(
       cam,
       Math.floor(screen.videoWidth - (cam.videoWidth / 4 * scaleConst)),
       Math.floor(screen.videoHeight - (cam.videoHeight / 4 * scaleConst)),
       Math.floor(cam.videoWidth / 4 * scaleConst),
-      Math.floor(cam.videoHeight / 4 * scaleConst)
+      Math.floor(cam.videoHeight / 4 * scaleConst),
     ); // this is just a rough calculation to offset the webcam stream to bottom left
+    {% if camera.embed_logo %}
+    const logoSize = parseInt(screen.videoWidth / 13);
+    canvasCtx.drawImage(
+        logo,
+        10,
+        screen.videoHeight - 10 - logoSize,
+        logoSize,
+        logoSize
+    );
+    currentTime = new Date().getTime()/1000;
+    if(currentTime - recordingStartTime < 1) {
+        canvasCtx.globalAlpha = (currentTime - recordingStartTime);
+        canvasCtx.font = new String(parseInt(screen.videoWidth/20)) + 'px VendorSpecified';
+        canvasCtx.fillStyle = "{{ camera.user.vendor_profile.video_intro_color }}";
+        canvasCtx.fillText("{{ camera.user.vendor_profile.video_intro_text }}", parseInt(screen.videoWidth/13) + 20, screen.videoHeight - 19);
+        canvasCtx.globalAlpha = 1;
+    } else if(currentTime - recordingStartTime < 14) {
+        canvasCtx.font = new String(parseInt(screen.videoWidth/20)) + 'px VendorSpecified';
+        canvasCtx.fillStyle = "{{ camera.user.vendor_profile.video_intro_color }}";
+        canvasCtx.fillText("{{ camera.user.vendor_profile.video_intro_text }}", parseInt(screen.videoWidth/13) + 20, screen.videoHeight - 19);
+    } else if(currentTime - recordingStartTime < 15) {
+        canvasCtx.globalAlpha = 15 - (currentTime - recordingStartTime);
+        canvasCtx.font = new String(parseInt(screen.videoWidth/20)) + 'px VendorSpecified';
+        canvasCtx.fillStyle = "{{ camera.user.vendor_profile.video_intro_color }}";
+        canvasCtx.fillText("{{ camera.user.vendor_profile.video_intro_text }}", parseInt(screen.videoWidth/13) + 20, screen.videoHeight - 19);
+        canvasCtx.globalAlpha = 1;
+    }
+    {% endif %}
     let imageData = canvasCtx.getImageData(
       0,
       0,
@@ -357,6 +390,7 @@ async function attachToDOM(id, stream) {
   videoElem.volume = 0;
   videoElem.setAttribute("playsinline", true);
   videoElem.srcObject = new MediaStream(stream.getTracks());
+  videoElem.addEventListener("pause", (event) => {event.target.play();});
   videoElem.play();
   mediaWrapperDiv.appendChild(videoElem);
   return videoElem;
@@ -372,117 +406,117 @@ function handleDataAvailable(event) {
 }
 
 function download() {
-    	if(live) { mediaRecorder.start(); }
+        if(live) { mediaRecorder.start(); }
         if(live && mediaSocket && mediaSocket.readyState === WebSocket.OPEN) {
             document.getElementById("rec-status").innerHTML = '<i style="font-size: 20px;" class="bi bi-circle-fill color-red"></i>';
         } else {
             document.getElementById("rec-status").innerHTML = '<i style="font-size: 20px;" class="bi bi-circle"></i>';
         }
         var file = new Blob(recordedChunks, {'type': 'video/webm'});
-	    recordedChunks = [];
+            recordedChunks = [];
         var formdata = new FormData(form);
-		var utc_timestamp = String(new Date().toISOString());
+                var utc_timestamp = String(new Date().toISOString());
         formdata.append('confirmation_id', String(Math.floor(Math.random() * 1000000000)));
         formdata.append('timestamp', utc_timestamp);
-        var id = formdata.get('confirmation_id');	   
+        var id = formdata.get('confirmation_id');
         {% if use_websocket %}
         {% if should_compress_live %}
         var zip = new JSZip();
         zip.file("frame.webm", new File([file], 'frame.webm'));
-        zip.generateAsync({type:"blob"}).then(function (file) { 
-		var zipfile = new File([file], 'frame.zip');
-		var reader = new FileReader();
-    	reader.readAsDataURL(zipfile);
-	    reader.onload = function () {
-    		formdata.append("frame", reader.result);
-            	var data = new URLSearchParams(formdata).toString();
-            	if(mediaSocket.readyState == WebSocket.OPEN) mediaSocket.send(data);
-			};
-			reader.onerror = function (error) {
-				console.log('Error: ', error);
-			};
-		});
+        zip.generateAsync({type:"blob"}).then(function (file) {
+                var zipfile = new File([file], 'frame.zip');
+                var reader = new FileReader();
+        reader.readAsDataURL(zipfile);
+            reader.onload = function () {
+                formdata.append("frame", reader.result);
+                var data = new URLSearchParams(formdata).toString();
+                if(mediaSocket.readyState == WebSocket.OPEN) mediaSocket.send(data);
+                        };
+                        reader.onerror = function (error) {
+                                console.log('Error: ', error);
+                        };
+                });
         {% else %}
-		var reader = new FileReader();
-		reader.readAsDataURL(file);
-		reader.onload = function () {
-			formdata.append("frame", reader.result);
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                        formdata.append("frame", reader.result);
             var data = new URLSearchParams(formdata).toString();
-        	if(mediaSocket.readyState == WebSocket.OPEN) mediaSocket.send(data);
-		};
-		reader.onerror = function (error) {
-			console.log('Error: ', error);
-		};
+                if(mediaSocket.readyState == WebSocket.OPEN) mediaSocket.send(data);
+                };
+                reader.onerror = function (error) {
+                        console.log('Error: ', error);
+                };
         {% endif %}
         {% else %}
-		{% if should_compress_live %}
-	    var zip = new JSZip();
-	    zip.file("frame.webm", new File([file], 'frame.webm'));
-	    zip.generateAsync({type:"blob"}).then(function (file) { // 1) generate the zip file
-	        formdata.append('frame', new File([file], 'frame.zip'));
-	        $.ajax({
-	           url: window.location.href,
-	           type: "POST",
-	           data: formdata,
-	           processData: false,
-    		   contentType: false,
-	    	   timeout: {{ request_timeout }},
-        	   tryCount: 0,
-	           retryLimit: 5,
-	           error: (xhr, textStatus, errorThrown) => {
-               		this.tryCount++;
-               		if(this.tryCount >= this.retryLimit) return;
-               		$.ajax(this);
-    		   },
-    		   success: (data) => {
-    			$.ajax({
-    				url: '/live/confirm/' + id + '/',
-    				method: 'POST',
-    				success: function(data) {
-    					if(data != 'y') {
-    						$.ajax(this);
-    					}
-    				},
-    			});
-    		   },
-	        }).done(function(respond){
-    			console.log(respond);
-	        });
-	    }, function (err) {
-		    console.log("Error zipping file");
-	    });
-	    {% else %}
-	    formdata.append('frame', new File([file], 'frame.webm'));
-		$.ajax({
-	           url: window.location.href,
-	           type: "POST",
-	           data: formdata,
-	           processData: false,
-	           contentType: false,
-		       timeout: {{ request_timeout }},
-        	   tryCount: 0,
-	           retryLimit: 5,
-	           error: (xhr, textStatus, errorThrown) => {
-    		        console.log('Error uploading');
-               		this.tryCount++;
-               		if(this.tryCount >= this.retryLimit) return;
-               		$.ajax(this);
-    		   },
-	    	   success: (data) => {
-		       $.ajax({
-			   url: '/live/confirm/' + id + '/',
-				method: 'POST',
-				success: function(data) {
-					if(data != 'y') {
-						$.ajax(this);
-					}
-				},
-			});
-		   },
-	        }).done(function(respond){
-			console.log(respond);
-	        });
-      	    {% endif %}
+                {% if should_compress_live %}
+            var zip = new JSZip();
+            zip.file("frame.webm", new File([file], 'frame.webm'));
+            zip.generateAsync({type:"blob"}).then(function (file) { // 1) generate the zip file
+                formdata.append('frame', new File([file], 'frame.zip'));
+                $.ajax({
+                   url: window.location.href,
+                   type: "POST",
+                   data: formdata,
+                   processData: false,
+                   contentType: false,
+                   timeout: {{ request_timeout }},
+                   tryCount: 0,
+                   retryLimit: 5,
+                   error: (xhr, textStatus, errorThrown) => {
+                        this.tryCount++;
+                        if(this.tryCount >= this.retryLimit) return;
+                        $.ajax(this);
+                   },
+                   success: (data) => {
+                        $.ajax({
+                                url: '/live/confirm/' + id + '/',
+                                method: 'POST',
+                                success: function(data) {
+                                        if(data != 'y') {
+                                                $.ajax(this);
+                                        }
+                                },
+                        });
+                   },
+                }).done(function(respond){
+                        console.log(respond);
+                });
+            }, function (err) {
+                    console.log("Error zipping file");
+            });
+            {% else %}
+            formdata.append('frame', new File([file], 'frame.webm'));
+                $.ajax({
+                   url: window.location.href,
+                   type: "POST",
+                   data: formdata,
+                   processData: false,
+                   contentType: false,
+                       timeout: {{ request_timeout }},
+                   tryCount: 0,
+                   retryLimit: 5,
+                   error: (xhr, textStatus, errorThrown) => {
+                        console.log('Error uploading');
+                        this.tryCount++;
+                        if(this.tryCount >= this.retryLimit) return;
+                        $.ajax(this);
+                   },
+                   success: (data) => {
+                       $.ajax({
+                           url: '/live/confirm/' + id + '/',
+                                method: 'POST',
+                                success: function(data) {
+                                        if(data != 'y') {
+                                                $.ajax(this);
+                                        }
+                                },
+                        });
+                   },
+                }).done(function(respond){
+                        console.log(respond);
+                });
+            {% endif %}
           {% endif %}
 }
 
@@ -505,4 +539,3 @@ startRecordingBtn.addEventListener("click", startRecordingFn);
 stopRecordingBtn.addEventListener("click", stopRecordingFn);
 {% include 'live/remote.js' %}
 {% endblock %}
-
