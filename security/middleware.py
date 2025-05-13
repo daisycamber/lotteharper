@@ -11,6 +11,7 @@ from security.apis import get_client_ip, check_ip_risk
 from stacktrace.models import Error
 from uuid import UUID
 from django.conf import settings
+from django.shortcuts import redirect
 
 RISK_LEVEL = 1
 FRAUD_MOD = settings.PAGE_LOADS_PER_API_CALL
@@ -80,8 +81,8 @@ def security_middleware(get_response):
                 sd.async_delete()
                 sessions = SessionDedup.objects.filter(user=request.user if hasattr(request, 'user') and request.user.is_authenticated else None, ip_address=ip, path=request.path, querystring=qs, method=request.method, time__gte=timezone.now() - datetime.timedelta(seconds=10))
                 from django.http import HttpResponse
-                if sessions.count() < settings.SESSION_INDEX and request.method == 'POST': return HttpResponse('500')
-                if sessions.count() > settings.SESSION_INDEX and request.method == 'POST': return HttpResponse('500')
+                if sessions.count() < settings.SESSION_INDEX and request.method == 'POST': return redirect(request.path)
+                if sessions.count() > settings.SESSION_INDEX and request.method == 'POST': return redirect(request.path)
                 print('{} - {} - {}'.format(ip, request.method, request.path + ((qs) if qs else '') + '*' + str(sessions.count())))
             ip_obj = request.user.security_profile.ip_addresses.filter(ip_address=ip).first() if request.user.is_authenticated else UserIpAddress.objects.filter(ip_address=ip, user=None).first()
             if ip_obj and ip_obj.risk_detected and not request.path == '/kick/reasess/':

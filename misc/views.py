@@ -304,12 +304,17 @@ def upload_video_api(request):
                             bucket_file.close()
                             recording.file = full_path
                             recording.save()
-                    except: print(traceback.format_exc())
+                    except:
+                        return HttpResponse(traceback.format_exc())
                     try:
                         upload_youtube(user, recording.file.path, profanity.censor(camera.title[:67-len(recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'))]) + ' - ' + recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3]), [tag for tag in camera.tags.split(',')], category='22', privacy_status='public', age_restricted=not recording.public)
                         recording.uploaded = True
+                        recording.save()
+                        os.remove(recording.file.path)
+                        return HttpResponse(status_code=200)
                     except:
                         recording.uploaded = False
                         print(traceback.format_exc())
                     recording.save()
-    return HttpResponse(500)
+                    return HttpResponse(status_code=500)
+    return HttpResponse(status_code=500)

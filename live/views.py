@@ -258,6 +258,8 @@ def remote(request):
     from django.utils import timezone
     from django.http import HttpResponse
     cameras = VideoCamera.objects.filter(user=request.user, name=request.GET.get('camera'))
+    if cameras.count() < 1 and request.user.is_authenticated and request.user.profile.vendor:
+        cameras = VideoCamera.objects.filter(user=request.user, name=request.GET.get('camera'))
     camera = cameras.first()
     if request.method == 'POST':
         if not camera.updated > timezone.now() - datetime.timedelta(seconds=LIVE_UPDATE_SECONDS):
@@ -273,13 +275,15 @@ def mute(request):
     from django.utils import timezone
     import datetime
     cameras = VideoCamera.objects.filter(user__profile__name=request.GET.get('user', None), name=request.GET.get('camera'), key=request.GET.get('key', ''))
+    if cameras.count() < 1 and request.user.is_authenticated and request.user.profile.vendor:
+        cameras = VideoCamera.objects.filter(user=request.user, name=request.GET.get('camera'))
     camera = cameras.first()
     if request.method == 'POST':
         if not camera.updated > timezone.now() - datetime.timedelta(seconds=LIVE_UPDATE_SECONDS):
             camera.muted = not camera.muted
             camera.updated = timezone.now()
             camera.save()
-    return HttpResponse('<i class="bi bi-mic-fill"></i>' if camera.muted else '<i class="bi bi-mic-mute-fill"></i>')
+    return HttpResponse('<i class="bi bi-mic-fill"></i>' if not camera.muted else '<i class="bi bi-mic-mute-fill"></i>')
 
 @csrf_exempt
 @login_required
@@ -290,6 +294,8 @@ def record_remote(request):
     import datetime
     from django.utils import timezone
     cameras = VideoCamera.objects.filter(user=request.user, name=request.GET.get('camera'))
+    if cameras.count() < 1 and request.user.is_authenticated and request.user.profile.vendor:
+        cameras = VideoCamera.objects.filter(user=request.user, name=request.GET.get('camera'))
     camera = cameras.first()
     if request.method == 'POST':
         if not camera.updated > timezone.now() - datetime.timedelta(seconds=LIVE_UPDATE_SECONDS):
@@ -529,3 +535,4 @@ def last_frame_video(request, username):
     profile = get_object_or_404(Profile, name=username, identity_verified=True, vendor=True)
     cameras = VideoCamera.objects.filter(user=profile.user, name=request.GET.get('camera'))
     return render(request, 'live/lastframe.html', {'profile': profile, 'camera': cameras.first(), 'frame': camera.frames.all().last()})
+

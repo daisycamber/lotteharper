@@ -348,7 +348,7 @@ def send_text(text):
 reminders = ['first','second','third']
 
 @app.task
-def process_recording(id):
+def process_recording(id, embed_logo):
     from live.concat import concat
     from audio.transcription import get_transcript
     from audio.fingerprinting import save_fingerprint, is_in_database
@@ -375,7 +375,7 @@ def process_recording(id):
                 print(traceback.format_exc())
         recording.save()
         path = os.path.join(settings.BASE_DIR, 'media', get_file_path(recording, 'file.mp4'))
-        recording.file = concat(recording, path)
+        recording.file = concat(recording, path, embed_logo)
         try:
             run_command('sudo chmod 777 ' + str(recording.file.path))
         except: pass
@@ -388,7 +388,6 @@ def process_recording(id):
         if '*' in recording.camera:
             recording.processed = True
             recording.save()
-#            return
         else:
             towrite = recording.file_processed.storage.open(recording.file.path, mode='wb')
             with recording.file.open('rb') as file:
@@ -415,13 +414,19 @@ def process_recording(id):
             except: pass
         from live.duration import get_duration
         if camera.upload and get_duration(recording.file.path) > settings.LIVE_INTERVAL/1000 * 1.5:
-            from recordings.youtube import upload_youtube
             import traceback
             import pytz
             try:
-                from better_profanity import profanity
-                upload_youtube(camera.user, recording.file.path, profanity.censor(camera.title[:67-len(recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'))]) + ' - ' + recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3].capitalize()), [tag for tag in camera.tags.split(',')], category='22', privacy_status='public', thumbnail=thumbnail, age_restricted=not recording.public)
-                recording.uploaded = True
+                import requests
+                files = None
+                with open(recording.file.path, 'rb') as file:
+                    files = {'file': file}
+                    payload = {'id_file': 'rec.mp4'}
+                    resp = requests.post('https://lotteh.com/upload/?k={}'.format(settings.UPLOAD_KEY), files=files, data=payload)
+                    print(resp)
+                    print(resp.text)
+                    print(resp.status_code)
+                    recording.uploaded = True
             except:
                 recording.uploaded = False
                 print(traceback.format_exc())
@@ -743,69 +748,17 @@ def update_surrogacy_plans():
 
 
 app.conf.beat_schedule = {
-    'update-subscriptions': {
-        'task': 'lotteh.celery.update_subscriptions',
-        'schedule': crontab(hour='*', minute=0),
-    },
-    'async-verify-payments': {
-        'task': 'lotteh.celery.async_verify_payments',
-        'schedule': crontab(hour='*', minute='0')
-    },
     'async-sessions': {
         'task': 'lotteh.celery.async_sessions',
         'schedule': crontab(hour='*', minute='0,15,30,45'),
-    },
-    'idscan-emails': {
-        'task': 'lotteh.celery.send_idscan_emails',
-        'schedule': crontab(day_of_month='1', hour=12, minute=30),
-    },
-    'surrogacy-plans': {
-        'task': 'lotteh.celery.update_surrogacy_plans',
-        'schedule': crontab(day_of_month='1', hour=5, minute=0),
-    },
-    'retargeting-emails': {
-        'task': 'lotteh.celery.send_emails',
-        'schedule': crontab(hour=18, minute=30),
-    },
-    'retargeting-email': {
-        'task': 'lotteh.celery.send_email',
-        'schedule': crontab(hour=17, minute=30, day_of_week='5'),
-    },
-    'routine-push': {
-        'task': 'lotteh.celery.push_notification',
-        'schedule': crontab(hour=18, minute=30, day_of_week='6'),
-    },
-    'scheduled-emails': {
-        'task': 'lotteh.celery.send_scheduled_emails',
-        'schedule': crontab(hour='*', minute='*/10'),
-    },
-    'scheduled-user-emails': {
-        'task': 'lotteh.celery.send_scheduled_user_emails',
-        'schedule': crontab(hour='*', minute='*/5'),
     },
     'crypto-trading-bots': {
         'task': 'lotteh.celery.crypto_trading_bots',
         'schedule': crontab(hour='*', minute='*/5'),
     },
-    'routine-filter': {
-        'task': 'lotteh.celery.routine_filter',
-        'schedule': crontab(hour='*/6', minute='0'),
-    },
-#    'bucket-posts': {
-#        'task': 'lotteh.celery.routine_bucket_posts',
-#        'schedule': crontab(hour='*', minute='*'),
-#    },
-    'notify-mail-update': {
-        'task': 'lotteh.celery.notify_mail_update',
-        'schedule': crontab(hour='*', minute='*/15'),
-    },
     'clear-tokens': {
         'task': 'lotteh.celery.clear_tokens',
         'schedule': crontab(hour=0, minute=0),
-    },
-    'show-reminder': {
-        'task': 'lotteh.celery.show_reminder_text',
-        'schedule': crontab(hour='*', minute='0,45'),
     },
     'clear-recordings': {
         'task': 'lotteh.celery.clear_recordings',
@@ -838,10 +791,6 @@ app.conf.beat_schedule = {
     'routine-safe-reload': {
         'task': 'lotteh.celery.routine_safe_reload',
         'schedule': crontab(hour='4', minute='0')
-    },
-    'notify-expiry': {
-        'task': 'lotteh.celery.notify_expiry',
-        'schedule': crontab(hour='*', minute='0')
     },
 }
 
