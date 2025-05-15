@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block head %}
-{% if request.user.is_authenticated and request.user.profile.identity_verified %}
 {% if payment_processor == 'helcim' %}
 <script type="text/javascript" src="https://secure.helcim.app/helcim-pay/services/start.js"></script>
 {% elif payment_processor == 'stripe' %}
 <script src="https://js.stripe.com/v3/"></script>
-{% endif %}
 {% endif %}
 {% endblock %}
 {% block content %}
@@ -44,10 +42,15 @@
 {{ form|crispy }}
 <button type="submit" class="btn btn-lg btn-outline-success" title="{{ 'Submit'|etrans }}">{{ 'Card & Bank'|etrans }}</button>
 </form>
+<i>{{ 'Or, if you prefer, continue with crypto,'|etrans }} </i>
+<button onclick="window.location.href='{% url 'payments:surrogacy-crypto' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Check out securely with cryptocurrency such as Bitcoin, Ethereum, and many other supported options.'|etrans }}">{{ 'Cryptocurrency'|etrans }}</button>
+{% elif request.user.is_authenticated %}
+<button onclick="window.location.href='{% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Verify to submit'|etrans }}">{{ 'Verify your Identity'|etrans }}</button>
 {% else %}
-<button onclick="window.location.href='{% if request.user_signup %}/verify/?next=/surrogacy/checkout/{% else %}/accounts/register/{% endif %}';" class="btn btn-lg btn-outline-success" title="{{ 'Submit'|etrans }}">{{ 'Card & Bank'|etrans }}</a>
+<button onclick="window.location.href='{% url 'users:login' %}?next={% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Login'|etrans }}">{{ 'Log in'|etrans }}</button>
+<i> {{ 'Or'|etrans }} </i>
+<button onclick="window.location.href='{% url 'users:login' %}?next={% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Verify to submit'|etrans }}">{{ 'Create Account'|etrans }}</button>
 {% endif %}
-<button onclick="{% if request.user.is_authenticated and request.user.profile.identity_verified %}window.location.href='{% url 'payments:surrogacy-crypto' vendor.profile.name %}';{% else %}window.location.href='{% if request.user_signup %}/verify/?next=/surrogacy/checkout/{% else %}/accounts/register/{% endif %}'{% endif %};" class="btn btn-lg btn-outline-success" title="{{ 'Check out securely with cryptocurrency such as Bitcoin, Ethereum, and many other supported options.'|etrans }}"><p>{{ 'Cryptocurrency'|etrans }}</p></button>
 </div>
 </div>
 </div>

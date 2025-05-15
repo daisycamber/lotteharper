@@ -970,3 +970,7 @@ def blendbright(color):
 def blenddark(color):
     from django.conf import settings
     return get_lightness(color) < get_lightness(settings.BACKGROUND_COLOR_DARK) + 0.3
+
+@register.filter('lengthmin')
+def lengthmin(input):
+    return len(input) - 1
