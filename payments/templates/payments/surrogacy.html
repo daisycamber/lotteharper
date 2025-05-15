@@ -49,7 +49,7 @@
 {% else %}
 <button onclick="window.location.href='{% url 'users:login' %}?next={% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Login'|etrans }}">{{ 'Log in'|etrans }}</button>
 <i> {{ 'Or'|etrans }} </i>
-<button onclick="window.location.href='{% url 'users:login' %}?next={% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Verify to submit'|etrans }}">{{ 'Create Account'|etrans }}</button>
+<button onclick="window.location.href='{% url 'users:register' %}?next={% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Verify to submit'|etrans }}">{{ 'Create Account'|etrans }}</button>
 {% endif %}
 </div>
 </div>
