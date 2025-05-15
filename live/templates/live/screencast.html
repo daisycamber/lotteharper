@@ -221,7 +221,7 @@ const cancelVideoFrame = function(id) {
 async function startWebcamFn() {
   if(!localCamStream) {
   localCamStream = await navigator.mediaDevices.getUserMedia({
-    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: { ideal: 320 },  frameRate: { ideal: 15 } },
+    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: { ideal: 320 },  frameRate: { ideal: 30 } },
         audio: { deviceId: { ideal: "communications" } },
   }).catch((error) => {
     console.log(error);
@@ -236,7 +236,7 @@ async function startWebcamFn() {
 async function startScreenShareFn() {
   if(!localScreenStream) {
   localScreenStream = await navigator.mediaDevices.getDisplayMedia({
-    video: { width: {ideal: {{ camera.width }} },  frameRate: { ideal: 15 } },
+    video: { width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
     audio: {echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %},},
   }).catch((error) => {
     console.log(error);

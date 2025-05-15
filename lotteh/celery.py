@@ -203,8 +203,8 @@ def process_live(camera_id, frame_id):
         with zipfile.ZipFile(frame.frame.path, 'r') as zip_ref:
             path = os.path.join(settings.BASE_DIR, '/temp/', str(uuid.uuid4()))
             zip_ref.extractall(path)
-            file = os.path.join(path, 'frame.webm')
-            new_path = os.path.join(settings.MEDIA_ROOT, get_file_path(frame, 'frame.webm'))
+            file = os.path.join(path, 'frame.' + camera.mimetype.split(';')[0])
+            new_path = os.path.join(settings.MEDIA_ROOT, get_file_path(frame, 'frame.' + camera.mimetype.split(';')[0]))
             shutil.copy(file, new_path)
             os.remove(path)
             os.remove(frame.frame.path)
@@ -218,7 +218,7 @@ def process_live(camera_id, frame_id):
         shutil.copy(frame.still.path, path)
         camera.still = path
         camera.save()
-    if True: #not camera.default:
+    if camera.mimetype.split(';')[0] != 'mp4': #not camera.default:
         path = os.path.join(settings.MEDIA_ROOT, get_file_path(frame, 'frame.mp4'))
         run_command('ffmpeg -i {} -crf 0 -c:v libx264 {}'.format(frame.frame.path, path))
         try:
@@ -418,6 +418,7 @@ def process_recording(id, embed_logo):
             import pytz
             try:
                 from better_profanity import profanity
+                from recordings.youtube import upload_youtube
                 upload_youtube(camera.user, recording.file.path, profanity.censor(camera.title[:67-len(recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'))]) + ' - ' + recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3].capitalize()), [tag for tag in camera.tags.split(',')], category='22', privacy_status=camera.privacy_status, thumbnail=thumbnail, age_restricted=not recording.public)
                 recording.uploaded = True
  #               import requests
@@ -445,10 +446,13 @@ def process_recording(id, embed_logo):
 
 @app.task
 def process_recordings():
-    from live.models import VideoRecording
-    for recording in VideoRecording.objects.filter(processed=False).order_by('-last_frame'):
+    from live.models import VideoRecording, VideoCamera
+    import datetime
+    from django.utils import timezone
+    for recording in VideoRecording.objects.filter(processed=False, last_frame__lte=timezone.now() - datetime.timedelta(seconds=60)).order_by('-last_frame'):
+        camera = VideoCamera.objects.filter(user=recording.user, name=recording.camera).order_by('-last_frame').first()
         try:
-            process_recording(recording.id)
+            process_recording(recording.id, camera.embed_logo)
         except:
             import traceback
             print(traceback.format_exc())
