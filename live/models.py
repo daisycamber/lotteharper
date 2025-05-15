@@ -208,7 +208,6 @@ class VideoCamera(models.Model):
     name = models.CharField(default=DEFAULT_CAMERA_NAME, null=True, blank=True, max_length=100)
     frame = models.FileField(upload_to=get_file_path, null=True, blank=True)
     frames = models.ManyToManyField(VideoFrame, blank=True, related_name='camera')
-    stream = models.FileField(upload_to=get_file_path, default=get_stream_path, null=True, blank=True)
     still = models.ImageField(upload_to=get_file_path, null=True, blank=True)
     width = models.CharField(max_length=10, default="1920")
     last_frame = models.DateTimeField(default=timezone.now)
@@ -223,13 +222,17 @@ class VideoCamera(models.Model):
     frame_count = models.IntegerField(default=0)
     confirmation_id = models.TextField(default="", null=True, blank=True)
     mime = models.CharField(max_length=10, default="mp4")
+    mimetype = models.CharField(max_length=100, default='mp4; codecs="avc1.42E01E, mp4a.40.2"')
     title = models.CharField(max_length=200, default='{}'.format(settings.SITE_NAME))
     description = models.CharField(max_length=1000, default="{} is live at {}".format(settings.SITE_NAME, settings.DOMAIN))
     tags = models.CharField(max_length=500, default="technology,software,web development,machine learning,artificial intelligence,beauty,fashion,makeup,model,celebrity")
+    privacy_status = models.CharField(max_length=30, default="public")
+    embed_logo = models.BooleanField(default=True)
     adjust_pitch = models.BooleanField(default=False)
     animate_video = models.BooleanField(default=False)
     upload = models.BooleanField(default=False)
     muted = models.BooleanField(default=False)
+    livestream = models.BooleanField(default=False)
     short_mode = models.BooleanField(default=False)
 
     def __str__(self):
@@ -380,3 +383,4 @@ class VideoRecording(models.Model):
         import pytz
         from django.conf import settings
         return self.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%H:%M:%S')
+

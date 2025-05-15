@@ -75,7 +75,7 @@ def update_camera(user_id, camera_user, camera_name, camera_data, embed_logo, ke
     timestamp = timestamp + datetime.timedelta(minutes=1)
 #    timestamp = datetime.datetime.utcfromtimestamp(timestamp / 1000) - datetime.timedelta(hours=7) #, tz=pytz.UTC)
     frame_data = urllib.parse.unquote(camera_data[5].split('=', 1)[1]).split(',')[1]
-    path = os.path.join(settings.MEDIA_ROOT, get_file_path(camera, 'frame.webm'))
+    path = os.path.join(settings.MEDIA_ROOT, get_file_path(camera, 'frame.' + camera.mimetype.split(';')[0]))
     with open(path, "wb") as file:
         file.write(base64.b64decode(frame_data))
     file.close()
@@ -111,9 +111,9 @@ def update_camera(user_id, camera_user, camera_name, camera_data, embed_logo, ke
         recording.last_frame = timestamp
         recording.save()
         print('recording')
-        process_recording.apply_async([recording.id, embed_logo], countdown=(settings.LIVE_INTERVAL/1000) * 16)
+        process_recording.apply_async([recording.id, embed_logo], countdown=(settings.LIVE_INTERVAL/1000) * (16 if camera.livestream else 8))
     else: print('Not saving frame')
-    process_live.apply_async([camera.id, frame.id], countdown=(settings.LIVE_INTERVAL/1000) * 12)
+    process_live.apply_async([camera.id, frame.id], countdown=(settings.LIVE_INTERVAL/1000) * (12 if camera.livestream else 6))
     return frame.confirmation_id
 
 @sync_to_async
@@ -239,3 +239,4 @@ class VideoConsumer(AsyncWebsocketConsumer):
 
         pass
     pass
+

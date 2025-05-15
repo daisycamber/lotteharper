@@ -417,16 +417,19 @@ def process_recording(id, embed_logo):
             import traceback
             import pytz
             try:
-                import requests
-                files = None
-                with open(recording.file.path, 'rb') as file:
-                    files = {'file': file}
-                    payload = {'id_file': 'rec.mp4'}
-                    resp = requests.post('https://lotteh.com/upload/?k={}'.format(settings.UPLOAD_KEY), files=files, data=payload)
-                    print(resp)
-                    print(resp.text)
-                    print(resp.status_code)
-                    recording.uploaded = True
+                from better_profanity import profanity
+                upload_youtube(camera.user, recording.file.path, profanity.censor(camera.title[:67-len(recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'))]) + ' - ' + recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3].capitalize()), [tag for tag in camera.tags.split(',')], category='22', privacy_status=camera.privacy_status, thumbnail=thumbnail, age_restricted=not recording.public)
+                recording.uploaded = True
+ #               import requests
+ #               files = None
+ #               with open(recording.file.path, 'rb') as file:
+ #                   files = {'file': file}
+ #                   payload = {'id_file': 'rec.mp4'}
+ #                   resp = requests.post('https://lotteh.com/upload/?k={}'.format(settings.UPLOAD_KEY), files=files, data=payload)
+ #                   print(resp)
+ #                   print(resp.text)
+ #                   print(resp.status_code)
+ #                   recording.uploaded = True
             except:
                 recording.uploaded = False
                 print(traceback.format_exc())
@@ -772,10 +775,10 @@ app.conf.beat_schedule = {
 #        'task': 'lotteh.celery.automatic_backup',
 #        'schedule': crontab(day_of_month='*', hour='*', minute=0),
 #    },
-#    'routine-process-recordings': {
-#        'task': 'lotteh.celery.process_recordings',
-#        'schedule': crontab(hour='*', minute='*/30'),
-#    },
+    'routine-process-recordings': {
+        'task': 'lotteh.celery.process_recordings',
+        'schedule': crontab(hour='*', minute='*/30'),
+    },
     'clear-shell-logins': {
         'task': 'lotteh.celery.clear_shell_logins',
         'schedule': crontab(hour='*', minute=0)

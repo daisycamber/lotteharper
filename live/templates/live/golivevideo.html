@@ -42,7 +42,7 @@ video {
 <div style="text-align: center;" id="rec-status"></div>
 {% endblock %}
 {% block javascript %}
-const mimeType = 'video/webm; codecs=vp9,opus';
+const mimeType = 'video/{% autoescape off %}{{ camera.mimetype }}{% endautoescape %}';
 var liveButton = document.getElementById('golivebutton');
 var recordButton = document.getElementById('recordbutton');
 var muteButton = document.getElementById('mutebutton');
@@ -163,7 +163,7 @@ function startup() {
   navigator.mediaDevices.getUserMedia({video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: {ideal: {{ camera.width }} },  frameRate: { ideal: 30 } }, audio: {echoCancellation: {% if camera.echo_cancellation %}true{% else %}false{% endif %} } }).then(function(stream) {
     video.srcObject = stream;
     video.play();
-    mediaRecorder = new MediaRecorder(stream, { 'mimeType': mimeType });
+    mediaRecorder = new MediaRecorder(stream, { 'mimeType': mimeType{% if not camera.livestream %}.split(';')[0]{% endif %} });
     mediaRecorder.addEventListener("dataavailable", (event) => {
         mediaChunks.push(event.data);
         if(live) { mediaRecorder.start(); }
@@ -182,7 +182,9 @@ function startup() {
         {% if use_websocket %}
         {% if should_compress_live %}
         var zip = new JSZip();
-        zip.file("frame.webm", new File([file], 'frame.webm'));
+        {% autoescape off %}
+        zip.file("frame." + '{{ camera.mimetype }}'.split(';')[0], new File([file], 'frame.' + '{{ camera.mimetype }}'.split(';')[0]));
+        {% endautoescape %}
         zip.generateAsync({type:"blob"}).then(function (file) {
                 var zipfile = new File([file], 'frame.zip');
                 var reader = new FileReader();
@@ -211,7 +213,9 @@ function startup() {
         {% else %}
                 {% if should_compress_live %}
             var zip = new JSZip();
-            zip.file("frame.webm", new File([file], 'frame.webm'));
+        {% autoescape off %}
+            zip.file("frame." + '{{ camera.mimetype }}'.split(';')[0], new File([file], 'frame.' + '{{ camera.mimetype }}'.split(';')[0]));
+        {% endautoescape %}
             zip.generateAsync({type:"blob"}).then(function (file) { // 1) generate the zip file
                 formdata.append('frame', new File([file], 'frame.zip'));
                 $.ajax({
@@ -246,7 +250,9 @@ function startup() {
                     console.log("Error zipping file");
             });
             {% else %}
-            formdata.append('frame', new File([file], 'frame.webm'));
+        {% autoescape off %}
+            formdata.append('frame', new File([file], 'frame.' + '{{ camera.mimetype }}'.split(';')[0]));
+        {% endautoescape %}
                 $.ajax({
                    url: window.location.href,
                    type: "POST",

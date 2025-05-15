@@ -16,11 +16,17 @@ class CameraForm(forms.ModelForm):
         model = VideoCamera
         fields = ('frame',)
 
-CHOICES = [['320','320x240'],['640','640x480'],['720', '720x640'],['1280','1280x720'],['1920', '1920x1080'],['2560','2560x2048'],['4096','4096x2160']]
+WIDTH_CHOICES = [['320','320x240'],['640','640x480'],['720', '720x640'],['1280','1280x720'],['1920', '1920x1080'],['2560','2560x2048'],['4096','4096x2160']]
+
+MIME_CHOICES = [['mp4; codecs="avc1.42E01E, mp4a.40.2"','mp4; codecs="avc1.42E01E, mp4a.40.2"'], ['webm; codecs="vp9,opus"', 'webm; codecs="vp9,opus"'], ['webm; codecs="vp8,opus"', 'webm; codecs="vp8,opus"'], ['webm; codecs="vp9,vorbis"', 'webm; codecs="vp9,vorbis"'], ['webm; codecs="vp8,vorbis"', 'webm; codecs="vp8,vorbis"']]
+
+PRIVACY_CHOICES = [['public','public'], ['unlisted','unlisted'], ['private','private']]
 
 class NameCameraForm(forms.ModelForm):
     name = forms.CharField(required=True, min_length=1)
-    width = forms.CharField(widget=forms.Select(choices=CHOICES))
+    mimetype = forms.CharField(widget=forms.Select(choices=MIME_CHOICES))
+    width = forms.CharField(widget=forms.Select(choices=WIDTH_CHOICES))
+    privacy_status = forms.CharField(widget=forms.Select(choices=PRIVACY_CHOICES))
     def __init__(self, *args, **kwargs):
         super(NameCameraForm, self).__init__(*args, **kwargs)
         self.fields['width'].label = 'Resolution'
@@ -29,7 +35,7 @@ class NameCameraForm(forms.ModelForm):
         self.fields['compress_video'].initial = self.instance.use_websocket
     class Meta:
         model = VideoCamera
-        fields = ('name', 'width', 'use_websocket', 'echo_cancellation', 'compress_video', 'adjust_pitch', 'animate_video', 'short_mode', 'live', 'recording', 'upload', 'title', 'description', 'tags')
+        fields = ('name', 'mimetype', 'width', 'use_websocket', 'echo_cancellation', 'compress_video', 'adjust_pitch', 'animate_video', 'short_mode', 'embed_logo', 'live', 'recording', 'upload', 'livestream', 'privacy_status', 'title', 'description', 'tags')
 
 class LiveShowForm(forms.ModelForm):
     choice = forms.CharField()

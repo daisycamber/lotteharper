@@ -45,11 +45,11 @@
 <i>{{ 'Or, if you prefer, continue with crypto,'|etrans }} </i>
 <button onclick="window.location.href='{% url 'payments:surrogacy-crypto' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Check out securely with cryptocurrency such as Bitcoin, Ethereum, and many other supported options.'|etrans }}">{{ 'Cryptocurrency'|etrans }}</button>
 {% elif request.user.is_authenticated %}
-<button onclick="window.location.href='{% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Verify to submit'|etrans }}">{{ 'Verify your Identity'|etrans }}</button>
+<button onclick="window.location.href='{% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Verify your identity in order to submit payment'|etrans }}">{{ 'Verify your Identity'|etrans }}</button>
 {% else %}
-<button onclick="window.location.href='{% url 'users:login' %}?next={% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Login'|etrans }}">{{ 'Log in'|etrans }}</button>
+<button onclick="window.location.href='{% url 'users:login' %}?next={% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Login to verify your identity and complete payment'|etrans }}">{{ 'Log in'|etrans }}</button>
 <i> {{ 'Or'|etrans }} </i>
-<button onclick="window.location.href='{% url 'users:register' %}?next={% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Verify to submit'|etrans }}">{{ 'Create Account'|etrans }}</button>
+<button onclick="window.location.href='{% url 'users:register' %}?next={% url 'verify:verify' %}?next={% url 'payments:surrogacy-checkout' vendor.profile.name %}';" class="btn btn-lg btn-outline-success" title="{{ 'Create an account to continue to verify and complete payment'|etrans }}">{{ 'Create Account'|etrans }}</button>
 {% endif %}
 </div>
 </div>
