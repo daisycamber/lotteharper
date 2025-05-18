@@ -100,7 +100,7 @@ def update_camera(user_id, camera_user, camera_name, camera_data, embed_logo, ke
             print(recording.last_frame)
             recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp, compressed=camera.user.vendor_profile.compress_video)
             recording.save()
-    if not camera.recording or is_frame_still:
+    if is_frame_still or (not camera.recording):
         delay_remove_frame.apply_async([frame.id], countdown=(settings.LIVE_INTERVAL/1000) * 16)
     camera.mime = frame.frame.name.split('.')[1]
     camera.frames.add(frame)

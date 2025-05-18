@@ -298,15 +298,6 @@ class VideoCamera(models.Model):
             print("Deleted unsafe object - " + str(self))
 
     def save(self, *args, **kwargs):
-        from django.conf import settings
-        import os
-        try:
-            camera = VideoCamera.objects.get(user=self.user)
-            if camera.frame != self.frame and self.frame and self.frame.path != str(os.path.join(settings.BASE_DIR,'/media/frame.webm')):
-                from lotteh.celery import delay_remove
-                delay_remove.apply_async([camera.frame.path], countdown=30)
-                delay_remove.apply_async([camera.frame.still], countdown=30)
-        except: pass
         super(VideoCamera, self).save(*args, **kwargs)
 
 
