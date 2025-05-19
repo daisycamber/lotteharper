@@ -35,14 +35,14 @@ video {
 <a class="btn btn-outline-secondary" href="{{ request.path }}?camera={% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %}{% if request.GET.with %}&with={{ request.GET.with }}{% endif %}&back=true">Back Facing Camera</a>
 {% endif %}
 <hr>
-  <div class="display: inline-block;">
+<div class="display: inline-block;">
     <button class="btn btn-outline-success" id="startWebcam" title="Start Webcam">Start Webcam</button>
     <button class="btn btn-outline-info" id="startScreenShare" title="Start Screen Share">Start Screen Share</button>
     <button class="btn btn-outline-primary" id="mergeStreams" title="Merge Streams">Merge Streams</button>
     <button class="btn btn-outline-light" id="stopAllStreams" title="Stop All Streams"{% if not darkmode %} style="color: black !important;"{% endif %}>Stop All Streams</button>
     <button class="btn btn-outline-danger" id="startRecording" title="Record Resulting Stream">Record Resulting Stream</button>
     <button class="btn btn-outline-warning" id="stopRecording" title="Stop Recording">Stop Recording</button>
-  </div>
+</div>
 <div style="display: flex; justify-content: space-around;">
 {% if request.user.profile.vendor and not request.GET.fullscreen %}
 {% include 'live/go_remote.html' %}
@@ -55,6 +55,7 @@ video {
 <div style="text-align: center;" id="rec-status"></div>
 {% endblock %}
 {% block javascript %}
+const MINUTES_PER_LOGO = 5;
 var liveButton = document.getElementById('golivebutton');
 var recordButton = document.getElementById('recordbutton');
 var muteButton = document.getElementById('mutebutton');
@@ -220,16 +221,16 @@ const cancelVideoFrame = function(id) {
 
 async function startWebcamFn() {
   if(!localCamStream) {
-  localCamStream = await navigator.mediaDevices.getUserMedia({
-    video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: { ideal: 320 },  frameRate: { ideal: 15 } },
-        audio: { deviceId: { ideal: "communications" } },
-  }).catch((error) => {
-    console.log(error);
-    $('#errormessage').removeClass('hide');
-  });
-  if (localCamStream) {
-    cam = await attachToDOM("justWebcam", localCamStream);
-  }
+      localCamStream = await navigator.mediaDevices.getUserMedia({
+        video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: { ideal: 320 },  frameRate: { ideal: 15 } },
+            audio: { deviceId: { ideal: "communications" } },
+      }).catch((error) => {
+        console.log(error);
+        $('#errormessage').removeClass('hide');
+      });
+      if (localCamStream) {
+        cam = await attachToDOM("justWebcam", localCamStream);
+      }
   }
 }
 
@@ -260,10 +261,10 @@ async function stopAllStreamsFn() {
   } else {
       document.getElementById("rec-status").innerHTML = '<i style="font-size: 20px;" class="bi bi-circle"></i>';
   }
-  clearInterval(captureInterval);
+  if(captureInterval) clearInterval(captureInterval);
+  localOverlayStream = null;
   localCamStream = null;
   localScreenStream = null;
-  localOverlayStream = null;
   audioTracks = [];
   cancelVideoFrame(rafId);
   mediaWrapperDiv.innerHTML = "";
@@ -314,6 +315,8 @@ async function makeComposite() {
         canvasCtx.fillStyle = "{{ camera.user.vendor_profile.video_intro_color }}";
         canvasCtx.fillText("{{ camera.user.vendor_profile.video_intro_text }}", parseInt(screen.videoWidth/13) + 20, screen.videoHeight - logoSize/2.7);
         canvasCtx.globalAlpha = 1;
+    } else if(currentTime > {{ video_interval }}/1000 * 60 * MINUTES_PER_LOGO) {
+        recordingStartTime = new Date().getTime()/1000;
     }
     {% endif %}
     {% endif %}
@@ -536,7 +539,7 @@ function stopRecordingFn() {
         } else {
             document.getElementById("rec-status").innerHTML = '<i style="font-size: 20px;" class="bi bi-circle"></i>';
         }
-  clearInterval(captureInterval);
+  if(captureInterval) clearInterval(captureInterval);
   document.getElementById("pipOverlayStream").style.border = "none";
   mediaRecorder.stop();
 }
