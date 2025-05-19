@@ -35,7 +35,7 @@ class NameCameraForm(forms.ModelForm):
         self.fields['compress_video'].initial = self.instance.use_websocket
     class Meta:
         model = VideoCamera
-        fields = ('name', 'mimetype', 'width', 'use_websocket', 'echo_cancellation', 'compress_video', 'adjust_pitch', 'animate_video', 'short_mode', 'embed_logo', 'live', 'recording', 'upload', 'livestream', 'privacy_status', 'title', 'description', 'tags')
+        fields = ('name', 'mimetype', 'width', 'use_websocket', 'echo_cancellation', 'compress_video', 'adjust_pitch', 'animate_video', 'short_mode', 'embed_logo', 'live', 'recording', 'upload', 'privacy_status', 'title', 'description', 'tags')
 
 class LiveShowForm(forms.ModelForm):
     choice = forms.CharField()

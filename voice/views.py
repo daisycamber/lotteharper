@@ -193,6 +193,7 @@ def recording(request, id):
 
 @csrf_exempt
 def voice(request):
+    from django.conf import settings
     account_sid = settings.TWILIO_ACCOUNT_SID
     auth_token = settings.TWILIO_AUTH_TOKEN
     from django.shortcuts import render
@@ -219,7 +220,6 @@ def voice(request):
     import time
     from users.tfa import send_user_text
     import datetime
-    from django.conf import settings
     from .models import AudioInteractive
     from twilio.twiml.messaging_response import MessagingResponse
     from twilio.twiml.voice_response import VoiceResponse, Gather

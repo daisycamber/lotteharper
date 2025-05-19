@@ -232,7 +232,6 @@ class VideoCamera(models.Model):
     animate_video = models.BooleanField(default=False)
     upload = models.BooleanField(default=False)
     muted = models.BooleanField(default=False)
-    livestream = models.BooleanField(default=False)
     short_mode = models.BooleanField(default=False)
 
     def __str__(self):
