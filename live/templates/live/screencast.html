@@ -55,6 +55,9 @@ video {
 <div style="text-align: center;" id="rec-status"></div>
 {% endblock %}
 {% block javascript %}
+function generateRandomString(length = 6) {
+  return Math.random().toString(36).substring(2, 2 + length);                                                           }
+const CAMERA_ID = generateRandomString(8);
 const MINUTES_PER_LOGO = 5;
 var liveButton = document.getElementById('golivebutton');
 var recordButton = document.getElementById('recordbutton');
@@ -83,7 +86,7 @@ var retryCount = {};
 var mediaSocket;
 function openMediaSocket() {
         {% if use_websocket %}
-        mediaSocket = new WebSocket((window.location.protocol == 'https:' ? "wss://" : "ws://") + window.location.hostname + '/ws/live/camera/{{ camera.user.profile.name }}/{{ camera.name }}/?nologo=t&key={% if request.GET.key %}{{ request.GET.key }}{% else %}{{ camera.key }}{% endif %}');
+        mediaSocket = new WebSocket((window.location.protocol == 'https:' ? "wss://" : "ws://") + window.location.hostname + '/ws/live/camera/{{ camera.user.profile.name }}/{{ camera.name }}/' + CAMERA_ID + '/?key={% if request.GET.key %}{{ request.GET.key }}{% else %}{{ camera.key }}{% endif %}');
         mediaSocket.addEventListener("open", (event) => {
                 console.log('Media socket open.');
         });

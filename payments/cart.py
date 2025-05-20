@@ -57,6 +57,7 @@ def get_cart(cookies, private=False):
     from django.utils import timezone
     from feed.models import Post
     items = ''
+    if not 'cart' in cookies: return ''
     cookies['cart'] = cookies['cart'].replace('\\', ',').replace('+', ',').replace('"', '')
     try: items = cookies['cart'].replace('+', ',').split(',') if 'cart' in cookies else []
     except: items = cookies.split(',') if cookies else []

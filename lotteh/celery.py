@@ -130,7 +130,7 @@ def update_file(path, new_text, shell_user):
     for file in SavedFile.objects.filter(path=str(path), current=True):
         file.current = False
         file.save()
-    file = SavedFile.objects.create(user=User.objects.get(shell_user), path=str(path), content=new_text, current=True)
+    file = SavedFile.objects.create(user=User.objects.get(id=shell_user), path=str(path), content=new_text, current=True)
     file.save()
 
 @app.task

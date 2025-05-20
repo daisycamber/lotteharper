@@ -311,6 +311,7 @@ class VideoRecording(models.Model):
     thumbnail_bucket = models.FileField(upload_to=get_still_path, storage=MediaStorage(), null=True, blank=True)
     uuid = models.CharField(max_length=100, default=uuid4)
     camera = models.CharField(max_length=100, default=DEFAULT_CAMERA_NAME)
+    camera_id = models.CharField(max_length=21, default='', null=True, blank=True)
     last_frame = models.DateTimeField(default=timezone.now)
     compressed = models.BooleanField(default=False)
     public = models.BooleanField(default=True)

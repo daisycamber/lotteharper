@@ -43,7 +43,8 @@ def get_camera_status(camera_user, camera_name):
     return '{},{},{}'.format('y' if VideoCamera.objects.filter(name=camera_name, user__profile__name=camera_user).first().live else 'n', 'y' if VideoCamera.objects.filter(name=camera_name, user__profile__name=camera_user).first().recording else 'n', 'y' if VideoCamera.objects.filter(name=camera_name, user__profile__name=camera_user).first().muted else 'n')
 
 @sync_to_async
-def update_camera(user_id, camera_user, camera_name, camera_data, embed_logo, key=None):
+def update_camera(user_id, camera_user, camera_name, camera_data, camera_id, key=None):
+    embed_logo = False
     from live.models import VideoCamera
     from live.models import get_file_path, VideoFrame, VideoRecording, Show
     import pytz, datetime, os, base64, asyncio, time
@@ -86,10 +87,10 @@ def update_camera(user_id, camera_user, camera_name, camera_data, embed_logo, ke
     recording = None
     if camera.recording and not is_frame_still:
         show = Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).first()
-        recordings = VideoRecording.objects.filter(user=camera.user, camera=camera.name, processing=False).order_by('-last_frame')
+        recordings = VideoRecording.objects.filter(user=camera.user, camera=camera.name, processing=False, camera_id=camera_id).order_by('-last_frame')
 # , public=False if Show.objects.filter(start__lte=timestamp + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).count() > 0 else True, recipient=show.user if show else None
         if recordings.count() == 0:
-            recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp)
+            recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp, camera_id=camera_id)
             recording.save()
         else:
             recording = recordings.first()
@@ -98,7 +99,7 @@ def update_camera(user_id, camera_user, camera_name, camera_data, embed_logo, ke
         if recording.last_frame < timezone.now() - datetime.timedelta(seconds=int(settings.LIVE_INTERVAL/1000) * 5) or (recording.frames.order_by('time_captured').first() and ((recording.last_frame - recording.frames.order_by('time_captured').first().time_captured).total_seconds() > settings.RECORDING_LENGTH_SECONDS)) or (camera.short_mode and (recording.frames.order_by('time_captured').first() and ((recording.last_frame - recording.frames.order_by('time_captured').first().time_captured).total_seconds() > settings.LIVE_SHORT_SECONDS))):
             print('Creating new recording')
             print(recording.last_frame)
-            recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp, compressed=camera.user.vendor_profile.compress_video)
+            recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp, camera_id=camera_id)
             recording.save()
     if is_frame_still or (not camera.recording):
         delay_remove_frame.apply_async([frame.id], countdown=(settings.LIVE_INTERVAL/1000) * 16)
@@ -144,13 +145,14 @@ class CameraConsumer(AsyncWebsocketConsumer):
     key = None
     user_id = None
     nologo = False
+    camera_id = None
     async def connect(self):
         self.camera_user = self.scope['url_route']['kwargs']['username']
         self.camera_name = self.scope['url_route']['kwargs']['name']
+        self.camera_id = self.scope['url_route']['kwargs']['id']
         from urllib.parse import parse_qs
         query_params = parse_qs(self.scope["query_string"].decode())
         if 'key' in query_params and query_params['key']: self.key = query_params['key'][0]
-        if 'nologo' in query_params and query_params['nologo']: self.nologo = True
         self.user_id = self.scope['user'].id
 #        auth2 = await get_auth(self.scope['user'].id, self.scope['session'].session_key)
 #        if not (auth and auth2): return
@@ -160,7 +162,7 @@ class CameraConsumer(AsyncWebsocketConsumer):
         pass
 
     async def receive(self, text_data):
-        text = await update_camera(self.user_id, self.camera_user, self.camera_name, text_data, not self.nologo, self.key)
+        text = await update_camera(self.user_id, self.camera_user, self.camera_name, text_data, self.camera_id, self.key)
         await self.send(text_data=text)
 
     pass
