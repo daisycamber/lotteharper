@@ -264,7 +264,9 @@ def grid_api(request, index):
     import pytz
     from feed.models import Post
     from django.http import HttpResponse
-    now = datetime.datetime.utcfromtimestamp(int(request.GET.get('time')) / 1000) - datetime.timedelta(hours=7) #, tz=pytz.UTC)
+    try:
+        now = datetime.datetime.utcfromtimestamp(int(request.GET.get('time')) / 1000).astimezone(pytz.timezone(settings.TIME_ZONE)) - datetime.timedelta(hours=7)
+    except: now = timezone.now()
     username = request.GET.get('name')
     profile = Profile.objects.filter(name=username, vendor=True).first()
     posts = None
@@ -595,13 +597,13 @@ def profile(request, username):
     from security.middleware import get_qs
     now = None
     try:
-        now = datetime.datetime.utcfromtimestamp(int(request.GET.get('time')) / 1000) - datetime.timedelta(hours=7)
+        now = datetime.datetime.utcfromtimestamp(int(request.GET.get('time')) / 1000).astimezone(pytz.timezone(settings.TIME_ZONE)) - datetime.timedelta(hours=7)
     except:
         now = timezone.now()
     if not request.GET.get('feed', False):
         return redirect(request.path + (get_qs(request.GET) if get_qs(request.GET) else '?') + '&feed=private')
     blog_feed = request.GET.get('feed').lower()
-    likes = request.GET.get('likes')
+    likes = request.GET.get('likes', False)
     pages = request.GET.get('pages')
     scroll_page = request.GET.get('scroll_page')
     profile = get_object_or_404(Profile, name=username, vendor=True)
@@ -632,6 +634,7 @@ def profile(request, username):
         posts = unique(list(chain(pins, rec, priv, ids)))[:settings.FREE_POSTS]
     if not request.user.is_authenticated or not (profile.user in request.user.profile.subscriptions.all() or request.user == profile.user):
         posts = posts[:settings.FREE_POSTS]
+    print(len(posts))
     p = Paginator(posts, 10)
     if page > p.num_pages or page < 1:
         messages.warning(request, "The page you requested, " + str(page) + ", does not exist. You have been redirected to the first page.")
