@@ -133,6 +133,11 @@ class VideoFrame(models.Model):
         except: pass
         self.save()
 
+    def delete(self):
+        self.delete_video()
+        super(VideoFrame, self).delete()
+
+
     def get_still_url(self, url=True):
         import os
         from django.conf import settings

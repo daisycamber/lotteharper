@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load app_filters %}
+{% blocktrans %}
 <legend class="border-bottom mb-4">Go</legend>
 <small>{{ user_count|nts|capitalize }} ({{ user_count }}) people active, {{ verified_user_count|nts }} ({{ verified_user_count }}) verified.</small>
 <hr>
@@ -241,4 +242,5 @@
 	<div style="padding-left: 10px;"><p>{{ session_count|sessioncount|capitalize }} active</p></div>
 </div>
 {% endif %}
+{% endblocktrans %}
 {% endblock content %}
