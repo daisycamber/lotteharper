@@ -135,7 +135,7 @@ def update_user(user):
 
 def write_dovecot():
     from shell.execute import run_command
-    import os
+    import os, re
     from django.contrib.auth.models import User
     from django.conf import settings
     config_dir = str(os.path.join(settings.BASE_DIR, 'config/etc_dovecot_passwd'))
@@ -143,13 +143,14 @@ def write_dovecot():
     dove = ''
     for user in users:
         write_user(user)
-        dove = dove + user.profile.bash + ':{plain}' + '{}\n'.format(user.profile.email_password.replace(':', '\:'))
+        hash = os.popen('sudo doveadm pw -s SHA512-CRYPT -p {} -u {}'.format(user.profile.email_password, user.profile.bash)).read()
+        dove = dove + user.profile.bash + ':' + '{}\n'.format(hash)
     run_command('sudo chown {}:users {}'.format(settings.BASH_USER, config_dir))
     with open(os.path.join(settings.BASE_DIR, 'config/etc_dovecot_passwd'), 'w') as file:
         file.write(dove)
         file.close()
-    run_command('sudo cp {} /etc/dovecot/passwd'.format(config_dir))
-    run_command('sudo chown root:root /etc/dovecot/passwd')
+    run_command('sudo cp {} /etc/dovecot/users'.format(config_dir))
+    run_command('sudo chown root:root /etc/dovecot/users')
     print(dove)
 
 def write_user(user):

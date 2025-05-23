@@ -151,7 +151,7 @@ function updateURLParameter2(param, paramVal) {
         }
 }
 function clearUrlParameter() {
-        urlParams = new URLSearchParams(document.location.search);
+    urlParams = new URLSearchParams(document.location.search);
 	{% if request.GET.embed %}return;{% endif %}
 	if (history.pushState) {
 		var extra = "";
@@ -179,7 +179,7 @@ function clearUrlParameter() {
 function isElementVisible(element) {
         var position = element.getBoundingClientRect();
         if(position.top < window.innerHeight && position.bottom >= 0) {
-		return true;
+    		return true;
         }
         return false;
 }
@@ -332,7 +332,7 @@ function staticClocksDyn() {
         }
     }
 }
-var time = String(new Date().getTime());
+var time = new String(new Date().toISOString());
 function loadNext(next){
         if(((!lloading && !next && lpage > 1) || (!loading && next && page < {{ num_pages }}))) {
                 if(!next) {

@@ -245,7 +245,7 @@ var i = start;
 var li = start;
 var ii;
 var try_count = new Array({{ count }});
-var time = String(new Date().getTime());
+var time = new String(new Date().toISOString());
 function loadNext(status) {
     var sl = null;
     if(status) {

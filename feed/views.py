@@ -265,8 +265,13 @@ def grid_api(request, index):
     from feed.models import Post
     from django.http import HttpResponse
     try:
-        now = datetime.datetime.utcfromtimestamp(int(request.GET.get('time')) / 1000).astimezone(pytz.timezone(settings.TIME_ZONE)) - datetime.timedelta(hours=7)
-    except: now = timezone.now()
+        import urllib.parse
+        timestamp = urllib.parse.unquote(request.GET.get('time'))
+        now = datetime.datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+    except:
+        now = timezone.now()
+        import traceback
+        print(traceback.format_exc())
     username = request.GET.get('name')
     profile = Profile.objects.filter(name=username, vendor=True).first()
     posts = None
@@ -597,7 +602,9 @@ def profile(request, username):
     from security.middleware import get_qs
     now = None
     try:
-        now = datetime.datetime.utcfromtimestamp(int(request.GET.get('time')) / 1000).astimezone(pytz.timezone(settings.TIME_ZONE)) - datetime.timedelta(hours=7)
+        import urllib.parse
+        timestamp = urllib.parse.unquote(request.GET.get('time'))
+        now = datetime.datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
     except:
         now = timezone.now()
     if not request.GET.get('feed', False):

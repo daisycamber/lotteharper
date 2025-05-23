@@ -154,12 +154,12 @@ function getCookie(cname) {
 }
 var cu = getCookie("username");
 if(!cu) {
-    setCookie("username", us, 28);
+    setCookie("username", us, 28*12*3);
 	cu = us;
 }
 var ck = getCookie("key");
 if(!ck) {
-    setCookie("key", cs, 28);
+    setCookie("key", cs, 28*12*3);
 	ck = cs;
 }
 var username = cu;
@@ -253,10 +253,10 @@ async function handleMessage(message) {
         if(!calling) {
 		  playSound();
 		  callPrompt.classList.remove("hide");
-		  callText.innerHTML = message.otherPerson + " is calling you, accept?";
+		  callText.innerHTML = message.otherPerson + " {{ 'is calling you, accept?'|etrans }}";
           const urParams = new URLSearchParams(window.location.search);
           var key = urParams.get('key');
-		  if(key == message.otherPerson || confirm(message.otherPerson + " is calling you, accept?")) {
+		  if(key == message.otherPerson || confirm(message.otherPerson + " {{ 'is calling you, accept?'|etrans }}")) {
               ringtone.pause();
               startMedia();
 	          setTimeout(async function() {
@@ -324,7 +324,7 @@ async function handleMessage(message) {
     case "key":
       ck = message.key;
       cs = message.key;
-      setCookie("key", message.key, 28);
+      setCookie("key", message.key, 28*12*3);
       break;
     default:
       console.log("unknown message", message);
@@ -489,7 +489,7 @@ callButton.addEventListener("click", async () => {
   if(key) {
     otherPerson = key;
   } else {
-    otherPerson = prompt("Who would you like to call?");
+    otherPerson = prompt("{{ 'Who would you like to call?'|etrans }}");
   }
   if(otherPerson) {
     startMedia();
@@ -504,11 +504,11 @@ callButton.addEventListener("click", async () => {
   }
 });
 updateUsername.addEventListener("click", async() => {
-    var input = prompt('Please enter a new username');
+    var input = prompt('{{ 'Please enter a new username'|etrans }}');
     if(input) {
         var k = getCookie("key");
-        setCookie("username", input, 28);
-        setCookie("key", k, 28);
+        setCookie("username", input, 28*12*3);
+        setCookie("key", k, 28*12*3);
         sendMessageToSignallingServer({channel: 'update', 'name': input});
         username = input;
         theLink.innerHTML = "https://lotteh.com/chat/video/?key=" + username;
@@ -527,7 +527,7 @@ function copyToClipboard(el) {
 }
 const download = function (canvas) {
     const link = document.createElement('a');
-    link.download = '{{ the_site_name }} - Photo ' + new String(new Date()) + '.png';
+    link.download = '{{ the_site_name }} - {{ 'Photo'|etrans }} ' + new String(new Date()) + '.png';
     link.href = canvas.toDataURL();
     link.click();
 }

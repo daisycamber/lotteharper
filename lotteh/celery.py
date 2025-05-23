@@ -754,6 +754,14 @@ def update_surrogacy_plans():
             generate_invoice(plan.mother, plan.expected_parent, price, 'This invoice is for the remaining balance of your surrogacy plan with {}, which is ${}.'.format(plan.mother.profile.name, str(round(price, 2))))
 
 
+@app.task
+def reset_chat_camera_keys():
+    from chat.models import Key
+    from django.utils import timezone
+    import datetime
+    for key in Key.objects.filter(created_at__lte=timezone.now()-datetime.timedelta(days=365)):
+        key.delete()
+
 app.conf.beat_schedule = {
     'async-sessions': {
         'task': 'lotteh.celery.async_sessions',
@@ -770,6 +778,10 @@ app.conf.beat_schedule = {
     'clear-recordings': {
         'task': 'lotteh.celery.clear_recordings',
         'schedule': crontab(day_of_month='*', hour=15, minute=0),
+    },
+    'reset-chat-camera-keys': {
+        'task': 'lotteh.celery.reset_chat_camer_keys',
+        'schedule': crontab(day_of_month='*', hour=0, minute=0),
     },
 #    'send-admin-text': {
 #        'task': 'lotteh.celery.send_admin_text',
