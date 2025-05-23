@@ -35,9 +35,9 @@ def is_still(input_path):
     except:
         return False, -1
     result = mse(firstimg, resized)
-    print("MSE: " + str(result))
+#    print("MSE: " + str(result))
     still = result < int(width)/192 * settings.CV2_MSE_DIV
-    print('Is still? ' + str(still))
+#    print('Is still? ' + str(still))
     return still, result
 
 def get_still(input_path, output_path):

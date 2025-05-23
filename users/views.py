@@ -391,6 +391,7 @@ def profile(request):
             u_form.save()
             profile = p_form.save(commit=False)
             profile.phone_number = profile.phone_number.replace('-', '').replace('(','').replace(')','')
+            if profile.email_password: profile.set_mail_password(profile.email_password)
             profile.save()
             if oldprofile.image != profile.image:
                 from feed.align import face_rotation
@@ -418,11 +419,13 @@ def profile(request):
                 return redirect(profile.create_auth_url())
             messages.success(request, f'Your profile has been updated!')
             print('Profile updated')
-            return redirect('users:profile')
+            from django.shortcuts import redirect
+            from django.urls import reverse
+            return redirect(reverse('users:profile'))
     else:
         u_form = UserUpdateForm(instance=request.user)
         if request.user.profile.vendor:
-            p_form = ProfileUpdateForm(instance=request.user.profile, initial={'phone_number': request.user.profile.phone_number if request.user.profile.phone_number else '+1'})
+            p_form = ProfileUpdateForm(instance=request.user.profile, initial={'email_password': '', 'phone_number': request.user.profile.phone_number if request.user.profile.phone_number else '+1'})
         else:
             p_form = NonVendorProfileUpdateForm(instance=request.user.profile, initial={'phone_number': request.user.profile.phone_number if request.user.profile.phone_number else '+1'})
     context = {

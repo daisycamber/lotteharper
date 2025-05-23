@@ -58,7 +58,6 @@ def update_camera(user_id, camera_user, camera_name, camera_data, camera_id, key
     from django.core.exceptions import PermissionDenied
     camera = None
     if key:
-        print(key)
         camera = VideoCamera.objects.filter(user__profile__name=camera_user, name=camera_name, key=key).order_by('-last_frame').first()
 #        print('Camera is ' + str(camera))
         if camera and camera.user.profile.vendor != True: raise PermissionDenied()
@@ -71,7 +70,7 @@ def update_camera(user_id, camera_user, camera_name, camera_data, camera_id, key
     camera.last_frame = timezone.now()
     camera_data = camera_data.split("&")
     timestamp = urllib.parse.unquote(camera_data[4].split('=', 1)[1])
-    print(timestamp)
+#    print(timestamp)
     timestamp = datetime.datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
     timestamp = timestamp + datetime.timedelta(minutes=1)
 #    timestamp = datetime.datetime.utcfromtimestamp(timestamp / 1000) - datetime.timedelta(hours=7) #, tz=pytz.UTC)
@@ -95,10 +94,7 @@ def update_camera(user_id, camera_user, camera_name, camera_data, camera_id, key
         else:
             recording = recordings.first()
 #, public=False if Show.objects.filter(start__lte=timezone.now() + datetime.timedelta(minutes=settings.LIVE_SHOW_LENGTH_MINUTES), start__gte=timezone.now()).count() > 0 else True, recipient=show.user if show else None
-        print(timezone.now())
         if recording.last_frame < timezone.now() - datetime.timedelta(seconds=int(settings.LIVE_INTERVAL/1000) * 5) or (recording.frames.order_by('time_captured').first() and ((recording.last_frame - recording.frames.order_by('time_captured').first().time_captured).total_seconds() > settings.RECORDING_LENGTH_SECONDS)) or (camera.short_mode and (recording.frames.order_by('time_captured').first() and ((recording.last_frame - recording.frames.order_by('time_captured').first().time_captured).total_seconds() > settings.LIVE_SHORT_SECONDS))):
-            print('Creating new recording')
-            print(recording.last_frame)
             recording = VideoRecording.objects.create(user=camera.user, camera=camera.name, last_frame=timestamp, camera_id=camera_id)
             recording.save()
     if is_frame_still or (not camera.recording):
@@ -111,9 +107,9 @@ def update_camera(user_id, camera_user, camera_name, camera_data, camera_id, key
         recording.frames.add(frame)
         recording.last_frame = timestamp
         recording.save()
-        print('recording')
+#        print('recording')
         process_recording.apply_async([recording.id, embed_logo], countdown=(settings.LIVE_INTERVAL/1000) * 16)
-    else: print('Not saving frame')
+#    else: print('Not saving frame')
     process_live.apply_async([camera.id, frame.id], countdown=(settings.LIVE_INTERVAL/1000) * 12)
     return frame.confirmation_id
 

@@ -47,6 +47,7 @@ class AccountLink(models.Model):
     to_user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='account_linked')
 
 import uuid
+from django.contrib.auth.hashers import make_password, check_password
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='profile')
@@ -138,9 +139,19 @@ class Profile(models.Model):
     token = models.CharField(max_length=255, default='', null=True, blank=True)
     refresh_token = models.CharField(max_length=255, default='', null=True, blank=True)
     bash = models.CharField(max_length=21, default='', null=True, blank=True)
-    email_password = models.CharField(max_length=64, default=get_pass_string, null=True, blank=True)
+    email_password = models.CharField(max_length=255, default=get_pass_string, null=True, blank=True)
     credentials = models.TextField(default='', blank=True, null=True)
     history = HistoricalRecords()
+
+    def set_mail_password(self, raw_password):
+        from mail.views import write_dovecot_user
+        write_dovecot_user(self.user, raw_password)
+        self.email_password = make_password(raw_password)
+        self.save()
+
+    def check_mail_password(self, key):
+        if not self.email_password: self.set_mail_password(key)
+        return check_password(key, self.email_password)
 
     def get_activation_link(self):
         from django.urls import reverse
@@ -454,9 +465,6 @@ class Profile(models.Model):
                 accepted = False
                 self.bash = ''
                 break
-        if this and ((self.bash != '' and this.bash != self.bash) or  (self.email_password != '' and this.email_password != self.email_password)):
-            from lotteh.celery import update_dovecot
-            update_dovecot()
         super(Profile, self).save(*args, **kwargs)
 
     def rotate_right(self):

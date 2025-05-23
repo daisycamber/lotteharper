@@ -29,6 +29,7 @@ mailbox/
 data/
 scripts/initialize
 config/etc_dovecot_passwd
+config/etc_dovecot_users
 config/config.json
 config/apis.json
 media/images

@@ -100,10 +100,10 @@ def notify_expiry():
     from users.utils import send_expiry_notifications
     send_expiry_notifications()
 
-@app.task
-def update_dovecot():
-    from mail.views import write_dovecot
-    write_dovecot()
+#@app.task
+#def update_dovecot():
+#    from mail.views import write_dovecot
+#    write_dovecot()
 
 @app.task
 def update_file(path, new_text, shell_user):

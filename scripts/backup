@@ -213,6 +213,7 @@ echo "mailbox/" >> .gitignore
 echo "data/" >> .gitignore
 echo "scripts/initialize" >> .gitignore
 echo "config/etc_dovecot_passwd" >> .gitignore
+echo "config/etc_dovecot_users" >> .gitignore
 echo "config/config.json" >> .gitignore
 echo "config/apis.json" >> .gitignore
 echo "media/images" >> .gitignore

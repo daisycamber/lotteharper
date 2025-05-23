@@ -95,6 +95,7 @@ class ProfileUpdateForm(forms.ModelForm):
             self.fields['subscribed'].initial = True
         self.fields['phone_number'].label = phone_number_label
         self.fields['hide_logo'].initial = self.instance.hide_logo
+        self.fields['email_password'].initial = ''
         self.fields['image'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
         self.fields['cover_image'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
     class Meta:
@@ -112,6 +113,9 @@ class ProfileUpdateForm(forms.ModelForm):
             'bio': forms.Textarea(attrs={'rows':5}),
             'wishlist': forms.TextInput,
             'shop_url': forms.TextInput,
+        }
+        hints = {
+            'email_password': 'Please fill in this field to change your password.',
         }
 
 class ResendActivationEmailForm(forms.Form):

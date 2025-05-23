@@ -133,27 +133,42 @@ def update_user(user):
         updated.updated = timezone.now()
         updated.save()
 
-def write_dovecot():
+def get_dovecot(user, password):
     from shell.execute import run_command
     import os, re
     from django.contrib.auth.models import User
     from django.conf import settings
-    config_dir = str(os.path.join(settings.BASE_DIR, 'config/etc_dovecot_passwd'))
-    users = User.objects.filter(profile__email_verified=True, is_active=True).exclude(profile__bash='').order_by('-profile__last_seen')
     dove = ''
-    for user in users:
-        write_user(user)
-        hash = os.popen('sudo doveadm pw -s SHA512-CRYPT -p {} -u {}'.format(user.profile.email_password, user.profile.bash)).read()
-        dove = dove + user.profile.bash + ':' + '{}\n'.format(hash)
+#    write_user(user)
+    hash = os.popen('sudo doveadm pw -s SHA512-CRYPT -p {} -u {}'.format(password, user.profile.bash)).read()
+    dove = dove + user.profile.bash + ':' + '{}\n'.format(hash)
+    return dove
+
+
+def write_dovecot_user(user, password):
+    import os
+    from django.conf import settings
+    from shell.execute import run_command
+    bash = user.profile.bash
+    config_dir = str(os.path.join(settings.BASE_DIR, 'config/etc_dovecot_users'))
+    run_command('sudo adduser --disabled-password --gecos "" {}'.format(bash))
     run_command('sudo chown {}:users {}'.format(settings.BASH_USER, config_dir))
-    with open(os.path.join(settings.BASE_DIR, 'config/etc_dovecot_passwd'), 'w') as file:
-        file.write(dove)
+#    try:
+#        user_line = int(os.popen('grep -n "{}:" {}'.format(user.profile.bash, config_dir)).read().split(':')[0])
+#    except:
+#        user_line = 0
+    config = os.popen('cat {}'.format(config_dir)).read()
+    user_line = 1 if '{}:'.format(user.profile.bash) in config else 0
+    print(user_line)
+    op = '\n'
+    if user_line < 1:
+        op = op + get_dovecot(user, password)
+    for line in config.split('\n'):
+        if line.startswith(user.profile.bash):
+            op = op + get_dovecot(user, password)
+        else: op = op + ((line + '\n') if line != '' else '')
+    with open(os.path.join(settings.BASE_DIR, 'config/etc_dovecot_users'), 'w') as file:
+        file.write(op)
         file.close()
     run_command('sudo cp {} /etc/dovecot/users'.format(config_dir))
     run_command('sudo chown root:root /etc/dovecot/users')
-    print(dove)
-
-def write_user(user):
-    from shell.execute import run_command
-    bash = user.profile.bash
-    run_command('sudo adduser --disabled-password --gecos "" {}'.format(bash))
