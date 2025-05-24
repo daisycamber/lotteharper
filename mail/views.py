@@ -159,7 +159,7 @@ def write_dovecot_user(user, password):
 #        user_line = 0
     config = os.popen('cat {}'.format(config_dir)).read()
     user_line = 1 if '{}:'.format(user.profile.bash) in config else 0
-    print(user_line)
+#    print(user_line)
     op = '\n'
     if user_line < 1:
         op = op + get_dovecot(user, password)
