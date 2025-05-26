@@ -73,17 +73,20 @@ class NonVendorProfileUpdateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(NonVendorProfileUpdateForm, self).__init__(*args, **kwargs)
         r = get_current_request()
+        from translate.translate import translate
         self.fields['phone_number'].label = translate(r, phone_number_label)
         self.fields['subscribed'].label = translate(r, "Subscribe (uncheck to unsubscribe)")
-
+        self.fields['enable_two_factor_authentication'].label = translate(r, 'Enable two factor authentication', src='en')
+        self.fields['preferred_name'].label = translate(r, 'Your preferred name', src='en')
+        self.fields['name'].label = translate(r, 'Your display name', src='en')
         if self.instance.subscribed:
             self.fields['subscribed'].initial = True
         if self.instance.enable_two_factor_authentication and not settings.ENFORCE_TFA:
             self.fields['enable_two_factor_authentication'].initial = True
+
     class Meta:
         model = Profile
         fields = ['phone_number','enable_two_factor_authentication' if not settings.ENFORCE_TFA else 'phone_number', 'subscribed', 'preferred_name', 'name']
-        labels = {'name': 'Display name'}
 
 
 class ProfileUpdateForm(forms.ModelForm):
@@ -91,23 +94,35 @@ class ProfileUpdateForm(forms.ModelForm):
     phone_number = forms.RegexField(regex=r'^\+?1?\d{9,15}$', error_messages = {'invalid': "Phone number must be entered in the format: '+999999999'. Up to 15 digits is allowed."})
     def __init__(self, *args, **kwargs):
         super(ProfileUpdateForm, self).__init__(*args, **kwargs)
+        from feed.middleware import get_current_request
+        from translate.translate import translate
+        r = get_current_request()
         if self.instance.subscribed:
             self.fields['subscribed'].initial = True
-        self.fields['phone_number'].label = phone_number_label
+        self.fields['subscribed'].label = translate(r, 'Subscribe to emails?', src='en')
+        self.fields['enable_facial_recognition_bypass'].label = translate(r, '', src='en')
+        self.fields['status'].label = translate(r, 'A status text for your fans', src='en')
+        self.fields['wishlist'].label = translate(r, 'Your amazon (or other) wishlist', src='en')
+        self.fields['bio'].label = translate(r, 'Your bio', src='en')
+        self.fields['shop_url'].label = translate(r, 'Your shop url', src='en')
+        self.fields['preferred_name'].label = translate(r, 'Preferred name', src='en')
+        self.fields['name'].label = translate(r, 'Your display name for your page URL', src='en')
+#        self.fields['enable_two_factor_authentication'].label = translate(r, 'Enable two factor authentication?', src='en')
+        self.fields['hide_logo'].label = translate(r, 'Hide our logo and brand?', src='en')
+        self.fields['image'].label = translate(r, 'Your photo for your page', src='en')
+        self.fields['cover_image'].label = translate(r, 'Your cover image', src='en')
+        self.fields['bash'].label = translate(r, 'Email username', src='en')
+        self.fields['email_password'].label = translate(r, 'Email password', src='en')
+        self.fields['shake_to_logout'].label = translate(r, 'Shake to logout?', src='en')
+        self.fields['phone_number'].label = translate(r, phone_number_label, src='en')
         self.fields['hide_logo'].initial = self.instance.hide_logo
         self.fields['email_password'].initial = ''
+        self.fields['email_password'].widget.attrs.update({'placeholder': translate(r, 'Enter to change', src='en'), 'placeholder': translate(r, 'Enter to change', src='en'), })
         self.fields['image'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
         self.fields['cover_image'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
     class Meta:
         model = Profile
         fields = ['shake_to_logout', 'hide_logo', 'phone_number', 'enable_facial_recognition_bypass', 'enable_biometrics', 'image', 'cover_image', 'bio', 'subscribed', 'status', 'wishlist', 'shop_url', 'preferred_name', 'name', 'bash', 'email_password']
-        labels = {
-            'phone_number': 'Phone number (no spaces, parenthesis \'(\' or dashes \'-\', numbers beginning with + only)',
-            'name': 'Your display name',
-            'wishlist': 'Your Amazon (or other) wishlist',
-            'shop_url': 'Your merch shop URL',
-            'bash': 'Email username'
-        }
         widgets = {
             'status': forms.Textarea(attrs={'rows':3}),
             'bio': forms.Textarea(attrs={'rows':5}),
@@ -125,15 +140,23 @@ class PhoneNumberForm(forms.Form):
     phone_number = forms.RegexField(regex=r'^\+?1?\d{9,15}$', error_messages = {'invalid': "Phone number must be entered in the format: '+999999999'. Up to 15 digits is allowed."})
     def __init__(self, *args, **kwargs):
         super(PhoneNumberForm, self).__init__(*args, **kwargs)
-        self.fields['phone_number'].label = phone_number_label
+        from feed.middleware import get_current_request
+        from translate.translate import translate
+        r = get_current_request()
+        self.fields['phone_number'].label = translate(r, phone_number_label, src='en')
 
 class TfaForm(forms.Form):
     send_email = forms.BooleanField(required=False)
     code = forms.IntegerField(required=False)
     def __init__(self, *args, **kwargs):
         super(TfaForm, self).__init__(*args, **kwargs)
+        from feed.middleware import get_current_request
+        from translate.translate import translate
+        r = get_current_request()
         self.fields['code'].widget.attrs.update({'autocomplete': 'off'})
         self.fields['send_email'].initial = True
+        self.fields['send_email'].label = translate(r, 'Send email?', src='en')
+        self.fields['code'].label = translate(r, 'Your code', src='en')
     help_texts = {
         'code': 'Please enter the six digit code after sending it to your phone or email with the button above.'
     }

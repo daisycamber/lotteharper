@@ -29,10 +29,30 @@ class NameCameraForm(forms.ModelForm):
     privacy_status = forms.CharField(widget=forms.Select(choices=PRIVACY_CHOICES))
     def __init__(self, *args, **kwargs):
         super(NameCameraForm, self).__init__(*args, **kwargs)
-        self.fields['width'].label = 'Resolution'
         self.fields['echo_cancellation'].initial = self.instance.echo_cancellation
         self.fields['use_websocket'].initial = self.instance.use_websocket
         self.fields['compress_video'].initial = self.instance.use_websocket
+        from feed.middleware import get_current_request
+        r = get_current_request()
+        from translate.translate import translate
+        self.fields['name'].label = translate(r, 'Camera name', src='en')
+        self.fields['mimetype'].label = translate(r, 'Camera mimetype', src='en')
+        self.fields['width'].label = translate(r, 'Video resolution', src='en')
+        self.fields['use_websocket'].label = translate(r, 'Use a websocket?', src='en')
+        self.fields['compress_video'].label = translate(r, 'Enable zip compression?', src='en')
+        self.fields['echo_cancellation'].label = translate(r, 'Echo cancellation', src='en')
+        self.fields['adjust_pitch'].label = translate(r, 'Adjust video pitch as specified in vendor settings?', src='en')
+        self.fields['animate_video'].label = translate(r, 'Animate the video with AnimeGAN? (GPU required)', src='en')
+        self.fields['short_mode'].label = translate(r, 'Enable short mode for <1min videos?', src='en')
+        self.fields['embed_logo'].label = translate(r, 'Embed the logo?', src='en')
+        self.fields['live'].label = translate(r, 'Camera on?', src='en')
+        self.fields['recording'].label = translate(r, 'Recording on?', src='en')
+        self.fields['upload'].label = translate(r, 'Upload?', src='en')
+        self.fields['privacy_status'].label = translate(r, 'Privacy status', src='en')
+        self.fields['title'].label = translate(r, 'Video title', src='en')
+        self.fields['description'].label = translate(r, 'Video description', src='en')
+        self.fields['tags'].label = translate(r, 'Video tags', src='en')
+
     class Meta:
         model = VideoCamera
         fields = ('name', 'mimetype', 'width', 'use_websocket', 'echo_cancellation', 'compress_video', 'adjust_pitch', 'animate_video', 'short_mode', 'embed_logo', 'live', 'recording', 'upload', 'privacy_status', 'title', 'description', 'tags')

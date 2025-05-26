@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load app_filters %}
 {% block head %}
 <link rel="preload" as="image" href="{{ camera.user.vendor_profile.logo.url }}">
 <style>
@@ -12,13 +13,13 @@ video {
 </style>
 {% endblock %}
 {% block content %}
-<h1>Live Recording</h1>
-<legend>{% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %} camera</legend>
+<h1>{{ 'Live Recording'|etrans }}</h1>
+<legend>{% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %} {{ 'camera'|etrans }}</legend>
 <div id="container">
 {% if request.GET.with %}
 <div style="z-index: 1; position: absolute;">
 {% endif %}
-<p id="errormessage" class="hide" style="text-color: red;">Please enable your camera in your web browser and device settings to continue. Reload to continue. <button onclick="window.location.reload();" title="Reload page" class="btn btn-outline-primary">Reload</button></p>
+<p id="errormessage" class="hide" style="text-color: red;">{{ 'Please enable your camera in your web browser and device settings to continue. Reload to continue.'|etrans }} <button onclick="window.location.reload();" title="Reload page" class="btn btn-outline-primary">{{ 'Reload'|etrans }}</button></p>
 <div id="mediaWrapper"></div>
 {% if request.GET.with %}
 </div>
@@ -29,18 +30,20 @@ video {
 {% if request.GET.with %}
 <iframe src="/live/{{ request.GET.with }}/?fullscreen=t&hidenavbar=t" width="100%" height="700px" id="live"></iframe>
 {% endif %}
+{% blocktrans %}
 {% if request.GET.back %}
 <a class="btn btn-outline-primary" href="{{ request.path }}?camera={% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %}{% if request.GET.with %}&with={{ request.GET.with }}{% endif %}">Front Facing Camera</a>
 {% else %}
 <a class="btn btn-outline-secondary" href="{{ request.path }}?camera={% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %}{% if request.GET.with %}&with={{ request.GET.with }}{% endif %}&back=true">Back Facing Camera</a>
 {% endif %}
 <hr>
-  <div class="display: inline-block;">
+<div class="display: inline-block;">
     <button class="btn btn-outline-success" id="startWebcam" title="Start Webcam">Start Webcam</button>
     <button class="btn btn-outline-danger" id="startRecording" title="Record Resulting Stream">Record Stream</button>
     <button class="btn btn-outline-warning" id="stopRecording" title="Stop Recording">Stop Recording</button>
     <button class="btn btn-outline-light" id="stopAllStreams" title="Stop All Streams"{% if not darkmode %} style="color: black !important;"{% endif %}>Stop Stream</button>
-  </div>
+</div>
+{% endblocktrans %}
 <div style="display: flex; justify-content: space-around;">
 {% if request.user.profile.vendor and not request.GET.fullscreen %}
 {% include 'live/go_remote.html' %}
@@ -220,7 +223,7 @@ async function startWebcamFn() {
   if(!localCamStream) {
       localCamStream = await navigator.mediaDevices.getUserMedia({
         video: { {% if request.GET.back %}facingMode: "environment", {% endif %}width: { ideal: {{ camera.width }} },  frameRate: { ideal: 30 } },
-            audio: { deviceId: { ideal: "communications" } },
+        audio: { deviceId: { ideal: "communications" } },
       }).catch((error) => {
         console.log(error);
         $('#errormessage').removeClass('hide');
@@ -345,15 +348,15 @@ async function startRecordingFn() {
   captureInterval = setInterval(capture, {{ video_interval }});
 }
 function stopRecordingFn() {
-  live = false;
+    live = false;
     if(live && mediaSocket && mediaSocket.readyState === WebSocket.OPEN) {
         document.getElementById("rec-status").innerHTML = '<i style="font-size: 20px;" class="bi bi-circle-fill color-red"></i>';
     } else {
         document.getElementById("rec-status").innerHTML = '<i style="font-size: 20px;" class="bi bi-circle"></i>';
     }
-  if(captureInterval) clearInterval(captureInterval);
-  document.getElementById("pipOverlayStream").style.border = "none";
-  mediaRecorder.stop();
+    if(captureInterval) clearInterval(captureInterval);
+    document.getElementById("pipOverlayStream").style.border = "none";
+    mediaRecorder.stop();
 }
 
 async function stopAllStreamsFn() {
@@ -375,7 +378,6 @@ async function stopAllStreamsFn() {
   mediaWrapperDiv.innerHTML = "";
   try {  document.getElementById("pipOverlayStream").style.border = "none"; }
   catch { }
-
 }
 
 startRecordingBtn.addEventListener("click", startRecordingFn);
@@ -416,7 +418,7 @@ function download() {
         var file = new Blob(recordedChunks, {'type': 'video/' + '{% autoescape off %}{{ camera.mimetype }}{% endautoescape %}'.split(';')[0]});
             recordedChunks = [];
         var formdata = new FormData(form);
-                var utc_timestamp = String(new Date().toISOString());
+        var utc_timestamp = String(new Date().toISOString());
         formdata.append('confirmation_id', String(Math.floor(Math.random() * 1000000000)));
         formdata.append('timestamp', utc_timestamp);
         var id = formdata.get('confirmation_id');

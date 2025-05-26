@@ -37,12 +37,12 @@ function updateURLParams(check) {
 	} else {
 		if(check) sendTextCheckbox.checked = false;
 	}
-        if(sendTextCheckbox.checked) {
+    if(sendTextCheckbox.checked) {
 		form.action = "{{ request.path }}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}"
-		$(".form-check-label").html(" Send email");
-        } else {
+		$(".form-check-label").html(" {{ 'Send email'|etrans }}");
+    } else {
 		form.action = "{{ request.path }}?text=t{% if request.GET.next %}&next={{ request.GET.next }}{% endif %}"
-		$(".form-check-label").html(" Send text message");
+		$(".form-check-label").html(" {{ 'Send text message'|etrans }}");
 	}
 }
 sendTextCheckbox.addEventListener('change', e => {
