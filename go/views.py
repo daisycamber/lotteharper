@@ -14,28 +14,29 @@ def go(request):
     from django.shortcuts import render
     from django.shortcuts import redirect
     from django.urls import reverse
-    from django.utils import timezone
-    from django.contrib.sessions.models import Session
+#    from django.utils import timezone
+#    from django.contrib.sessions.models import Session
     from security.views import all_unexpired_sessions_for_user
     from django.contrib.auth.models import User
     from feed.models import Post
     from django.conf import settings
     from barcode.models import DocumentScan
-    import datetime
+#    import datetime
     sc = 0
     for user in User.objects.filter(profile__vendor=True):
         sc = sc + len(all_unexpired_sessions_for_user(user))
-    verified_users = User.objects.filter(is_active=True, profile__email_verified=True)
-    verified_user_count = 0
-    for user in verified_users:
-        verified_user_count = verified_user_count + (1 if user.verifications.count() > 0 else 0)
+#    verified_users = User.objects.filter(is_active=True, profile__email_verified=True)
+#    verified_user_count = 0
+#    for user in verified_users:
+#        verified_user_count = verified_user_count + (1 if user.verifications.count() > 0 else 0)
     id = DocumentScan.objects.filter(user=request.user, side=True).last().document_isolated.url if DocumentScan.objects.filter(user=request.user, side=True).last() and DocumentScan.objects.filter(user=request.user, side=True).last().document_isolated else ''
     smp = None #Post.objects.filter(id=settings.STATUS_SAMPLE).first()
     post = Post.objects.filter(id=settings.SPLASH).first()
 #    ad_post = Post.objects.filter(public=False, private=True, feed="ad", author__id=settings.MY_ID).last()
     ad_post = None
     status_messages = None #smp.content.split('\n') if smp else []
-    r = render(request, 'go/go.html', {'title': 'Go', 'session_count': sc, 'status_messages': status_messages, 'smp_id': smp.id if smp else 1, 'splash_id': post.id if post else 1, 'digital_id': id, 'ad_post': ad_post.id if ad_post else None, 'user_count': verified_users.count(), 'verified_user_count': verified_user_count})
+#, 'user_count': verified_users.count(), 'verified_user_count': verified_user_count
+    r = render(request, 'go/go.html', {'title': 'Go', 'session_count': sc, 'status_messages': status_messages, 'smp_id': smp.id if smp else 1, 'splash_id': post.id if post else 1, 'digital_id': id, 'ad_post': ad_post.id if ad_post else None})
     patch_cache_control(r, private=True)
     return r
 # 'user_count': users, 'verified_user_count': verified_user_count, 'active_today': active_today, 'active_this_week': active_this_week, 'active_this_month': active_this_month, 'active_this_year': active_this_year, 

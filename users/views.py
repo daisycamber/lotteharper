@@ -166,13 +166,6 @@ def users(request):
     import datetime
     from django.core.paginator import Paginator
     from django.contrib import messages
-    active_today = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=1)).count()
-    active_this_week = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=7)).count()
-    active_this_month = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=30)).count()
-    active_this_year = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=365)).count()
-    new_today = User.objects.filter(is_active=True, date_joined__gte=timezone.now() - datetime.timedelta(hours=24)).count()
-    new_this_month = User.objects.filter(is_active=True, date_joined__gte=timezone.now() - datetime.timedelta(hours=24*30)).count()
-    subscribers = User.objects.filter(is_active=True, profile__subscribed=True).count()
     page = 1
     if(request.GET.get('page', '') != ''):
         page = int(request.GET.get('page', ''))
@@ -180,20 +173,37 @@ def users(request):
     p = Paginator(u, 30)
     if page > p.num_pages or page < 1:
         messages.warning(request, "The page you requested, " + str(page) + ", does not exist. You have been redirected to the first page.")
-    return render(request, 'users/users.html', {
+    context = {
         'title': 'All Accounts',
         'count': p.count,
         'page_obj': p.get_page(page),
         'current_page': page,
         'users': p.page(page),
-        'new_today': new_today,
-        'new_this_month': new_this_month,
-        'subscribers': subscribers,
-        'active_today': active_today,
-        'active_this_week': active_this_week,
-        'active_this_month': active_this_month,
-        'active_this_year': active_this_year,
-    })
+    }
+    if page == 1:
+        active_today = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=1)).count()
+        active_this_week = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=7)).count()
+        active_this_month = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=30)).count()
+        active_this_year = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=365)).count()
+        new_today = User.objects.filter(is_active=True, date_joined__gte=timezone.now() - datetime.timedelta(hours=24)).count()
+        new_this_month = User.objects.filter(is_active=True, date_joined__gte=timezone.now() - datetime.timedelta(hours=24*30)).count()
+        subscribers = User.objects.filter(is_active=True, profile__subscribed=True).count()
+        verified_users = User.objects.filter(is_active=True, profile__email_verified=True)
+        verified_user_count = 0
+        for user in verified_users:
+            verified_user_count = verified_user_count + (1 if user.verifications.count() > 0 else 0)
+        context = context + {
+            'new_today': new_today,
+            'new_this_month': new_this_month,
+            'subscribers': subscribers,
+            'active_today': active_today,
+            'active_this_week': active_this_week,
+            'active_this_month': active_this_month,
+            'active_this_year': active_this_year,
+            'verified_users': verified_users.count(),
+            'verified_user_count': verified_user_count,
+        } if page == 1 else {}
+    return render(request, 'users/users.html', context)
 
 def logout_visitor(request):
     from django.contrib import messages
