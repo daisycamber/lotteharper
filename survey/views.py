@@ -83,8 +83,7 @@ def update(request, id):
             surv = form.save()
             messages.success(request, 'This survey was updated.')
             return redirect(request.path)
-    form = UpdateSurveyForm(surv) #initial={'answers_seperated': surv.answers_seperated, 'priority': surv.priority, 'question': surv.question}
-
+    form = UpdateSurveyForm(initial={'priority': surv.priority, 'question': surv.question, 'answers_seperated': surv.answers_seperated})
     context = {
         'title': 'Update Survey',
         'form': form

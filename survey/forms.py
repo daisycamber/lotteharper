@@ -4,21 +4,22 @@ from feed.middleware import get_current_user
 
 class UpdateSurveyForm(forms.ModelForm):
     question = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}))
-    def __init__(self, surv, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(UpdateSurveyForm, self).__init__(*args, *kwargs)
+#        if ins:
         from feed.middleware import get_current_request
         r = get_current_request()
         from translate.translate import translate
-        self.fields['priority'].initial = surv.priority
-        self.fields['question'].initial = surv.question
-        self.fields['answers_seperated'].initial = surv.answers_seperated
         self.fields['priority'].label = translate(r, 'Indexing priority', src='en')
         self.fields['question'].label = translate(r, 'A question to ask the visitor', src='en')
         self.fields['answers_seperated'].label = translate(r, 'Answers for the question, one per line', src='en')
+#            self.fields['priority'].initial = ins.priority
+#            self.fields['question'].initial = ins.question
+#            self.fields['answers_seperated'].initial = ins.answers_seperated
 
     class Meta:
         model = Survey
-        fields = ('priority', 'question', 'answers_seperated',)
+        fields = ('priority', 'question', 'answers_seperated')
 
 class SurveyForm(forms.ModelForm):
     answer = forms.MultipleChoiceField(
