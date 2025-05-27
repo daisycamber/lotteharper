@@ -8,6 +8,13 @@ class Survey(models.Model):
     answers_seperated = models.TextField(default='', null=True, blank=True)
     priority = models.IntegerField(default=0)
 
+    def get(self, name):
+        if name == 'question': return self.question
+        if name == 'answers_seperated': return self.answers_seperated
+        if name == 'priority': return self.priority
+        print(name)
+        return
+
 class Answer(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='surveys', null=True)

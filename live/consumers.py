@@ -103,7 +103,7 @@ def update_camera(user_id, camera_user, camera_name, camera_data, camera_id, key
     camera.frames.add(frame)
     camera.frame_count = camera.frames.count()
     camera.save()
-    if camera.recording:
+    if camera.recording and recording and not is_frame_still:
         recording.frames.add(frame)
         recording.last_frame = timestamp
         recording.save()

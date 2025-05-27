@@ -78,12 +78,16 @@ def update(request, id):
     if id != 'new':
         surv = get_object_or_404(Survey, id=int(id))
     if request.method == 'POST':
-        form = UpdateSurveyForm(request.POST, instance=surv)
+        form = UpdateSurveyForm(None, request.POST)
         if form.is_valid():
-            surv = form.save()
+            nsurv = form.save()
+            surv.delete()
             messages.success(request, 'This survey was updated.')
-            return redirect(request.path)
-    form = UpdateSurveyForm(initial={'priority': surv.priority, 'question': surv.question, 'answers_seperated': surv.answers_seperated})
+            from django.urls import reverse
+            return redirect(reverse('survey:update', kwargs={'id': nsurv.id}))
+    print(surv)
+    form = UpdateSurveyForm(surv)
+#initial={'priority': surv.priority, 'question': surv.question, 'answers_seperated': surv.answers_seperated}
     context = {
         'title': 'Update Survey',
         'form': form
