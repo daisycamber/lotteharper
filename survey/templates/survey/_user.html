@@ -2,10 +2,10 @@
 <div style="overflow: auto; height: {% if user.surveys.count > 0 %}40{% endif %}0px;">
 <small style="white-space: pre-wrap;">
 {% for survey in user.surveys.all %}
-Q: {{ survey.survey.question }}
+Q: {{ survey.survey.question|trans }}
 A: 
 {% autoescape off %}
-{{ survey.answer|showanswers }}
+{{ survey.answer|showanswers|trans }}
 {% endautoescape %}
 {% endfor %}
 </small>

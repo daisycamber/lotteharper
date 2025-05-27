@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load app_filters %}
 {% block styles %}
 .survey-label-text {
         font-size: 25px;
@@ -11,9 +12,9 @@
 {% block content %}
 <form id="survey-form" method="POST">
 	{% csrf_token %}
-        <label class="survey-label-text" for="{{ form.answer.auto_id }}">{{ form.answer.label }}</label>
+    <label class="survey-label-text" for="{{ form.answer.auto_id }}">{{ form.answer.label }}</label>
 	{{ form.answer }}
-	<button type="submit" class="btn btn-outline-info pink-borders" style="float: right;">Submit</button>
+	<button type="submit" class="btn btn-outline-info pink-borders" style="float: right;">{{ 'Submit'|etrans }}</button>
 </form>
 {% endblock %}
 {% block javascript %}

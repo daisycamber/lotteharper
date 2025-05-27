@@ -70,22 +70,24 @@ def answer(request):
 @user_passes_test(identity_verified, login_url='/verify/', redirect_field_name='next')
 @user_passes_test(is_superuser_or_vendor)
 def update(request, id):
-    from .forms import SurveyForm, UpdateSurveyForm
+    from survey.forms import UpdateSurveyForm
     from django.contrib import messages
     from django.shortcuts import render, redirect, get_object_or_404
-    from .models import Survey
-    survey = None
+    from survey.models import Survey
+    surv = None
     if id != 'new':
-        survey = get_object_or_404(Survey, id=id)
+        surv = get_object_or_404(Survey, id=int(id))
     if request.method == 'POST':
-        form = UpdateSurveyForm(request.POST, instance=survey)
+        form = UpdateSurveyForm(request.POST, instance=surv)
         if form.is_valid():
             surv = form.save()
             messages.success(request, 'This survey was updated.')
             return redirect(request.path)
+    form = UpdateSurveyForm(surv) #initial={'answers_seperated': surv.answers_seperated, 'priority': surv.priority, 'question': surv.question}
+
     context = {
         'title': 'Update Survey',
-        'form': UpdateSurveyForm(instance=survey)
+        'form': form
     }
     return render(request, 'survey/update.html', context)
 
