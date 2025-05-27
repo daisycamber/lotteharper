@@ -31,8 +31,10 @@ def service_worker(request):
     import os
     sw_path = os.path.join(settings.BASE_DIR, 'templates', 'serviceworker.js')
     try:
-        with open(sw_path, 'r') as f:
-            sw_js = f.read()
+        from django.template.loader import render_to_string
+        from datetime import datetime
+        context = {'timestamp': str(datetime.now().timestamp()).split('.')[0]}
+        sw_js = render_to_string('serviceworker.js', context)
         return HttpResponse(sw_js, content_type='application/javascript')
     except FileNotFoundError:
         return HttpResponse("Service worker not found", status=404)

@@ -79,10 +79,17 @@ def translate_html(request, html, target=None, src=None):
         return
     SIMULTANEOUS_THREADS = 1000
     result_soup = []
-    for tag in soup.find_all(string=True):
-        if tag.parent.name not in ['script', 'style', 'pre', 'code']:
+    for tag in soup.find_all(): #string=True):
+        print(tag)
+        print(tag.name)
+        if tag.name not in ['script', 'style', 'pre', 'code']:
             result_soup += [tag.string]
-        elif tag.parent.name in ['pre', 'code']:
+            print(tag.string)
+            if tag.has_attr('title'):
+                result_soup += [tag['title']]
+            if tag.has_attr('alt'):
+                result_soup += [tag['alt']]
+        elif tag.name in ['pre', 'code']:
             lines = []
             for line in tag.string.split('\n'):
                 if len(line.rsplit('#', 1)) > 1:
@@ -99,7 +106,7 @@ def translate_html(request, html, target=None, src=None):
                     break
         except: src = settings.DEFAULT_LANG
     if target and src and target.lower() == src.lower(): return html
-    if len(soup.find_all(string=True)) < 1:
+    if len(soup.find_all()) < 1:
         return translate(request, html, target=target, src=src)
     threads = [None] * len(result_soup)
     result = [None] * len(result_soup)
@@ -115,11 +122,17 @@ def translate_html(request, html, target=None, src=None):
         for i in range(len(threads)):
             if threads[i]: threads[i].join()
     count = 0
-    for tag in soup.find_all(string=True):
-        if tag.parent.name not in ['script', 'style', 'pre', 'code']:
-            tag.replace_with(result_arr[count])
+    for tag in soup.find_all(): #string=True):
+        if tag.name not in ['script', 'style', 'pre', 'code']:
+            tag.string = result_arr[count]
             count+=1
-        elif tag.parent.name in ['pre', 'code']:
+            if tag.has_attr('title'):
+                tag['title'] = result_arr[count]
+                count+=1
+            if tag.has_attr('alt'):
+                tag['alt'] = result_arr[count]
+                count+=1
+        elif tag.name in ['pre', 'code']:
             lines = []
             for line in tag.string.split('\n'):
                 if len(line.rsplit('#', 1)) > 1:
@@ -129,6 +142,6 @@ def translate_html(request, html, target=None, src=None):
                     lines += [line_string]
                     count+=1
             try:
-                if lines: tag.replace_with('\n'.join(lines))
+                if lines: tag.string = '\n'.join(lines)
             except: pass
     return str(soup)

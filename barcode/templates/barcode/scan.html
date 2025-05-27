@@ -57,9 +57,9 @@
 <a href="{{ request.path }}?foreign=true&back=true&{% for key,val in request.GET.items %}{{ key }}={{ val }}{% if forloop.counter != request.GET.keys|length %}&{% endif %}{% endfor %}" title="Scan the back of an ID" class="btn btn-sm btn-outline-primary">{{ 'Scan Back'|trans }}</a>
 {% endif %}
 {% if not request.GET.noflash %}
-<a href="{{ request.path }}?noflash=true&{% for key,val in request.GET.items %}{{ key }}={{ val }}{% if forloop.counter != request.GET.keys|length %}&{% endif %}{% endfor %}" id="flash-switch" class="btn btn-sm btn-outline-primary"><i class="bi bi-toggle-on"></i> Flash on</a>
+<a href="{{ request.path }}?noflash=true&{% for key,val in request.GET.items %}{{ key }}={{ val }}{% if forloop.counter != request.GET.keys|length %}&{% endif %}{% endfor %}" id="flash-switch" class="btn btn-sm btn-outline-primary"><i class="bi bi-toggle-on"></i> {{ 'Flash on'|etrans }}</a>
 {% else %}
-<a href="{{ request.path }}?{% for key,val in request.GET.items %}{% if not key == 'noflash' %}{{ key }}={{ val }}{% if forloop.counter != request.GET.keys|length %}&{% endif %}{% endif %}{% endfor %}" id="flash-switch" class="btn btn-sm btn-outline-primary"><i class="bi bi-toggle-off"></i> Flash off</a>
+<a href="{{ request.path }}?{% for key,val in request.GET.items %}{% if not key == 'noflash' %}{{ key }}={{ val }}{% if forloop.counter != request.GET.keys|length %}&{% endif %}{% endif %}{% endfor %}" id="flash-switch" class="btn btn-sm btn-outline-primary"><i class="bi bi-toggle-off"></i> {{ 'Flash off'|etrans }}</a>
 {% endif %}
 </div>
 {% if not back %}

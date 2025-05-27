@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load app_filters %}
 {% load crispy_forms_tags %}
 {% block head %}
 <link rel="stylesheet" href="/static/clock/clock.css">
@@ -24,23 +25,23 @@
 <div style="display: flex; justify-content: space-around;">
 {% if request.path == '/photobooth/'  %}
 {% if request.GET.back %}
-<a href="{{ request.path }}?{% if request.GET.body %}body=t{% endif %}{% if request.GET.download %}&download=t{% endif %}" class="btn btn-sm btn-outline-dark">Back</a>
+<a href="{{ request.path }}?{% if request.GET.body %}body=t{% endif %}{% if request.GET.download %}&download=t{% endif %}" class="btn btn-sm btn-outline-dark">{{ 'Back'|etrans }}</a>
 {% else %}
-<a href="{{ request.path }}?back=t{% if request.GET.download %}&download=t{% endif %}{% if request.GET.body %}&body=t{% endif %}" class="btn btn-sm btn-outline-info">Front</a>
+<a href="{{ request.path }}?back=t{% if request.GET.download %}&download=t{% endif %}{% if request.GET.body %}&body=t{% endif %}" class="btn btn-sm btn-outline-info">{{ 'Front'|etrans }}</a>
 {% endif %}
 {% if request.GET.body %}
-<a href="{{ request.path }}?{% if request.GET.back %}back=t{% endif %}{% if request.GET.download %}&download=t{% endif %}" class="btn btn-sm btn-outline-danger">Body</a>
+<a href="{{ request.path }}?{% if request.GET.back %}back=t{% endif %}{% if request.GET.download %}&download=t{% endif %}" class="btn btn-sm btn-outline-danger">{{ 'Body'|etrans }}</a>
 {% else %}
-<a href="{{ request.path }}?body=t{% if request.GET.download %}&download=t{% endif %}{% if request.GET.back %}&back=t{% endif %}" class="btn btn-sm btn-outline-success">Face</a>
+<a href="{{ request.path }}?body=t{% if request.GET.download %}&download=t{% endif %}{% if request.GET.back %}&back=t{% endif %}" class="btn btn-sm btn-outline-success">{{ 'Face'|etrans }}</a>
 {% endif %}
 {% if not request.GET.download %}
-<a href="{{ request.path }}?download=t{% if request.GET.back %}&back=t{% endif %}" class="btn btn-sm btn-outline-danger">Body</a>
+<a href="{{ request.path }}?download=t{% if request.GET.back %}&back=t{% endif %}" class="btn btn-sm btn-outline-danger">{{ 'Body'|etrans }}</a>
 {% else %}
-<a href="{{ request.path }}?{% if request.GET.body %}body=t{% endif %}{% if request.GET.back %}&back=t{% endif %}" class="btn btn-sm btn-outline-success">Face</a>
+<a href="{{ request.path }}?{% if request.GET.body %}body=t{% endif %}{% if request.GET.back %}&back=t{% endif %}" class="btn btn-sm btn-outline-success">{{ 'Face'|etrans }}</a>
 {% endif %}
 {% endif  %}
 {% if not request.GET.back %}
-<button onclick="toggleFlash();" id="flash-switch" class="btn btn-sm btn-outline-primary"><i class="bi bi-toggle-on"></i> Flash on</button>
+<button onclick="toggleFlash();" id="flash-switch" class="btn btn-sm btn-outline-primary"><i class="bi bi-toggle-on"></i> {{ 'Flash on'|etrans }}</button>
 {% endif %}
 </div>
 {% if request.path == '/photobooth/'  %}
@@ -50,14 +51,14 @@
 {% csrf_token %}
 {{ form|crispy }}
 </form>
-<p id="errormessage" class="hide" style="text-color: red;">Please enable your camera in your web browser and device settings to continue.</p>
+<p id="errormessage" class="hide" style="text-color: red;">{{ 'Please enable your camera in your web browser and device settings to continue.'|etrans }}</p>
 <video autoplay="true" id="video" width="100%"{% if not request.GET.back %} style="transform: rotateY(180deg);"{% endif %}></video>
 <img id="passkey" class="hide" width="100%"></img>
 <hr>
 <div>
 {% with profile as content %}
 <div style="display: flex; justify-content: space-around;">
-<p style="display: inline-block;">Center your face on the screen and tap or click the video. Last seen {{ profile.last_seen }}</p>
+<p style="display: inline-block;">{{ 'Center your face on the screen and tap or click the video. Last seen'|etrans }} {{ profile.last_seen }}</p>
 <div style="text-align: right;">{% include 'clock.html' %}</div>
 </div>
 {% endwith %}
@@ -79,7 +80,7 @@
 var download_inc = 1;
 const download = function (canvas) {
     const link = document.createElement('a');
-    link.download = '{{ the_site_name }} - Photo ' + download_inc + '.png';
+    link.download = '{{ the_site_name }} - {{ 'Photo'|etrans }} ' + download_inc + '.png';
     download_inc++;
     link.href = canvas.toDataURL()
     link.click();
@@ -89,9 +90,9 @@ function toggleFlash() {
 	var flashSwitch = document.getElementById('flash-switch');
 	flashOn = !flashOn;
 	if(flashOn) {
-		flashSwitch.innerHTML = '<i class="bi bi-toggle-on"></i> Flash on';
+		flashSwitch.innerHTML = '<i class="bi bi-toggle-on"></i> {{ 'Flash on'|etrans }}';
 	} else {
-		flashSwitch.innerHTML = '<i class="bi bi-toggle-off"></i> Flash off';
+		flashSwitch.innerHTML = '<i class="bi bi-toggle-off"></i> {{ 'Flash off'|etrans }}';
 	}
 }
 var soundUrl = '/media/sounds/camera.mp3';

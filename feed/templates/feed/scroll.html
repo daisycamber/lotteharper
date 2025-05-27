@@ -378,13 +378,9 @@ function loadNext(next){
         		tryCount: 0,
         		retryLimit: 5,
         		error: (xhr, textStatus, errorThrown) => {
-        	       		$(progress).addClass("fade-hidden");
-        	        	setTimeout(function() {
-        	        	        $(progress).addClass("hide");
-                	        	$.ajax(this);
-        	        	}, 2000);
         	        	this.tryCount++;
         	        	if(this.tryCount >= this.retryLimit) return;
+                        setTimeout(function() {$.ajax(this);}, 7000);
             		},
             			success: (data) => {		
                                 if(!data.startsWith("<div ")){

@@ -236,6 +236,7 @@ class VideoCamera(models.Model):
     adjust_pitch = models.BooleanField(default=False)
     animate_video = models.BooleanField(default=False)
     upload = models.BooleanField(default=False)
+    bucket = models.BooleanField(default=False)
     muted = models.BooleanField(default=False)
     short_mode = models.BooleanField(default=False)
 

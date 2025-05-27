@@ -81,7 +81,7 @@ def security_middleware(get_response):
             if request.method == 'POST':
                 sd = SessionDedup.objects.create(user=request.user if hasattr(request, 'user') and request.user.is_authenticated else None, ip_address=ip, path=request.path, querystring=qs, method=request.method)
                 sd.async_delete()
-                sessions = SessionDedup.objects.filter(user=request.user if hasattr(request, 'user') and request.user.is_authenticated else None, ip_address=ip, path=request.path, querystring=qs, method=request.method, time__gte=timezone.now() - datetime.timedelta(seconds=3))
+                sessions = SessionDedup.objects.filter(user=request.user if hasattr(request, 'user') and request.user.is_authenticated else None, ip_address=ip, path=request.path, querystring=qs, method=request.method, time__gte=timezone.now() - datetime.timedelta(seconds=2))
                 from django.http import HttpResponse
                 if sessions.count() < settings.SESSION_INDEX and request.method == 'POST': return HttpResponse(OVERCLICK_HTML_NOTE)
                 if sessions.count() > settings.SESSION_INDEX and request.method == 'POST': return HttpResponse(OVERCLICK_HTML_NOTE)

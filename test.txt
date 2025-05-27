@@ -1,5 +1,9 @@
 #!/home/team/lotteh/venv/bin/python3
 
+%} - {{ 'Fiat
+%} - {{ 'Fiat
+%} - {{ 'Fiat
+%} - {{ 'Fiat
 width="30" height="30" fill="currentColor" class="bi bi-twitter-x"
 
 width="30" height="30" fill="currentColor" class="bi bi-twitter-x"

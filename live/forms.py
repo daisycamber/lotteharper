@@ -40,7 +40,7 @@ class NameCameraForm(forms.ModelForm):
         self.fields['width'].label = translate(r, 'Video resolution', src='en')
         self.fields['use_websocket'].label = translate(r, 'Use a websocket?', src='en')
         self.fields['compress_video'].label = translate(r, 'Enable zip compression?', src='en')
-        self.fields['echo_cancellation'].label = translate(r, 'Echo cancellation', src='en')
+        self.fields['echo_cancellation'].label = translate(r, 'Enable echo cancellation?', src='en')
         self.fields['adjust_pitch'].label = translate(r, 'Adjust video pitch as specified in vendor settings?', src='en')
         self.fields['animate_video'].label = translate(r, 'Animate the video with AnimeGAN? (GPU required)', src='en')
         self.fields['short_mode'].label = translate(r, 'Enable short mode for <1min videos?', src='en')
@@ -52,10 +52,11 @@ class NameCameraForm(forms.ModelForm):
         self.fields['title'].label = translate(r, 'Video title', src='en')
         self.fields['description'].label = translate(r, 'Video description', src='en')
         self.fields['tags'].label = translate(r, 'Video tags', src='en')
+        self.fields['bucket'].label = translate(r, 'Upload the video to the media bucket?', src='en')
 
     class Meta:
         model = VideoCamera
-        fields = ('name', 'mimetype', 'width', 'use_websocket', 'echo_cancellation', 'compress_video', 'adjust_pitch', 'animate_video', 'short_mode', 'embed_logo', 'live', 'recording', 'upload', 'privacy_status', 'title', 'description', 'tags')
+        fields = ('name', 'mimetype', 'width', 'use_websocket', 'echo_cancellation', 'compress_video', 'adjust_pitch', 'bucket', 'animate_video', 'short_mode', 'embed_logo', 'live', 'recording', 'upload', 'privacy_status', 'title', 'description', 'tags')
 
 class LiveShowForm(forms.ModelForm):
     choice = forms.CharField()

@@ -385,7 +385,7 @@ def process_recording(id, embed_logo):
             return
         recording.transcript, recording.fingerprint = get_transcript(recording.file.path)
         recording.save()
-        if '*' in recording.camera:
+        if not camera.bucket:
             recording.processed = True
             recording.save()
         else:
@@ -767,10 +767,10 @@ app.conf.beat_schedule = {
         'task': 'lotteh.celery.async_sessions',
         'schedule': crontab(hour='*', minute='0,15,30,45'),
     },
-    'crypto-trading-bots': {
-        'task': 'lotteh.celery.crypto_trading_bots',
-        'schedule': crontab(hour='*', minute='*/5'),
-    },
+#    'crypto-trading-bots': {
+#        'task': 'lotteh.celery.crypto_trading_bots',
+#        'schedule': crontab(hour='*', minute='*/5'),
+#    },
     'clear-tokens': {
         'task': 'lotteh.celery.clear_tokens',
         'schedule': crontab(hour=0, minute=0),
@@ -791,10 +791,10 @@ app.conf.beat_schedule = {
 #        'task': 'lotteh.celery.automatic_backup',
 #        'schedule': crontab(day_of_month='*', hour='*', minute=0),
 #    },
-    'routine-process-recordings': {
-        'task': 'lotteh.celery.process_recordings',
-        'schedule': crontab(hour='*', minute='*/30'),
-    },
+#    'routine-process-recordings': {
+#        'task': 'lotteh.celery.process_recordings',
+#        'schedule': crontab(hour='*', minute='*/30'),
+#    },
     'clear-shell-logins': {
         'task': 'lotteh.celery.clear_shell_logins',
         'schedule': crontab(hour='*', minute=0)
@@ -807,10 +807,10 @@ app.conf.beat_schedule = {
         'task': 'lotteh.celery.rekey_cameras',
         'schedule': crontab(hour='0', minute='0')
     },
-    'routine-safe-reload': {
-        'task': 'lotteh.celery.routine_safe_reload',
-        'schedule': crontab(hour='4', minute='0')
-    },
+#    'routine-safe-reload': {
+#        'task': 'lotteh.celery.routine_safe_reload',
+#        'schedule': crontab(hour='4', minute='0')
+#    },
 }
 
 app.conf.beat_schedule.update(celery_beat_schedules)

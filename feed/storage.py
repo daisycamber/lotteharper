@@ -5,7 +5,7 @@ from django.conf import settings
 import os
 
 class MediaStorage(S3Boto3Storage):
-    bucket_name = 'uglek'
+    bucket_name = 'charlotteharper'
 
     def _get_cache_key(self, name):
         return f'media_url_{name}'
