@@ -64,27 +64,37 @@ class PostForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         from feed.middleware import get_current_request
-        request = get_current_request()
+        r = get_current_request()
         super(PostForm, self).__init__(*args, **kwargs)
-        if not self.instance: self.fields['price'].initial = get_current_request().user.vendor_profile.photo_tip[1:]
-        if get_current_request().GET.get('raw', None): self.fields['content'].widget = forms.Textarea(attrs={'rows': settings.TEXTAREA_ROWS})
+        if not self.instance: self.fields['price'].initial = r.user.vendor_profile.photo_tip[1:]
+        if r.GET.get('raw', None): self.fields['content'].widget = forms.Textarea(attrs={'rows': settings.TEXTAREA_ROWS})
         self.fields['image'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
         self.fields['file'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
-        if request.GET.get('camera'):
+        if r.GET.get('camera'):
             self.fields['image'].widget.attrs.update({'capture': 'user'})
             self.fields['file'].widget.attrs.update({'accept': 'video/*', 'capture': 'user'})
-        if request.GET.get('audio'):
+        if r.GET.get('audio'):
             self.fields['file'].widget.attrs.update({'accept': 'audio/*', 'capture': 'user'})
+        from translate.translate import translate
         if self.instance and self.instance.private:
             qs = []
             if self.instance.recipient:
                 self.fields['recipient'].initial = str(self.instance.recipient.id)
-            qs = qs + [('0', 'No recipient')]
+            qs = qs + [('0', translate(r, 'No recipient', src='en'))]
             for q in self.instance.author.subscriptions.all():
                 qs = qs + [(str(q.id), '+ ' + q.name)]
             self.fields['recipient'].widget = forms.Select(choices=qs)
         if self.instance.pk == None:
             self.fields['public'].widget=forms.CheckboxInput(attrs={'checked': True})
+        self.fields['feed'].label = translate(r, 'Blog feed', src='en')
+        self.fields['content'].label = translate(r, 'Content', src='en')
+        self.fields['image'].label = translate(r, 'Upload an image', src='en')
+        self.fields['file'].label = translate(r, 'Upload a file', src='en')
+        self.fields['price'].label = translate(r, 'Name your price', src='en')
+        self.fields['private'].label = translate(r, 'Private?', src='en')
+        self.fields['public'].label = translate(r, 'Public?', src='en')
+        self.fields['pinned'].label = translate(r, 'Pin post?', src='en')
+        self.fields['paid_file'].label = translate(r, 'Paid file?', src='en')
 
     class Meta:
         model = Post
@@ -115,17 +125,10 @@ class ScheduledPostForm(forms.ModelForm):
         from security.crypto import decrypt_cbc
         from django.conf import settings
         from feed.middleware import get_current_request
-        request = get_current_request()
-#        try:
-#            instance = kwargs.get('instance', None)
-#            super(ScheduledPostForm, self).__init__(*args, **kwargs)
-#            kwargs.update(initial={
-#                'auction_message': decrypt_cbc(self.instance.auction_message, settings.AES_KEY)
-##            })
-#        except: pass
+        r = get_current_request()
         super(ScheduledPostForm, self).__init__(*args, **kwargs)
-        if not self.instance: self.fields['price'].initial = get_current_request().user.vendor_profile.photo_tip[1:]
-        if get_current_request().GET.get('raw', None): self.fields['content'].widget = forms.Textarea(attrs={'rows': settings.TEXTAREA_ROWS})
+        if not self.instance: self.fields['price'].initial = r.user.vendor_profile.photo_tip[1:]
+        if r.GET.get('raw', None): self.fields['content'].widget = forms.Textarea(attrs={'rows': settings.TEXTAREA_ROWS})
 #        self.fields['auction_message'].initial = decrypt_cbc(self.instance.auction_message, settings.AES_KEY)
         self.fields['image'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
         self.fields['file'].widget.attrs.update({'style': 'width:100%;padding:25px;border-style:dashed;border-radius:10px;'})
@@ -136,17 +139,27 @@ class ScheduledPostForm(forms.ModelForm):
             self.fields['file'].widget.attrs.update({'accept': 'audio/*', 'capture': 'user'})
         if self.instance and not self.instance.date_auction > timezone.now() - datetime.timedelta(days=365):
             self.fields['auction_message'].widget = forms.HiddenInput()
-        self.fields['date_auction'].label = 'Auction date'
+        from translate.translate import translate
         if self.instance and self.instance.private:
             qs = []
             if self.instance.recipient:
                 self.fields['recipient'].initial = str(self.instance.recipient.id)
-            qs = qs + [('0', 'No recipient')]
+            qs = qs + [('0', translate(r, 'No recipient', src='en'))]
             for q in self.instance.author.subscriptions.all():
                 qs = qs + [(str(q.id), '+ ' + q.name)]
             self.fields['recipient'].widget = forms.Select(choices=qs)
         if self.instance.pk == None:
             self.fields['public'].widget=forms.CheckboxInput(attrs={'checked': True})
+        self.fields['feed'].label = translate(r, 'Blog feed', src='en')
+        self.fields['content'].label = translate(r, 'Content', src='en')
+        self.fields['image'].label = translate(r, 'Upload an image', src='en')
+        self.fields['file'].label = translate(r, 'Upload a file', src='en')
+        self.fields['price'].label = translate(r, 'Name your price', src='en')
+        self.fields['private'].label = translate(r, 'Private?', src='en')
+        self.fields['public'].label = translate(r, 'Public?', src='en')
+        self.fields['pinned'].label = translate(r, 'Pin post?', src='en')
+        self.fields['paid_file'].label = translate(r, 'Paid file?', src='en')
+        self.fields['date_auction'].label = translate(r, 'Auction date', src='en')
 
     class Meta:
         model = Post
