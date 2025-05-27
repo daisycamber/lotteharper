@@ -68,7 +68,7 @@ def translate(request, content, target=None, src=None):
 
 def translate_html(request, html, target=None, src=None):
     """Translates HTML content to the target language."""
-    from bs4 import BeautifulSoup
+    from bs4 import BeautifulSoup, NavigableString
     soup = BeautifulSoup(html, 'html.parser')
     count = 0
     if target == None and not request.GET.get('lang', None): target = request.LANGUAGE_CODE
@@ -79,22 +79,21 @@ def translate_html(request, html, target=None, src=None):
         return
     SIMULTANEOUS_THREADS = 1000
     result_soup = []
-    for tag in soup.find_all(): #string=True):
-        print(tag)
-        print(tag.name)
-        if tag.name not in ['script', 'style', 'pre', 'code']:
+    for tag in soup.find_all(string=True):
+        if tag.parent.name not in ['script', 'style', 'pre', 'code'] and tag.string:
             result_soup += [tag.string]
-            print(tag.string)
-            if tag.has_attr('title'):
-                result_soup += [tag['title']]
-            if tag.has_attr('alt'):
-                result_soup += [tag['alt']]
-        elif tag.name in ['pre', 'code']:
+        elif tag.parent.name in ['pre', 'code'] and tag.string:
             lines = []
             for line in tag.string.split('\n'):
                 if len(line.rsplit('#', 1)) > 1:
                     to_trans = line.rsplit('#', 1)[1]
                     result_soup += [to_trans]
+    for tag in soup.find_all('a'):
+        if 'title' in tag.attrs:
+            result_soup += [tag['title']]
+    for tag in soup.find_all('img'):
+        if 'alt' in tag.attrs:
+            result_soup += [tag['alt']]
     if not src:
         src = settings.DEFAULT_LANG
         try:
@@ -122,17 +121,11 @@ def translate_html(request, html, target=None, src=None):
         for i in range(len(threads)):
             if threads[i]: threads[i].join()
     count = 0
-    for tag in soup.find_all(): #string=True):
-        if tag.name not in ['script', 'style', 'pre', 'code']:
-            tag.string = result_arr[count]
+    for tag in soup.find_all(string=True):
+        if tag.parent.name not in ['script', 'style', 'pre', 'code'] and tag.string:
+            tag.replace_with(result_arr[count])
             count+=1
-            if tag.has_attr('title'):
-                tag['title'] = result_arr[count]
-                count+=1
-            if tag.has_attr('alt'):
-                tag['alt'] = result_arr[count]
-                count+=1
-        elif tag.name in ['pre', 'code']:
+        elif tag.parent.name in ['pre', 'code'] and tag.string:
             lines = []
             for line in tag.string.split('\n'):
                 if len(line.rsplit('#', 1)) > 1:
@@ -142,6 +135,14 @@ def translate_html(request, html, target=None, src=None):
                     lines += [line_string]
                     count+=1
             try:
-                if lines: tag.string = '\n'.join(lines)
+                if lines: tag.replace_with('\n'.join(lines))
             except: pass
+    for tag in soup.find_all('a'):
+        if 'title' in tag.attrs:
+            tag['title'] = result_arr[count]
+            count+=1
+    for tag in soup.find_all('img'):
+        if 'alt' in tag.attrs:
+            tag['alt'] = result_arr[count]
+            count+=1
     return str(soup)
