@@ -2,6 +2,13 @@ from django import template
 
 register = template.Library()
 
+@register.filter('get_answered_surveys')
+def get_answered_surveys(user_id):
+    from django.contrib.auth.models import User
+    from survey.models import Survey
+    u = User.objects.get(id=int(user_id))
+    return u.surveys.filter(completed=True)
+
 @register.filter('barcodescanned')
 def barcodescanned(user):
     from barcode.tests import document_scanned

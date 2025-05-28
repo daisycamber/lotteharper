@@ -27,18 +27,21 @@ class SurveyForm(forms.ModelForm):
         required=False,
         widget=forms.CheckboxSelectMultiple(attrs={'class': 'survey-large-text'}),
     )
-    def __init__(self, survey, *args, **kwargs):
+    def __init__(self, surv, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, *kwargs)
         from feed.middleware import get_current_request
         r = get_current_request()
         from translate.translate import translate
         from django.conf import settings
-        self.fields['answer'].label = translate(r, survey.question, src=settings.DEFAULT_LANG)
-        choices = []
+        self.fields['answer'].label = translate(r, surv.question, src=settings.DEFAULT_LANG)
+        choices = ()
         self.instance.user = r.user
-        self.instance.survey = survey
-        for c in survey.answers_seperated.split('\n'):
-            choices+=[[translate(r, c, src=settings.DEFAULT_LANG), translate(r, c, src=settings.DEFAULT_LANG)]]
+        self.instance.survey = surv
+        survs = surv.answers_seperated.split('\n')
+        survs[len(survs)-1]+='\n'
+        for c in survs:
+            choices+=((c[:-1], translate(r, c[:-1], src=settings.DEFAULT_LANG)),) #
+        print(choices)
         self.fields['answer'].choices = choices
 
     class Meta:

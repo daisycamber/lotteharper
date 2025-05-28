@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<iframe id="survey-frame" src="{% url 'survey:survey' survey.id %}?hidenavbar=t" width="100%" style="height: 100vh;";></iframe>
+<iframe id="survey-frame" src="{% url 'survey:survey' survey.id %}?hidenavbar=t" width="100%" style="height: 70vh;";></iframe>
 {% endblock %}
 {% block javascript %}
 var iframe = document.getElementById('survey-frame');

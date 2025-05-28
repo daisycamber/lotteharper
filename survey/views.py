@@ -26,14 +26,14 @@ def survey(request, id):
     from .forms import SurveyForm
     from django.http import HttpResponse
     from .models import Survey, Answer
-    survey = get_object_or_404(Survey, id=id)
-    answer = Answer.objects.filter(user=request.user, survey=survey, completed=False).first()
-    if not answer: answer = Answer.objects.create(user=request.user, survey=survey, completed=False)
+    surv = get_object_or_404(Survey, id=id)
+    answer = Answer.objects.filter(user=request.user, survey=surv, completed=False).first()
+    if not answer: answer = Answer.objects.create(user=request.user, survey=surv, completed=False)
     answer.user = request.user
-    answer.survey = survey
+    answer.survey = surv
     answer.save()
     if request.method == 'POST':
-        form = SurveyForm(survey, request.POST, instance=answer)
+        form = SurveyForm(surv, request.POST, instance=answer)
         if form.is_valid():
             answer = form.save()
             answer.completed = True
@@ -43,9 +43,9 @@ def survey(request, id):
                 if a.count() < 1:
                     return redirect(reverse('survey:survey', kwargs={'id': s.id}) + '?hidenavbar=t')
             return HttpResponse('You have finished the survey. You will be redirected soon, thank you for your input.')
-        else: messages.warning(request, form.errors)
+        else: messages.warning(request, str(form.errors))
     return render(request, 'survey/survey.html', {
-        'form': SurveyForm(survey),
+        'form': SurveyForm(surv),
         'full': True
     })
 

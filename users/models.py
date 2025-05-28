@@ -166,6 +166,7 @@ class Profile(models.Model):
         if settings.USE_OFFSITE and self.image_offsite: return self.image_offsite
         if self.image_bucket: return self.image_bucket.url
         if self.image_public_bucket: return self.image_public_bucket.url
+        return self.image.url
         from security.secure import get_secure_path, get_secure_public_path
         path, url = get_secure_public_path(self.image.name)
         full_path = os.path.join(settings.BASE_DIR, path + '.public')
@@ -227,6 +228,7 @@ class Profile(models.Model):
         from django.conf import settings
         if settings.USE_OFFSITE and self.image_offsite: return self.image_offsite
         if self.image_bucket: return self.image_bucket.url
+        return self.image.url
         from security.secure import get_secure_path, get_secure_public_path
         path, url = get_secure_path(self.image.name)
         from django.conf import settings
@@ -243,6 +245,7 @@ class Profile(models.Model):
         from django.conf import settings
         if settings.USE_OFFSITE and self.image_cover_offsite: return self.image_cover_offsite
         if self.cover_image_bucket: return self.cover_image_bucket.url
+        return self.cover_image.url
         from security.secure import get_secure_path, get_secure_public_path
         path, url = get_secure_path(self.cover_image.name)
         from django.conf import settings

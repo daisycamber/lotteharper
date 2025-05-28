@@ -181,6 +181,7 @@ def users(request):
         'users': p.page(page),
     }
     if page == 1:
+        all_users = User.objects.filter(is_active=True)
         active_today = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=1)).count()
         active_this_week = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=7)).count()
         active_this_month = User.objects.filter(is_active=True, profile__last_seen__gte=timezone.now()-datetime.timedelta(days=30)).count()
@@ -192,7 +193,8 @@ def users(request):
         verified_user_count = 0
         for user in verified_users:
             verified_user_count = verified_user_count + (1 if user.verifications.count() > 0 else 0)
-        context = context + {
+        context.update({
+            'all_users': all_users,
             'new_today': new_today,
             'new_this_month': new_this_month,
             'subscribers': subscribers,
@@ -202,7 +204,7 @@ def users(request):
             'active_this_year': active_this_year,
             'verified_users': verified_users.count(),
             'verified_user_count': verified_user_count,
-        } if page == 1 else {}
+        } if page == 1 else {})
     return render(request, 'users/users.html', context)
 
 def logout_visitor(request):
