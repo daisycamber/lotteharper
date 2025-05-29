@@ -13,7 +13,7 @@
 <img align="left" src="{{ model.get_face_blur_url }}" style="width:33%; margin-right: 10px;" class="rounded"></img>
 <!-- <img class="mr-2 img-fluid rounded" src="{{ post.get_blur_thumb_url }}" style="float: left; width: 40%; max-width: 400px;" alt="{{ 'See photos like these'|etrans }}"></img>-->
 </div>
-<p>{{ 'This purchase is subject to'|etrans }} <a href="{% url 'payments:surrogacy' username %}" title="{{ 'View the agreement'|etrans }}">{{ 'the agreement'|etrans }}</a> {{ 'on the referring page and'|etrans }} <a href="{% url 'misc:terms' %}" title="{{ 'View the terms and coniditons'|etrans }}">{{ 'the terms and conditions and privacy policy'|etrans }}</a> {{ 'of'|etrans }} {{ the_site_name }}.</p>
+<p>{{ 'This purchase is subject to the agreement on the referring page of your purchase and'|etrans }} <a href="{% url 'misc:terms' %}" title="{{ 'View the terms and coniditons'|etrans }}">{{ 'the terms and conditions and privacy policy'|etrans }}</a> {{ 'of'|etrans }} {{ the_site_name }}.</p>
 <div style="display: flex; justify-content: space-around;">
 <div class="dropdown" style="display: inline-block;">
   <a class="btn btn-outline-dark pink-borders dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,7 +63,6 @@
 <p>{{ 'Buy crypto to send here:'|etrans }} <a href="{{ crypto_provider }}" title="{{ 'Buy crypto to send'|etrans }}">{{ crypto_provider }}</a>, {{ 'or with your crypto bank.'|etrans }}</p>
 </div>
 <p>{{ 'Want to pay for this invoice with card? Select the option above to use the onramp or'|etrans }} <a href="{% url 'payments:pay-invoice' %}{% if request.GET %}?{% for key, val in request.GET.items %}{{ key }}={{ val }}&{% endfor %}{% endif %}" class="btn btn-outline-secondary" title="{{ 'Pay with Card'|etrans }}">{{ 'Pay with Card'|etrans }}</a></p>
-{% include 'social.html' %}
 {% endblock %}
 {% block javascript %}
 function copyAddress() {

@@ -230,15 +230,15 @@
 {% if request.user.birthcontrol_profile.taking_birth_control %}<small class="text-muted"><i>Last taken </i>{{ request.user.birthcontrol_profile.birth_control_taken|date:"F d, Y" }} {{ request.user.birthcontrol_profile.birth_control_taken|time:"H:i" }},</small>{% endif %}
 {% if request.user.birthcontrol_profile.birth_control %}<small class="text-muted"><i>uploaded </i>{{ request.user.birthcontrol_profile.birth_control_uploaded|date:"F d, Y" }} {{ request.user.birthcontrol_profile.birth_control_uploaded|time:"H:i" }}</small>{% endif %}
 {% if request.user.is_superuser or request.user.profile.admin %}
+{% if request.user.profile.vendor %}
 <hr style="background-color: purple;">
 <i>Logout</i>
 <div style="display: flex; justify-content: space-around;">
-{% if request.user.profile.vendor %}
 	<a href="{% url 'security:logout-everyone' %}" class="btn btn-outline-danger" title="Log everyone out"><i class="bi bi-person-dash-fill"></i> Logout everyone</a>
 	<a href="{% url 'security:logout-everyone-but-user' %}" class="btn btn-outline-danger" title="Log everyone out except for me"><i class="bi bi-person-dash-fill"></i> Logout everyone but me</a>
-{% endif %}
-	<div style="padding-left: 10px;"><p>{{ session_count|sessioncount|capitalize }} active</p></div>
+<!--	<div style="padding-left: 10px;"><p>{{ session_count|sessioncount|capitalize }} active</p></div>-->
 </div>
+{% endif %}
 {% endif %}
 {% endblocktrans %}
 {% endblock content %}

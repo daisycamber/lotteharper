@@ -23,8 +23,8 @@ def go(request):
     from barcode.models import DocumentScan
 #    import datetime
     sc = 0
-    for user in User.objects.filter(profile__vendor=True):
-        sc = sc + len(all_unexpired_sessions_for_user(user))
+#    for user in User.objects.filter(profile__vendor=True):
+#        sc = sc + len(all_unexpired_sessions_for_user(user))
 #    verified_users = User.objects.filter(is_active=True, profile__email_verified=True)
 #    verified_user_count = 0
 #    for user in verified_users:
