@@ -27,7 +27,11 @@ def is_still(input_path):
                 height = int(firstimg.shape[0])
             except: first = True
         elif success:
-            lastimg = image
+            try:
+                width = int(lastimg.shape[1])
+                height = int(lastimg.shape[0])
+                lastimg = image
+            except: pass
     dim = (width, height)
     resized = None
     try:
