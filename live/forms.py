@@ -81,7 +81,10 @@ class ChooseCameraForm(forms.Form):
     choice = forms.CharField()
     def __init__(self, *args, **kwargs):
         super(ChooseCameraForm, self).__init__(*args, **kwargs)
-        self.fields['choice'].label = 'Choose a camera to begin'
+        from feed.middleware import get_current_request
+        r = get_current_request()
+        from translate.translate import translate
+        self.fields['choice'].label = translate(r, 'Choose a camera to begin', src='en')
         user = get_current_user()
         cams = VideoCamera.objects.filter(user=user).order_by('-last_frame')
         cameras = []
