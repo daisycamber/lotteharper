@@ -211,7 +211,7 @@ DATABASES = {
             'POOL_SIZE': 999999,
             'MAX_OVERFLOW': 999999999,
             'RECYCLE': 24 * 60 * 60
-        }
+        },
 #        'DISABLE_SERVER_SIDE_CURSORS': True,
     },
     'lotteh2024': {
@@ -261,6 +261,7 @@ CACHES = {
 #        "LOCATION": "redis://localhost:6379",
         "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
         "LOCATION": str(os.path.join(BASE_DIR, 'cache/')),
+        "TIMEOUT": 300,
     }
 }
 

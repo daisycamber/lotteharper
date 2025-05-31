@@ -82,7 +82,7 @@
 <div class="d-flex">{% with profile as content %}{% include 'clock.html' %}{% endwith %}</div>
 {% if user.is_authenticated %}
 <div style="text-align:center;">
-{% if profile|islive %}
+{% if False and profile|islive %}
 <h2>{{ 'Live Feed'|etrans }}</h2>
 <iframe id="live" src="/live/{{ profile.name }}/?hidenavbar=t{% if request.GET.lang %}&lang={{ request.GET.lang }}{% endif %}" width="100%" height="400px"></iframe>
 {% endif %}

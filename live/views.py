@@ -515,7 +515,7 @@ def livevideo(request, username):
     if request.GET.get('hidenavbar','') != '':
         hidenav = True
     profile = get_object_or_404(Profile, name=username, identity_verified=True, vendor=True)
-    cameras = VideoCamera.objects.filter(user=profile.user, name=request.GET.get('camera') if request.GET.get('camera') else 'private')
+    cameras = VideoCamera.objects.filter(user=profile.user, name=request.GET.get('camera') if request.GET.get('camera') else 'private', mimetype__icontains='"vp')
     camera = cameras.first()
     if camera and request.GET.get('key') and camera.key != request.GET.get('key') and not camera.public:
         return redirect(reverse('feed:follow', kwargs={'username': username}) + get_qs(request.GET))
