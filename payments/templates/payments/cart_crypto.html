@@ -22,7 +22,7 @@
     <div style="max-height: 50vh; overflow: scroll;">
 		<li><a class="dropdown-item" href="{{ request.path }}?crypto=BTC&lightning=t">BTC (Lightning Network)</a></li>
 	{% for currency in currencies %}
-		<li><a class="dropdown-item" href="{{ request.path }}?crypto={{ currency }}">{{ currency }}{% if forloop.counter < 6 %} {% 'Fiat options'|etrans %}{% endif %}</a></li>
+		<li><a class="dropdown-item" href="{{ request.path }}?crypto={{ currency }}">{{ currency }}{% if forloop.counter < 6 %} {{ 'Fiat options'|etrans }}{% endif %}</a></li>
 	{% endfor %}
     </div>
   </ul>
