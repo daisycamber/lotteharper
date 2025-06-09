@@ -22,6 +22,23 @@ PRIVACY_CHOICES = [['public','public'], ['unlisted','unlisted'], ['private','pri
 
 MICROPHONE_CHOICES = [['default', 'default'], ['echo cancellation', 'echo cancellation'], ['communication', 'communication']]
 
+CATEGORY_CHOICES = [
+    ["2", "Autos & Vehicles"],
+    ["23", "Comedy"],
+    ["27", "Education"],
+    ["24", "Entertainment"],
+    ["1", "Film & Animation"],
+    ["20", "Gaming"],
+    ["26", "Howto & Style"],
+    ["10", "Music"],
+    ["25", "News & Politics"],
+    ["29", "Nonprofits & Activism"],
+    ["22", "People & Blogs"],
+    ["15", "Pets & Animals"],
+    ["28", "Science & Technology"],
+    ["17", "Sports"],
+    ["19", "Travel & Events"],
+]
 
 class NameCameraForm(forms.ModelForm):
     name = forms.CharField(required=True, min_length=1)
@@ -29,6 +46,7 @@ class NameCameraForm(forms.ModelForm):
     width = forms.CharField(widget=forms.Select(choices=WIDTH_CHOICES))
     privacy_status = forms.CharField(widget=forms.Select(choices=PRIVACY_CHOICES))
     microphone = forms.CharField(widget=forms.Select(choices=MICROPHONE_CHOICES))
+    category = forms.CharField(widget=forms.Select(choices=CATEGORY_CHOICES))
     def __init__(self, *args, **kwargs):
         super(NameCameraForm, self).__init__(*args, **kwargs)
 #        self.fields['echo_cancellation'].initial = self.instance.echo_cancellation
@@ -43,6 +61,9 @@ class NameCameraForm(forms.ModelForm):
         for c in PRIVACY_CHOICES:
             c[1] = translate(r, c[1], src='en').capitalize()
         self.fields['privacy_status'].widget = forms.Select(choices=PRIVACY_CHOICES)
+        for c in CATEGORY_CHOICES:
+            c[1] = translate(r, c[1], src='en').capitalize()
+        self.fields['category'].widget = forms.Select(choices=CATEGORY_CHOICES)
         self.fields['name'].label = translate(r, 'Camera name', src='en')
         self.fields['microphone'].label = translate(r, 'Configure microphone', src='en')
         self.fields['mimetype'].label = translate(r, 'Camera mimetype', src='en')
@@ -58,13 +79,14 @@ class NameCameraForm(forms.ModelForm):
         self.fields['upload'].label = translate(r, 'Upload?', src='en')
         self.fields['privacy_status'].label = translate(r, 'Privacy status', src='en')
         self.fields['title'].label = translate(r, 'Video title', src='en')
+        self.fields['category'].label = translate(r, 'Video category', src='en')
         self.fields['description'].label = translate(r, 'Video description', src='en')
         self.fields['tags'].label = translate(r, 'Video tags', src='en')
         self.fields['bucket'].label = translate(r, 'Upload the video to the media bucket?', src='en')
 
     class Meta:
         model = VideoCamera
-        fields = ('name', 'mimetype', 'width', 'microphone', 'use_websocket', 'compress_video', 'adjust_pitch', 'bucket', 'animate_video', 'short_mode', 'embed_logo', 'live', 'recording', 'upload', 'privacy_status', 'title', 'description', 'tags')
+        fields = ('name', 'mimetype', 'width', 'microphone', 'use_websocket', 'compress_video', 'adjust_pitch', 'bucket', 'animate_video', 'short_mode', 'embed_logo', 'live', 'recording', 'upload', 'category', 'privacy_status', 'title', 'description', 'tags')
 
 class LiveShowForm(forms.ModelForm):
     choice = forms.CharField()

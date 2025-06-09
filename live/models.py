@@ -233,6 +233,7 @@ class VideoCamera(models.Model):
     description = models.CharField(max_length=1000, default="{} is live at {}".format(settings.SITE_NAME, settings.DOMAIN))
     tags = models.CharField(max_length=500, default="passive income,technology,software,web development,web apps,programming,coding,casual gaming,online business,online shopping,stream,streaming,video chat,photography,machine learning,artificial intelligence,computer vision,cryptocurrency,payments,beauty,fashion,makeup,cosmetics,esthetics,esthetician,code,coding,coder,program,programming,meme,live,egirl,django,python,webapp,website,app,google,google pixel,webrtc,chat,payment processing,model,celebrity,engineer")
     privacy_status = models.CharField(max_length=30, default="public")
+    category = models.CharField(max_length=5, default='22')
     embed_logo = models.BooleanField(default=True)
     adjust_pitch = models.BooleanField(default=False)
     animate_video = models.BooleanField(default=False)

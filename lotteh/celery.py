@@ -425,8 +425,8 @@ def process_recording(id, embed_logo):
                     profanity.censor(camera.title[:70]),
                     profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000]) +  ' - ' + recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'),
                     [profanity.censor(tag) for tag in camera.tags.split(',')],
-                    category='22',
-                    privacy_status=camera.privacy_status,
+                    category=camera.category,
+                    privacy_status=camera.privacy_status if recording.public else 'private',
                     thumbnail=thumbnail,
                     age_restricted=not recording.public)
                 recording.uploaded = True

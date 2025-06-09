@@ -34,7 +34,16 @@ for recording in VideoRecording.objects.filter(processed=True, uploaded=False).o
                 recording.save()
         except: print(traceback.format_exc())
         try:
-            upload_youtube(camera.user, recording.file.path, profanity.censor(camera.title[:67-len(recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'))]) + ' - ' + recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'), profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000 - 3]), [tag for tag in camera.tags.split(',')], category='22', privacy_status=camera.privacy_status, age_restricted=not recording.public)
+            upload_youtube(
+                camera.user,
+                recording.file.path,
+                profanity.censor(camera.title[:70]),
+                profanity.censor(camera.description) + ' - ' + profanity.censor(recording.transcript[:4000]) +  ' - ' + recording.last_frame.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime('%A %B %d, %Y %H:%M:%S'),
+                [profanity.censor(tag) for tag in camera.tags.split(',')],
+                category=camera.category,
+                privacy_status=camera.privacy_status if recording.public else 'private',
+                thumbnail=thumbnail,
+                age_restricted=not recording.public)
             recording.uploaded = True
         except:
             recording.uploaded = False
