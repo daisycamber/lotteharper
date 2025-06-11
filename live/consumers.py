@@ -80,6 +80,10 @@ def update_camera(user_id, camera_user, camera_name, camera_data, camera_id, key
         file.write(base64.b64decode(frame_data))
     file.close()
     is_frame_still, error = is_still(path)
+#    new_path = os.path.join(settings.MEDIA_ROOT, get_file_path(camera, 'frame.' + camera.mimetype.split(';')[0]))
+#    os.system('mp4fragment {} {}'.format(path, new_path)) #
+#    os.remove(path)
+#    path = new_path
     frame = VideoFrame.objects.create(user=camera.user, time_captured=timestamp, compressed=camera.user.vendor_profile.compress_video, confirmation_id=camera_data[3].split('=', 1)[1], frame=path, difference=error, adjust_pitch=camera.adjust_pitch, animate_video=camera.animate_video)
     camera.frame = path
     camera.save()

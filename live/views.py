@@ -515,11 +515,11 @@ def livevideo(request, username):
     if request.GET.get('hidenavbar','') != '':
         hidenav = True
     profile = get_object_or_404(Profile, name=username, identity_verified=True, vendor=True)
-    cameras = VideoCamera.objects.filter(user=profile.user, name=request.GET.get('camera') if request.GET.get('camera') else 'private', mimetype__icontains='"vp')
+    cameras = VideoCamera.objects.filter(user=profile.user, name=request.GET.get('camera') if request.GET.get('camera') else 'private')
     camera = cameras.first()
     if camera and request.GET.get('key') and camera.key != request.GET.get('key') and not camera.public:
         return redirect(reverse('feed:follow', kwargs={'username': username}) + get_qs(request.GET))
-    if not cameras.first() or not cameras.first().last_frame > timezone.now() - datetime.timedelta(seconds=settings.LIVE_INTERVAL/1000*3):
+    if not (cameras.first() and cameras.first().last_frame > timezone.now() - datetime.timedelta(seconds=settings.LIVE_INTERVAL/1000*3)):
         messages.warning(request, '{}\'s camera is not active. Consider booking a show.'.format(username))
         return redirect(reverse('live:book-live-show', kwargs={'username': username}) + get_qs(request.GET)) if hasattr(request, 'user') and request.user.is_authenticated else redirect(reverse('feed:follow', kwargs={'username': username}) + get_qs(request.GET))
     from django.shortcuts import render

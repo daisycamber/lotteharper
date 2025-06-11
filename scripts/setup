@@ -182,7 +182,12 @@ git clone https://github.com/davisking/dlib.git
 sudo apt update && sudo apt install -y curl gnupg
 curl https://repo.sshlog.com/sshlog-ubuntu/public.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/repo-sshlog-ubuntu.gpg
 echo "deb [arch=any signed-by=/usr/share/keyrings/repo-sshlog-ubuntu.gpg] https://repo.sshlog.com/sshlog-ubuntu/ stable main" | sudo tee -a /etc/apt/sources.list.d/repo-sshlog-ubuntu.list
-sudo apt update && sudo apt install -y sshlog
+# Install Bento4
+cd $DIR
+wget https://www.bok.net/Bento4/binaries/Bento4-SDK-1-6-0-641.x86_64-unknown-linux.zip
+mv Bento4-SDK-1-6-0-641.x86_64-unknown-linux Bento4-SDK
+echo "export PATH=$PATH:/home/team/lotteh/Bento4-SDK/bin" >> ~/.bashrc
+rm Bento4-SDK*.zip
 cd $DIR
 cd dlib
 mkdir build; cd build; cmake ..; cmake --build .
