@@ -27,6 +27,7 @@ def translate(request, content, target=None, src=None):
         else:
             lang_code = (settings.DEFAULT_LANG if not request.GET.get('lang', None) else request.GET.get('lang')) if request != None else settings.DEFAULT_LANG
     lang_code = str(lang_code)
+    if (not content) or content == '' or content == None or (src != None and target != None and target == src): return content
     if not lang: lang = settings.DEFAULT_LANG
     if request != None and request.GET.get('lang', False): lang_code = request.GET.get('lang', None)
     if target:

@@ -74,7 +74,7 @@ def security_middleware(get_response):
     def middleware(request):
         response = None
         try:
-            print(request.path)
+            print(request.get_full_path())
             ip = get_client_ip(request)
             qs = get_qs(request.GET)
             sessions = None

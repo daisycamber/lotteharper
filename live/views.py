@@ -55,7 +55,7 @@ def name_camera(request):
         if form.is_valid() and form.instance.name != '':
             camera = form.save()
             messages.success(request, 'The camera, {}, was updated.'.format(camera.name))
-            return redirect(request.path + '?camera={}'.format(form.instance.name))
+            return redirect(request.get_full_path())
     from django.shortcuts import render
     return render(request, 'live/name_camera.html', {'title': 'Update Camera {}'.format(camera.name), 'form': NameCameraForm(instance=camera), 'camera': camera})
 

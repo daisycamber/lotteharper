@@ -54,8 +54,20 @@ video {
 {% endif %}
 </div>
 <div style="text-align: center;" id="rec-status"></div>
+{% include 'live/camera_settings_frame.html' %}
 {% endblock %}
 {% block javascript %}
+var updateCameraToggle = document.getElementById('update-camera-toggle');
+var cameraSettings = document.getElementById('camera-settings');
+var cameraUpdateOpen = false;
+$(updateCameraToggle).on('click', function() {
+    cameraUpdateOpen = !cameraUpdateOpen;
+    if(cameraUpdateOpen) {
+        cameraSettings.height = '600px';
+    } else {
+        cameraSettings.height = '0px';
+    }
+});
 function generateRandomString(length = 6) {
   return Math.random().toString(36).substring(2, 2 + length);
 }

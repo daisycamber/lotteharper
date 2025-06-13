@@ -12,13 +12,14 @@ video {
 </style>
 {% endblock %}
 {% block content %}
-<h1>Live Recording</h1>
+{% load app_filters %}
+<h1>{{ 'Live Recording'|etrans }}</h1>
 <legend>{% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %} camera</legend>
 <div id="container">
 {% if request.GET.with %}
 <div style="z-index: 1; position: absolute;">
 {% endif %}
-<p id="errormessage" class="hide" style="text-color: red;">Please enable your camera in your web browser and device settings to continue. Reload to continue. <button onclick="window.location.reload();" title="Reload page" class="btn btn-outline-primary">Reload</button></p>
+<p id="errormessage" class="hide" style="text-color: red;">{{ 'Please enable your camera in your web browser and device settings to continue. Reload to continue.'|etrans }} <button onclick="window.location.reload();" title="{{ 'Reload page'|etrans }}" class="btn btn-outline-primary">{{ 'Reload'|etrans }}</button></p>
 <div id="mediaWrapper"></div>
 {% if request.GET.with %}
 </div>
@@ -29,6 +30,7 @@ video {
 {% if request.GET.with %}
 <iframe src="/live/{{ request.GET.with }}/?fullscreen=t&hidenavbar=t" width="100%" height="700px" id="live"></iframe>
 {% endif %}
+{% blocktrans %}
 {% if request.GET.back %}
 <a class="btn btn-outline-primary" href="{{ request.path }}?camera={% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %}{% if request.GET.with %}&with={{ request.GET.with }}{% endif %}">Front Facing Camera</a>
 {% else %}
@@ -39,9 +41,9 @@ video {
     <button class="btn btn-outline-success" id="startWebcam" title="Start Webcam">Start Webcam</button>
     <button class="btn btn-outline-info" id="startScreenShare" title="Start Screen Share">Start Screen Share</button>
     <button class="btn btn-outline-primary" id="mergeStreams" title="Merge Streams">Merge Streams</button>
-    <button class="btn btn-outline-light" id="stopAllStreams" title="Stop All Streams"{% if not darkmode %} style="color: black !important;"{% endif %}>Stop All Streams</button>
     <button class="btn btn-outline-danger" id="startRecording" title="Record Resulting Stream">Record Resulting Stream</button>
     <button class="btn btn-outline-warning" id="stopRecording" title="Stop Recording">Stop Recording</button>
+    <button class="btn btn-outline-light" id="stopAllStreams" title="Stop All Streams"{% if not darkmode %} style="color: black !important;"{% endif %}>Stop All Streams</button>
 </div>
 <div style="display: flex; justify-content: space-around;">
 {% if request.user.profile.vendor and not request.GET.fullscreen %}
@@ -52,9 +54,22 @@ video {
 {% include 'live/recording_remote.html' %}
 {% endif %}
 </div>
+{% endblocktrans %}
 <div style="text-align: center;" id="rec-status"></div>
+{% include 'live/camera_settings_frame.html' %}
 {% endblock %}
 {% block javascript %}
+var updateCameraToggle = document.getElementById('update-camera-toggle');
+var cameraSettings = document.getElementById('camera-settings');
+var cameraUpdateOpen = false;
+$(updateCameraToggle).on('click', function() {
+    cameraUpdateOpen = !cameraUpdateOpen;
+    if(cameraUpdateOpen) {
+        cameraSettings.height = '600px';
+    } else {
+        cameraSettings.height = '0px';
+    }
+});
 function generateRandomString(length = 6) {
   return Math.random().toString(36).substring(2, 2 + length);                                                           }
 const CAMERA_ID = generateRandomString(8);
