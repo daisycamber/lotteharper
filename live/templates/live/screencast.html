@@ -14,7 +14,7 @@ video {
 {% block content %}
 {% load app_filters %}
 <h1>{{ 'Live Recording'|etrans }}</h1>
-<legend>{% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %} camera</legend>
+<legend>{% if request.GET.camera %}{{ request.GET.camera }}{% else %}private{% endif %} {{ 'camera'|etrans }}</legend>
 <div id="container">
 {% if request.GET.with %}
 <div style="z-index: 1; position: absolute;">
@@ -248,7 +248,7 @@ async function startWebcamFn() {
         console.log(error);
         $('#errormessage').removeClass('hide');
       });
-      if (localCamStream) {
+      if (localCamStream && !document.getElementById("justWebcam")) {
         cam = await attachToDOM("justWebcam", localCamStream);
       }
   }

@@ -242,7 +242,7 @@ async function startWebcamFn() {
         console.log(error);
         $('#errormessage').removeClass('hide');
       });
-      if (localCamStream) {
+      if (localCamStream && !document.getElementById("justWebcam")) {
         cam = await attachToDOM("justWebcam", localCamStream);
       }
       setTimeout(mergeStreamsFn, 300);
@@ -434,7 +434,7 @@ function download() {
             document.getElementById("rec-status").innerHTML = '<i style="font-size: 20px;" class="bi bi-circle"></i>';
         }
         var file = new Blob(recordedChunks, {'type': 'video/' + '{% autoescape off %}{{ camera.mimetype }}{% endautoescape %}'.split(';')[0]});
-            recordedChunks = [];
+        recordedChunks = [];
         var formdata = new FormData(form);
         var utc_timestamp = String(new Date().toISOString());
         formdata.append('confirmation_id', String(Math.floor(Math.random() * 1000000000)));
@@ -447,102 +447,102 @@ function download() {
         zip.file('frame.' + '{{ camera.mimetype }}'.split(';')[0], new File([file], 'frame.' + '{{ camera.mimetype }}'.split(';')[0]));
         {% endautoescape %}
         zip.generateAsync({type:"blob"}).then(function (file) {
-                var zipfile = new File([file], 'frame.zip');
-                var reader = new FileReader();
+        var zipfile = new File([file], 'frame.zip');
+        var reader = new FileReader();
         reader.readAsDataURL(zipfile);
-            reader.onload = function () {
-                formdata.append("frame", reader.result);
+        reader.onload = function () {
+            formdata.append("frame", reader.result);
                 var data = new URLSearchParams(formdata).toString();
                 if(mediaSocket.readyState == WebSocket.OPEN) mediaSocket.send(data);
-                        };
-                        reader.onerror = function (error) {
-                                console.log('Error: ', error);
-                        };
-                });
+            };
+            reader.onerror = function (error) {
+                    console.log('Error: ', error);
+            };
+        });
         {% else %}
-                var reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function () {
-                        formdata.append("frame", reader.result);
-            var data = new URLSearchParams(formdata).toString();
-                if(mediaSocket.readyState == WebSocket.OPEN) mediaSocket.send(data);
-                };
-                reader.onerror = function (error) {
-                        console.log('Error: ', error);
-                };
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+        formdata.append("frame", reader.result);
+        var data = new URLSearchParams(formdata).toString();
+            if(mediaSocket.readyState == WebSocket.OPEN) mediaSocket.send(data);
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
         {% endif %}
         {% else %}
-            {% if should_compress_live %}
-            var zip = new JSZip();
+        {% if should_compress_live %}
+        var zip = new JSZip();
         {% autoescape off %}
-            zip.file("frame." + '{{ camera.mimetype }}'.split(';')[0], new File([file], 'frame.' + '{{ camera.mimetype }}'.split(';')[0]));
+        zip.file("frame." + '{{ camera.mimetype }}'.split(';')[0], new File([file], 'frame.' + '{{ camera.mimetype }}'.split(';')[0]));
         {% endautoescape %}
-            zip.generateAsync({type:"blob"}).then(function (file) { // 1) generate the zip file
-                formdata.append('frame', new File([file], 'frame.zip'));
-                $.ajax({
-                   url: window.location.href,
-                   type: "POST",
-                   data: formdata,
-                   processData: false,
-                   contentType: false,
-                   timeout: {{ request_timeout }},
-                   tryCount: 0,
-                   retryLimit: 5,
-                   error: (xhr, textStatus, errorThrown) => {
-                        this.tryCount++;
-                        if(this.tryCount >= this.retryLimit) return;
-                        $.ajax(this);
-                   },
-                   success: (data) => {
-                        $.ajax({
-                                url: '/live/confirm/' + id + '/',
-                                method: 'POST',
-                                success: function(data) {
-                                        if(data != 'y') {
-                                                $.ajax(this);
-                                        }
-                                },
-                        });
-                   },
-                }).done(function(respond){
-                        console.log(respond);
-                });
-            }, function (err) {
-                    console.log("Error zipping file");
+        zip.generateAsync({type:"blob"}).then(function (file) { // 1) generate the zip file
+            formdata.append('frame', new File([file], 'frame.zip'));
+            $.ajax({
+               url: window.location.href,
+               type: "POST",
+               data: formdata,
+               processData: false,
+               contentType: false,
+               timeout: {{ request_timeout }},
+               tryCount: 0,
+               retryLimit: 5,
+               error: (xhr, textStatus, errorThrown) => {
+                   this.tryCount++;
+                   if(this.tryCount >= this.retryLimit) return;
+                   $.ajax(this);
+               },
+               success: (data) => {
+                   $.ajax({
+                        url: '/live/confirm/' + id + '/',
+                        method: 'POST',
+                        success: function(data) {
+                            if(data != 'y') {
+                                    $.ajax(this);
+                            }
+                        },
+                    });
+                },
+            }).done(function(respond){
+                console.log(respond);
             });
-            {% else %}
-            formdata.append('frame', new File([file], 'frame.webm'));
+        }, function (err) {
+            console.log("Error zipping file");
+        });
+        {% else %}
+        formdata.append('frame', new File([file], 'frame.webm'));
+        $.ajax({
+            url: window.location.href,
+            type: "POST",
+            data: formdata,
+            processData: false,
+            contentType: false,
+            timeout: {{ request_timeout }},
+            tryCount: 0,
+            retryLimit: 5,
+            error: (xhr, textStatus, errorThrown) => {
+                console.log('Error uploading');
+                this.tryCount++;
+                if(this.tryCount >= this.retryLimit) return;
+                $.ajax(this);
+            },
+            success: (data) => {
                 $.ajax({
-                   url: window.location.href,
-                   type: "POST",
-                   data: formdata,
-                   processData: false,
-                   contentType: false,
-                       timeout: {{ request_timeout }},
-                   tryCount: 0,
-                   retryLimit: 5,
-                   error: (xhr, textStatus, errorThrown) => {
-                        console.log('Error uploading');
-                        this.tryCount++;
-                        if(this.tryCount >= this.retryLimit) return;
-                        $.ajax(this);
-                   },
-                   success: (data) => {
-                       $.ajax({
-                           url: '/live/confirm/' + id + '/',
-                                method: 'POST',
-                                success: function(data) {
-                                        if(data != 'y') {
-                                                $.ajax(this);
-                                        }
-                                },
-                        });
-                   },
-                }).done(function(respond){
-                        console.log(respond);
+                   url: '/live/confirm/' + id + '/',
+                    method: 'POST',
+                    success: function(data) {
+                        if(data != 'y') {
+                            $.ajax(this);
+                        }
+                    },
                 });
-            {% endif %}
-          {% endif %}
+            },
+        }).done(function(respond){
+            console.log(respond);
+        });
+        {% endif %}
+    {% endif %}
 }
 {% include 'live/remote.js' %}
 {% endblock %}
