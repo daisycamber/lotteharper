@@ -37,7 +37,7 @@ def translate(request, content, target=None, src=None):
     if (not content) or content == '' or content == None or (src != None and target != None and target == src): return content
     if (not content) or content == '' or content == None or (lang != None and lang_code != None and lang_code == lang): return content
     if not lang_code: return content
-    if not src: return content
+#    if not src: return content
 #    print(content)
 #    print(src)
 #    print(lang_code)

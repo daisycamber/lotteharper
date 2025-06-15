@@ -225,6 +225,9 @@ def process_live(camera_id, frame_id):
             os.remove(frame.frame.path)
         except: pass
         frame.frame = path
+    if camera.speech_only:
+        from live.speech_detection import detect_speech
+        frame.contains_speech = detect_speech(frame.frame.path, camera.vad_mode)
 #    camera.mime = frame.frame.name.split('.')[1]
 #    camera.save()
     try:
@@ -375,7 +378,7 @@ def process_recording(id, embed_logo):
                 print(traceback.format_exc())
         recording.save()
         path = os.path.join(settings.BASE_DIR, 'media', get_file_path(recording, 'file.mp4'))
-        recording.file = concat(recording, path, embed_logo)
+        recording.file = concat(recording, path, embed_logo, camera)
         try:
             run_command('sudo chmod 777 ' + str(recording.file.path))
         except: pass

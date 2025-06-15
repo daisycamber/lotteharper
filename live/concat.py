@@ -1,4 +1,4 @@
-def concat(recording, output_path, embed_logo):
+def concat(recording, output_path, embed_logo, camera):
     from .models import get_file_path
     from subprocess import check_output
     import uuid
@@ -18,7 +18,7 @@ def concat(recording, output_path, embed_logo):
     is_safe = True
     from live.models import VideoFrame, VideoCamera
     from lotteh.celery import process_live
-    camera = VideoCamera.objects.filter(user=recording.user, name=recording.camera).order_by('-last_frame').first()
+#    camera = VideoCamera.objects.filter(user=recording.user, name=recording.camera).order_by('-last_frame').first()
     for frame in recording.frames.filter(processed=False).order_by('time_captured'):
         frame = VideoFrame.objects.get(id=frame.id)
         if not frame.processed: process_live(camera.id, frame.id)
@@ -26,6 +26,8 @@ def concat(recording, output_path, embed_logo):
         if not frame.safe: is_safe = False
     recording.safe = is_safe
     recording.save()
+    if camera.speech_only:
+        recording.frames.filter(contains_speech=False).delete()
     from live.models import VideoRecording
     recording = VideoRecording.objects.get(id=recording.id)
     for frame in recording.frames.order_by('time_captured'):

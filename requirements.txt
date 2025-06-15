@@ -306,6 +306,7 @@ wcwidth
 web3
 webencodings
 WebOb
+webrtcvad
 websockets
 WebTest
 Werkzeug
