@@ -669,6 +669,7 @@ class Post(models.Model):
         this = None
         try:
             from feed.text import is_safe_text, censor
+            self.content = self.content.replace("“", '"').replace("”", '"').replace("‘", "'").replace("’", "'")
             if not is_safe_text(self.content):
                 if len(self.content) < settings.POST_READER_LENGTH: self.content = censor(self.content)
                 else: self.public = False

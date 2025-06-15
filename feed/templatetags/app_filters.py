@@ -2,6 +2,10 @@ from django import template
 
 register = template.Library()
 
+@register.filter('fixerrors')
+def fixerrors(input):
+    return input.replace("“", '"').replace("”", '"').replace("‘", "'").replace("’", "'")
+
 @register.filter('markdowntohtml')
 def markdowntohtml(input):
     import markdown

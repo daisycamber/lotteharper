@@ -35,6 +35,12 @@ def translate(request, content, target=None, src=None):
     if str(lang_code).startswith(str(lang)) or str(lang_code) == str(lang) or str(lang_code) == src:
         return content
     if (not content) or content == '' or content == None or (src != None and target != None and target == src): return content
+    if (not content) or content == '' or content == None or (lang != None and lang_code != None and lang_code == lang): return content
+    if not lang_code: return content
+    if not src: return content
+#    print(content)
+#    print(src)
+#    print(lang_code)
     from .models import CachedTranslation
     trans = CachedTranslation.objects.filter(src_content=content, src=lang, dest=lang_code).order_by('timestamp').first()
     if trans: return trans.dest_content
@@ -80,9 +86,11 @@ def translate_html(request, html, target=None, src=None):
         return
     SIMULTANEOUS_THREADS = 1000
     result_soup = []
+    from django.utils.html import strip_tags
     for tag in soup.find_all(string=True):
         if tag.parent.name not in ['script', 'style', 'pre', 'code'] and tag.string:
-            result_soup += [tag.string]
+#            print(strip_tags(str(tag.string)))
+            result_soup += [strip_tags(str(tag.string))]
         elif tag.parent.name in ['pre', 'code'] and tag.string:
             lines = []
             for line in tag.string.split('\n'):
@@ -124,7 +132,7 @@ def translate_html(request, html, target=None, src=None):
     count = 0
     for tag in soup.find_all(string=True):
         if tag.parent.name not in ['script', 'style', 'pre', 'code'] and tag.string:
-            tag.replace_with(result_arr[count])
+            tag.string.replace_with(result_arr[count])
             count+=1
         elif tag.parent.name in ['pre', 'code'] and tag.string:
             lines = []
@@ -136,7 +144,7 @@ def translate_html(request, html, target=None, src=None):
                     lines += [line_string]
                     count+=1
             try:
-                if lines: tag.replace_with('\n'.join(lines))
+                if lines: tag.string.replace_with('\n'.join(lines))
             except: pass
     for tag in soup.find_all('a'):
         if 'title' in tag.attrs:
@@ -146,4 +154,4 @@ def translate_html(request, html, target=None, src=None):
         if 'alt' in tag.attrs:
             tag['alt'] = result_arr[count]
             count+=1
-    return str(soup)
+    return str(soup).replace("“", '"').replace("”", '"').replace("‘", "'").replace("’", "'")
