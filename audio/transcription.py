@@ -12,9 +12,11 @@ def get_transcript(filename):
         audio_data = r.record(source)
         # recognize (convert from speech to text)
         try:
-            text = r.recognize_google(audio_data, show_all=True)
+            res = r.recognize_google(audio_data, show_all=True)
+            if 'alternative' in res:
+                res = res['alternative'][0]['transcript']
             os.remove(path)
-            return text, fingerprint
+            return res, fingerprint
         except:
             import traceback
             print(traceback.format_exc())
@@ -30,7 +32,10 @@ def get_wav_transcript(path):
         audio_data = r.record(source)
         # recognize (convert from speech to text)
         try:
-            text = r.recognize_google(audio_data)
-            return text
+            res = r.recognize_google(audio_data, show_all=True)
+            if 'alternative' in res:
+                res = res['alternative'][0]['transcript']
+            os.remove(path)
+            return res
         except:
             return ''

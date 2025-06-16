@@ -302,3 +302,4 @@ timezonefinder
 django-db-connection-pool[postgresql]
 web3
 webrtcvad
+vosk

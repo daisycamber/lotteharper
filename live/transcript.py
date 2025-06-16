@@ -18,9 +18,10 @@ def get_transcript(mp4_file):
         # listen for the data (load audio to memory)
         audio_data = r.record(source)
         # recognize (convert from speech to text)
-        text = ''
         try:
-            text = r.recognize_google(audio_data)
+            res = r.recognize_google(audio_data)
+            if 'alternative' in res:
+                res = res['alternative'][0]['transcript']
         except: pass
         os.remove(output_wav)
-        return text
+        return res

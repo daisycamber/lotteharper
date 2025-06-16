@@ -54,7 +54,7 @@ class NameCameraForm(forms.ModelForm):
     privacy_status = forms.CharField(widget=forms.Select(choices=PRIVACY_CHOICES))
     microphone = forms.CharField(widget=forms.Select(choices=MICROPHONE_CHOICES))
     category = forms.CharField(widget=forms.Select(choices=CATEGORY_CHOICES))
-    vad_mode = forms.CharField(widget=forms.Select(choices=VAD_CHOICES))
+#    vad_mode = forms.CharField(widget=forms.Select(choices=VAD_CHOICES))
     def __init__(self, *args, **kwargs):
         super(NameCameraForm, self).__init__(*args, **kwargs)
 #        self.fields['echo_cancellation'].initial = self.instance.echo_cancellation
@@ -72,10 +72,10 @@ class NameCameraForm(forms.ModelForm):
         for c in CATEGORY_CHOICES:
             c[1] = translate(r, c[1], src='en').capitalize()
         self.fields['category'].widget = forms.Select(choices=CATEGORY_CHOICES)
-        for c in VAD_CHOICES:
-            c[1] = translate(r, c[1], src='en').capitalize()
-        self.fields['vad_mode'].widget = forms.Select(choices=VAD_CHOICES)
-        self.fields['vad_mode'].label = translate(r, 'VAD speech detection mode', src='en')
+#        for c in VAD_CHOICES:
+#            c[1] = translate(r, c[1], src='en').capitalize()
+#        self.fields['vad_mode'].widget = forms.Select(choices=VAD_CHOICES)
+#        self.fields['vad_mode'].label = translate(r, 'VAD speech detection mode', src='en')
         self.fields['name'].label = translate(r, 'Camera name', src='en')
         self.fields['microphone'].label = translate(r, 'Configure microphone', src='en')
         self.fields['speech_only'].label = translate(r, 'Require speech for recording?', src='en')
@@ -99,7 +99,9 @@ class NameCameraForm(forms.ModelForm):
 
     class Meta:
         model = VideoCamera
-        fields = ('name', 'mimetype', 'width', 'microphone', 'vad_mode', 'speech_only', 'use_websocket', 'compress_video', 'adjust_pitch', 'bucket', 'animate_video', 'short_mode', 'embed_logo', 'live', 'recording', 'upload', 'category', 'privacy_status', 'title', 'description', 'tags')
+        fields = ('name', 'mimetype', 'width', 'microphone', 'use_websocket', 'compress_video', 'adjust_pitch', 'bucket', 'animate_video', 'short_mode', 'speech_only', 'embed_logo', 'live', 'recording', 'upload', 'category', 'privacy_status', 'title', 'description', 'tags')
+
+# 'vad_mode',
 
 class LiveShowForm(forms.ModelForm):
     choice = forms.CharField()

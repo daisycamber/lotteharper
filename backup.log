@@ -1,5 +1,5 @@
-7
-12
+1
+00
 https://github.com/daisycamber/lotteharper.git
 6s/GIT_REPO.*/GIT_REPO="https:\/\/github.com\/daisycamber\/lotteharper.git"/g
 https://gitlab.com/charlotte-harper/lotteh2025-06-03.git
@@ -13,629 +13,640 @@ numpy
 urllib3
 webauthn
 Reinitialized existing Git repository in /home/team/lotteh/.git/
-On branch main
-Your branch is up to date with 'originlab/main'.
-
-Changes not staged for commit:
-  (use "git add/rm <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-	modified:   backup.log
-	modified:   backup_date.txt
-	modified:   backup_init_date.txt
-	deleted:    cache/017c411deeb67c267be0d3c3e54f9d93.djcache
-	deleted:    cache/05e5d44428eb1126b82b8030faef8a1e.djcache
-	deleted:    cache/0876b9a8366676bb16244929a66a2a23.djcache
-	deleted:    cache/087757db27398d8a0677f12da10ed2cc.djcache
-	deleted:    cache/08acc4aa1619c8c9e6cabd1f32d18c08.djcache
-	deleted:    cache/0a0ad20bca6a5fc93e8c58940d1f7b97.djcache
-	deleted:    cache/0a274f3cd7e141d581eef63e5118fe19.djcache
-	modified:   cache/0c4c89b383b96b158acf4b976a377d56.djcache
-	deleted:    cache/0d615a7cc9f306e26d3115800e332b31.djcache
-	deleted:    cache/0d7a8e8cd3a47e56a43221ea68d553ef.djcache
-	deleted:    cache/0fa3d7d081e660db100c762272f7b563.djcache
-	deleted:    cache/0fba5bb1fc9b5fee40204850a6d7aefc.djcache
-	deleted:    cache/11371596c210f5011242bdb88248b683.djcache
-	deleted:    cache/115c8423237200247482d41c2ab0050c.djcache
-	deleted:    cache/12282053a2a5152bb66b31762f8afd4f.djcache
-	deleted:    cache/128bbb93f89aeb9b2c023f9eacc8d35a.djcache
-	deleted:    cache/13d550bd4643440f924e07e326357726.djcache
-	modified:   cache/1449a27a28f85714ca703c6bf4a465bb.djcache
-	deleted:    cache/148d0c89eacc46e61c9d854dfd81d19f.djcache
-	deleted:    cache/14a50ecff3688e9f2785422dc3fce8a1.djcache
-	modified:   cache/14b46fbd937b6277ff7a29672269d50e.djcache
-	deleted:    cache/16637772e324afbaf9bfb1ad43dbfe98.djcache
-	deleted:    cache/19df826072b98be10b734a22e6e1e240.djcache
-	deleted:    cache/1a282d526e9f91a598785f18686f0a4a.djcache
-	deleted:    cache/1a32a1646babe41352b9bd56c036dd72.djcache
-	modified:   cache/1ca9e5faf970dbe7b828caae0e664b88.djcache
-	deleted:    cache/1d325777ff0eb6b218d1eaa4269df872.djcache
-	deleted:    cache/1e9b2a4aca1cc4afb3c3750bc4e11076.djcache
-	deleted:    cache/2125ad24b1fc16c2fe5f91863b35e9e0.djcache
-	deleted:    cache/23f50ade6a856955592f98a02087a689.djcache
-	deleted:    cache/24ddfcf69f3891b798a2d875b1ef8a19.djcache
-	deleted:    cache/2657439fafc69a513848a41f4b62e933.djcache
-	deleted:    cache/26983a6f8384da1dbd67f21582ae2a00.djcache
-	deleted:    cache/26ec847b43a486406030c7c6a63371f5.djcache
-	deleted:    cache/27bec0c5452dfdb950f341abc0594fa4.djcache
-	deleted:    cache/28d7e73373e29348fe7e22fbdc324f78.djcache
-	deleted:    cache/2975ac3615639ad6d0204a63f7c34259.djcache
-	modified:   cache/299dba30ca065d7c832453574d3fd2b9.djcache
-	deleted:    cache/29ede6890b559c85ce4966a074cb86d8.djcache
-	modified:   cache/2b3688835437bd7483b2b688fb23106e.djcache
-	deleted:    cache/2b6c6aa8cd647b20431bb16392db01c6.djcache
-	deleted:    cache/2ba885254b882c9147433fb6c1fdef1a.djcache
-	deleted:    cache/2c16306b7ea20c55c18fbebe63af202b.djcache
-	deleted:    cache/2c749a1faee5fa5f4f56383c4b49f9e1.djcache
-	deleted:    cache/2df7fdba0ddf22f807c4f490d46b8c69.djcache
-	deleted:    cache/2eb1d634a3490b732fae3ce5c56504d5.djcache
-	deleted:    cache/2eed0ab26f558d40cf3ce6b78573d953.djcache
-	deleted:    cache/2f6acb386a595815a40de47d7365baae.djcache
-	modified:   cache/3399893da5a9a9207fdab03c4f0eeb63.djcache
-	modified:   cache/34aec6740d2a862cbdd44820de72d193.djcache
-	deleted:    cache/37a44948fe6dbfcc5e1497cc9cd20dfa.djcache
-	deleted:    cache/3862982c5e0220fed12a56c37475dca5.djcache
-	deleted:    cache/38d31f01c85226c51d4c10f802c30d7b.djcache
-	deleted:    cache/395c0b744a111fba0558f06376ceeffb.djcache
-	deleted:    cache/3b27f6622b23fd8095aeb936162ac481.djcache
-	deleted:    cache/3ec2f08737098d477589295aa8c7d131.djcache
-	deleted:    cache/40eb03f8d2f62a9f59fbcdde7eeb201b.djcache
-	deleted:    cache/4193b146282a1dc3059131821d10d6c4.djcache
-	deleted:    cache/41eed11f5d2b38b45e46b6959fd0d795.djcache
-	modified:   cache/42b9356db7cbc5d6d2a0711970e7b453.djcache
-	deleted:    cache/43647fbf70f05a552c1f35555db57bd8.djcache
-	deleted:    cache/44b9ea9793c065d64038cd6fceec3616.djcache
-	deleted:    cache/44c79f910fee88ec10a8d4383c7739e8.djcache
-	deleted:    cache/45281d721d44a02d54f9e6208fdc4445.djcache
-	deleted:    cache/4568ea982b75f32624455b0769550634.djcache
-	deleted:    cache/45ab7841ffb42c8b2034f168d4183cdb.djcache
-	deleted:    cache/465cc99af60d8e14890e9e95d313ce20.djcache
-	deleted:    cache/472dc6f4978293e26f537aa1aa65e9c8.djcache
-	deleted:    cache/47e0abff51e345192e5e5603a73e920b.djcache
-	modified:   cache/47f1d659450dd66ae74f2462e41f0680.djcache
-	deleted:    cache/4b3a5fb8196461575a27b5919c3b6169.djcache
-	deleted:    cache/4b856ffecfa86db81c54bf51b029bfbe.djcache
-	deleted:    cache/4c0ade62ba43d532882a86039331aa95.djcache
-	deleted:    cache/4c9847e1a50b103581264a0c2cbc3719.djcache
-	deleted:    cache/4d1e56afa3d224977a555251f39b1124.djcache
-	deleted:    cache/4d68aeaa14af02f4391e733ea897df95.djcache
-	deleted:    cache/4d7fa030c61af45eccfe19a628dbabfd.djcache
-	deleted:    cache/4ddbbdf3671f43a7e9dd45d09a66fd4a.djcache
-	deleted:    cache/4f35a69e8b099ad964c680324e8c7b76.djcache
-	deleted:    cache/527222c6086dc3258e5247b50c4c887e.djcache
-	deleted:    cache/53f8f379a9246b2e32949f15b06dfbca.djcache
-	deleted:    cache/54124684c29dcf58646952b4f5018dad.djcache
-	deleted:    cache/54ea03f98dc891a885162dd37353a15b.djcache
-	deleted:    cache/5646ffad1685a458520257343d4ac356.djcache
-	deleted:    cache/5668f0844e5990e7d2c6282c47d13293.djcache
-	deleted:    cache/56c52e674f87ab7bf2678eff5d73c044.djcache
-	deleted:    cache/5708b70fee5dd7ac544df9f4413bae04.djcache
-	deleted:    cache/57fcaa161454de42f337c7e6c9752fa2.djcache
-	deleted:    cache/582fb0331029a00963f217ecc2c41163.djcache
-	deleted:    cache/585db71b4e1489aa17a55df8d9d35501.djcache
-	deleted:    cache/588e45cb8ad839080977491368f1ffb9.djcache
-	deleted:    cache/58dd02527732f08e7c1efa7e174e7f05.djcache
-	deleted:    cache/597477415aefee234e477e27a57d4945.djcache
-	deleted:    cache/59d3211d6119c2c13cfd36f530af47fc.djcache
-	deleted:    cache/5a8f24b55070c87757c9c5baf5ae395e.djcache
-	deleted:    cache/5abbb4839772d5b599e2ba3bb46be3bf.djcache
-	deleted:    cache/5b04808a22380b9d8aaf0125cbedc2a0.djcache
-	deleted:    cache/5b4af5d690fe3d009df13c8dfe62513f.djcache
-	modified:   cache/5be2b9ef45efd04cb603c00cd6b1f1a8.djcache
-	deleted:    cache/5c3528bc9b8142ab6cfc0bfeb12ba16f.djcache
-	deleted:    cache/5cfa5c29623192ab81fc077874723aca.djcache
-	modified:   cache/5d37a6f57b96d913a38294e6f84ede74.djcache
-	deleted:    cache/5ebaa2f3e422889a90ccf122cb490662.djcache
-	deleted:    cache/5f8d3def46aa7aa0cbaa444be23f525b.djcache
-	deleted:    cache/5fc29fda0784e83f59ced48c93700b82.djcache
-	deleted:    cache/603029fbf330f305338d19f2f4c6a9a6.djcache
-	deleted:    cache/603497f2254954bcc61aa723c58bdd07.djcache
-	deleted:    cache/615ff29481112d9b858f75ebab8cda04.djcache
-	deleted:    cache/61ddd5ddb4c840a35410dd00a397076d.djcache
-	deleted:    cache/636775aeded20c5c4797b9a999314ad8.djcache
-	modified:   cache/6416e9fd784ff38786b3f6a91b802b9e.djcache
-	deleted:    cache/64c9fe03b99d4bfd72acb1df144ae410.djcache
-	deleted:    cache/657ccafc5af0f9a078028afe8790a2a2.djcache
-	deleted:    cache/6663b9e7b1d70f62223ca57b2840d255.djcache
-	deleted:    cache/6743c0795dd0eb51b4a355555f6589b5.djcache
-	deleted:    cache/6ad4dfc7023271ac69a9c1163fe7a15a.djcache
-	deleted:    cache/6afd42c8bf95d119417a306b5fdd4c2f.djcache
-	deleted:    cache/6dc9ef50d54cab634484a38f02419ba0.djcache
-	deleted:    cache/6ed980183cdee2b4930d023e6f211822.djcache
-	deleted:    cache/6f2363a6281758250756c9d76f0f8db6.djcache
-	deleted:    cache/6f899a216ccee330fb1debe5f9379fea.djcache
-	deleted:    cache/72dcfc2ef3d21a3dfe6bc37756436f1c.djcache
-	deleted:    cache/73b3f5b26aa7059d7c9d227a654cc4f4.djcache
-	deleted:    cache/73bdef62fd786057fd10608cf66d8a18.djcache
-	deleted:    cache/755f334ef3b633f359eb5b76844ec1bd.djcache
-	deleted:    cache/75dad315f471aa7678713730c720d442.djcache
-	deleted:    cache/7641257c19735795fbd7a7bb1dc1d612.djcache
-	deleted:    cache/7680006e99194d502ff1f6d87c14ee43.djcache
-	deleted:    cache/79f61a53c2fcc7dbdc115b3a3d277a5a.djcache
-	deleted:    cache/7c267bd3fac116ec82599427a245bbdf.djcache
-	deleted:    cache/7e4aec73af64e2e2afb4cf9fa7b929cd.djcache
-	deleted:    cache/7e81150438436244494519e1a2569edc.djcache
-	deleted:    cache/7e9792539ab2fa60846acd3660f1d386.djcache
-	deleted:    cache/7feec0b0fc673f7d409b35376008f2bc.djcache
-	modified:   cache/80fabd695a4a7240bf2cb581a931e836.djcache
-	deleted:    cache/81eb42aae25df9190e8a544bb2d66dd7.djcache
-	deleted:    cache/82a9af9969125b852ec5111f3b2651a1.djcache
-	deleted:    cache/82b9b914d6c1867dc8a87c521be3b588.djcache
-	deleted:    cache/82db934ecdb1c62673f7c348f7165920.djcache
-	deleted:    cache/84472f4c13b9f58eda7713f355335eb3.djcache
-	deleted:    cache/86d6a75962447e58ee53629b3421bbbd.djcache
-	modified:   cache/86f615174e63baf62cf2dd6a4917854d.djcache
-	deleted:    cache/877149ebf30552221a922f1ac9cef624.djcache
-	deleted:    cache/877191b52faeecbdaacb2940138bb839.djcache
-	deleted:    cache/888008c251a7c074ca8f42e068854339.djcache
-	modified:   cache/8a0ba79774870266cef2002b456fc657.djcache
-	deleted:    cache/9092a2c4f33378ce45abd3173271fa5e.djcache
-	deleted:    cache/90f7d3283b48c37d292d13774f5dda18.djcache
-	deleted:    cache/917bfb5adff6cad9156a6f16bcdda58e.djcache
-	deleted:    cache/924c358d55182da06ad63be114c525e8.djcache
-	deleted:    cache/93147d8c6b91137ac4b7dd8a805bd380.djcache
-	deleted:    cache/9398e4e2ab73aed856b360196b3b2e16.djcache
-	modified:   cache/941a3964d3bb1d75e9064225b8c8e212.djcache
-	deleted:    cache/951d869934df6e7934bd653410c9ad0b.djcache
-	deleted:    cache/95e896dccd47af11425f65e6354b72dc.djcache
-	deleted:    cache/965e593bf939846dbad715bd928d28e9.djcache
-	modified:   cache/9690317a68963be03a0d2107a54a9785.djcache
-	deleted:    cache/98acd4a0d705fb6069bbd09c05cce399.djcache
-	deleted:    cache/9b71ab016676f8ec0511e73b0a0f5b58.djcache
-	deleted:    cache/9bdfa5a46d6ef20d8ef6ba1522664e14.djcache
-	deleted:    cache/9c860e401bbaf754f5f73f30298a3601.djcache
-	deleted:    cache/9d857cdabadd3e03b054aab0302a70ad.djcache
-	deleted:    cache/9e1980920864d2957292cc24100265a4.djcache
-	deleted:    cache/9f0f889c624d8ee97a187d6301fa0fb3.djcache
-	deleted:    cache/a315338792432fcf327bfa81326d86bb.djcache
-	deleted:    cache/a3d8101f0cc39ed343f22445afbb07d0.djcache
-	deleted:    cache/a408cab9d86161bf53e01514bc432dce.djcache
-	deleted:    cache/a459697fa3d767421eb9107485f65526.djcache
-	deleted:    cache/a45b517dcde6a02544629b44c144c4de.djcache
-	deleted:    cache/a4be5013cefc165e9e5307e8289f85a7.djcache
-	deleted:    cache/a5b2b5e58aae5b5631b7d366ea90d228.djcache
-	deleted:    cache/a635aec6fc5a8eecc4b2c034f35ba8c8.djcache
-	deleted:    cache/a652bef89b2d110aaa11966836061108.djcache
-	deleted:    cache/a6645047152344fd06f76217f239786e.djcache
-	deleted:    cache/a99aee0db9d2fe30fc85c695cae0a01e.djcache
-	deleted:    cache/aa728f5fdc1b25425860531ce23c5a98.djcache
-	deleted:    cache/ad8687d4ccc5599385ca7ff0177151c6.djcache
-	deleted:    cache/afaa57f6ddacff67dadfc59fdbf40967.djcache
-	deleted:    cache/b00eed19a44898f842ec7bdea4ed6019.djcache
-	deleted:    cache/b0cafc6fd3d62af3f8b5db5facbc0517.djcache
-	deleted:    cache/b2c4d242d01dbdc583f58fb6b9c43a73.djcache
-	deleted:    cache/b3423f29491fec4b5144bc5322abbed4.djcache
-	deleted:    cache/b3a7ebe99c3c3af2aa411912d2b4c2d6.djcache
-	modified:   cache/b3b82a62d91c31026d9e4b4f67f1f382.djcache
-	modified:   cache/b410c1757fcbcd5bd84d9d849db7cfa3.djcache
-	modified:   cache/b488b31753e3d152b85c46874b90df2e.djcache
-	deleted:    cache/b4bcf81ae3cfe9de445c5d017a01d989.djcache
-	deleted:    cache/b5e200d60e17d278d4032cb92328dcdc.djcache
-	deleted:    cache/b940e4202837e8b6e7ff4c991c30a89c.djcache
-	deleted:    cache/b960d2be2664214127e21c12801e6a5b.djcache
-	modified:   cache/b9740fdc5fd15b4fe7267e1530e41689.djcache
-	deleted:    cache/bc3f86cb8afd4a66af4ae8ca2c594982.djcache
-	deleted:    cache/bd2de13055e0e6d7658bff356c80d85c.djcache
-	deleted:    cache/bda96610d15a52830698d7f3b5ae2663.djcache
-	deleted:    cache/bdc06c40b9568bb7ebbcb914b217dce7.djcache
-	deleted:    cache/be2836514bc4a8abe2b5c5058da4a91a.djcache
-	modified:   cache/bf06e4cebce5053fad4b3aba44214d94.djcache
-	deleted:    cache/bf748167fe32e0700899743b012314c7.djcache
-	modified:   cache/bfe60e2eac1e5ccc30202627d914f8ee.djcache
-	deleted:    cache/c0dce3c31fa49fd752d1d70d09d1c900.djcache
-	deleted:    cache/c17efa4fe7b8ccc0dc234d8210b2e2ec.djcache
-	deleted:    cache/c2420aa71fbb0a07962ec3d17f77d92c.djcache
-	deleted:    cache/c2ba0edb7c4ae7c57942dfec3640102b.djcache
-	deleted:    cache/c38ddd09f4af86f270e88f390d0c3ff8.djcache
-	deleted:    cache/c76992a490c8821a521b21b19bd5b3a1.djcache
-	deleted:    cache/c81d09f082018900b53586e73f97114e.djcache
-	deleted:    cache/c8472396c5d6173295712a9b81212628.djcache
-	deleted:    cache/c850921ec35ba34862c0ee08f2337e34.djcache
-	deleted:    cache/ca35e822a875521eae3b7468340d6704.djcache
-	modified:   cache/ca447430676c1a817cf702887aca080b.djcache
-	deleted:    cache/ca529d119be4d04ffc5fcf57c89eb6a0.djcache
-	deleted:    cache/cb6fd1a9b6e0f8467705cb6fe1d524a1.djcache
-	modified:   cache/cc496e55c0ef69c4170f259b0acb9c3b.djcache
-	deleted:    cache/ce9d756bbfb2e52aa914b7adf6e41449.djcache
-	deleted:    cache/cec03ef313b05e312227d4b89d646200.djcache
-	deleted:    cache/ced1c8c15d9d5e779f0025f97645d19e.djcache
-	deleted:    cache/d02fe30ba3cc2fcb6a3231dae857a6a3.djcache
-	deleted:    cache/d21e3d2f80e20f9015a5d5061c79fadd.djcache
-	deleted:    cache/d2d2cd8c2a82e35fcdb1c24ca825b461.djcache
-	deleted:    cache/d3e97dd62c0fd1f78becfbea4d0193ad.djcache
-	modified:   cache/d567df70e1626417e747ef44798275ad.djcache
-	deleted:    cache/d5abe64aace8b7d3ca807aa0a29a264a.djcache
-	deleted:    cache/d5c0ac4112413c7ad013ee5f0d4ca0d2.djcache
-	deleted:    cache/d6330499a2bcb1d313078d73c8dd4cdd.djcache
-	deleted:    cache/d675530df2bcf2aa6dd829d72dbbbb86.djcache
-	deleted:    cache/d889c48470bfd753bd1bcea292adf585.djcache
-	deleted:    cache/d94a2279e3f1bbaee6c7c8b815e5f32b.djcache
-	deleted:    cache/d979e48bc2aafc07df743ff2a812a42e.djcache
-	deleted:    cache/da600e176aed10e1014ebba0bdb22553.djcache
-	deleted:    cache/dd0fd639834e8a3e06ebf7c674f61e41.djcache
-	deleted:    cache/dd5c11baa7b0544770b4258a49f0e393.djcache
-	deleted:    cache/dde7325c07ffc4ee6a5c063ad3986e26.djcache
-	deleted:    cache/dfec51bca47b9b21902411cbe409684f.djcache
-	deleted:    cache/e05da2d9a8e201d5a2bf0bb0ff3e3215.djcache
-	deleted:    cache/e0f736e6139bcb52f29bceefc13fbae8.djcache
-	deleted:    cache/e149daf188a054954e7a76b9fc271d05.djcache
-	deleted:    cache/e2db2f91bf80708044c7ef6bd308b43c.djcache
-	modified:   cache/e4c7412e024779dd06d810d09f9aa1b2.djcache
-	deleted:    cache/e56a860d6bd4a9d52bfb32995bc7f83c.djcache
-	deleted:    cache/e5ebf44f468ba43bc06edc0929811c36.djcache
-	deleted:    cache/e73099a5f3be412f1556ade2cdbe4a39.djcache
-	deleted:    cache/e7ac714b37f9c3db7d1ae617a4623a9a.djcache
-	modified:   cache/e7d4a4ed90e579bc7f9365aec416609b.djcache
-	deleted:    cache/eb13a9105a0f3f883cad0c545f1a9d0e.djcache
-	deleted:    cache/eb1df7d233a9fa0efa546dc24cb83340.djcache
-	deleted:    cache/eba6b99cad95dd3ff987ed0316af8d9c.djcache
-	deleted:    cache/f02c48aee77e7917a7344b217dcf42a3.djcache
-	deleted:    cache/f2faa8d9de44fb10a72bc3e60800fceb.djcache
-	deleted:    cache/f3035940bda45609346dd191cbdd5d7f.djcache
-	deleted:    cache/f36042171f815694d3a1bdd152a15829.djcache
-	deleted:    cache/f395aae5b9e599298ab171944b453bce.djcache
-	deleted:    cache/f3e5f5a63e35e6d949068a1945f0a2a5.djcache
-	deleted:    cache/f43809762a27533b9daddebd1ab1ffbf.djcache
-	deleted:    cache/f43a739ba1ca456d11b3ba9c22325a55.djcache
-	deleted:    cache/f4e257de8ac30b646db80fc1e909b52d.djcache
-	deleted:    cache/f510d890290ca50bbc41f7639e7f8594.djcache
-	modified:   cache/f55d3d5da4d293509071c79cf551288c.djcache
-	deleted:    cache/f619f38bd290078c47cad939b43a5f4c.djcache
-	deleted:    cache/f74f08317a1a6e662a4e6652ac8a86de.djcache
-	deleted:    cache/f74f459b7e5c04a6fb114d374f54bac4.djcache
-	deleted:    cache/f8289005eec4e3b5e776c9a79312f12b.djcache
-	deleted:    cache/f9227812441bfffc9c731181154d03ec.djcache
-	deleted:    cache/f9b1af54f605a208c08834d448147ea1.djcache
-	modified:   cache/fb6c5f1f815f8b64d9c39426595c6a65.djcache
-	deleted:    cache/fdafe5142478dafb03f1946ece3f88d9.djcache
-	deleted:    cache/fec70f3ac6569aa8130a9db4a6f29de0.djcache
-	deleted:    cache/ffbf72f3e7560028b815dff8b3524385.djcache
-	modified:   celery/pid/worker1.pid
-	modified:   celery/pid/worker2.pid
-	modified:   config/banner
-	modified:   data/live.json.aa
-	modified:   data/security.securityprofile.json.aa
-	modified:   data/security.session.json.aj
-	modified:   data/security.useripaddress.json.aa
-	modified:   data/sessions.json.aa
-	modified:   data/sessions.json.ab
-	modified:   data/sessions.json.ac
-	modified:   data/sessions.json.ad
-	modified:   data/translate.json.ab
-	modified:   data/users.profile.json.aa
-	modified:   live/__pycache__/concat.cpython-312.pyc
-	modified:   live/__pycache__/consumers.cpython-312.pyc
-	modified:   live/__pycache__/forms.cpython-312.pyc
-	modified:   live/__pycache__/models.cpython-312.pyc
-	modified:   live/concat.py
-	modified:   live/forms.py
-	modified:   live/models.py
-	modified:   live/transcript.py
-	modified:   log/commands.log
-	modified:   log/commands.log.1
-	modified:   log/commands.log.2
-	modified:   lotteh/__pycache__/celery.cpython-312.pyc
-	modified:   lotteh/celery.py
-	modified:   reqs.txt
-	modified:   requirements.txt
-	modified:   translate/__pycache__/translate.cpython-312.pyc
-	modified:   translate/translate.py
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	cache/0082bdc2578551e439a9f28bc6a4a952.djcache
-	cache/00c1a51eb165c6006ee212d99c68be66.djcache
-	cache/0177c07d508f6cd958f8eed18fd1068d.djcache
-	cache/075175eb487f429b1a0da57fd3d58911.djcache
-	cache/0808c0b24c0ecf04030d0e3f2545374b.djcache
-	cache/0c0ebcc272fe37c2b0845279b70c672e.djcache
-	cache/0c3e766a007b327c06051a9ddde8033a.djcache
-	cache/0d7f6857d8b0d22025f3026adbd69dc8.djcache
-	cache/156dc3b360e78d993b8f0b4cefce9781.djcache
-	cache/16323d640fffc31b43225e45fabc031e.djcache
-	cache/183c3ca3194c735de4446201476f7ff0.djcache
-	cache/1aa3b686dc1890a14ae9665f2f9cf813.djcache
-	cache/1b5188e01eebbce09973a206b9eea658.djcache
-	cache/1c4562bda70f41b27a84217f36447c18.djcache
-	cache/1cfe2d4a73053a6320b6d90a1731e48e.djcache
-	cache/1d41519f44eab4fbe83a0eace6e061a4.djcache
-	cache/1de7a96dc388dc392f8d738691438a6f.djcache
-	cache/1e5229c64822fbc46286ddfa6b60fa6a.djcache
-	cache/20d9e6941ef8f312f33dfb0101279118.djcache
-	cache/218cd33d6b8e40977ba7399c2a22c7e7.djcache
-	cache/21a3ae8487b5c2f7de7a8857a1f4afbb.djcache
-	cache/224ab192692bbc0f2701607127de9859.djcache
-	cache/24d5df841bda14ca106eb6c222b337b7.djcache
-	cache/24d92267d09a20a059d5d50349d68f66.djcache
-	cache/252432699cb4272cd42b8ae8473a3873.djcache
-	cache/272173caf13ffba8c34fedc6387b7485.djcache
-	cache/2789b3a3bbcc13c3e164fb1ca290785f.djcache
-	cache/2881fcd77133df0b5e167eb6a412d4c4.djcache
-	cache/2ab05697e8e149634126f8ef2c7ed850.djcache
-	cache/2c4a21ad680b94d12489fd57a7f621fd.djcache
-	cache/2d0e3dd8fbf874de5af15b6631a10bd4.djcache
-	cache/2e51c355fcde66e7ecf6076740df5587.djcache
-	cache/2eaa4740effa7d9748e6337a5854f6b3.djcache
-	cache/2faced9186721ce4c5b51986e3898581.djcache
-	cache/31dd29f14e0b2bd75e18d614b5472db4.djcache
-	cache/324e0ef3bcfe0b9b16ae8440d8bb134c.djcache
-	cache/32c970650e00e01f8da82d20337cbc00.djcache
-	cache/3428c0e89c15dc39b66ec88017920254.djcache
-	cache/353dff27477c6c9a685bbaf5005070b0.djcache
-	cache/35428d5b788463a4348ea3eccb0bfe7c.djcache
-	cache/35837c21338feca1a1ae749d2d4ea606.djcache
-	cache/35d7417c81065acfd12fa6e5cae3aaf9.djcache
-	cache/36154d9884e15f0afffed11305abea05.djcache
-	cache/3a177025b507704a96e5cf1b05e01b9a.djcache
-	cache/3acaf626ec70e0df8bb6ea7a79a85cae.djcache
-	cache/3afe57c680a2f48b2bd3fcbbb2c43861.djcache
-	cache/3b2400410b303309107d916e4475340a.djcache
-	cache/3b60e732d369279bf73f89c625543a8a.djcache
-	cache/3ec6724e6ef8c0514baa8a9225714ff4.djcache
-	cache/3f3afb755a8bd378153fdd8cc859f610.djcache
-	cache/42f47a053c09f2c82704d485e128f762.djcache
-	cache/437664a6d8495ad8ac3c083a33163bb5.djcache
-	cache/447e06fd75630898a5970aaf77584c6a.djcache
-	cache/451775b61b8331d8f8cbfda3ea7f703b.djcache
-	cache/453799a57dff8acf1698c4ff273ada78.djcache
-	cache/47ac2068bfd11f12540aa6a1d0593a12.djcache
-	cache/47b6a41d6b2e74684933cd7003150c62.djcache
-	cache/47f7e3cde37bcd60153704837b244837.djcache
-	cache/48f6d8fff1bef268ad0ba8dadec3e9d3.djcache
-	cache/490d65420e5bb0a31ce6445179128465.djcache
-	cache/49793d360eea2463e7cbf0ec3d1fee8d.djcache
-	cache/4a03c0cfff621082ef31135ce69cacf8.djcache
-	cache/4a9b2fe31f0fc24b7fd868423d41638f.djcache
-	cache/4b60ae7b2daa157447f3ce8781eaf2f1.djcache
-	cache/4bea702d10a4f7866e6b455607c5c4eb.djcache
-	cache/4d8dde90ec6fecfa835c8dbaff6095fd.djcache
-	cache/4dc472cb3e1dc89a034cbb3704257fee.djcache
-	cache/4e0453eaa2689836106f57c380790e4f.djcache
-	cache/4e3bf1a6773e4cb0658b5f365b50c207.djcache
-	cache/4f6ef63ff8c19078809a80b2f36890b1.djcache
-	cache/500b7bb50de56ae27df5b37d78d28235.djcache
-	cache/5139325cc7dcf90c4a36c3f1d247e015.djcache
-	cache/51983105cd38eb16f25d3362f46fa3ec.djcache
-	cache/52a9d8ece8da41861ce7c43080f2ceb5.djcache
-	cache/53e15346b5997e99e728f43a4dd7d0e2.djcache
-	cache/54597a7213d7fe215468dd6487823aee.djcache
-	cache/54d87f7d3b2a52c5542a9bca4d468c0b.djcache
-	cache/555f888212e2ad3183e5677ae5f4d68a.djcache
-	cache/5601d17ecf9e334a50a34d3e0eb18ecd.djcache
-	cache/58ae9f1ab1acc8e8cef210954b1919cc.djcache
-	cache/5ba07b4398eaa2ae72ba26de410ee809.djcache
-	cache/5bc1c2910ff384d6d9db1cd3082a6bcf.djcache
-	cache/5cb9fa7284e387fbc18aebed4f02b5d5.djcache
-	cache/5d0a7da5b28464a319919e6f6b2f87ff.djcache
-	cache/5e7c7c15516f037633a64400e8eaf087.djcache
-	cache/5eac2d73c3762aeef57629527864d7e7.djcache
-	cache/6029d8e15c4818de7701bc232936fdf7.djcache
-	cache/624db4d2024d3b3e08fdbc1a0e1918cc.djcache
-	cache/638dd8ef6951238545451bcf858482bc.djcache
-	cache/63ea73b9352fc07c6902bff410f45d00.djcache
-	cache/6415bd301a943f95a7fcfc1bf2a516ea.djcache
-	cache/65798bf1ba370c8c5ba2ba46ce1ab8a3.djcache
-	cache/659da75edcffba072b4e8a82839986f9.djcache
-	cache/65ea3f9c4b97c7bef18b5a0d9a419516.djcache
-	cache/664293e485ca5f2b4bd62ec1ea680939.djcache
-	cache/68c35f9b8671ee805442d8cbe3ffd530.djcache
-	cache/68ee3a8f1646b3b048f327a084cf2557.djcache
-	cache/69126039ea06b5aa90f683dd257a5ffe.djcache
-	cache/6d54d022a98b4e1ecff58b6d1add006d.djcache
-	cache/6e7530de23158b09cfd0404f4c812e28.djcache
-	cache/6e7f201f26c9179787e83a1ea4ab1b03.djcache
-	cache/706b716d0c53ca290801186f298398e6.djcache
-	cache/707a0491cc3526a49049982ffe95e02c.djcache
-	cache/71286c371aea993aa7d2f2bb356f3623.djcache
-	cache/7178fdb16217ffe700e28b1e1f688961.djcache
-	cache/71c11b2e032a69f77519cd715956cc2b.djcache
-	cache/73240b83251a896d2e9160be5c86dc16.djcache
-	cache/73ce7de9b2d068395b84b2ad895d4689.djcache
-	cache/7411ab821c674f0129beb50c914c138e.djcache
-	cache/747764759d24d4bc24353b855bbbb240.djcache
-	cache/75700463499e0b6f3ad4bf18dd1235ec.djcache
-	cache/75fe105c40ee1444665e342a8a6866da.djcache
-	cache/7640802c5a9ec78cb7e6362eb366becb.djcache
-	cache/7787d721d0f555c5b8c6487d54228f5f.djcache
-	cache/78cd33e5de13bd82ee29567b5601ac71.djcache
-	cache/7a4c45f962726af8d0a4a179aed5bc99.djcache
-	cache/7a50919041352ad0ea88dc46aade0366.djcache
-	cache/7b82aa50528a5e5a461df5571c13555d.djcache
-	cache/7b8a555e0c13550e058877d5c22382fd.djcache
-	cache/7bbb4e9c52661252411e71dd0be94ab5.djcache
-	cache/8242cf8b3b2dbbf694cfcbffe0cefe36.djcache
-	cache/82b4b0c563ab6cb0d3f8ba375112415b.djcache
-	cache/82b8a1c684788ac0db1adcb2eb29bd80.djcache
-	cache/83f163014ae1fd241b70f77322b5c5eb.djcache
-	cache/875108c23497273f238e42c9b21d3857.djcache
-	cache/89390e843e2578124e06abc55dd424c1.djcache
-	cache/8a6bb1aa7f85108c6cab00e513e081ab.djcache
-	cache/8aa3a7b1588bebc17b48820c0c0c322e.djcache
-	cache/8d347ea58367449c25989c7f26a71978.djcache
-	cache/8e38b3ae995f6365055f4aa765fe79ba.djcache
-	cache/8e62ae35b1df30bb7e278e16980fcd78.djcache
-	cache/8ec5c72ebd9ed1b00233719c0c19de31.djcache
-	cache/8ecf84a051510bb62cdcfbc7671207bc.djcache
-	cache/8f0109fac63f6d6d6d3c8303dff9f6f3.djcache
-	cache/8f73d5cc39592df66f74335bb1dbb38f.djcache
-	cache/8ffac81aecd114fa471d4091fa9a08dd.djcache
-	cache/90f9e971acd39211d5bff33eb2a0a518.djcache
-	cache/91791185faf1549afec5da7ce123b6f6.djcache
-	cache/925343870e2d0626270a84a5efd86c08.djcache
-	cache/9356d9badbe51dcc0ea2793194b60b05.djcache
-	cache/951eea671ad2420fe1bed28d61e492a4.djcache
-	cache/95df4f27f765774a00f6053c8a0e64eb.djcache
-	cache/9769e0afea0e6fcb6f9911a882115701.djcache
-	cache/98297768b15319cd68a82c8d742b482e.djcache
-	cache/99623489c8cc91865d2ea3b5024bfcfb.djcache
-	cache/99a09586c4cf2130379416f1a873a49d.djcache
-	cache/9a4c9e259673292c020ce2e59e476a68.djcache
-	cache/9bfd32523e970c87901bf3f2492360cd.djcache
-	cache/9c525a9923ed9aeaecc30065ecff63db.djcache
-	cache/9dd66c5cf31ac843807db4b1c7fe767d.djcache
-	cache/9ebbb4ac5fb06997a47e31a17b9a423d.djcache
-	cache/9ef73141a5dec73d21d6dea8f13eeca5.djcache
-	cache/9f252032312c27e658364b7446d44043.djcache
-	cache/9f83dcfc09b988bcfc4db45e0825abd4.djcache
-	cache/a1aeb11f492f0ae5d6fc79515eb26ab4.djcache
-	cache/a21a8b507e52ad845b4771992684c03f.djcache
-	cache/a2ed7a7d339576be39821e671692c709.djcache
-	cache/a49d5dbec18e66a9281f64e610278960.djcache
-	cache/a5dc31dd9a34972179d5285244b191d5.djcache
-	cache/a6138d35f838f8aab0d6ac838878a635.djcache
-	cache/a623fd4bf5c6528e2eb6dfe0e7139ef3.djcache
-	cache/a7298263466f9ac9c90477f65c0b176e.djcache
-	cache/a7740e0296aca29b2507f2c989912037.djcache
-	cache/a7903f32790a34a34b8c51be5b0cc0d3.djcache
-	cache/a84047c5e880039ee53b1dc9783e3838.djcache
-	cache/a8eff96b1b5abdf34e71c45598f9bcee.djcache
-	cache/a9213bdb27fb7a18cf01978ae7cbb895.djcache
-	cache/a92dbfc5c77bec01d1cce4d88c62398d.djcache
-	cache/aae637c6c166ff826e7537c88eb6bb44.djcache
-	cache/ab272797d31d61bec1477d64b450aa94.djcache
-	cache/ac5d6fb4dfd078448a0d610857287ff6.djcache
-	cache/adcd5fd613bfc3c9e663ce851dfd5502.djcache
-	cache/b02f147acdc063b9927d95ddd9f895d1.djcache
-	cache/b15da6347b985ffeddc34f631d7e5b76.djcache
-	cache/b274d52b31dd976755032da729e7fe8d.djcache
-	cache/b52b9f57be46d8f3a6d4d20c355db023.djcache
-	cache/b584a069e0d77a2a4a25fde44d5cdc8d.djcache
-	cache/b65fa0101073bc74c819eb1382a88c47.djcache
-	cache/b7119e1d1cf257db5edf6ca2e0722355.djcache
-	cache/b765765a5d92fa71db755cf9b3ffbe5c.djcache
-	cache/b8cfcbe9f03148bf85575d0b42456ff0.djcache
-	cache/baf3c29ba057c02d08b41d0c5de23d88.djcache
-	cache/bbdc7665e92d542289965aaef29c5afc.djcache
-	cache/bc3ef272edaf4b035daf07744f5d1930.djcache
-	cache/bea8e20f7a76c521999cb3b92ffb5344.djcache
-	cache/c1008b85a7dac639a1303bc3532ecf2c.djcache
-	cache/c1554118d1a6d1946c1ff11b5a624850.djcache
-	cache/c2228971ecc34d33251f90175e1407b7.djcache
-	cache/c2238fc9949e22b03d131d4ff54b40ad.djcache
-	cache/c47a2eb8f2f7555082210083c1c7f508.djcache
-	cache/c530a16af4c38b690bd1e7aa1238ad9e.djcache
-	cache/c5528cce13021e38ab74d8128db750d3.djcache
-	cache/c5d53663d76428c2921de43093e69094.djcache
-	cache/c6eba0e8c58107cd33af0ea895278ad5.djcache
-	cache/c73b10d76a1c58bece69eb3f07581d36.djcache
-	cache/c7cbc9beea8e5b8328b65f2913cb8a69.djcache
-	cache/c7d4aa1d1a0574fba1f0d8465820acc6.djcache
-	cache/c8832b12ec5cc6a67189b6063119a600.djcache
-	cache/c90d3705ba6c2302840046e88277aa5a.djcache
-	cache/c9e7a98a8d06f57a567073c42869c6fd.djcache
-	cache/cc4dcded2396bfe5337e76d20ffd9157.djcache
-	cache/ccd1ed53e55e11948afded40538c0d2b.djcache
-	cache/cd6fee8f2ae11f31cbc721a417b91114.djcache
-	cache/cec14869e7eb9c95e870b3c73322b03c.djcache
-	cache/d0ee01c384e494a341cf41921427adda.djcache
-	cache/d20dd78f58b45c5c76612184b4b54848.djcache
-	cache/d4a0d8769d338c10a5f25df60011abe6.djcache
-	cache/d50803a921ffcd3a56f378a82c822e14.djcache
-	cache/d5915ba2bf815a7ada6d2a09a20683fd.djcache
-	cache/d59183c6d7594065c3536ca9815eb36f.djcache
-	cache/d74e012d43740e34050a0876eacfe90b.djcache
-	cache/d7ce7a21095dcf32699a5086c55e2abb.djcache
-	cache/d7dc0be5d8ca7c13b7908cc2dd21d424.djcache
-	cache/db209e6138fb3c5102a3bc0f66f0d640.djcache
-	cache/dba67824c112704bf00511bb5d34fb7b.djcache
-	cache/dc9d335c0dd9259abe85f4c4eb84caf0.djcache
-	cache/dcd193050c44438ec22e39738305eb7e.djcache
-	cache/dd2f098289ecc8c0b52542cead9d92b8.djcache
-	cache/ddca496467a1d9487f33a61e4ca2915e.djcache
-	cache/ddd365960ad77b4c684f78a97592c73f.djcache
-	cache/de59e50003cc3f26e41467dc41378fc5.djcache
-	cache/dec65b1cb31507f94b5569d1c423f433.djcache
-	cache/dff284e2b09fd4d976ebc4b3b80ed29a.djcache
-	cache/e20b5e89bef615d283e2bde215d693a7.djcache
-	cache/e2e372eee816d8d2fd986e9f42175eb9.djcache
-	cache/e65be870a8ee11bfd231c00dbb71f219.djcache
-	cache/e660db34fbdc50a2a798eb18790faf6e.djcache
-	cache/e757028d5afed0bbc283e02cf0fc028d.djcache
-	cache/e762d1e1c3a65e23857668c7534cf93a.djcache
-	cache/e801210a55ef4376632324540e24cbb4.djcache
-	cache/e8601d7b9d37072e68a0afcd43aa2798.djcache
-	cache/e8c621a4c86e865361b559f54e550ec4.djcache
-	cache/e90b1ff0cd3fa15985b57a708147875c.djcache
-	cache/e9969ac30424c3146d456457782e4ef6.djcache
-	cache/e998d8239dd7ec3911cacc1d30fc704d.djcache
-	cache/ea27cf10b2a9588eb485f231de4e6a83.djcache
-	cache/eb3e3491bda88d168aa094c354c9201d.djcache
-	cache/ec211162c8db749a3a8296b3e9cd8081.djcache
-	cache/ecb2626a2f524483884ba1aa885ebbbd.djcache
-	cache/ed63c8285faaecb4c6098fff77916323.djcache
-	cache/eef4f493d9115431e5e0d0c08b459c03.djcache
-	cache/f03d4e60166510912c5d27f5caabd5f3.djcache
-	cache/f0a3430f6f33d334982fe661c80ea668.djcache
-	cache/f2537062f229ff89d9075e46e205c227.djcache
-	cache/f3ad348362c8536b926b64f3e7204b0b.djcache
-	cache/f54b24cf7b79741facbfbd866676fdbd.djcache
-	cache/f5865c8b12c434e3ed3d561215cf4116.djcache
-	cache/f6a76c47215223d08bf3014fb85f1ab5.djcache
-	cache/f849cce2b5cb27ef24087a2d45123725.djcache
-	cache/f9a12db93def307d26b1567a320e4b21.djcache
-	cache/fcc5ef7553e0d81b64e33bd2945e478b.djcache
-	cache/fde56019ce42619237efd8dc0dbaaf0e.djcache
-	cache/ff953a024c3a6be438b166a240380cd5.djcache
-	live/__pycache__/speech_detection.cpython-312.pyc
-	live/__pycache__/transcript.cpython-312.pyc
-	live/migrations/0021_videocamera_speech_only_videoframe_contains_speech.py
-	live/migrations/0022_videocamera_vad_mode.py
-	live/migrations/__pycache__/0021_videocamera_speech_only_videoframe_contains_speech.cpython-312.pyc
-	live/migrations/__pycache__/0022_videocamera_vad_mode.cpython-312.pyc
-	live/speech_detection.py
-	media/audio/fingerprints/1cdaec8f-6bed-4653-8ce6-e68cc225f95a.npy
-	media/audio/fingerprints/20179ef5-d112-4235-b6df-e66fa0b57705.npy
-	media/audio/fingerprints/2e056b61-1419-44ed-b00a-10651f2974e5.npy
-	media/audio/fingerprints/2e4fc7ee-58c5-484a-81f5-4f75cec27c3c.npy
-	media/audio/fingerprints/2fc46b5c-5afa-4f7d-ba16-7ac9324cc13a.npy
-	media/audio/fingerprints/30e0eb58-9a75-4bb6-b69e-ab4fbb038fee.npy
-	media/audio/fingerprints/3169463d-265f-4a07-951f-8c5767d0bea5.npy
-	media/audio/fingerprints/3193dc21-7ad5-4072-b019-cd2470b46ce0.npy
-	media/audio/fingerprints/32c67022-71cd-4f07-8909-41eeca64285c.npy
-	media/audio/fingerprints/338dc266-6470-4f3c-bed0-deb2bedea404.npy
-	media/audio/fingerprints/39108d49-d224-4b1b-b1a5-4951d9cbb356.npy
-	media/audio/fingerprints/4139a6bc-88e4-4aaf-b4dd-3e09718dade5.npy
-	media/audio/fingerprints/4ed23ee0-ad44-42f8-ab3f-89789e0292dd.npy
-	media/audio/fingerprints/551151e4-727d-4598-87a6-ec0904438eeb.npy
-	media/audio/fingerprints/57d47e06-dc5b-4c56-a241-494f3c36654b.npy
-	media/audio/fingerprints/59b66a5a-11f4-42ad-a6d7-c7052330257e.npy
-	media/audio/fingerprints/67cd766b-a894-46bd-bd45-1b415366aed2.npy
-	media/audio/fingerprints/6ad93824-9e6a-4e36-bdea-aa8a6183278c.npy
-	media/audio/fingerprints/6fa831d2-0088-4f2e-8727-2d55e14399ae.npy
-	media/audio/fingerprints/8be68d66-3d9a-4462-a0fd-8f665f4ed274.npy
-	media/audio/fingerprints/8d287f32-a3f5-4620-b6a6-28719937527c.npy
-	media/audio/fingerprints/8e46c2ba-e3e5-4901-8314-92076cdfc3af.npy
-	media/audio/fingerprints/903752d9-aeab-4ba6-956d-ad856bbbdb47.npy
-	media/audio/fingerprints/925fbe6b-dbb5-4251-b48e-8fb47aa1ce68.npy
-	media/audio/fingerprints/98210bc9-c565-4ff0-9157-add6c9b6ecfe.npy
-	media/audio/fingerprints/a3aa5362-86cb-414c-a7fe-b3b6af01cc01.npy
-	media/audio/fingerprints/a4e40171-87c0-4d06-81ed-23f788f912de.npy
-	media/audio/fingerprints/a6450bbb-291c-4301-bf0f-b2a764c28c9c.npy
-	media/audio/fingerprints/ab2f745a-c895-4e74-9eab-2e7ef6e154ba.npy
-	media/audio/fingerprints/b0cf4f93-83db-48a2-8b20-f3ea82b79009.npy
-	media/audio/fingerprints/b653c3db-844f-48d6-8297-6204e781ac55.npy
-	media/audio/fingerprints/b9da0a64-9bb8-4cbc-bff9-6018b5bd888d.npy
-	media/audio/fingerprints/ba2fe694-bfcd-4807-87cf-4eab603133fe.npy
-	media/audio/fingerprints/c0056079-5c00-4fd0-9414-10bef9b3c44b.npy
-	media/audio/fingerprints/c2ac8279-3eeb-430b-955a-e4e8372a2d89.npy
-	media/audio/fingerprints/c43a204d-9c5e-4d2a-89ba-cd1f3390a088.npy
-	media/audio/fingerprints/ca2bf529-3e94-428d-8334-5af83e929371.npy
-	media/audio/fingerprints/d05321fa-cdfd-4410-93b0-83e3478845bd.npy
-	media/audio/fingerprints/d2ab05fd-cfef-4e71-946b-9e3d1646bd26.npy
-	media/audio/fingerprints/d37c1ce8-1a46-42d1-bd00-35da00038dc7.npy
-	media/audio/fingerprints/d6a761b1-c0f8-4fb3-aa7c-7ef268f18493.npy
-	media/audio/fingerprints/dd755df0-d290-4a1e-9944-5da0f179314c.npy
-	media/audio/fingerprints/df4639f5-bc34-402b-bf62-c221230b621e.npy
-	media/audio/fingerprints/e32a9ce4-593d-4bf2-b96a-106377861709.npy
-	media/audio/fingerprints/e386c6ee-201a-4f87-b818-b0b7588b080a.npy
-	media/audio/fingerprints/e39439e7-f08c-418c-a4a0-b5d7863d4c8e.npy
-	media/audio/fingerprints/e546d998-12d1-4633-b33b-1a35e032b361.npy
-	media/audio/fingerprints/ef878ee8-117c-4dcf-a393-e5d81a4ff079.npy
-	media/audio/fingerprints/f1bfbea2-638e-4656-856a-f6ef1145a961.npy
-	media/audio/fingerprints/f1f05e5c-f51c-4adf-8805-853388d7eca8.npy
-	media/audio/fingerprints/f3c551ad-d104-45bb-9296-e9299ebcfa93.npy
-	media/audio/fingerprints/f3f6c4ad-ce6f-4b5f-a653-4d5133b34b71.npy
-
-no changes added to commit (use "git add" and/or "git commit -a")
+[main 37d03675] backup
+ 700 files changed, 2237 insertions(+), 2396 deletions(-)
+ create mode 100644 cache/00917a82faf62639a6919823e5473bf3.djcache
+ delete mode 100644 cache/017c411deeb67c267be0d3c3e54f9d93.djcache
+ create mode 100644 cache/02bbd0ede9bace6b7324d910108d085d.djcache
+ create mode 100644 cache/02e5debb962fe0d9ecffdeb68281a7ef.djcache
+ create mode 100644 cache/03f61dc9feac8f07cc5d33f6e419cec5.djcache
+ create mode 100644 cache/04608e4de610408f5bb5987385d79944.djcache
+ create mode 100644 cache/050d9c2fc286d028620abc2970d2d13d.djcache
+ create mode 100644 cache/051f0973c882f693e8f47985e14f9f2c.djcache
+ delete mode 100644 cache/05e5d44428eb1126b82b8030faef8a1e.djcache
+ create mode 100644 cache/0651d33fd54c07123a10760639317edc.djcache
+ create mode 100644 cache/079f6aef248f7ce08d861433e5eed6d0.djcache
+ create mode 100644 cache/07e32c57d5ed8b3e9a2b8b1a7262d91b.djcache
+ delete mode 100644 cache/0876b9a8366676bb16244929a66a2a23.djcache
+ delete mode 100644 cache/087757db27398d8a0677f12da10ed2cc.djcache
+ delete mode 100644 cache/08acc4aa1619c8c9e6cabd1f32d18c08.djcache
+ create mode 100644 cache/09274cc76dfa05e11f101d7eb71fcd47.djcache
+ create mode 100644 cache/0981826ea46443bf1bd573c92213fd08.djcache
+ delete mode 100644 cache/0a0ad20bca6a5fc93e8c58940d1f7b97.djcache
+ delete mode 100644 cache/0a274f3cd7e141d581eef63e5118fe19.djcache
+ create mode 100644 cache/0a74a670e19b70a1b81f693f7e01198c.djcache
+ create mode 100644 cache/0ab962491c16bda848b7743dc4ac60d0.djcache
+ create mode 100644 cache/0b197050227e18666d5f41734bac620e.djcache
+ create mode 100644 cache/0bab8d428400817dfefe587fe2dbd8ea.djcache
+ create mode 100644 cache/0c5171c1e0d26b81be697c2c2d6a02cc.djcache
+ create mode 100644 cache/0d02252e6eb5835734b4f3affc1f0b41.djcache
+ create mode 100644 cache/0d20ddda6b366be4789d5543086ba280.djcache
+ delete mode 100644 cache/0d615a7cc9f306e26d3115800e332b31.djcache
+ delete mode 100644 cache/0d7a8e8cd3a47e56a43221ea68d553ef.djcache
+ create mode 100644 cache/0f01127dcc29bce486ad045a4e9168e2.djcache
+ delete mode 100644 cache/0fa3d7d081e660db100c762272f7b563.djcache
+ delete mode 100644 cache/0fba5bb1fc9b5fee40204850a6d7aefc.djcache
+ delete mode 100644 cache/11371596c210f5011242bdb88248b683.djcache
+ delete mode 100644 cache/115c8423237200247482d41c2ab0050c.djcache
+ create mode 100644 cache/117172ac41a1eaf1b80db7c7498f8430.djcache
+ create mode 100644 cache/119ffd65c9defe4e5d3ca704d9aad525.djcache
+ delete mode 100644 cache/11d608002258b062ad765110bebf1fc0.djcache
+ delete mode 100644 cache/12282053a2a5152bb66b31762f8afd4f.djcache
+ create mode 100644 cache/125b42ff630b8ef2cc5a6c649eb90b10.djcache
+ delete mode 100644 cache/128bbb93f89aeb9b2c023f9eacc8d35a.djcache
+ create mode 100644 cache/130be430428d5de922418b5320cecff4.djcache
+ create mode 100644 cache/138ce0c289c388fb61e6381fc20ae76a.djcache
+ create mode 100644 cache/138e15e48b00ba37c1de994b5d4e7142.djcache
+ create mode 100644 cache/13ab402dadfe2dec289ae274159b2035.djcache
+ delete mode 100644 cache/13d550bd4643440f924e07e326357726.djcache
+ create mode 100644 cache/144c5102d3378562afb760d0e20abddc.djcache
+ create mode 100644 cache/146180c2c9390dd18a5834fd230096ba.djcache
+ create mode 100644 cache/147923a6b29772d5ea01ef6c39d135e5.djcache
+ delete mode 100644 cache/148d0c89eacc46e61c9d854dfd81d19f.djcache
+ delete mode 100644 cache/14a50ecff3688e9f2785422dc3fce8a1.djcache
+ create mode 100644 cache/14f9e78c3ae128646b5290dcad1f97a1.djcache
+ create mode 100644 cache/1591378515322f527dae6b92cd71945e.djcache
+ delete mode 100644 cache/16637772e324afbaf9bfb1ad43dbfe98.djcache
+ create mode 100644 cache/16f4e86262d37a981eab7e635667791d.djcache
+ create mode 100644 cache/179d8de5713e3eb3e984b1cbf6f8dcb7.djcache
+ create mode 100644 cache/17c7de58e0c759e640e6b1531fb5cbdc.djcache
+ delete mode 100644 cache/19df826072b98be10b734a22e6e1e240.djcache
+ delete mode 100644 cache/1a282d526e9f91a598785f18686f0a4a.djcache
+ delete mode 100644 cache/1a32a1646babe41352b9bd56c036dd72.djcache
+ create mode 100644 cache/1ae90fbee6abcc71e76e3cd98d0bca55.djcache
+ create mode 100644 cache/1c5e5e6f3d6335e9311e4182dcf27868.djcache
+ create mode 100644 cache/1caef80512c07ef4d6dabc5d9471478e.djcache
+ delete mode 100644 cache/1d325777ff0eb6b218d1eaa4269df872.djcache
+ create mode 100644 cache/1e5229c64822fbc46286ddfa6b60fa6a.djcache
+ delete mode 100644 cache/1e9b2a4aca1cc4afb3c3750bc4e11076.djcache
+ delete mode 100644 cache/2038a46d627d9b6269af67a312538fdb.djcache
+ create mode 100644 cache/203bafa2f57a502898b5b269c8469ea5.djcache
+ create mode 100644 cache/204fab1f3ef9c7e6f063240cd4dd51e1.djcache
+ delete mode 100644 cache/2125ad24b1fc16c2fe5f91863b35e9e0.djcache
+ create mode 100644 cache/2134d01ed5173a24eceea9eae164be19.djcache
+ create mode 100644 cache/21907669eff4b9a4c78fed0e7bdcc7ed.djcache
+ create mode 100644 cache/22bd52dfeecaf73c71b18a19099fcc3d.djcache
+ create mode 100644 cache/23b36dd137d2fe9b43b6bb29d3726728.djcache
+ delete mode 100644 cache/23f50ade6a856955592f98a02087a689.djcache
+ delete mode 100644 cache/24ddfcf69f3891b798a2d875b1ef8a19.djcache
+ create mode 100644 cache/260e6f48f6a6ebf3a8a4b0773cbc7313.djcache
+ create mode 100644 cache/262285b23c060c4c3fa597abe3741a2e.djcache
+ delete mode 100644 cache/2657439fafc69a513848a41f4b62e933.djcache
+ delete mode 100644 cache/26983a6f8384da1dbd67f21582ae2a00.djcache
+ delete mode 100644 cache/26ec847b43a486406030c7c6a63371f5.djcache
+ create mode 100644 cache/279e0f4a344fbd671811d39268b28c9a.djcache
+ delete mode 100644 cache/27bec0c5452dfdb950f341abc0594fa4.djcache
+ create mode 100644 cache/28aa9d4674172fa831dd23d98baa36df.djcache
+ create mode 100644 cache/28d6321893d9102d02fc802e1025d85f.djcache
+ delete mode 100644 cache/28d7e73373e29348fe7e22fbdc324f78.djcache
+ create mode 100644 cache/290bfe435188c39080c79396f989d282.djcache
+ create mode 100644 cache/29323691aaa7e9a16dac4ac6636af29e.djcache
+ delete mode 100644 cache/2975ac3615639ad6d0204a63f7c34259.djcache
+ delete mode 100644 cache/29ede6890b559c85ce4966a074cb86d8.djcache
+ delete mode 100644 cache/2a32fc8a272c659cf31e655706553430.djcache
+ create mode 100644 cache/2ad919dffed2509f110f6a2569ee19ab.djcache
+ delete mode 100644 cache/2b6c6aa8cd647b20431bb16392db01c6.djcache
+ delete mode 100644 cache/2ba885254b882c9147433fb6c1fdef1a.djcache
+ delete mode 100644 cache/2c16306b7ea20c55c18fbebe63af202b.djcache
+ delete mode 100644 cache/2c749a1faee5fa5f4f56383c4b49f9e1.djcache
+ create mode 100644 cache/2d2f06d54356480e9b6d1d644ac79676.djcache
+ create mode 100644 cache/2d7e3594670a81204b85eb29a7bded43.djcache
+ delete mode 100644 cache/2df7fdba0ddf22f807c4f490d46b8c69.djcache
+ delete mode 100644 cache/2eb1d634a3490b732fae3ce5c56504d5.djcache
+ delete mode 100644 cache/2eed0ab26f558d40cf3ce6b78573d953.djcache
+ delete mode 100644 cache/2f6acb386a595815a40de47d7365baae.djcache
+ create mode 100644 cache/2feea1eb40b5e2516754e1fc1dd879e2.djcache
+ create mode 100644 cache/3012ce4e5d88458f71f90ae488d25e8e.djcache
+ create mode 100644 cache/30ac0b4f8332f1048b090c79197bc8bf.djcache
+ create mode 100644 cache/30dc4df48cd86b40f54a4e7c1e69569a.djcache
+ create mode 100644 cache/3106d5bafda5f46e4b0f23bfb74c2420.djcache
+ create mode 100644 cache/312313653e6e578a01040c694091897f.djcache
+ create mode 100644 cache/32320be8ab91635b551c94a94b01efac.djcache
+ create mode 100644 cache/32a3d07e591d3c1d65e03eca7a736774.djcache
+ create mode 100644 cache/3330e8e65a9c6499e787997d13d2bf98.djcache
+ create mode 100644 cache/344ab1f60a6ba22b22009c70cd6a64a2.djcache
+ create mode 100644 cache/353dff27477c6c9a685bbaf5005070b0.djcache
+ create mode 100644 cache/36a53b2485224c8bc76575e1dc4d3e53.djcache
+ create mode 100644 cache/36b420bfea00024e9d48c4d24c6ade92.djcache
+ create mode 100644 cache/372550f926a8ca366ead7cf2c8c75a0b.djcache
+ delete mode 100644 cache/37a44948fe6dbfcc5e1497cc9cd20dfa.djcache
+ create mode 100644 cache/3810b3d36033ebf29169147c70070d15.djcache
+ create mode 100644 cache/383c01a847ae7f1fb939811f2bf27a87.djcache
+ delete mode 100644 cache/3862982c5e0220fed12a56c37475dca5.djcache
+ create mode 100644 cache/388eedea9e707483894e571f5b5e332b.djcache
+ delete mode 100644 cache/38d31f01c85226c51d4c10f802c30d7b.djcache
+ delete mode 100644 cache/395c0b744a111fba0558f06376ceeffb.djcache
+ create mode 100644 cache/39659e4fb577eb86e05a58fd3194c516.djcache
+ create mode 100644 cache/3a1b41608cfc531dc888ed1e08c3e65d.djcache
+ create mode 100644 cache/3a1efc5d71c39bae9f187801fdf05da2.djcache
+ create mode 100644 cache/3a76d3e9b4e2ee405072a2f90f63e979.djcache
+ create mode 100644 cache/3ace39c31730a5276c119d608ff5c437.djcache
+ delete mode 100644 cache/3b27f6622b23fd8095aeb936162ac481.djcache
+ create mode 100644 cache/3d7a5095e5c826cfe89180ffa69ebcbd.djcache
+ create mode 100644 cache/3d8a1a2884840693220ff008daff7e50.djcache
+ create mode 100644 cache/3ddad622ae728c7436b84385b96a7cf3.djcache
+ delete mode 100644 cache/3ec2f08737098d477589295aa8c7d131.djcache
+ create mode 100644 cache/3f84cd58ed32cc40edb64a6d53526a72.djcache
+ delete mode 100644 cache/40eb03f8d2f62a9f59fbcdde7eeb201b.djcache
+ create mode 100644 cache/41711365d223c84aabc310a6ec2688ac.djcache
+ delete mode 100644 cache/4193b146282a1dc3059131821d10d6c4.djcache
+ delete mode 100644 cache/41eed11f5d2b38b45e46b6959fd0d795.djcache
+ create mode 100644 cache/42d18325383ce3a5b8b4e463dc0ca994.djcache
+ delete mode 100644 cache/43647fbf70f05a552c1f35555db57bd8.djcache
+ delete mode 100644 cache/44b9ea9793c065d64038cd6fceec3616.djcache
+ delete mode 100644 cache/44c79f910fee88ec10a8d4383c7739e8.djcache
+ delete mode 100644 cache/45281d721d44a02d54f9e6208fdc4445.djcache
+ delete mode 100644 cache/4568ea982b75f32624455b0769550634.djcache
+ delete mode 100644 cache/45ab7841ffb42c8b2034f168d4183cdb.djcache
+ create mode 100644 cache/45c1b530fe663ef82ad01b06a0ed62f0.djcache
+ delete mode 100644 cache/465cc99af60d8e14890e9e95d313ce20.djcache
+ delete mode 100644 cache/472dc6f4978293e26f537aa1aa65e9c8.djcache
+ delete mode 100644 cache/47e0abff51e345192e5e5603a73e920b.djcache
+ create mode 100644 cache/489da168b8664f869ef3898c74045cd8.djcache
+ create mode 100644 cache/49537e600bda6b66df1edf4ef4f5ab87.djcache
+ create mode 100644 cache/4a5bdfb1d4959655b56a67d702c39960.djcache
+ delete mode 100644 cache/4b3a5fb8196461575a27b5919c3b6169.djcache
+ delete mode 100644 cache/4b856ffecfa86db81c54bf51b029bfbe.djcache
+ delete mode 100644 cache/4c0ade62ba43d532882a86039331aa95.djcache
+ create mode 100644 cache/4c34001dbb0977a34782ee8fefaaf89a.djcache
+ delete mode 100644 cache/4c9847e1a50b103581264a0c2cbc3719.djcache
+ delete mode 100644 cache/4d1e56afa3d224977a555251f39b1124.djcache
+ delete mode 100644 cache/4d68aeaa14af02f4391e733ea897df95.djcache
+ delete mode 100644 cache/4d7fa030c61af45eccfe19a628dbabfd.djcache
+ create mode 100644 cache/4d98ae97b6c5b60cf629fd7d621751bc.djcache
+ create mode 100644 cache/4db681cf5f4dd1bbe86a49a0bccf7e4c.djcache
+ delete mode 100644 cache/4ddbbdf3671f43a7e9dd45d09a66fd4a.djcache
+ create mode 100644 cache/4e391a89140a2a4b8a6461f6b0d6d1eb.djcache
+ create mode 100644 cache/4e8f60638a20e251a0c05777ee3e91f6.djcache
+ delete mode 100644 cache/4f35a69e8b099ad964c680324e8c7b76.djcache
+ create mode 100644 cache/50a58d029314e792d997291266beff35.djcache
+ create mode 100644 cache/50c219629ba510b24aa715fe58a3607a.djcache
+ create mode 100644 cache/50f7250502fdb52ce1a6b96ef4665663.djcache
+ create mode 100644 cache/517658241c4684d1494fbb101cd58298.djcache
+ create mode 100644 cache/522fa664a2535fe5e6c61b86a30a2e43.djcache
+ create mode 100644 cache/523323516882f598a40558c54d8453d9.djcache
+ delete mode 100644 cache/527222c6086dc3258e5247b50c4c887e.djcache
+ create mode 100644 cache/52fe17a562822dd5b79bc3d5a0b867cd.djcache
+ create mode 100644 cache/5391804e32dab99db64fc0c26b64a2f3.djcache
+ delete mode 100644 cache/53f8f379a9246b2e32949f15b06dfbca.djcache
+ delete mode 100644 cache/54124684c29dcf58646952b4f5018dad.djcache
+ delete mode 100644 cache/54ea03f98dc891a885162dd37353a15b.djcache
+ delete mode 100644 cache/5646ffad1685a458520257343d4ac356.djcache
+ delete mode 100644 cache/5668f0844e5990e7d2c6282c47d13293.djcache
+ delete mode 100644 cache/56c52e674f87ab7bf2678eff5d73c044.djcache
+ delete mode 100644 cache/5708b70fee5dd7ac544df9f4413bae04.djcache
+ create mode 100644 cache/577fc50cf40e645f335f2f486523c717.djcache
+ delete mode 100644 cache/57fcaa161454de42f337c7e6c9752fa2.djcache
+ delete mode 100644 cache/582fb0331029a00963f217ecc2c41163.djcache
+ delete mode 100644 cache/585db71b4e1489aa17a55df8d9d35501.djcache
+ delete mode 100644 cache/588e45cb8ad839080977491368f1ffb9.djcache
+ create mode 100644 cache/58af6a576bebdaa951c965625de12fca.djcache
+ delete mode 100644 cache/58dd02527732f08e7c1efa7e174e7f05.djcache
+ delete mode 100644 cache/597477415aefee234e477e27a57d4945.djcache
+ delete mode 100644 cache/59d3211d6119c2c13cfd36f530af47fc.djcache
+ create mode 100644 cache/59dad0910b67bc45298ba102c07f37f3.djcache
+ create mode 100644 cache/59ddff569dd319abbddd13f18c5ebfb8.djcache
+ create mode 100644 cache/5a74865833f67f5d02eab20063b2e362.djcache
+ delete mode 100644 cache/5a8f24b55070c87757c9c5baf5ae395e.djcache
+ delete mode 100644 cache/5abbb4839772d5b599e2ba3bb46be3bf.djcache
+ create mode 100644 cache/5ac5160668a9310fda06cbac48b5ff6f.djcache
+ delete mode 100644 cache/5b04808a22380b9d8aaf0125cbedc2a0.djcache
+ create mode 100644 cache/5b31fa2f9f409ab02e2ffe144061801b.djcache
+ delete mode 100644 cache/5b4af5d690fe3d009df13c8dfe62513f.djcache
+ create mode 100644 cache/5b81c19cdf841e704f7649516d6b3258.djcache
+ create mode 100644 cache/5c07073c73c1fd0c571cc5233f1729c0.djcache
+ delete mode 100644 cache/5c3528bc9b8142ab6cfc0bfeb12ba16f.djcache
+ create mode 100644 cache/5cf78c871ee7b1365859da9b0c24ffec.djcache
+ delete mode 100644 cache/5cfa5c29623192ab81fc077874723aca.djcache
+ create mode 100644 cache/5d17b0bb369fcdd035c14548235e651e.djcache
+ create mode 100644 cache/5d1e235e57e260c3936342b8750b4f40.djcache
+ create mode 100644 cache/5d9e75006ce5d3090320f89a56533524.djcache
+ create mode 100644 cache/5dced0ab43fd9d552a2d8b7724194726.djcache
+ delete mode 100644 cache/5ebaa2f3e422889a90ccf122cb490662.djcache
+ create mode 100644 cache/5f47665a532143a52b75c5760550644f.djcache
+ delete mode 100644 cache/5f8d3def46aa7aa0cbaa444be23f525b.djcache
+ delete mode 100644 cache/5fc29fda0784e83f59ced48c93700b82.djcache
+ delete mode 100644 cache/603029fbf330f305338d19f2f4c6a9a6.djcache
+ delete mode 100644 cache/603497f2254954bcc61aa723c58bdd07.djcache
+ create mode 100644 cache/60de374330aabcb1cfab03584ed98edf.djcache
+ delete mode 100644 cache/615ff29481112d9b858f75ebab8cda04.djcache
+ delete mode 100644 cache/61ddd5ddb4c840a35410dd00a397076d.djcache
+ create mode 100644 cache/627f5e51a49d4ed6ab1067d8eda0e95a.djcache
+ create mode 100644 cache/62a49f863e6de8fce5803eee8fb7ab4e.djcache
+ create mode 100644 cache/634a03dcefab19b80daa5451f8aaf85d.djcache
+ delete mode 100644 cache/636775aeded20c5c4797b9a999314ad8.djcache
+ delete mode 100644 cache/64c9fe03b99d4bfd72acb1df144ae410.djcache
+ delete mode 100644 cache/657ccafc5af0f9a078028afe8790a2a2.djcache
+ delete mode 100644 cache/6663b9e7b1d70f62223ca57b2840d255.djcache
+ delete mode 100644 cache/6743c0795dd0eb51b4a355555f6589b5.djcache
+ create mode 100644 cache/687d57eb70cd1e25f24bd9c6b851cd23.djcache
+ create mode 100644 cache/6889fc96fe1574a4cc9f90ab21877520.djcache
+ create mode 100644 cache/68cd520124901a76558d5bf2c2511c06.djcache
+ create mode 100644 cache/6985d5e7a41d3b2161f391a5798c46a6.djcache
+ delete mode 100644 cache/6ad4dfc7023271ac69a9c1163fe7a15a.djcache
+ delete mode 100644 cache/6afd42c8bf95d119417a306b5fdd4c2f.djcache
+ create mode 100644 cache/6b299207baa51368562fad1b4a3c1400.djcache
+ delete mode 100644 cache/6dc9ef50d54cab634484a38f02419ba0.djcache
+ delete mode 100644 cache/6ed980183cdee2b4930d023e6f211822.djcache
+ delete mode 100644 cache/6f2363a6281758250756c9d76f0f8db6.djcache
+ create mode 100644 cache/6f3f14320f3c7d82333fd606fe8e909d.djcache
+ create mode 100644 cache/6f8162f36181123b7f7ba6e4abc62bd6.djcache
+ delete mode 100644 cache/6f899a216ccee330fb1debe5f9379fea.djcache
+ create mode 100644 cache/721e0abe55c7a408a1c603e8313a7ba7.djcache
+ delete mode 100644 cache/72dcfc2ef3d21a3dfe6bc37756436f1c.djcache
+ delete mode 100644 cache/73b3f5b26aa7059d7c9d227a654cc4f4.djcache
+ delete mode 100644 cache/73bdef62fd786057fd10608cf66d8a18.djcache
+ create mode 100644 cache/743d050fb1789e3a9f8c1514b538ae55.djcache
+ create mode 100644 cache/74b39b262f035373a90eeb2bee0b1d41.djcache
+ create mode 100644 cache/7521fdb2a9e0a3c5438f35f2e6fddc12.djcache
+ delete mode 100644 cache/755f334ef3b633f359eb5b76844ec1bd.djcache
+ create mode 100644 cache/75702b73101542f0982c185fc708cde1.djcache
+ create mode 100644 cache/75968395a928098a7adf94d8e8e2a3e6.djcache
+ delete mode 100644 cache/75dad315f471aa7678713730c720d442.djcache
+ delete mode 100644 cache/7641257c19735795fbd7a7bb1dc1d612.djcache
+ create mode 100644 cache/764bcc257a789095c6275ff5112551b5.djcache
+ create mode 100644 cache/767025409f3fc25a139f61b2d19c3a22.djcache
+ delete mode 100644 cache/7680006e99194d502ff1f6d87c14ee43.djcache
+ create mode 100644 cache/782ba03e2f5be81480b93ce59a5845fc.djcache
+ delete mode 100644 cache/79f61a53c2fcc7dbdc115b3a3d277a5a.djcache
+ create mode 100644 cache/79f857afd7734e9119cc7360292cfd10.djcache
+ create mode 100644 cache/7aa7a74cfe026ee35f969b5bbcf665d7.djcache
+ delete mode 100644 cache/7c267bd3fac116ec82599427a245bbdf.djcache
+ create mode 100644 cache/7d3e4c31fb5d60103af1240b458b1456.djcache
+ delete mode 100644 cache/7e4aec73af64e2e2afb4cf9fa7b929cd.djcache
+ delete mode 100644 cache/7e81150438436244494519e1a2569edc.djcache
+ delete mode 100644 cache/7e9792539ab2fa60846acd3660f1d386.djcache
+ create mode 100644 cache/7ed6b496dab6376d280b051a122429b3.djcache
+ create mode 100644 cache/7febb6b4ffeb43a6755ae775e3ae1f1b.djcache
+ delete mode 100644 cache/7feec0b0fc673f7d409b35376008f2bc.djcache
+ create mode 100644 cache/8019add61a026cf37c839d6617b480f5.djcache
+ create mode 100644 cache/806a92ced7a8d7470113f56e682cf168.djcache
+ create mode 100644 cache/8147bcadcdb6c1c9717c5f9d65bf3910.djcache
+ delete mode 100644 cache/81eb42aae25df9190e8a544bb2d66dd7.djcache
+ delete mode 100644 cache/82a9af9969125b852ec5111f3b2651a1.djcache
+ delete mode 100644 cache/82b9b914d6c1867dc8a87c521be3b588.djcache
+ delete mode 100644 cache/82db934ecdb1c62673f7c348f7165920.djcache
+ create mode 100644 cache/839d30a762a5b69ea8340d14e1e55c72.djcache
+ delete mode 100644 cache/84472f4c13b9f58eda7713f355335eb3.djcache
+ create mode 100644 cache/856e8f72a2b9bf9cba1547db906c5ebb.djcache
+ create mode 100644 cache/86060ad6058170cac4c81c69315c4839.djcache
+ create mode 100644 cache/8674579354f79b889568c4aa82da2a7b.djcache
+ delete mode 100644 cache/86d6a75962447e58ee53629b3421bbbd.djcache
+ delete mode 100644 cache/86f615174e63baf62cf2dd6a4917854d.djcache
+ delete mode 100644 cache/877149ebf30552221a922f1ac9cef624.djcache
+ delete mode 100644 cache/877191b52faeecbdaacb2940138bb839.djcache
+ create mode 100644 cache/88765250b34cdb5a68f46e0a1363510c.djcache
+ delete mode 100644 cache/888008c251a7c074ca8f42e068854339.djcache
+ create mode 100644 cache/889b194a36a3c9ee8703ebd02c913a50.djcache
+ create mode 100644 cache/89085be29030647587f548c5e23bcfce.djcache
+ create mode 100644 cache/8a81f88d7b2423e82e59ed44de1f7aba.djcache
+ create mode 100644 cache/8aaf8b46f1152797caf66c9d3d050961.djcache
+ create mode 100644 cache/8abdc08bc2b40e7174d84d3abaceafd5.djcache
+ create mode 100644 cache/8c15413e83e24377e6dccc7eeab61ab3.djcache
+ create mode 100644 cache/8d1dad7ff8e7abb8e1a894d2e1450cc8.djcache
+ create mode 100644 cache/8f0bd012e9f351ebdc4d607c37dc02e6.djcache
+ delete mode 100644 cache/9092a2c4f33378ce45abd3173271fa5e.djcache
+ delete mode 100644 cache/90f7d3283b48c37d292d13774f5dda18.djcache
+ delete mode 100644 cache/917bfb5adff6cad9156a6f16bcdda58e.djcache
+ create mode 100644 cache/921efbf5ed4632c3c0501a199cd93da4.djcache
+ delete mode 100644 cache/922f17ed11b23dac8bcf2115b3e20dcb.djcache
+ delete mode 100644 cache/924c358d55182da06ad63be114c525e8.djcache
+ create mode 100644 cache/9267cbc95a68faa2be16980781677450.djcache
+ create mode 100644 cache/92f51cbbbc7d6badce32a07240f10959.djcache
+ delete mode 100644 cache/93147d8c6b91137ac4b7dd8a805bd380.djcache
+ delete mode 100644 cache/9398e4e2ab73aed856b360196b3b2e16.djcache
+ delete mode 100644 cache/951d869934df6e7934bd653410c9ad0b.djcache
+ delete mode 100644 cache/95e896dccd47af11425f65e6354b72dc.djcache
+ delete mode 100644 cache/9690317a68963be03a0d2107a54a9785.djcache
+ create mode 100644 cache/971672d5e24a91bdc7d3159223e3087e.djcache
+ delete mode 100644 cache/98acd4a0d705fb6069bbd09c05cce399.djcache
+ create mode 100644 cache/98ffb49f7f7cf2dcbfdf61f4767fda15.djcache
+ create mode 100644 cache/99002b1ff282d65f8bb2f196d6e58991.djcache
+ create mode 100644 cache/99393a60ecc20d1b4b384745b520569e.djcache
+ create mode 100644 cache/9951abb8632b09a67fa981885ac5dcb4.djcache
+ create mode 100644 cache/99e0011fbcc754374c1aef13498cd031.djcache
+ create mode 100644 cache/9b0668b82e47161fcbb28a46b14c6928.djcache
+ delete mode 100644 cache/9b71ab016676f8ec0511e73b0a0f5b58.djcache
+ delete mode 100644 cache/9bdfa5a46d6ef20d8ef6ba1522664e14.djcache
+ delete mode 100644 cache/9c860e401bbaf754f5f73f30298a3601.djcache
+ create mode 100644 cache/9c8f737c593b96bbbe94f0b834f26a1b.djcache
+ delete mode 100644 cache/9d857cdabadd3e03b054aab0302a70ad.djcache
+ create mode 100644 cache/9debf25dabfe353ceba088f95fe3aad8.djcache
+ delete mode 100644 cache/9e1980920864d2957292cc24100265a4.djcache
+ create mode 100644 cache/9e9394d9aa65eda62468c1c052411020.djcache
+ delete mode 100644 cache/9f0f889c624d8ee97a187d6301fa0fb3.djcache
+ create mode 100644 cache/a033598d8dcae48d5e79e8dd563025ca.djcache
+ create mode 100644 cache/a03834675e670d640fb58fdf37817dce.djcache
+ create mode 100644 cache/a0b59cc64ed91289d13cd282e14bb690.djcache
+ create mode 100644 cache/a0e08da67ed5f5184058dea5a5c16679.djcache
+ create mode 100644 cache/a2025ed97d0b5dc6329ef5a36c75d8fd.djcache
+ create mode 100644 cache/a21d95799428dd88e677656992e5061c.djcache
+ create mode 100644 cache/a224a6656df5fd9c8d3b4d0ddf8aa13c.djcache
+ create mode 100644 cache/a22a005f19fc5efdd3b9dbfb016373e4.djcache
+ create mode 100644 cache/a2ec40f37156b9e8fd363577e4331404.djcache
+ delete mode 100644 cache/a315338792432fcf327bfa81326d86bb.djcache
+ create mode 100644 cache/a3b3724ca5fd74c77581003043925bfe.djcache
+ delete mode 100644 cache/a3d8101f0cc39ed343f22445afbb07d0.djcache
+ delete mode 100644 cache/a408cab9d86161bf53e01514bc432dce.djcache
+ create mode 100644 cache/a4430e69d10e054ec7db1dc932d1f08f.djcache
+ delete mode 100644 cache/a459697fa3d767421eb9107485f65526.djcache
+ delete mode 100644 cache/a45b517dcde6a02544629b44c144c4de.djcache
+ create mode 100644 cache/a48ba8e88925dc330c2e6eae1a747d24.djcache
+ delete mode 100644 cache/a4be5013cefc165e9e5307e8289f85a7.djcache
+ create mode 100644 cache/a4cb65ad727143fa03cff5d5bc8c2b12.djcache
+ delete mode 100644 cache/a5b2b5e58aae5b5631b7d366ea90d228.djcache
+ create mode 100644 cache/a6138d35f838f8aab0d6ac838878a635.djcache
+ create mode 100644 cache/a634e7c66ed56ed19350188ce51e2c9d.djcache
+ delete mode 100644 cache/a635aec6fc5a8eecc4b2c034f35ba8c8.djcache
+ delete mode 100644 cache/a652bef89b2d110aaa11966836061108.djcache
+ delete mode 100644 cache/a6645047152344fd06f76217f239786e.djcache
+ create mode 100644 cache/a6970cc7f5b6e159f3d4c6d56e9519a4.djcache
+ create mode 100644 cache/a69c1a3bc702eb2924d17c6b0543037d.djcache
+ create mode 100644 cache/a6ec1938408ada07d9a82c68aa194e65.djcache
+ create mode 100644 cache/a93cb9f26ded4ffaba5bec89a0b9c62a.djcache
+ delete mode 100644 cache/a99aee0db9d2fe30fc85c695cae0a01e.djcache
+ create mode 100644 cache/a9fac561f26257414738f7e56e470243.djcache
+ create mode 100644 cache/aa0d7e4d8b8ae287c05f7b085084cee4.djcache
+ delete mode 100644 cache/aa728f5fdc1b25425860531ce23c5a98.djcache
+ create mode 100644 cache/ad353d7255356990ee650bedc1efe01d.djcache
+ create mode 100644 cache/ad3a73effb801ede2d83f32fcacae0e5.djcache
+ delete mode 100644 cache/ad8687d4ccc5599385ca7ff0177151c6.djcache
+ create mode 100644 cache/aec1e910f8e41365c789b564ca401210.djcache
+ delete mode 100644 cache/afaa57f6ddacff67dadfc59fdbf40967.djcache
+ create mode 100644 cache/afdb1cee7663d22e40de154050a1d2a1.djcache
+ delete mode 100644 cache/b00eed19a44898f842ec7bdea4ed6019.djcache
+ create mode 100644 cache/b02323088cc3c4b73052727a21bcdb41.djcache
+ delete mode 100644 cache/b0cafc6fd3d62af3f8b5db5facbc0517.djcache
+ create mode 100644 cache/b29c9d77777691e8d8038b6d3ed8c5eb.djcache
+ delete mode 100644 cache/b2c4d242d01dbdc583f58fb6b9c43a73.djcache
+ delete mode 100644 cache/b3423f29491fec4b5144bc5322abbed4.djcache
+ create mode 100644 cache/b36e382837a468154167a9915eef44f7.djcache
+ delete mode 100644 cache/b3a7ebe99c3c3af2aa411912d2b4c2d6.djcache
+ create mode 100644 cache/b459f31f88ee1edac846db0ace059301.djcache
+ create mode 100644 cache/b496c3f480be43162f4700e22caa1b78.djcache
+ delete mode 100644 cache/b4bcf81ae3cfe9de445c5d017a01d989.djcache
+ create mode 100644 cache/b4ee7b11efd5910aa65d1eac5a990b68.djcache
+ create mode 100644 cache/b54b3d24bf9fb00d2ab2687d259476a3.djcache
+ delete mode 100644 cache/b5e200d60e17d278d4032cb92328dcdc.djcache
+ create mode 100644 cache/b7ec313e90f9ba783bd7622800a926ee.djcache
+ create mode 100644 cache/b92aae3f4b3da75d2395b41af3945676.djcache
+ delete mode 100644 cache/b940e4202837e8b6e7ff4c991c30a89c.djcache
+ create mode 100644 cache/b9584ca5050a966b37f6630fe43469b8.djcache
+ delete mode 100644 cache/b960d2be2664214127e21c12801e6a5b.djcache
+ create mode 100644 cache/b9809d1ea92854572d933187dc23b418.djcache
+ delete mode 100644 cache/bc3f86cb8afd4a66af4ae8ca2c594982.djcache
+ create mode 100644 cache/bc9787ffeb653ea0555b0c10e59f6d6c.djcache
+ delete mode 100644 cache/bd2de13055e0e6d7658bff356c80d85c.djcache
+ create mode 100644 cache/bd34aecf4e275e9ab44c381fb1e3966c.djcache
+ delete mode 100644 cache/bda96610d15a52830698d7f3b5ae2663.djcache
+ delete mode 100644 cache/bdc06c40b9568bb7ebbcb914b217dce7.djcache
+ delete mode 100644 cache/be2836514bc4a8abe2b5c5058da4a91a.djcache
+ delete mode 100644 cache/bf748167fe32e0700899743b012314c7.djcache
+ create mode 100644 cache/c098f7ba2f3dc519f7de4f1d57f9b646.djcache
+ delete mode 100644 cache/c0dce3c31fa49fd752d1d70d09d1c900.djcache
+ delete mode 100644 cache/c17efa4fe7b8ccc0dc234d8210b2e2ec.djcache
+ create mode 100644 cache/c1b6a35880c1cd4cf1a3945e4e57c7b7.djcache
+ create mode 100644 cache/c20b11128442e3aae67ec7b4ca53d4b7.djcache
+ delete mode 100644 cache/c2420aa71fbb0a07962ec3d17f77d92c.djcache
+ delete mode 100644 cache/c2ba0edb7c4ae7c57942dfec3640102b.djcache
+ create mode 100644 cache/c2e6c235d01e9917b7ab355c5ac0c0d7.djcache
+ delete mode 100644 cache/c38ddd09f4af86f270e88f390d0c3ff8.djcache
+ create mode 100644 cache/c38eaf815b425940ef973e5a0884928d.djcache
+ create mode 100644 cache/c44574eadcc9e6079a5ce809ed57e486.djcache
+ create mode 100644 cache/c5c9e13364b8e3c74e3d8206a7d9f278.djcache
+ create mode 100644 cache/c6c4c6f55e42781fcfafd88d38734fa8.djcache
+ create mode 100644 cache/c6da7bba4e2ee043cbe8e06c3e993872.djcache
+ create mode 100644 cache/c6fa943d817c5e7358a6a6564c8ac77d.djcache
+ delete mode 100644 cache/c76992a490c8821a521b21b19bd5b3a1.djcache
+ delete mode 100644 cache/c81d09f082018900b53586e73f97114e.djcache
+ delete mode 100644 cache/c8472396c5d6173295712a9b81212628.djcache
+ delete mode 100644 cache/c850921ec35ba34862c0ee08f2337e34.djcache
+ create mode 100644 cache/c9716c6126fb3e03f5c49e3262369066.djcache
+ create mode 100644 cache/c990158eb5c02bdcd76631348ca55a7f.djcache
+ create mode 100644 cache/ca162638db74209a7add0e4fa3688c06.djcache
+ delete mode 100644 cache/ca35e822a875521eae3b7468340d6704.djcache
+ delete mode 100644 cache/ca529d119be4d04ffc5fcf57c89eb6a0.djcache
+ create mode 100644 cache/cb2f20b5dca2f466fccbbe532dfa1fbb.djcache
+ delete mode 100644 cache/cb6fd1a9b6e0f8467705cb6fe1d524a1.djcache
+ delete mode 100644 cache/cd7b91d5a323d810bfe53947c62eb174.djcache
+ create mode 100644 cache/cddeee28f0ffab86532602bf88c74f81.djcache
+ delete mode 100644 cache/ce9d756bbfb2e52aa914b7adf6e41449.djcache
+ delete mode 100644 cache/cec03ef313b05e312227d4b89d646200.djcache
+ delete mode 100644 cache/ced1c8c15d9d5e779f0025f97645d19e.djcache
+ delete mode 100644 cache/d02fe30ba3cc2fcb6a3231dae857a6a3.djcache
+ create mode 100644 cache/d04ffdcabff80c585bfe50b0a470f317.djcache
+ create mode 100644 cache/d112bb86d5238c0ff1e434afdf97300c.djcache
+ create mode 100644 cache/d1c0c1455d55d6d75e5a4cb59ad512a3.djcache
+ delete mode 100644 cache/d21e3d2f80e20f9015a5d5061c79fadd.djcache
+ create mode 100644 cache/d286176cf2c1f81ec19fbdf41cefb90a.djcache
+ delete mode 100644 cache/d2d2cd8c2a82e35fcdb1c24ca825b461.djcache
+ delete mode 100644 cache/d3e97dd62c0fd1f78becfbea4d0193ad.djcache
+ create mode 100644 cache/d3f13f501c09dcb5731a607704543de7.djcache
+ create mode 100644 cache/d4936503af79fbcf1bf9b9dbc0000e23.djcache
+ delete mode 100644 cache/d567df70e1626417e747ef44798275ad.djcache
+ delete mode 100644 cache/d5abe64aace8b7d3ca807aa0a29a264a.djcache
+ delete mode 100644 cache/d5c0ac4112413c7ad013ee5f0d4ca0d2.djcache
+ delete mode 100644 cache/d6330499a2bcb1d313078d73c8dd4cdd.djcache
+ delete mode 100644 cache/d675530df2bcf2aa6dd829d72dbbbb86.djcache
+ create mode 100644 cache/d6a8318d28d1e0268511261c312f915e.djcache
+ create mode 100644 cache/d7504690b33218d6f2eadbb8a4b5f75d.djcache
+ delete mode 100644 cache/d889c48470bfd753bd1bcea292adf585.djcache
+ delete mode 100644 cache/d94a2279e3f1bbaee6c7c8b815e5f32b.djcache
+ delete mode 100644 cache/d979e48bc2aafc07df743ff2a812a42e.djcache
+ delete mode 100644 cache/da600e176aed10e1014ebba0bdb22553.djcache
+ create mode 100644 cache/dabfca3ea5f292b9a7b1fb8beb4c826c.djcache
+ create mode 100644 cache/dc38629e892965d6afbbd51f613a6b09.djcache
+ create mode 100644 cache/dcd9ae8894e5380591b4fbeb3ffd2f81.djcache
+ delete mode 100644 cache/dd0fd639834e8a3e06ebf7c674f61e41.djcache
+ delete mode 100644 cache/dd5c11baa7b0544770b4258a49f0e393.djcache
+ create mode 100644 cache/dd9c516e85776b98f21c44c679861396.djcache
+ delete mode 100644 cache/dde7325c07ffc4ee6a5c063ad3986e26.djcache
+ create mode 100644 cache/df472b04702bd83a0cac36941e73bbfc.djcache
+ create mode 100644 cache/df7938fd929985436d54595eddc61776.djcache
+ delete mode 100644 cache/dfec51bca47b9b21902411cbe409684f.djcache
+ delete mode 100644 cache/e05da2d9a8e201d5a2bf0bb0ff3e3215.djcache
+ create mode 100644 cache/e0c1029f157fb2c2a1fab5ed68287b1a.djcache
+ delete mode 100644 cache/e0f736e6139bcb52f29bceefc13fbae8.djcache
+ create mode 100644 cache/e0ff2c4197fa4066db373d4b6ae8ea7c.djcache
+ create mode 100644 cache/e117cafb872efc1e49229372c310a88a.djcache
+ delete mode 100644 cache/e149daf188a054954e7a76b9fc271d05.djcache
+ delete mode 100644 cache/e2db2f91bf80708044c7ef6bd308b43c.djcache
+ delete mode 100644 cache/e4c7412e024779dd06d810d09f9aa1b2.djcache
+ delete mode 100644 cache/e56a860d6bd4a9d52bfb32995bc7f83c.djcache
+ create mode 100644 cache/e58226446b59f8991b24d371a98b5f6c.djcache
+ delete mode 100644 cache/e5ebf44f468ba43bc06edc0929811c36.djcache
+ create mode 100644 cache/e5f08bb569027ba7b278089a49761c11.djcache
+ delete mode 100644 cache/e73099a5f3be412f1556ade2cdbe4a39.djcache
+ delete mode 100644 cache/e7ac714b37f9c3db7d1ae617a4623a9a.djcache
+ delete mode 100644 cache/e7d4a4ed90e579bc7f9365aec416609b.djcache
+ create mode 100644 cache/e80e27a13537595b998523d4c1c5f327.djcache
+ create mode 100644 cache/e851e3a0483313ff5d6c96a531e085ed.djcache
+ create mode 100644 cache/ea2bc1e68d161780e80155ec1818e6b9.djcache
+ delete mode 100644 cache/eb13a9105a0f3f883cad0c545f1a9d0e.djcache
+ delete mode 100644 cache/eb1df7d233a9fa0efa546dc24cb83340.djcache
+ delete mode 100644 cache/eba6b99cad95dd3ff987ed0316af8d9c.djcache
+ create mode 100644 cache/eba6f4d4ee01a8641f642f22918bfc4d.djcache
+ create mode 100644 cache/ebae0741c5849b876e051523ece2961e.djcache
+ create mode 100644 cache/ee132c6b5f8e7d138e476ba726d598a5.djcache
+ create mode 100644 cache/ee7d0fad69b875399651fe35adab5c95.djcache
+ create mode 100644 cache/ef3d1eae03598841d66b11f1bde2f103.djcache
+ delete mode 100644 cache/f02c48aee77e7917a7344b217dcf42a3.djcache
+ create mode 100644 cache/f03c30830c932668eb82f1947a7afed6.djcache
+ create mode 100644 cache/f1e37a56f019366aa1dcde7ddda282cb.djcache
+ delete mode 100644 cache/f2faa8d9de44fb10a72bc3e60800fceb.djcache
+ delete mode 100644 cache/f3035940bda45609346dd191cbdd5d7f.djcache
+ create mode 100644 cache/f34d42d28015aa00cfa3523e0040d986.djcache
+ delete mode 100644 cache/f36042171f815694d3a1bdd152a15829.djcache
+ delete mode 100644 cache/f395aae5b9e599298ab171944b453bce.djcache
+ delete mode 100644 cache/f3e5f5a63e35e6d949068a1945f0a2a5.djcache
+ delete mode 100644 cache/f43809762a27533b9daddebd1ab1ffbf.djcache
+ delete mode 100644 cache/f43a739ba1ca456d11b3ba9c22325a55.djcache
+ delete mode 100644 cache/f4e257de8ac30b646db80fc1e909b52d.djcache
+ delete mode 100644 cache/f510d890290ca50bbc41f7639e7f8594.djcache
+ delete mode 100644 cache/f619f38bd290078c47cad939b43a5f4c.djcache
+ delete mode 100644 cache/f74f08317a1a6e662a4e6652ac8a86de.djcache
+ delete mode 100644 cache/f74f459b7e5c04a6fb114d374f54bac4.djcache
+ create mode 100644 cache/f7f21468e2c436f0452676db8212276e.djcache
+ create mode 100644 cache/f810d13e6c1ea20e2311aba3ce06f88d.djcache
+ delete mode 100644 cache/f8289005eec4e3b5e776c9a79312f12b.djcache
+ create mode 100644 cache/f8a03904350bd4abdae417b47041d8b7.djcache
+ delete mode 100644 cache/f9227812441bfffc9c731181154d03ec.djcache
+ delete mode 100644 cache/f9b1af54f605a208c08834d448147ea1.djcache
+ delete mode 100644 cache/fdafe5142478dafb03f1946ece3f88d9.djcache
+ create mode 100644 cache/fdb180782d62b8e0198feb8b48eef2aa.djcache
+ delete mode 100644 cache/fec70f3ac6569aa8130a9db4a6f29de0.djcache
+ delete mode 100644 cache/ffbf72f3e7560028b815dff8b3524385.djcache
+ create mode 100644 live/__pycache__/speech_detection.cpython-312.pyc
+ create mode 100644 live/__pycache__/transcript.cpython-312.pyc
+ create mode 100644 live/migrations/0021_videocamera_speech_only_videoframe_contains_speech.py
+ create mode 100644 live/migrations/0022_videocamera_vad_mode.py
+ create mode 100644 live/migrations/__pycache__/0021_videocamera_speech_only_videoframe_contains_speech.cpython-312.pyc
+ create mode 100644 live/migrations/__pycache__/0022_videocamera_vad_mode.cpython-312.pyc
+ create mode 100644 live/speech_detection.py
+ create mode 100644 media/audio/fingerprints/00e04f49-741d-481b-b78d-8c5909870738.npy
+ create mode 100644 media/audio/fingerprints/0e8b3c64-276a-4a19-9b3b-29d42e448b27.npy
+ create mode 100644 media/audio/fingerprints/186a83aa-3b2a-4ca1-9fce-f86a62da8f5e.npy
+ create mode 100644 media/audio/fingerprints/1abbfda5-6cb9-4d1c-9f4a-f11ee9c564d6.npy
+ create mode 100644 media/audio/fingerprints/1aead255-b099-42fa-a981-570cbdba4f05.npy
+ create mode 100644 media/audio/fingerprints/1cdaec8f-6bed-4653-8ce6-e68cc225f95a.npy
+ create mode 100644 media/audio/fingerprints/1cf1780a-f56c-4a09-8a41-4823f70a6176.npy
+ create mode 100644 media/audio/fingerprints/1e4d1dd4-9be8-433a-8bc3-1b42a0fb19b7.npy
+ create mode 100644 media/audio/fingerprints/20179ef5-d112-4235-b6df-e66fa0b57705.npy
+ create mode 100644 media/audio/fingerprints/20e2cfb7-ec6e-4653-9d6e-d95dcae45fea.npy
+ create mode 100644 media/audio/fingerprints/241cce62-9ee5-448b-b327-300bcdc2baaa.npy
+ create mode 100644 media/audio/fingerprints/24e17694-06a4-4bc3-b1a8-a6ddc03e7f28.npy
+ create mode 100644 media/audio/fingerprints/2e056b61-1419-44ed-b00a-10651f2974e5.npy
+ create mode 100644 media/audio/fingerprints/2e4fc7ee-58c5-484a-81f5-4f75cec27c3c.npy
+ create mode 100644 media/audio/fingerprints/2fc46b5c-5afa-4f7d-ba16-7ac9324cc13a.npy
+ create mode 100644 media/audio/fingerprints/2ff0d495-f94e-4c25-9039-9f71d0aa6aef.npy
+ create mode 100644 media/audio/fingerprints/30b33229-e236-41ae-9ae6-74d8bc25d844.npy
+ create mode 100644 media/audio/fingerprints/30e0eb58-9a75-4bb6-b69e-ab4fbb038fee.npy
+ create mode 100644 media/audio/fingerprints/3169463d-265f-4a07-951f-8c5767d0bea5.npy
+ create mode 100644 media/audio/fingerprints/318783a7-60a4-420d-b35d-03bdd2459c76.npy
+ create mode 100644 media/audio/fingerprints/3193dc21-7ad5-4072-b019-cd2470b46ce0.npy
+ create mode 100644 media/audio/fingerprints/32c67022-71cd-4f07-8909-41eeca64285c.npy
+ create mode 100644 media/audio/fingerprints/32d6a567-1781-4173-bc89-0dea2312bae4.npy
+ create mode 100644 media/audio/fingerprints/33483e64-3cef-4718-aa2d-a2965459e107.npy
+ create mode 100644 media/audio/fingerprints/338dc266-6470-4f3c-bed0-deb2bedea404.npy
+ create mode 100644 media/audio/fingerprints/39108d49-d224-4b1b-b1a5-4951d9cbb356.npy
+ create mode 100644 media/audio/fingerprints/39699a72-c6c1-4034-84a3-12067cb3e12b.npy
+ create mode 100644 media/audio/fingerprints/3a826fb8-f613-4a21-85f4-07b579a67b72.npy
+ create mode 100644 media/audio/fingerprints/3bd20308-ddb7-43dd-b10e-a7b1a69870cf.npy
+ create mode 100644 media/audio/fingerprints/3c61c74d-4736-4039-9d81-2aa9d737e0ec.npy
+ create mode 100644 media/audio/fingerprints/4139a6bc-88e4-4aaf-b4dd-3e09718dade5.npy
+ create mode 100644 media/audio/fingerprints/430584d4-525a-481d-9e11-a113aced156f.npy
+ create mode 100644 media/audio/fingerprints/4692347b-41c5-4d2f-8c6b-d7331b2ab822.npy
+ create mode 100644 media/audio/fingerprints/4a7973f1-759a-4392-b1d7-ae55a0d75cc6.npy
+ create mode 100644 media/audio/fingerprints/4adbcbbc-2d14-4e81-a2c7-140a0cffba69.npy
+ create mode 100644 media/audio/fingerprints/4ed23ee0-ad44-42f8-ab3f-89789e0292dd.npy
+ create mode 100644 media/audio/fingerprints/4f261760-d022-4b1b-9c33-ddd04e0549be.npy
+ create mode 100644 media/audio/fingerprints/54c9dba8-eb82-4f28-a744-0e4a537b9536.npy
+ create mode 100644 media/audio/fingerprints/551151e4-727d-4598-87a6-ec0904438eeb.npy
+ create mode 100644 media/audio/fingerprints/55880205-a413-4bda-9c51-452a92131ab6.npy
+ create mode 100644 media/audio/fingerprints/57d47e06-dc5b-4c56-a241-494f3c36654b.npy
+ create mode 100644 media/audio/fingerprints/59b66a5a-11f4-42ad-a6d7-c7052330257e.npy
+ create mode 100644 media/audio/fingerprints/63993966-31a9-49e2-a1b2-bd417cfc194f.npy
+ create mode 100644 media/audio/fingerprints/63d78d2f-7385-4789-ad87-309b1a2366ed.npy
+ create mode 100644 media/audio/fingerprints/64b59ae6-0217-4b93-8ca5-b1af75a99160.npy
+ create mode 100644 media/audio/fingerprints/658d83c3-fdbc-440f-a04d-bb19ccc55086.npy
+ create mode 100644 media/audio/fingerprints/67cd766b-a894-46bd-bd45-1b415366aed2.npy
+ create mode 100644 media/audio/fingerprints/6ad93824-9e6a-4e36-bdea-aa8a6183278c.npy
+ create mode 100644 media/audio/fingerprints/6fa831d2-0088-4f2e-8727-2d55e14399ae.npy
+ create mode 100644 media/audio/fingerprints/7420d011-3df0-4254-8825-827eff3fb587.npy
+ create mode 100644 media/audio/fingerprints/790997a7-5363-439b-a8c3-55dc66556796.npy
+ create mode 100644 media/audio/fingerprints/7f69da98-4822-42c5-8cf2-4b1e3e5e60eb.npy
+ create mode 100644 media/audio/fingerprints/8033a2c1-512b-4f21-9799-d22ddf597c25.npy
+ create mode 100644 media/audio/fingerprints/829dba46-2574-4fc9-aaea-4d187604110f.npy
+ create mode 100644 media/audio/fingerprints/87a030ec-1295-45b4-8f4b-3a865df68c3d.npy
+ create mode 100644 media/audio/fingerprints/8be68d66-3d9a-4462-a0fd-8f665f4ed274.npy
+ create mode 100644 media/audio/fingerprints/8d287f32-a3f5-4620-b6a6-28719937527c.npy
+ create mode 100644 media/audio/fingerprints/8e46c2ba-e3e5-4901-8314-92076cdfc3af.npy
+ create mode 100644 media/audio/fingerprints/903752d9-aeab-4ba6-956d-ad856bbbdb47.npy
+ create mode 100644 media/audio/fingerprints/925fbe6b-dbb5-4251-b48e-8fb47aa1ce68.npy
+ create mode 100644 media/audio/fingerprints/93633047-b96f-4f02-a2b1-65c4c2b5781f.npy
+ create mode 100644 media/audio/fingerprints/94181a65-aace-4725-a890-21f8db78251c.npy
+ create mode 100644 media/audio/fingerprints/945595dd-0294-4622-a46f-c4b1249d3d36.npy
+ create mode 100644 media/audio/fingerprints/98210bc9-c565-4ff0-9157-add6c9b6ecfe.npy
+ create mode 100644 media/audio/fingerprints/a3aa5362-86cb-414c-a7fe-b3b6af01cc01.npy
+ create mode 100644 media/audio/fingerprints/a42d1833-30b3-44cb-8860-b313ff398ad3.npy
+ create mode 100644 media/audio/fingerprints/a4e40171-87c0-4d06-81ed-23f788f912de.npy
+ create mode 100644 media/audio/fingerprints/a6450bbb-291c-4301-bf0f-b2a764c28c9c.npy
+ create mode 100644 media/audio/fingerprints/a6ff42ee-4fe3-44f4-a4eb-a31fcc23bb7e.npy
+ create mode 100644 media/audio/fingerprints/ab2f745a-c895-4e74-9eab-2e7ef6e154ba.npy
+ create mode 100644 media/audio/fingerprints/acd636df-c946-422e-aca9-df420d62355f.npy
+ create mode 100644 media/audio/fingerprints/acf0ccf7-080a-4e7b-a521-d2b6c81a819e.npy
+ create mode 100644 media/audio/fingerprints/ae5657d7-2a49-4d41-9e8c-8748cf3ab6ad.npy
+ create mode 100644 media/audio/fingerprints/aeca3e9e-3522-4dea-9d3d-7c231f8be831.npy
+ create mode 100644 media/audio/fingerprints/b0cf4f93-83db-48a2-8b20-f3ea82b79009.npy
+ create mode 100644 media/audio/fingerprints/b48ecfba-e0d2-4909-bc28-3978fa77e70e.npy
+ create mode 100644 media/audio/fingerprints/b653c3db-844f-48d6-8297-6204e781ac55.npy
+ create mode 100644 media/audio/fingerprints/b81ab818-df77-4be7-97f3-ca907acd7afc.npy
+ create mode 100644 media/audio/fingerprints/b9da0a64-9bb8-4cbc-bff9-6018b5bd888d.npy
+ create mode 100644 media/audio/fingerprints/ba2fe694-bfcd-4807-87cf-4eab603133fe.npy
+ create mode 100644 media/audio/fingerprints/c0056079-5c00-4fd0-9414-10bef9b3c44b.npy
+ create mode 100644 media/audio/fingerprints/c1d0ceb0-4594-47a8-a926-17225da312b5.npy
+ create mode 100644 media/audio/fingerprints/c295fce1-3bc2-43b8-b00b-153083b3008c.npy
+ create mode 100644 media/audio/fingerprints/c29f9052-9d11-4b46-981a-16b8af450b81.npy
+ create mode 100644 media/audio/fingerprints/c2ac8279-3eeb-430b-955a-e4e8372a2d89.npy
+ create mode 100644 media/audio/fingerprints/c2e099d1-9096-482b-9281-f530b9c71866.npy
+ create mode 100644 media/audio/fingerprints/c420424b-e172-4caf-a459-36a5e0961c75.npy
+ create mode 100644 media/audio/fingerprints/c43a204d-9c5e-4d2a-89ba-cd1f3390a088.npy
+ create mode 100644 media/audio/fingerprints/c741857f-0217-487b-91a3-7f57e00822fe.npy
+ create mode 100644 media/audio/fingerprints/c7dca663-069c-4a9c-a1bd-5b5499d61138.npy
+ create mode 100644 media/audio/fingerprints/ca2bf529-3e94-428d-8334-5af83e929371.npy
+ create mode 100644 media/audio/fingerprints/cd8c12df-3156-4e06-bdae-af7ceda8630d.npy
+ create mode 100644 media/audio/fingerprints/cd902e6e-7a96-4baa-9fc8-f03e965367a3.npy
+ create mode 100644 media/audio/fingerprints/d05321fa-cdfd-4410-93b0-83e3478845bd.npy
+ create mode 100644 media/audio/fingerprints/d2ab05fd-cfef-4e71-946b-9e3d1646bd26.npy
+ create mode 100644 media/audio/fingerprints/d34f6694-b17f-4b4f-8ff6-7f0aeba28a1d.npy
+ create mode 100644 media/audio/fingerprints/d37c1ce8-1a46-42d1-bd00-35da00038dc7.npy
+ create mode 100644 media/audio/fingerprints/d4e90acc-b8f4-4642-b028-53012d3d7fa4.npy
+ create mode 100644 media/audio/fingerprints/d6a761b1-c0f8-4fb3-aa7c-7ef268f18493.npy
+ create mode 100644 media/audio/fingerprints/d6e14c90-3b16-42a9-bccd-662bab2c3b3a.npy
+ create mode 100644 media/audio/fingerprints/d88f73b5-febf-47c8-b081-5ef606954b18.npy
+ create mode 100644 media/audio/fingerprints/d9c3dcc5-41ee-4f3f-8658-e57ff5873c47.npy
+ create mode 100644 media/audio/fingerprints/da5f8b1f-7664-4472-b4d6-460a9be15262.npy
+ create mode 100644 media/audio/fingerprints/dd755df0-d290-4a1e-9944-5da0f179314c.npy
+ create mode 100644 media/audio/fingerprints/de9292df-11fd-43a0-b290-b7020a26fbd8.npy
+ create mode 100644 media/audio/fingerprints/df4639f5-bc34-402b-bf62-c221230b621e.npy
+ create mode 100644 media/audio/fingerprints/e22ebbd8-ae14-4bc8-9888-8a53b660204c.npy
+ create mode 100644 media/audio/fingerprints/e32a9ce4-593d-4bf2-b96a-106377861709.npy
+ create mode 100644 media/audio/fingerprints/e386c6ee-201a-4f87-b818-b0b7588b080a.npy
+ create mode 100644 media/audio/fingerprints/e39439e7-f08c-418c-a4a0-b5d7863d4c8e.npy
+ create mode 100644 media/audio/fingerprints/e546d998-12d1-4633-b33b-1a35e032b361.npy
+ create mode 100644 media/audio/fingerprints/ea080a3d-0a42-44e9-a553-9714f5788bbd.npy
+ create mode 100644 media/audio/fingerprints/ec9b27f3-6243-4a8e-a813-79e4ae639f21.npy
+ create mode 100644 media/audio/fingerprints/ef878ee8-117c-4dcf-a393-e5d81a4ff079.npy
+ create mode 100644 media/audio/fingerprints/f1bfbea2-638e-4656-856a-f6ef1145a961.npy
+ create mode 100644 media/audio/fingerprints/f1f05e5c-f51c-4adf-8805-853388d7eca8.npy
+ create mode 100644 media/audio/fingerprints/f1f77fbc-7367-4f6f-a9b9-1e3b3bf748c4.npy
+ create mode 100644 media/audio/fingerprints/f240ffc8-60cd-46e5-a729-c0643c90d51d.npy
+ create mode 100644 media/audio/fingerprints/f34d021a-4915-486a-b133-888d977ec3a9.npy
+ create mode 100644 media/audio/fingerprints/f3c551ad-d104-45bb-9296-e9299ebcfa93.npy
+ create mode 100644 media/audio/fingerprints/f3f6c4ad-ce6f-4b5f-a653-4d5133b34b71.npy
+ create mode 100644 media/audio/fingerprints/f90a042c-9e9e-4000-a38f-f4ce5d1f4cff.npy
+ create mode 100644 media/audio/fingerprints/f95864da-956b-4df0-a331-d41ba419526c.npy
+ create mode 100644 media/audio/fingerprints/f9d9403e-ed33-4366-a722-42e5e8a895eb.npy
 branch 'main' set up to track 'originlab/main'.
 sending incremental file list
 ./

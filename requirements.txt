@@ -258,6 +258,7 @@ SpeechRecognition
 SQLAlchemy
 sqlparams
 sqlparse
+srt
 streamlit
 stripe
 sympy
@@ -300,6 +301,7 @@ uritools
 urlextract
 validators
 vine
+vosk
 waitress
 watchdog
 wcwidth
